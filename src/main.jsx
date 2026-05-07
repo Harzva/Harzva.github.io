@@ -1215,7 +1215,7 @@ function VibePrinciples() {
           <p className="eyebrow">two-sided value</p>
           <h3>两端价值理论</h3>
           <p>
-            不是执行力不重要。真正要改的说法是：Codex 技术、标准化编码和功能复刻本身越来越不构成护城河。执行力仍然重要，但执行对象要从“只写代码”扩展到发现问题、设计体验、验证需求和放大分发。
+            不是执行力不重要，而是 coding 技术不再是主要护城河。执行力仍然重要，但执行对象要从“只写代码”扩展到发现问题、设计体验、验证需求和放大分发。
           </p>
         </div>
         <div className="value-ends-grid">
