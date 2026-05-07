@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#0a0a0a"/>
+  <text x="200" y="60" text-anchor="middle" fill="#fff" font-family="monospace" font-size="18">like-code</text>
+  <text x="200" y="90" text-anchor="middle" fill="#888" font-family="monospace" font-size="12">Customized Claude Code Fork</text>
+  <rect x="60" y="120" width="280" height="120" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="80" y="150" fill="#00ff88" font-family="monospace" font-size="11">$ like-code --route gpt-4o</text>
+  <text x="80" y="175" fill="#888" font-family="monospace" font-size="11">&gt; Model routed successfully</text>
+  <text x="80" y="195" fill="#888" font-family="monospace" font-size="11">&gt; Multi-agent mode: enabled</text>
+  <text x="80" y="215" fill="#fff" font-family="monospace" font-size="11">┌─ Terminal Control ─┐</text>
+  <rect x="60" y="255" width="100" height="30" rx="4" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="110" y="274" text-anchor="middle" fill="#888" font-family="monospace" font-size="10">Routed Models</text>
+  <rect x="180" y="255" width="80" height="30" rx="4" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="220" y="274" text-anchor="middle" fill="#888" font-family="monospace" font-size="10">Multi-Agent</text>
+  <rect x="280" y="255" width="80" height="30" rx="4" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="320" y="274" text-anchor="middle" fill="#888" font-family="monospace" font-size="10">Dense UI</text>
+</svg>
