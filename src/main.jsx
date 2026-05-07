@@ -514,7 +514,7 @@ const thoughtArticles = [
     id: "app-context-engineering",
     number: "02",
     title: "APP as Context Engineering",
-    label: "APP 即上下文工程",
+    label: "APP 即上下文工程（结构化更强的上下文）",
     text: "APP 不能只看成一组页面和按钮。用户打开产品时，已经带着身份、权限、偏好、历史动作和当前任务。产品体验好不好，很大程度上取决于这些信息有没有被正确保存、传递和使用。",
     lead: "我说 APP 是上下文工程，是想把产品设计和工程实现放在一起看：前端保存状态，后端传递请求信息，数据层记录行为，AI 功能再使用这些信息理解用户意图。",
     sections: [
@@ -608,6 +608,129 @@ const thoughtArticles = [
   }
 ];
 
+const analysisArticles = [
+  {
+    id: "ai-product-growth",
+    number: "01",
+    category: "产品分析",
+    title: "如何打造一个优质的 AI 产品",
+    collectionTitle: "优质 AI 产品分析",
+    subtitle: "强需求、极简体验、强分发，比技术复杂度更重要",
+    cover: "/article_covers/less-is-more-framework.png",
+    summary:
+      "这是一个产品分析集合，后续会持续放入 AI 产品、独立开发、增长和分发案例。当前文章讨论如何从真实需求、极简体验、及格发布和渠道宣发出发，做出更容易被用户理解和使用的 AI 产品。",
+    thesis:
+      "优质 AI 产品不是先堆功能，而是先找到一个用户愿意立刻行动的理由。这个理由可以来自省钱、赚钱、省时间、降低麻烦，也可以来自一个原本没人意识到的垂直场景。",
+    flow: [
+      ["Need", "找到用户会立刻行动的需求"],
+      ["MVP", "用最小路径验证付费或留存"],
+      ["Onboarding", "让用户 3 秒内理解价值"],
+      ["Distribution", "内容验证后用广告或渠道放大"],
+      ["LTV", "把获客变成长期用户资产"]
+    ],
+    cases: [
+      {
+        name: "Payout",
+        point: "帮用户自动发现并申请集体诉讼赔偿。",
+        insight:
+          "用户愿意付费，不是因为 AI 技术本身，而是因为潜在收益 88-147 美元显著高于订阅费，并且省掉了查找、判断、申请的麻烦。它把“我可能有钱可以领”这个原本隐藏的需求放到用户眼前。"
+      },
+      {
+        name: "AI 语音笔记",
+        point: "录音、转文字、云端同步，极少功能也能做出高收入。",
+        insight:
+          "用户不是为功能清单付费，而是为按下录音键之后“说完即所得”的流畅体验付费。极简产品的难点不是少做功能，而是敢把非核心路径砍掉，并持续投放验证 ROI。"
+      },
+      {
+        name: "Stagetimer",
+        point: "把普通倒计时做进演讲、发布会、直播和培训的专业流程。",
+        insight:
+          "手机计时器到处都是，但专业活动需要远程同步、精准提醒、悄悄话、流程展示和断网可用。Lucas 先解决自己的活动痛点，再通过免费版、社区反馈、Powered by 水印和 SEO，把一个小工具做成 4400+ 付费用户、月收入 1.5 万美元以上的独立产品。"
+      }
+    ],
+    mobileFigures: [
+      {
+        src: "/article_covers/ai-product-formula-mobile.png",
+        title: "优质 AI 产品公式",
+        caption: "小而美、强需求、强分发、极简体验，核心是让用户快速感知价值。"
+      },
+      {
+        src: "/article_covers/ai-product-cases-mobile.png",
+        title: "三个简单产品案例",
+        caption: "Payout、AI 语音笔记和垂直计时器都说明：简单产品也需要够狠的需求表达。"
+      }
+    ],
+    sections: [
+      {
+        title: "1. 优质产品通常从一个简单需求开始",
+        paragraphs: [
+          "很多优质产品并不复杂。它们的共同点是把一个用户已经有、但没有被很好承接的需求做得很直接。Payout 抓的是“可能有钱可以领”，录音转文字抓的是“我不想整理文字”，Stagetimer 抓的是“专业活动不能因为计时失控而影响流程”。",
+          "这里的关键不是 AI 有多强，而是用户看到产品后能不能立刻明白：这东西能帮我赚钱、省钱、省时间，或者少做一件麻烦事。"
+        ]
+      },
+      {
+        title: "2. 需求也可以被创造",
+        paragraphs: [
+          "很多时候，用户不是没有需求，而是不知道这个需求可以被产品化。Payout 的价值就在这里：大多数人并不知道自己可能符合某些赔偿申请条件。产品把隐藏信息整理成清晰入口，需求就被激活了。",
+          "所以定义需求时不能只问“用户现在说想要什么”，还要问“有什么收益、权益、效率或机会是用户不知道自己可以获得的”。当产品把这个机会放到眼前，需求才会从模糊变成明确。"
+        ]
+      },
+      {
+        title: "3. 极简不是简单，而是只保留付费动作",
+        paragraphs: [
+          "录音转文字 App 的案例说明，极简产品不等于没有设计。它只保留录音、转写、同步三步，但这三步必须顺。用户不为“功能很多”付费，而是为“我刚好需要，而且现在就能完成”付费。",
+          "Stagetimer 也是同样逻辑。它早期甚至不需要登录，打开链接就能用。核心不是做一个全能活动管理系统，而是先把远程同步、精准提醒、离线可用这几件事做顺。一个可执行标准是：新用户能不能在 3 秒内理解价值，在 30 秒内完成核心动作，在第一次使用后看到明确结果。"
+        ]
+      },
+      {
+        title: "4. 及格发布主义：60 分先出去",
+        paragraphs: [
+          "less is more and 60 is 100，不是说降低标准，而是说早期目标不是一次做到满分，而是用 60 分的产品和内容去验证 100 分的方向。不要总想着 100 分再发布、100 分再宣传。产品和内容都需要先出去，才知道用户是否看得懂、是否愿意试、是否愿意付费。",
+          "这件事要祛魅。社交媒体发布内容不应该有太大心理负担，这次表达不好，下次换标题、换角度、换平台继续发。低质量宣传不是低价值宣传，而是低门槛、低阻力、高频率地把价值说出去。像写论文一样，先及格，再根据反馈继续改。",
+          "这和打造优质 AI 产品是一致的：先写一句清楚的价值主张，做一个能跑通核心动作的 MVP，发布到 3 个以上用户聚集的平台，记录点击、咨询、留资、付费和反馈，再迭代表达和功能。没有反馈的完美，价值很难成立。"
+        ]
+      },
+      {
+        title: "5. 分发能力决定上限",
+        paragraphs: [
+          "现在 code is cheap。做出产品只是开始，后面还要解决内容、渠道、广告、转化和复购。Payout 这类产品的路径是内容先行：先让垂直领域博主生产 UGC 验证需求，再把有效内容直接投广告放大。",
+          "Stagetimer 的分发路径更适合独立开发者参考：先做免费版，去活动策划群、演讲者论坛、Reddit 的 r/livesound 和 r/publicspeaking 找真实用户反馈；再用 Powered by 水印让每次直播、发布会都变成曝光；最后围绕 stage timer、remote countdown 这类关键词做教程和 SEO，形成长期自然流量。",
+          "这和 3E 准则是同一个方向：Easy to See 让用户先看懂，Easy to Use 让用户能快速完成核心动作，Easy to Grace 让体验稳定、顺滑、愿意继续用。很多好农产品卖不出去，不是产品不行，而是缺渠道、缺平台、缺宣发。软件产品也是一样，没有分发，产品很容易停在“能做但没人知道”。"
+        ]
+      },
+      {
+        title: "6. 垂直人群要够窄，也要够大",
+        paragraphs: [
+          "Stagetimer 不是给所有人做计时器，而是给演讲、发布会、直播、培训和活动公司做流程控制。这个人群足够垂直，所以需求明确；但它又覆盖企业年会、高校、培训、直播、发布会，市场并不小。",
+          "这类机会通常有三个特征：第一，大公司觉得太小，不会优先做；第二，用户工作流明确，愿意为稳定性和省心付费；第三，产品在使用场景里天然可见，比如水印、链接、模板、导出结果都能带来传播。"
+        ]
+      },
+      {
+        title: "7. 本土化不要照搬功能，要迁移场景",
+        paragraphs: [
+          "Payout 在国内未必能原样复制，但场景可以迁移：补贴查询、退款提醒、消费维权、医保报销、会员扣费提醒、航班延误权益、平台补偿申请，都属于“用户可能有权益，但不知道或嫌麻烦”的场景。Stagetimer 也可以迁移到中文会议、培训机构、直播间、路演、社群分享和企业内训。",
+          "技术栈也不必照搬。国内可以用微信生态做冷启动，用公众号、视频号、小程序承接转化，用微信支付替代订阅系统，用国内云服务替代海外基础设施。需求本质不变，入口和合规方式要换。"
+        ]
+      },
+      {
+        title: "8. 最容易死在三个地方",
+        paragraphs: [
+          "第一是把流水当利润。广告投放能快速放大，但如果没有 LTV 计算，产品可能只是替广告平台打工。第二是过早堆功能，核心爽感没有打穿就开始做复杂系统。第三是没有第二曲线，获客之后不知道怎么留存和扩展。",
+          "Stagetimer 的反面提醒是：垂直工具不能只停留在免费好用，还要设计付费边界、客户背书和长期入口。否则用户来了也可能只是临时使用一次。我的判断顺序会放成：先验证真实需求，再做最小 MVP，再优化新用户引导，再放大分发，最后才考虑复杂功能和长期生态。"
+        ]
+      }
+    ],
+    actions: [
+      "先用内容和小规模付费测试验证需求，不要先写完整产品。",
+      "把核心路径压到 1-3 个动作，让用户第一次使用就看到结果。",
+      "用 60 分 MVP 和 60 分内容先发布，降低宣传心理负担，优先换取真实反馈。",
+      "为每个产品建立广告 ROI、转化率、留存率和 LTV 记录。",
+      "优先找垂直人群：圈子足够大、痛点明确、大公司暂时看不上，并且产品在使用场景里可见。",
+      "产品发布不是结束，要提前设计内容分发、渠道放大和第二增长曲线。"
+    ]
+  }
+];
+
 const avatarWallItems = [
   ["Soft Studio", "avatar-set-01-soft-studio.svg"],
   ["Glasses Office", "avatar-set-02-glasses-office.svg"],
@@ -654,12 +777,21 @@ function App() {
     return thoughtArticles.find((item) => item.id === route.replace("/thought/", ""));
   }, [route]);
 
+  const analysisArticle = useMemo(() => {
+    if (!route.startsWith("/article/")) return null;
+    return analysisArticles.find((item) => item.id === route.replace("/article/", ""));
+  }, [route]);
+
   if (paper) {
     return <PaperDetail paper={paper} />;
   }
 
   if (thought) {
     return <ThoughtDetail article={thought} />;
+  }
+
+  if (analysisArticle) {
+    return <ArticleAnalysisDetail article={analysisArticle} />;
   }
 
   return (
@@ -670,6 +802,7 @@ function App() {
         <PersonalSnapshot />
         <AgentProjects />
         <Research />
+        <ArticleAnalysis />
         <VibePrinciples />
         <Experience />
         <AvatarWall />
@@ -694,6 +827,7 @@ function Header() {
       <nav>
         <a href="#projects">项目</a>
         <a href="#publications">论文</a>
+        <a href="#articles">文章</a>
         <a href="#vibe">AE 思考</a>
         <a href="#contact">联系我</a>
       </nav>
@@ -907,6 +1041,50 @@ function Research() {
   );
 }
 
+function ArticleAnalysis() {
+  const article = analysisArticles[0];
+
+  return (
+    <section id="articles" className="section article-analysis-section">
+      <div className="section-head">
+        <p className="eyebrow">article analysis</p>
+        <h2>文章专题</h2>
+        <p>记录 AI 产品与独立开发案例，关注需求、体验、分发和商业化路径。</p>
+      </div>
+      <article className="analysis-feature-card" onClick={() => navigate(`/article/${article.id}`)}>
+        <div className="analysis-feature-image">
+          <img src={article.cover} alt={`${article.title} 配图`} />
+        </div>
+        <div className="analysis-feature-copy">
+          <div className="card-meta">
+            <span>COLLECTION {article.number}</span>
+            <span>{article.category}</span>
+          </div>
+          <h3>{article.collectionTitle}</h3>
+          <p className="muted">当前文章：{article.title}</p>
+          <p>{article.summary}</p>
+          <div className="collection-count">
+            <span>1 篇文章</span>
+            <span>持续更新</span>
+          </div>
+          <div className="analysis-chip-row">
+            {article.flow.map(([label]) => (
+              <span key={label}>{label}</span>
+            ))}
+          </div>
+          <button className="text-link thought-link" onClick={(event) => {
+            event.stopPropagation();
+            navigate(`/article/${article.id}`);
+          }}>
+            阅读分析
+            <ArrowRight size={16} />
+          </button>
+        </div>
+      </article>
+    </section>
+  );
+}
+
 function VibePrinciples() {
   const contextLayers = [
     ["静态信息", "身份、权限、偏好、设备、账号体系，决定用户能做什么、默认看到什么。"],
@@ -926,6 +1104,17 @@ function VibePrinciples() {
     ["边做边溯源", "开发中追问三层：代码做了什么、为什么这么做、底层机制是什么。"],
     ["复盘成文章", "开发后沉淀方案亮点、不足、踩坑、替代方案和验证结果。"],
     ["知识库反哺", "把项目过程变成长期素材库，再反过来提升下一轮产品设计和工程判断。"]
+  ];
+
+  const threeEPrinciples = [
+    ["Easy to See", "第一眼就能看懂。信息层级清晰，价值表达直接，用户不用猜这个产品解决什么问题。"],
+    ["Easy to Use", "上手路径足够短。核心动作清楚，交互反馈及时，用户能顺利完成第一次使用。"],
+    ["Easy to Grace", "用起来顺滑、稳定、有余地。状态切换自然，异常处理不打断，体验让用户愿意继续使用。"]
+  ];
+
+  const valueEnds = [
+    ["前端：发现力", "场景洞察、市场调研、痛点挖掘和赛道选择。选对问题，比单纯更快地写代码更重要。"],
+    ["后端：放大器", "产品包装、价值传递、宣发引流和商业化落地。让产品被看见、被使用、被传播，决定产品能走多远。"]
   ];
 
   return (
@@ -969,7 +1158,7 @@ function VibePrinciples() {
       <div className="context-essay">
         <div>
           <p className="eyebrow">core thesis</p>
-          <h3>APP 即上下文工程</h3>
+          <h3>APP 即上下文工程（结构化更强的上下文）</h3>
           <p>
             我把 APP 理解成上下文工程，是因为产品需要同时提供功能、保存状态、传递权限和记录用户任务。用户是谁、有什么权限、刚才做了什么、当前任务到哪一步，都会影响下一次交互。
           </p>
@@ -1001,6 +1190,42 @@ function VibePrinciples() {
             <p>{desc}</p>
           </article>
         ))}
+      </div>
+
+      <div className="three-e-panel">
+        <div>
+          <p className="eyebrow">3E principle</p>
+          <h3>3E：Easy to See / Use / Grace</h3>
+          <p>
+            老版本的三E准则是从“看见、使用、优雅体验”三层看产品。现在依然适用：用户先要看懂，再要能用，最后才会因为顺滑、稳定和细节愿意留下。
+          </p>
+        </div>
+        <div className="three-e-list">
+          {threeEPrinciples.map(([title, desc]) => (
+            <article key={title}>
+              <h4>{title}</h4>
+              <p>{desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="value-ends-panel">
+        <div>
+          <p className="eyebrow">two-sided value</p>
+          <h3>两端价值理论</h3>
+          <p>
+            不是执行力不重要。真正要改的说法是：Codex 技术、标准化编码和功能复刻本身越来越不构成护城河。执行力仍然重要，但执行对象要从“只写代码”扩展到发现问题、设计体验、验证需求和放大分发。
+          </p>
+        </div>
+        <div className="value-ends-grid">
+          {valueEnds.map(([title, desc]) => (
+            <article key={title}>
+              <h4>{title}</h4>
+              <p>{desc}</p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className="learning-loop">
@@ -1111,6 +1336,88 @@ function ThoughtDetail({ article }) {
         <h2>提炼成方法</h2>
         <div className="thought-takeaways">
           {article.takeaways.map((item, index) => (
+            <article key={item}>
+              <span>{index + 1}</span>
+              <p>{item}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function ArticleAnalysisDetail({ article }) {
+  return (
+    <main className="thought-detail article-detail">
+      <button className="back-button" onClick={() => navigate("/")}>
+        <ArrowLeft size={18} />
+        返回作品集
+      </button>
+      <section className="thought-hero article-hero">
+        <p className="eyebrow">{article.category} / case study {article.number}</p>
+        <h1>{article.title}</h1>
+        <p className="thought-subtitle">{article.subtitle}</p>
+        <p>{article.thesis}</p>
+        <figure className="thought-cover article-cover">
+          <img src={article.cover} alt={`${article.title} 配图`} />
+        </figure>
+      </section>
+
+      <section className="article-flow">
+        {article.flow.map(([label, desc], index) => (
+          <article key={label}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h2>{label}</h2>
+            <p>{desc}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="article-case-grid">
+        {article.cases.map((item) => (
+          <article key={item.name}>
+            <p className="eyebrow">case</p>
+            <h2>{item.name}</h2>
+            <p className="case-point">{item.point}</p>
+            <p>{item.insight}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="detail-section mobile-figure-section">
+        <h2>案例图解</h2>
+        <div className="mobile-figure-row">
+          {article.mobileFigures.map((figure) => (
+            <figure key={figure.src}>
+              <img src={figure.src} alt={figure.title} />
+              <figcaption>
+                <span>{figure.title}</span>
+                <span>{figure.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="thought-body article-body">
+        {article.sections.map((section, index) => (
+          <article className="thought-section" key={section.title}>
+            <div className="thought-section-index">{String(index + 1).padStart(2, "0")}</div>
+            <div>
+              <h2>{section.title}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="detail-section">
+        <h2>未来行动指南</h2>
+        <div className="thought-takeaways">
+          {article.actions.map((item, index) => (
             <article key={item}>
               <span>{index + 1}</span>
               <p>{item}</p>

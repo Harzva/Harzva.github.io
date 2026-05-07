@@ -4,6 +4,7 @@ import { join } from "node:path";
 const staticEntries = [
   ".nojekyll",
   "acl_figures",
+  "article_covers",
   "caption_crops",
   "figures_clean",
   "hero-illustration.png",
