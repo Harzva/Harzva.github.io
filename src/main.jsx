@@ -841,7 +841,7 @@ function Hero() {
       <div className="hero-copy">
         <p className="eyebrow">AI Agent Infrastructure / Vision-Language Research</p>
         <h1>郝泽华 Harzva</h1>
-        <p>
+        <p className="hero-lead">
           计算机科学博士生，研究小样本学习、组合零样本学习与视觉语言模型；同时构建面向 Claude Code 生态的 Agent 工具链和控制平面。
         </p>
         <div className="hero-actions">
@@ -853,9 +853,35 @@ function Hero() {
             <BookOpen size={18} />
             论文成果
           </a>
+          <a className="secondary-button" href="https://harzva.github.io/" target="_blank" rel="noreferrer">
+            <ExternalLink size={18} />
+            GitHub Pages 预览
+          </a>
+          <a className="secondary-button" href="https://github.com/Harzva/Harzva.github.io" target="_blank" rel="noreferrer">
+            <Github size={18} />
+            网站仓库
+          </a>
+        </div>
+        <div className="hero-metrics" aria-label="homepage overview">
+          <div>
+            <span>06</span>
+            <strong>Agent 项目</strong>
+            <small>工具链 / 协议 / 技能</small>
+          </div>
+          <div>
+            <span>11</span>
+            <strong>论文研究</strong>
+            <small>FSL / CZSL / VLM</small>
+          </div>
+          <div>
+            <span>04</span>
+            <strong>AE 思考</strong>
+            <small>产品 / 过程 / 认知</small>
+          </div>
         </div>
       </div>
       <div className="hero-panel">
+        <div className="hero-url-pill">harzva.github.io</div>
         <img src="/hero-illustration.png" alt="Harzva portfolio illustration" />
         <div className="hero-portrait-caption">
           <span>Harzva</span>
