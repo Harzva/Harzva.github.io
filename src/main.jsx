@@ -46,7 +46,7 @@ const projects = [
     name: "RepoAtlas",
     tagline: "多账号仓库地图与同步漂移检查",
     description:
-      "把 GitHub 账号、远端仓库、本地 checkout、同步状态和桌面入口放到一张可操作的地图里。",
+      "把 GitHub 账号、远端仓库、本地 checkout、同步状态和桌面入口放到一张可操作的仓库地图里。",
     image: "/project-codex-agent.svg",
     url: "https://github.com/Harzva/RepoAtlas",
     topics: ["repo-map", "sync-drift", "desktop-tool"],
@@ -130,7 +130,7 @@ const focusCards = [
   {
     id: "03",
     title: "Repo Operating Layer",
-    text: "用 RepoAtlas、release hub、pages hub 和 skills hub，把一堆仓库变成可以扫描、同步、发布和展示的系统。",
+    text: "RepoAtlas、release hub、pages hub 和 skills hub 正在承担仓库扫描、同步检查、发布入口和技能索引。",
     proof: "RepoAtlas / Meta Hubs"
   },
   {
@@ -982,9 +982,9 @@ function OpenSourceFocus() {
     <section id="token-saver" className="section focus-section">
       <div className="section-head">
         <p className="eyebrow">latest focus</p>
-        <h2>从 token 成本，到开源 Agent 工作台</h2>
+        <h2>降低 Agent 成本，交付开源工具链</h2>
         <p>
-          这不是传统简历的项目堆叠，而是一条正在成形的产品线：先降低 agent 使用成本，再把项目经验整理成可复用的工作流和公开入口。
+          当前主线：prompt-cache 复用、trace eval、RepoAtlas 仓库地图、AgentWorkOS 工作流、Codex hooks / skills 和移动端 coding workspace。
         </p>
       </div>
       <div className="focus-grid">
@@ -1103,7 +1103,7 @@ function AgentProjects() {
       <div className="section-head">
         <p className="eyebrow">Agent Toolchain Matrix</p>
         <h2>从成本优化到项目操作系统</h2>
-        <p>项目不再按“做过什么”平铺，而是按开源访客最容易理解的能力层组织：省 token、管仓库、沉淀工作流、移动端使用和研究背书。</p>
+        <p>代表仓库覆盖 Token Saver、AgentWorkOS、RepoAtlas、MobileCode、learn-likecc、codex-hooks、meta hubs 和论文代码。</p>
       </div>
       <div className="project-list">
         {projects.map((project) => (
