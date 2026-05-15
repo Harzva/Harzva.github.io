@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useLayoutEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowLeft,
@@ -11,7 +11,6 @@ import {
   Search,
   Share2,
   Sparkles,
-  Star,
   Workflow
 } from "lucide-react";
 import "./styles.css";
@@ -19,69 +18,126 @@ import "./styles.css";
 const projects = [
   {
     id: "01",
-    name: "learn-likecc",
-    tagline: "Claude Code 源码逆向恢复",
+    layer: "Token Saver",
+    name: "make-agents-cheaper",
+    tagline: "Prompt cache cost optimizer",
     description:
-      "GitHub 上公开的 Claude Code 逆向工程项目。通过 Source Map 分析恢复 5.1 万+ 行源代码，进行架构拆解与可运行版本重建。",
-    image: "/project-learn-likecc.svg",
-    url: "https://github.com/Harzva/learn-likecc",
-    topics: ["逆向工程", "source-map", "claude-code", "mcp-protocol"],
-    stats: "182 stars / 37 forks"
+      "围绕 coding agent 的 prompt-cache reuse 做成本优化，关注 trace 解析、稳定上下文识别、prompt layout 调整和 A/B 评估。",
+    image: "/project-cli-adapter.svg",
+    url: "https://github.com/Harzva/make-agents-cheaper",
+    topics: ["prompt-cache", "trace-eval", "rust-cli"],
+    badge: "https://img.shields.io/github/stars/Harzva/make-agents-cheaper?style=flat-square&label=stars"
   },
   {
     id: "02",
-    name: "codex-managed-agent",
-    tagline: "多智能体管理框架",
+    layer: "AgentWorkOS",
+    name: "Project2AgentWorkOS",
+    tagline: "把项目过程沉淀成 Agent 操作系统",
     description:
-      "用于协调多个 AI 智能体的编排系统，覆盖生命周期管理、状态同步与控制平面原语。",
-    image: "/project-codex-agent.svg",
-    url: "https://github.com/Harzva/codex-managed-agent",
-    topics: ["多智能体", "control-plane", "cli-tool"],
-    stats: "Agent orchestration"
+      "把 projects、threads、failures 和半成品资产整理成 Agents、Memory、Skills、MCP、Workflow、Rules 与 Hooks。",
+    image: "/project-meta-agent.svg",
+    url: "https://github.com/Harzva/Project2AgentWorkOS",
+    topics: ["agent-workos", "memory", "skills", "hooks"],
+    badge: "https://img.shields.io/github/stars/Harzva/Project2AgentWorkOS?style=flat-square&label=stars"
   },
   {
     id: "03",
-    name: "like-code",
-    tagline: "定制化 Claude Code 分支",
+    layer: "Repo Ops",
+    name: "RepoAtlas",
+    tagline: "多账号仓库地图与同步漂移检查",
     description:
-      "支持路由模型与多智能体的 Claude Code 分支，通过统一 CLI 接口管理多个 LLM 提供商。",
-    image: "/project-like-code.svg",
-    url: "https://github.com/Harzva/like-code",
-    topics: ["claude-code", "routing", "multi-agent"],
-    stats: "TypeScript"
+      "把 GitHub 账号、远端仓库、本地 checkout、同步状态和桌面入口放到一张可操作的地图里。",
+    image: "/project-codex-agent.svg",
+    url: "https://github.com/Harzva/RepoAtlas",
+    topics: ["repo-map", "sync-drift", "desktop-tool"],
+    badge: "https://img.shields.io/github/stars/Harzva/RepoAtlas?style=flat-square&label=stars"
   },
   {
     id: "04",
-    name: "meta-agent",
-    tagline: "智能体编排基础设施",
+    layer: "Mobile Workspace",
+    name: "mobilecode",
+    tagline: "移动端 AI coding workspace",
     description:
-      "元层级智能体设计与控制平面架构，用于分布式智能体系统和智能体间通信协议层。",
-    image: "/project-meta-agent.svg",
-    url: "https://github.com/Harzva/meta-agent",
-    topics: ["meta-agent", "protocol", "a2a"],
-    stats: "Architecture"
+      "面向移动设备的 AI coding 工作区实验，把任务、文件、上下文和执行反馈带到更轻量的使用场景。",
+    image: "/project-like-code.svg",
+    url: "https://github.com/Harzva/mobilecode",
+    topics: ["mobile", "coding-workspace", "dart"],
+    badge: "https://img.shields.io/github/stars/Harzva/mobilecode?style=flat-square&label=stars"
   },
   {
     id: "05",
-    name: "loloop-skill",
-    tagline: "可复用认知技能模块",
+    layer: "Claude Code Study",
+    name: "learn-likecc",
+    tagline: "Claude Code 源码逆向恢复",
     description:
-      "面向 Agent 工作流的技能模块实验，将可复用认知步骤沉淀为可组合的工程资产。",
-    image: "/project-skills.svg",
-    url: "https://github.com/Harzva/loloop-skill",
-    topics: ["skill", "workflow", "agent"],
-    stats: "Reusable skills"
+      "通过 Source Map 分析、源码恢复、架构拆解和课程化输出，理解 Claude Code 这类 agent harness 的工作方式。",
+    image: "/project-learn-likecc.svg",
+    url: "https://github.com/Harzva/learn-likecc",
+    topics: ["source-map", "claude-code", "agent-harness"],
+    badge: "https://img.shields.io/github/stars/Harzva/learn-likecc?style=flat-square&label=stars"
   },
   {
     id: "06",
-    name: "everything-agent-cli-to-claude-code",
-    tagline: "跨平台 CLI 适配器",
+    layer: "Hooks / Skills",
+    name: "codex-hooks",
+    tagline: "Codex 本地 hooks 与执行纪律",
     description:
-      "将多模型 CLI 能力整合到 Claude Code 为中心的工作流，降低工具链切换成本。",
-    image: "/project-cli-adapter.svg",
-    url: "https://github.com/Harzva/everything-agent-cli-to-claude-code",
-    topics: ["adapter", "cli", "toolchain"],
-    stats: "Integration"
+      "把结束前检查、写文件后更新索引、危险操作前提醒等规则做成可复用 hooks，让 agent 工作流更稳定。",
+    image: "/project-skills.svg",
+    url: "https://github.com/Harzva/codex-hooks",
+    topics: ["codex", "hooks", "workflow-rules"],
+    badge: "https://img.shields.io/github/stars/Harzva/codex-hooks?style=flat-square&label=stars"
+  },
+  {
+    id: "07",
+    layer: "Meta Hubs",
+    name: "harzva-project-atlas",
+    tagline: "下载优先的项目与 release 入口",
+    description:
+      "把 APK、EXE、包、归档和 GitHub Release 资产整理成面向访问者的项目地图，并连接 Pages Hub、Release Hub 和 Skills Hub。",
+    image: "/project-meta-agent.svg",
+    url: "https://github.com/Harzva/harzva-project-atlas",
+    topics: ["meta-repo", "release-hub", "github-pages"],
+    badge: "https://img.shields.io/github/stars/Harzva/harzva-project-atlas?style=flat-square&label=stars"
+  },
+  {
+    id: "08",
+    layer: "Research Proof",
+    name: "LDC / VLM Papers",
+    tagline: "论文与视觉语言模型研究",
+    description:
+      "以 CVPR 2025 LDC、Few-Shot、Zero-Shot、CZSL 和 VLM 研究为可信背书，站点中保留论文详情、图表和阅读路径。",
+    image: "/papers/ldc_page1.png",
+    url: "https://harzva.github.io/#publications",
+    topics: ["cvpr", "few-shot", "vlm"],
+    proof: "paper details"
+  }
+];
+
+const focusCards = [
+  {
+    id: "01",
+    title: "Make Agents Cheaper",
+    text: "不是简单压缩上下文，而是识别 agent harness 里稳定、可缓存、可复用的部分，减少 uncached input 成本。",
+    proof: "make-agents-cheaper / keep-claude-cheaper"
+  },
+  {
+    id: "02",
+    title: "AgentWorkOS",
+    text: "把项目、线程、失败复盘和半成品整理成 Agents、Memory、Skills、MCP、Workflow、Rules 与 Hooks。",
+    proof: "Project2AgentWorkOS"
+  },
+  {
+    id: "03",
+    title: "Repo Operating Layer",
+    text: "用 RepoAtlas、release hub、pages hub 和 skills hub，把一堆仓库变成可以扫描、同步、发布和展示的系统。",
+    proof: "RepoAtlas / Meta Hubs"
+  },
+  {
+    id: "04",
+    title: "Research Credibility",
+    text: "保留 Few-Shot、Zero-Shot、VLM 研究主线，用论文详情页和图表说明研究问题、方法和证据链。",
+    proof: "11 papers / CVPR 2025"
   }
 ];
 
@@ -761,9 +817,16 @@ const avatarWallItems = [
 function App() {
   const [route, setRoute] = useState(getRoute());
 
-  useEffect(() => {
-    const onHash = () => setRoute(getRoute());
+  useLayoutEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    const onHash = () => {
+      setRoute(getRoute());
+      scrollToHashSection();
+    };
     window.addEventListener("hashchange", onHash);
+    scrollToHashSection();
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
@@ -799,6 +862,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <OpenSourceFocus />
         <PersonalSnapshot />
         <AgentProjects />
         <Research />
@@ -813,11 +877,28 @@ function App() {
 }
 
 function getRoute() {
-  return window.location.hash.replace(/^#/, "") || "/";
+  const hash = window.location.hash.replace(/^#/, "");
+  return hash.startsWith("/") ? hash : "/";
 }
 
 function navigate(hash) {
   window.location.hash = hash;
+}
+
+function scrollToHashSection() {
+  const hash = window.location.hash.replace(/^#/, "");
+  if (!hash || hash.startsWith("/")) return;
+
+  const scroll = () => {
+    const section = document.getElementById(hash);
+    if (section) {
+      section.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+  };
+
+  window.requestAnimationFrame(scroll);
+  window.setTimeout(scroll, 80);
+  window.setTimeout(scroll, 300);
 }
 
 function Header() {
@@ -825,11 +906,11 @@ function Header() {
     <header className="site-header">
       <a className="brand" href="#top">Harzva</a>
       <nav>
-        <a href="#projects">项目</a>
-        <a href="#publications">论文</a>
+        <a href="#token-saver">主线</a>
+        <a href="#projects">项目矩阵</a>
+        <a href="#publications">研究</a>
         <a href="#articles">文章</a>
-        <a href="#vibe">AE 思考</a>
-        <a href="#contact">联系我</a>
+        <a href="#contact">联系</a>
       </nav>
     </header>
   );
@@ -839,34 +920,38 @@ function Hero() {
   return (
     <section id="top" className="hero">
       <div className="hero-copy">
-        <p className="eyebrow">AI Agent Infrastructure / Vision-Language Research</p>
-        <h1>郝泽华 Harzva</h1>
+        <p className="eyebrow">Make Agents Cheaper / Open Source Stack</p>
+        <h1>
+          <span>Harzva</span>
+          <span>Make Agents</span>
+          <span>Cheaper</span>
+        </h1>
         <p className="hero-lead">
-          计算机科学博士生，研究小样本学习、组合零样本学习与视觉语言模型；同时构建面向 Claude Code 生态的 Agent 工具链和控制平面。
+          我正在做 AI coding agent 的 token 成本优化，并把 prompt cache、trace eval、AgentWorkOS、RepoAtlas、hooks、skills 和移动端 coding workspace 整理成开源入口。
         </p>
         <div className="hero-actions">
-          <a className="primary-button" href="#projects">
+          <a className="primary-button" href="#token-saver">
             <Workflow size={18} />
-            Agent 项目
+            当前主线
+          </a>
+          <a className="secondary-button" href="#projects">
+            <Github size={18} />
+            项目矩阵
           </a>
           <a className="secondary-button" href="#publications">
             <BookOpen size={18} />
-            论文成果
+            研究背书
           </a>
-          <a className="secondary-button" href="https://harzva.github.io/" target="_blank" rel="noreferrer">
+          <a className="secondary-button" href="https://github.com/Harzva" target="_blank" rel="noreferrer">
             <ExternalLink size={18} />
-            GitHub Pages 预览
-          </a>
-          <a className="secondary-button" href="https://github.com/Harzva/Harzva.github.io" target="_blank" rel="noreferrer">
-            <Github size={18} />
-            网站仓库
+            GitHub Profile
           </a>
         </div>
         <div className="hero-metrics" aria-label="homepage overview">
           <div>
-            <span>06</span>
-            <strong>Agent 项目</strong>
-            <small>工具链 / 协议 / 技能</small>
+            <span>08</span>
+            <strong>代表项目</strong>
+            <small>成本 / 工作流 / 发布</small>
           </div>
           <div>
             <span>11</span>
@@ -874,9 +959,9 @@ function Hero() {
             <small>FSL / CZSL / VLM</small>
           </div>
           <div>
-            <span>04</span>
-            <strong>AE 思考</strong>
-            <small>产品 / 过程 / 认知</small>
+            <span>05.15</span>
+            <strong>Latest Focus</strong>
+            <small>RepoAtlas / MobileCode</small>
           </div>
         </div>
       </div>
@@ -885,8 +970,32 @@ function Hero() {
         <img src="/hero-illustration.png" alt="Harzva portfolio illustration" />
         <div className="hero-portrait-caption">
           <span>Harzva</span>
-          <span>Research x Agent Engineering</span>
+          <span>Agent Infra x VLM Research</span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function OpenSourceFocus() {
+  return (
+    <section id="token-saver" className="section focus-section">
+      <div className="section-head">
+        <p className="eyebrow">latest focus</p>
+        <h2>从 token 成本，到开源 Agent 工作台</h2>
+        <p>
+          这不是传统简历的项目堆叠，而是一条正在成形的产品线：先降低 agent 使用成本，再把项目经验整理成可复用的工作流和公开入口。
+        </p>
+      </div>
+      <div className="focus-grid">
+        {focusCards.map((item) => (
+          <article className="focus-card" key={item.id}>
+            <span>{item.id}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <strong>{item.proof}</strong>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -894,10 +1003,10 @@ function Hero() {
 
 function PersonalSnapshot() {
   const traits = [
-    ["喜欢先建框架", "我会尝试把零散经验整理成概念和结构，再用这些结构反过来检查项目。这个过程还在磨合中，需要避免概念先行、落地不足。"],
-    ["重视产品落地", "我不只关心技术能不能跑通，也关心它能不能做成作品、文章、项目入口，最后被别人理解和使用。"],
+    ["喜欢先建框架", "我会把零散经验整理成概念、规则和工具，再用这些结构反过来检查项目。这个过程需要持续落到可运行代码和公开页面。"],
+    ["重视产品落地", "我不只关心技术能不能跑通，也关心它能不能做成作品、文章、项目入口，最后被别人理解、试用和复用。"],
     ["靠输出逼自己学", "我会用复盘、文章和知识库整理过程。这个习惯适合长期积累，也能暴露哪些地方其实还没有想清楚。"],
-    ["研究和工程并行", "我现在同时在做论文、源码分析、Agent 工具链和个人作品集。方向是清楚的，但需要控制每条线的投入比例。"]
+    ["研究和工程并行", "我现在同时在做论文、源码分析、Agent 工具链和个人作品集。下一步是把这些线收束到少数可维护的开源入口。"]
   ];
   const risks = [
     "我的想法增长很快，容易同时开太多主题。",
@@ -911,7 +1020,7 @@ function PersonalSnapshot() {
         <p className="eyebrow">current state</p>
         <h2>个人状态与性格分析</h2>
         <p>
-          我目前正在尝试向“研究型产品工程师”靠近：一边做论文和源码分析，一边把 Agent 项目、作品集和文章整理成可展示的个人系统。
+          我目前正在向“研究型产品工程师 / Agent 工具链维护者”靠近：一边做论文和源码分析，一边把 Agent 项目、作品集和文章整理成可展示、可验证、可继续维护的个人系统。
         </p>
       </div>
       <div className="snapshot-grid">
@@ -926,7 +1035,7 @@ function PersonalSnapshot() {
         <div>
           <h3>当前阶段</h3>
           <p>
-            我正在从“能做一些 Agent 项目”继续往前走，希望逐步把项目讲清楚、做完整，并尽量长期维护。下一步不继续增加观点数量，先把 1-2 个观点绑定到具体产品、文章和长期知识库。
+            我正在从“能做一些 Agent 项目”继续往前走，希望逐步把项目讲清楚、做完整，并尽量长期维护。下一步先围绕 make agents cheaper、AgentWorkOS 和 RepoAtlas，把观点绑定到具体产品、文章和长期知识库。
           </p>
         </div>
         <div>
@@ -990,10 +1099,11 @@ function AvatarWall() {
 function AgentProjects() {
   return (
     <section id="projects" className="section dark-section">
+      <span id="agent-projects" className="anchor-offset" aria-hidden="true" />
       <div className="section-head">
-        <p className="eyebrow">Agent Stack</p>
-        <h2>我的 Agent 项目</h2>
-        <p>{'覆盖「学习层 -> 工具层 -> 协议层 -> 技能层 -> 适配层」的五层架构。'}</p>
+        <p className="eyebrow">Agent Toolchain Matrix</p>
+        <h2>从成本优化到项目操作系统</h2>
+        <p>项目不再按“做过什么”平铺，而是按开源访客最容易理解的能力层组织：省 token、管仓库、沉淀工作流、移动端使用和研究背书。</p>
       </div>
       <div className="project-list">
         {projects.map((project) => (
@@ -1001,12 +1111,16 @@ function AgentProjects() {
             <div className="project-media">
               <img src={project.image} alt={project.name} />
               <div className="project-stat">
-                <Star size={16} />
-                <span>{project.stats}</span>
+                {project.badge ? (
+                  <img src={project.badge} alt={`${project.name} GitHub stars`} />
+                ) : (
+                  <span>{project.proof}</span>
+                )}
               </div>
             </div>
             <div className="project-copy">
               <span className="number">{project.id}</span>
+              <p className="project-layer">{project.layer}</p>
               <h3>{project.name}</h3>
               <p className="muted">{project.tagline}</p>
               <p>{project.description}</p>
@@ -1031,10 +1145,11 @@ function AgentProjects() {
 function Research() {
   return (
     <section id="publications" className="section">
+      <span id="research" className="anchor-offset" aria-hidden="true" />
       <div className="section-head">
         <p className="eyebrow">Publications</p>
         <h2>论文与研究</h2>
-        <p>11 篇学术论文，覆盖 Few-Shot Learning、Zero-Shot Learning、Vision-Language Models 与 AI Agent Infrastructure。</p>
+        <p>11 篇学术论文，覆盖 Few-Shot Learning、Zero-Shot Learning、Vision-Language Models。这里保留方法图、分析页和阅读路径，作为 Agent 工程之外的研究可信度。</p>
       </div>
       <div className="paper-grid">
         {papers.map((paper) => (
@@ -1072,6 +1187,7 @@ function ArticleAnalysis() {
 
   return (
     <section id="articles" className="section article-analysis-section">
+      <span id="writing" className="anchor-offset" aria-hidden="true" />
       <div className="section-head">
         <p className="eyebrow">article analysis</p>
         <h2>文章专题</h2>

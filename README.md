@@ -1,10 +1,12 @@
 # Harzva.github.io
 
-Personal portfolio and article site for Harzva.
+Full portfolio, paper archive, article collection, and Agent tooling entrance for Harzva.
 
 Live preview: [https://harzva.github.io/](https://harzva.github.io/)
 
-This repository contains the complete GitHub Pages site: portfolio, papers, Agent projects, article collections, personal notes, and visual assets.
+The site now leads with `Make Coding Agents Cheaper`: prompt-cache reuse, trace evaluation, AgentWorkOS, RepoAtlas, Codex hooks, skills, mobile coding workspace, and research proof from VLM / Few-Shot papers.
+
+`DESIGN.md` is the visual and content contract for future agents. Keep this repository as the full archive; the `Harzva` repository remains the lightweight GitHub profile entry card.
 
 ## Local Development
 
