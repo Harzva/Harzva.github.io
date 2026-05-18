@@ -926,6 +926,11 @@ nav a:hover {
   margin: -24px auto 58px;
 }
 
+.matrix-stats.two-up {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 640px;
+}
+
 .matrix-stats div {
   padding: 18px;
   border: 1px solid var(--border);
@@ -1109,6 +1114,84 @@ nav a:hover {
 .matrix-links a:hover,
 .matrix-links button:hover {
   border-color: var(--ink);
+}
+
+.research-section {
+  background:
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(97% 0.006 245), #ffffff);
+  background-size: 42px 42px, 42px 42px, auto;
+}
+
+.research-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 1180px;
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.research-head h2 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 74px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.research-head p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.research-count {
+  text-align: right;
+}
+
+.research-count strong {
+  display: block;
+  color: var(--accent-2);
+  font-family: var(--font-mono);
+  font-size: 54px;
+  line-height: 1;
+}
+
+.research-count span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1180px;
+  margin: 0 auto 28px;
+}
+
+.research-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 @keyframes keywordScroll {
@@ -2116,6 +2199,15 @@ nav a:hover {
   .matrix-stats {
     grid-template-columns: 1fr;
     max-width: 520px;
+  }
+
+  .research-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .research-count {
+    text-align: left;
   }
 }
 

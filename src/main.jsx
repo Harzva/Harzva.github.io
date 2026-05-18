@@ -876,22 +876,6 @@ const portfolioGroups = [
     label: "工具",
     eyebrow: "Tools",
     items: matrixItems.filter((item) => item.kind === "tool")
-  },
-  {
-    key: "paper",
-    label: "论文",
-    eyebrow: "Papers",
-    items: papers.map((paper) => ({
-      kind: "paper",
-      name: paper.titleCn,
-      fullName: `${paper.venue} ${paper.year}`,
-      description: paper.summary,
-      language: paper.tier,
-      topics: paper.tags,
-      thumbnail: paper.cover,
-      detailHash: `/paper/${paper.id}`,
-      releaseTag: paper.role
-    }))
   }
 ];
 
@@ -1305,10 +1289,10 @@ function PortfolioMatrix() {
     <section id="portfolio-matrix" className="section matrix-section">
       <div className="section-head">
         <p className="eyebrow">Portfolio Matrix</p>
-        <h2>项目 / 工具 / 论文</h2>
-        <p>GitHub、Pages、Release、论文详情。</p>
+        <h2>项目 / 工具</h2>
+        <p>GitHub、Pages、Release。</p>
       </div>
-      <div className="matrix-stats" aria-label="portfolio matrix stats">
+      <div className="matrix-stats two-up" aria-label="portfolio matrix stats">
         <div>
           <strong>{portfolioSummary.pagesCount ?? 0}</strong>
           <span>Pages</span>
@@ -1316,10 +1300,6 @@ function PortfolioMatrix() {
         <div>
           <strong>{portfolioSummary.releaseCount ?? 0}</strong>
           <span>Releases</span>
-        </div>
-        <div>
-          <strong>{papers.length}</strong>
-          <span>Papers</span>
         </div>
       </div>
       {portfolioGroups.map((group) => (
@@ -1400,12 +1380,26 @@ function PortfolioMatrixCard({ item }) {
 
 function Research() {
   return (
-    <section id="publications" className="section">
+    <section id="publications" className="section research-section">
       <span id="research" className="anchor-offset" aria-hidden="true" />
-      <div className="section-head">
-        <p className="eyebrow">Publications</p>
-        <h2>论文与研究</h2>
-        <p>11 篇学术论文，覆盖 Few-Shot Learning、Zero-Shot Learning、Vision-Language Models。这里保留方法图、分析页和阅读路径，作为 Agent 工程之外的研究可信度。</p>
+      <div className="research-head">
+        <div>
+          <p className="eyebrow">Papers</p>
+          <h2>论文与研究</h2>
+          <p>Few-Shot Learning、Zero-Shot Learning、Vision-Language Models。</p>
+        </div>
+        <div className="research-count">
+          <strong>{papers.length}</strong>
+          <span>Papers</span>
+        </div>
+      </div>
+      <div className="research-tags" aria-label="research topics">
+        <span>First Author</span>
+        <span>CVPR 2025</span>
+        <span>Q1 Journals</span>
+        <span>Few-Shot</span>
+        <span>Zero-Shot</span>
+        <span>VLM</span>
       </div>
       <div className="paper-grid">
         {papers.map((paper) => (
