@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowLeft,
@@ -13,6 +13,7 @@ import {
   Sparkles,
   Workflow
 } from "lucide-react";
+import portfolioInventory from "./data/portfolioInventory.json";
 import "./styles.css";
 
 const projects = [
@@ -814,6 +815,105 @@ const avatarWallItems = [
   ["App Icon", "avatar-app-icon.svg"]
 ];
 
+const inventoryItems = Array.isArray(portfolioInventory.items) ? portfolioInventory.items : [];
+const portfolioSummary = portfolioInventory.summary ?? {};
+const showcaseSpecs = [
+  {
+    fullName: "Harzva/mobilecode",
+    headline: "MobileCode",
+    subline: "移动端 AI coding workspace",
+    keywords: ["Dart", "mobile", "AI coding", "Release"]
+  },
+  {
+    fullName: "Harzva/RepoAtlas",
+    headline: "RepoAtlas",
+    subline: "多账号仓库地图、Pages 与 Release 状态",
+    keywords: ["Rust", "repo map", "sync drift", "desktop"]
+  },
+  {
+    fullName: "Harzva/learn-likecc",
+    headline: "learn-likecc",
+    subline: "Claude Code 源码逆向与课程化复现",
+    keywords: ["TypeScript", "source map", "agent loop", "Claude Code"]
+  },
+  {
+    fullName: "Harzva/GitReleaseMarket",
+    headline: "GitReleaseMarket",
+    subline: "GitHub Release 桌面入口",
+    keywords: ["Rust", "release hub", "desktop", "download"]
+  },
+  {
+    fullName: "Just-Agent/Just-Thumbnail",
+    headline: "Just-Thumbnail",
+    subline: "Pages / README 缩略图生成",
+    keywords: ["screenshot", "Open Graph", "Playwright", "README"]
+  },
+  {
+    fullName: "Harzva/harzva-project-atlas",
+    headline: "Project Atlas",
+    subline: "项目、Pages、Release 公开入口",
+    keywords: ["Pages Hub", "Release Hub", "meta repo", "matrix"]
+  }
+];
+
+const showcaseItems = showcaseSpecs
+  .map((spec) => {
+    const item = inventoryItems.find((entry) => entry.fullName === spec.fullName);
+    return item ? { ...item, ...spec } : null;
+  })
+  .filter(Boolean);
+
+const matrixItems = inventoryItems.filter((item) => item.pagesUrl || item.releaseUrl);
+const portfolioGroups = [
+  {
+    key: "project",
+    label: "项目",
+    eyebrow: "Projects",
+    items: matrixItems.filter((item) => item.kind === "project")
+  },
+  {
+    key: "tool",
+    label: "工具",
+    eyebrow: "Tools",
+    items: matrixItems.filter((item) => item.kind === "tool")
+  },
+  {
+    key: "paper",
+    label: "论文",
+    eyebrow: "Papers",
+    items: papers.map((paper) => ({
+      kind: "paper",
+      name: paper.titleCn,
+      fullName: `${paper.venue} ${paper.year}`,
+      description: paper.summary,
+      language: paper.tier,
+      topics: paper.tags,
+      thumbnail: paper.cover,
+      detailHash: `/paper/${paper.id}`,
+      releaseTag: paper.role
+    }))
+  }
+];
+
+const showcaseKeywords = [
+  "MobileCode",
+  "RepoAtlas",
+  "learn-likecc",
+  "GitReleaseMarket",
+  "Just-Thumbnail",
+  "Pages Hub",
+  "Release Hub",
+  "AgentWorkOS",
+  "prompt cache",
+  "trace eval",
+  "VLM papers",
+  "Codex hooks"
+];
+
+function formatDate(value) {
+  return value ? value.slice(0, 10) : "";
+}
+
 function App() {
   const [route, setRoute] = useState(getRoute());
 
@@ -862,9 +962,10 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <ProjectShowcase />
         <OpenSourceFocus />
         <PersonalSnapshot />
-        <AgentProjects />
+        <PortfolioMatrix />
         <Research />
         <ArticleAnalysis />
         <VibePrinciples />
@@ -917,6 +1018,9 @@ function Header() {
 }
 
 function Hero() {
+  const pagesCount = portfolioSummary.pagesCount ?? 0;
+  const releaseCount = portfolioSummary.releaseCount ?? 0;
+
   return (
     <section id="top" className="hero">
       <div className="hero-copy">
@@ -949,19 +1053,19 @@ function Hero() {
         </div>
         <div className="hero-metrics" aria-label="homepage overview">
           <div>
-            <span>08</span>
-            <strong>代表项目</strong>
-            <small>成本 / 工作流 / 发布</small>
+            <span>{pagesCount}</span>
+            <strong>Pages</strong>
+            <small>公开 Demo</small>
           </div>
           <div>
-            <span>11</span>
+            <span>{releaseCount}</span>
+            <strong>Releases</strong>
+            <small>发布资产</small>
+          </div>
+          <div>
+            <span>{papers.length}</span>
             <strong>论文研究</strong>
             <small>FSL / CZSL / VLM</small>
-          </div>
-          <div>
-            <span>05.15</span>
-            <strong>Latest Focus</strong>
-            <small>RepoAtlas / MobileCode</small>
           </div>
         </div>
       </div>
@@ -1096,49 +1200,201 @@ function AvatarWall() {
   );
 }
 
-function AgentProjects() {
+function ProjectShowcase() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (showcaseItems.length < 2) return undefined;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % showcaseItems.length);
+    }, 5600);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  if (!showcaseItems.length) return null;
+
+  const active = showcaseItems[activeIndex % showcaseItems.length];
+  const activeKeywords = active.keywords ?? [];
+  const goPrev = () => setActiveIndex((index) => (index - 1 + showcaseItems.length) % showcaseItems.length);
+  const goNext = () => setActiveIndex((index) => (index + 1) % showcaseItems.length);
+
   return (
-    <section id="projects" className="section dark-section">
+    <section id="projects" className="section showcase-section">
       <span id="agent-projects" className="anchor-offset" aria-hidden="true" />
-      <div className="section-head">
-        <p className="eyebrow">Agent Toolchain Matrix</p>
-        <h2>从成本优化到项目操作系统</h2>
-        <p>代表仓库覆盖 Token Saver、AgentWorkOS、RepoAtlas、MobileCode、learn-likecc、codex-hooks、meta hubs 和论文代码。</p>
-      </div>
-      <div className="project-list">
-        {projects.map((project) => (
-          <article className="project-row" key={project.id}>
-            <div className="project-media">
-              <img src={project.image} alt={project.name} />
-              <div className="project-stat">
-                {project.badge ? (
-                  <img src={project.badge} alt={`${project.name} GitHub stars`} />
-                ) : (
-                  <span>{project.proof}</span>
-                )}
-              </div>
+      <div className="showcase-shell">
+        <div className="keyword-stage" aria-hidden="true">
+          <KeywordRail />
+          <KeywordRail reverse />
+          <KeywordRail />
+        </div>
+        <div className="showcase-content">
+          <div className="showcase-copy">
+            <p className="eyebrow">Pages Matrix</p>
+            <h2>{active.headline}</h2>
+            <p>{active.subline}</p>
+            <div className="tags compact">
+              {activeKeywords.map((keyword) => (
+                <span key={keyword}>{keyword}</span>
+              ))}
             </div>
-            <div className="project-copy">
-              <span className="number">{project.id}</span>
-              <p className="project-layer">{project.layer}</p>
-              <h3>{project.name}</h3>
-              <p className="muted">{project.tagline}</p>
-              <p>{project.description}</p>
-              <div className="tags">
-                {project.topics.map((topic) => (
-                  <span key={topic}>{topic}</span>
-                ))}
-              </div>
-              <a className="text-link light" href={project.url} target="_blank" rel="noreferrer">
-                <ExternalLink size={16} />
-                访问项目
-                <ArrowRight size={16} />
+            <div className="showcase-links">
+              <a href={active.url} target="_blank" rel="noreferrer">
+                <Github size={17} />
+                GitHub
               </a>
+              {active.pagesUrl ? (
+                <a href={active.pagesUrl} target="_blank" rel="noreferrer">
+                  <ExternalLink size={17} />
+                  Pages
+                </a>
+              ) : null}
+              {active.releaseUrl ? (
+                <a href={active.releaseUrl} target="_blank" rel="noreferrer">
+                  <ExternalLink size={17} />
+                  Release
+                </a>
+              ) : null}
             </div>
-          </article>
-        ))}
+          </div>
+          <figure className="showcase-media">
+            <img src={active.thumbnail || active.screenshot} alt={`${active.fullName} preview`} />
+            <figcaption>
+              <span>{active.fullName}</span>
+              <span>{formatDate(active.pushedAt)}</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div className="showcase-controls">
+          <button type="button" onClick={goPrev} aria-label="Previous project">
+            <ArrowLeft size={18} />
+          </button>
+          <div className="showcase-progress" aria-label="Carousel slides">
+            {showcaseItems.map((item, index) => (
+              <button
+                key={item.fullName}
+                type="button"
+                className={index === activeIndex ? "active" : ""}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Show ${item.headline}`}
+              >
+                {index === activeIndex ? <span key={activeIndex} /> : null}
+              </button>
+            ))}
+          </div>
+          <button type="button" onClick={goNext} aria-label="Next project">
+            <ArrowRight size={18} />
+          </button>
+        </div>
       </div>
     </section>
+  );
+}
+
+function KeywordRail({ reverse = false }) {
+  return (
+    <div className={`keyword-track ${reverse ? "reverse" : ""}`}>
+      {[...showcaseKeywords, ...showcaseKeywords].map((keyword, index) => (
+        <span key={`${keyword}-${index}`}>{keyword}</span>
+      ))}
+    </div>
+  );
+}
+
+function PortfolioMatrix() {
+  return (
+    <section id="portfolio-matrix" className="section matrix-section">
+      <div className="section-head">
+        <p className="eyebrow">Portfolio Matrix</p>
+        <h2>项目 / 工具 / 论文</h2>
+        <p>GitHub、Pages、Release、论文详情。</p>
+      </div>
+      <div className="matrix-stats" aria-label="portfolio matrix stats">
+        <div>
+          <strong>{portfolioSummary.pagesCount ?? 0}</strong>
+          <span>Pages</span>
+        </div>
+        <div>
+          <strong>{portfolioSummary.releaseCount ?? 0}</strong>
+          <span>Releases</span>
+        </div>
+        <div>
+          <strong>{papers.length}</strong>
+          <span>Papers</span>
+        </div>
+      </div>
+      {portfolioGroups.map((group) => (
+        <div className="matrix-group" key={group.key}>
+          <div className="matrix-group-head">
+            <div>
+              <p className="eyebrow">{group.eyebrow}</p>
+              <h3>{group.label}</h3>
+            </div>
+            <span>{group.items.length}</span>
+          </div>
+          <div className="matrix-grid">
+            {group.items.map((item) => (
+              <PortfolioMatrixCard item={item} key={`${group.key}-${item.fullName || item.name}`} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function PortfolioMatrixCard({ item }) {
+  const topics = Array.isArray(item.topics) ? item.topics.slice(0, 4) : [];
+  const isPaper = item.kind === "paper";
+
+  return (
+    <article className={`matrix-card ${isPaper ? "paper-matrix-card" : ""}`}>
+      <div className="matrix-thumb">
+        {item.thumbnail || item.screenshot ? (
+          <img src={item.thumbnail || item.screenshot} alt={`${item.name} preview`} loading="lazy" />
+        ) : (
+          <Code2 size={34} />
+        )}
+      </div>
+      <div className="matrix-card-body">
+        <div className="matrix-badges">
+          <span>{item.language || item.owner || "Open Source"}</span>
+          {item.pagesUrl ? <span>Pages</span> : null}
+          {item.releaseUrl ? <span>Release</span> : null}
+          {item.releaseTag && !item.releaseUrl ? <span>{item.releaseTag}</span> : null}
+        </div>
+        <h4>{item.name}</h4>
+        <p>{item.description || item.fullName}</p>
+        {topics.length ? (
+          <div className="tags compact matrix-tags">
+            {topics.map((topic) => (
+              <span key={`${item.name}-${topic}`}>{topic}</span>
+            ))}
+          </div>
+        ) : null}
+        <div className="matrix-links">
+          {!isPaper && item.url ? (
+            <a href={item.url} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          ) : null}
+          {item.pagesUrl ? (
+            <a href={item.pagesUrl} target="_blank" rel="noreferrer">
+              Pages
+            </a>
+          ) : null}
+          {item.releaseUrl ? (
+            <a href={item.releaseUrl} target="_blank" rel="noreferrer">
+              Release
+            </a>
+          ) : null}
+          {isPaper ? (
+            <button type="button" onClick={() => navigate(item.detailHash)}>
+              论文详情
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </article>
   );
 }
 

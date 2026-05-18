@@ -54,7 +54,10 @@ Do not introduce new dominant colors. Add one local signal color only when a com
 ## Component Rules
 
 - First viewport must show the core identity, current focus, and actions to project matrix / research / GitHub profile.
-- Project cards should show capability layer, repository link, tags, and proof. Do not hard-code star or fork counts; use dynamic shields badges or omit counts.
+- The first viewport should leave a visible hint of the project carousel below the fold on desktop.
+- The project carousel should feel like a product homepage feature strip: auto-advance, manual previous/next buttons, bottom progress bars, and scrolling keyword rails. Keep the copy direct: project name, status, links, and capability tags.
+- The portfolio matrix must stay split into `项目 / 工具 / 论文`. Repositories with GitHub Pages must show a `Pages` tag and link. Repositories with releases must show a `Release` tag and link.
+- Project cards should show repository link, Pages/Release state, tags, and preview media. Do not hard-code star or fork counts; use dynamic shields badges or omit counts.
 - Use mono for numeric proof (`08`, `11`, dates, repository stats labels), hashes, IDs, and metadata.
 - Profile / current-state content should stay first-person and grounded.
 - Preserve the protected thought system: Agentic Engineering, Token to Product, APP 即上下文工程（结构化更强的上下文）, Build to Understand, Process is Content, 3E, and 两端价值理论.
