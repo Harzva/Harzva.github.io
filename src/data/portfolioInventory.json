@@ -23,7 +23,12 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Harzva/mobilecode/releases/tag/v0.1.0",
       "releaseTag": "v0.1.0",
-      "thumbnail": "/page_thumbnails/harzva-mobilecode/og.png"
+      "thumbnail": "/page_thumbnails/harzva-mobilecode/matrix.png",
+      "releaseAssets": [
+        "mobilecode-ios-simulator-v0.1.0.zip",
+        "mobilecode-site-v0.1.0.zip",
+        "mobilecode-v0.1.0.apk"
+      ]
     },
     {
       "owner": "Harzva",
@@ -41,7 +46,11 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Harzva/RepoAtlas/releases/tag/v0.6.5",
       "releaseTag": "v0.6.5",
-      "thumbnail": "/page_thumbnails/harzva-repoatlas/og.png"
+      "thumbnail": "/page_thumbnails/harzva-repoatlas/matrix.png",
+      "releaseAssets": [
+        "RepoAtlas-v0.6.5-macos-ARM64.tar.gz",
+        "RepoAtlas-v0.6.5-windows-x64.exe"
+      ]
     },
     {
       "owner": "Harzva",
@@ -70,7 +79,8 @@
       "pagesStatus": "built",
       "releaseUrl": "https://github.com/Harzva/learn-likecc/releases/tag/v1.0.2-likecode",
       "releaseTag": "v1.0.2-likecode",
-      "thumbnail": "/page_thumbnails/harzva-learn-likecc/og.png"
+      "thumbnail": "/page_thumbnails/harzva-learn-likecc/matrix.png",
+      "releaseAssets": []
     },
     {
       "owner": "Harzva",
@@ -88,7 +98,15 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Harzva/GitReleaseMarket/releases/tag/v0.3.3",
       "releaseTag": "v0.3.3",
-      "thumbnail": "/page_thumbnails/harzva-gitreleasemarket/og.png"
+      "thumbnail": "/page_thumbnails/harzva-gitreleasemarket/matrix.png",
+      "releaseAssets": [
+        "gitmarket-android-experimental.apk",
+        "gitmarket-ios-simulator.zip",
+        "gitmarket-linux-x86_64.tar.gz",
+        "gitmarket-macos-aarch64.tar.gz",
+        "gitmarket-macos-x86_64.tar.gz",
+        "gitmarket-windows-x86_64.zip"
+      ]
     },
     {
       "owner": "Harzva",
@@ -106,7 +124,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-project-atlas/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-project-atlas/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -124,7 +142,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-pages-hub/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-pages-hub/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -142,7 +160,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-release-hub/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-release-hub/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -165,7 +183,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-just-thumbnail/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-just-thumbnail/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -190,7 +208,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-just-llmprice/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-just-llmprice/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -208,7 +226,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-just-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-just-ddl/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -226,7 +244,7 @@
       "pagesStatus": "built",
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-personal/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-personal/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -244,7 +262,15 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Just-Agent/cc-route/releases/tag/v1.2.0",
       "releaseTag": "v1.2.0",
-      "thumbnail": null
+      "thumbnail": null,
+      "releaseAssets": [
+        "cc-route-proxy-linux-arm64",
+        "cc-route-proxy-linux-x64",
+        "cc-route-proxy-macos-arm64",
+        "cc-route-proxy-macos-x64",
+        "cc-route-proxy-windows-x64.exe",
+        "sha256sums.txt"
+      ]
     },
     {
       "owner": "Just-Agent",
@@ -270,7 +296,12 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Just-Agent/like-code/releases/tag/v1.0.2-likecode",
       "releaseTag": "v1.0.2-likecode",
-      "thumbnail": null
+      "thumbnail": null,
+      "releaseAssets": [
+        "likecode-linux-x64",
+        "likecode-linux-x64.tar.gz",
+        "sha256sums.txt"
+      ]
     },
     {
       "owner": "Harzva",
@@ -302,7 +333,7 @@
       "pagesStatus": "built",
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-chinaai-roadmaps/og.png"
+      "thumbnail": "/page_thumbnails/harzva-chinaai-roadmaps/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -328,7 +359,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-just-series/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-just-series/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -346,7 +377,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-wellagentpets/og.png"
+      "thumbnail": "/page_thumbnails/harzva-wellagentpets/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -374,7 +405,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-catop-cachehit/og.png"
+      "thumbnail": "/page_thumbnails/harzva-catop-cachehit/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -401,7 +432,8 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Harzva/github-management-suite/releases/tag/v0.2.0",
       "releaseTag": "v0.2.0",
-      "thumbnail": null
+      "thumbnail": null,
+      "releaseAssets": []
     },
     {
       "owner": "Harzva",
@@ -426,7 +458,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-design-md-flow/og.png"
+      "thumbnail": "/page_thumbnails/harzva-design-md-flow/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -444,7 +476,7 @@
       "pagesStatus": "built",
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-github-io/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-github-io/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -468,7 +500,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-campusagent-qa/og.png"
+      "thumbnail": "/page_thumbnails/harzva-campusagent-qa/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -486,7 +518,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-agent-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-agent-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -504,7 +536,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-nlp-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-nlp-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -522,7 +554,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-academic-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-academic-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -540,7 +572,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-journal-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-journal-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -558,7 +590,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-programming-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-programming-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -576,7 +608,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-holiday-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-holiday-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -594,7 +626,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-multimodal-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-multimodal-ddl/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -612,7 +644,7 @@
       "pagesStatus": "built",
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-everything-in-github/og.png"
+      "thumbnail": "/page_thumbnails/harzva-everything-in-github/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -630,7 +662,10 @@
       "pagesStatus": null,
       "releaseUrl": "https://github.com/Harzva/codex-managed-agent/releases/tag/v1.0.3",
       "releaseTag": "v1.0.3",
-      "thumbnail": null
+      "thumbnail": null,
+      "releaseAssets": [
+        "codex-managed-agent-1.0.3.vsix"
+      ]
     },
     {
       "owner": "Just-Agent",
@@ -648,7 +683,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-sports-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-sports-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -666,7 +701,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-game-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-game-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -684,7 +719,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-hackathon-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-hackathon-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -702,7 +737,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-robotics-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-robotics-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -720,7 +755,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-design-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-design-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -738,7 +773,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-cv-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-cv-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -756,7 +791,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-startup-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-startup-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -774,7 +809,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-game-dev-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-game-dev-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -792,7 +827,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-open-source-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-open-source-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -810,7 +845,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-security-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-security-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -828,7 +863,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-data-science-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-data-science-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -846,7 +881,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-biotech-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-biotech-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -864,7 +899,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-scholarship-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-scholarship-ddl/matrix.png"
     },
     {
       "owner": "Just-Agent",
@@ -882,7 +917,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/just-agent-exam-ddl/og.png"
+      "thumbnail": "/page_thumbnails/just-agent-exam-ddl/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -900,7 +935,7 @@
       "pagesStatus": null,
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-harzva-skills-hub/og.png"
+      "thumbnail": "/page_thumbnails/harzva-harzva-skills-hub/matrix.png"
     },
     {
       "owner": "Harzva",
@@ -918,7 +953,7 @@
       "pagesStatus": "built",
       "releaseUrl": null,
       "releaseTag": null,
-      "thumbnail": "/page_thumbnails/harzva-agent-job-interview/og.png"
+      "thumbnail": "/page_thumbnails/harzva-agent-job-interview/matrix.png"
     }
   ]
 }

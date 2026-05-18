@@ -864,6 +864,7 @@ const showcaseItems = showcaseSpecs
   .filter(Boolean);
 
 const matrixItems = inventoryItems.filter((item) => item.pagesUrl || item.releaseUrl);
+const fallbackRepoPreview = "/hero-illustration.png";
 const portfolioGroups = [
   {
     key: "project",
@@ -878,6 +879,28 @@ const portfolioGroups = [
     items: matrixItems.filter((item) => item.kind === "tool")
   }
 ];
+
+const appOutputItems = pickInventoryItems([
+  "Harzva/mobilecode",
+  "Harzva/RepoAtlas",
+  "Harzva/GitReleaseMarket",
+  "Harzva/CampusAgent-QA",
+  "Harzva/github-management-suite",
+  "Harzva/codex-managed-agent"
+]).map((item) => ({
+  ...item,
+  releaseSurface: inferReleaseSurface(item),
+  shelfPreview: resolveShelfPreview(item)
+}));
+
+const metaRepoItems = pickInventoryItems([
+  "Harzva/harzva-project-atlas",
+  "Harzva/harzva-pages-hub",
+  "Harzva/harzva-release-hub",
+  "Harzva/harzva-skills-hub",
+  "Harzva/everything-in-github",
+  "Harzva/RepoAtlas"
+]);
 
 const showcaseKeywords = [
   "MobileCode",
@@ -896,6 +919,55 @@ const showcaseKeywords = [
 
 function formatDate(value) {
   return value ? value.slice(0, 10) : "";
+}
+
+function pickInventoryItems(fullNames) {
+  return fullNames
+    .map((fullName) => inventoryItems.find((item) => item.fullName === fullName))
+    .filter(Boolean);
+}
+
+function inferReleaseSurface(item) {
+  const assets = (item.releaseAssets || []).map((asset) => asset.toLowerCase());
+  const hasMobile = assets.some((asset) => /\.(apk|aab|ipa)$/.test(asset) || asset.includes("android") || asset.includes("ios"));
+  const hasDesktop = assets.some((asset) =>
+    asset.endsWith(".exe") ||
+    asset.endsWith(".msi") ||
+    asset.endsWith(".dmg") ||
+    asset.endsWith(".pkg") ||
+    asset.includes("windows") ||
+    asset.includes("macos") ||
+    asset.includes("linux")
+  );
+  const hasExtension = assets.some((asset) => asset.endsWith(".vsix"));
+
+  if (hasDesktop && hasMobile) return "cross";
+  if (hasDesktop) return "desktop";
+  if (hasMobile) return "mobile";
+  if (hasExtension) return "extension";
+  if (item.pagesUrl && !item.releaseUrl) return "web";
+  if (item.releaseUrl) return "package";
+  return "web";
+}
+
+function releaseSurfaceLabel(surface) {
+  const labels = {
+    mobile: "Mobile",
+    desktop: "PC",
+    cross: "PC + Mobile",
+    extension: "Extension",
+    package: "Package",
+    web: "Web"
+  };
+  return labels[surface] || "Output";
+}
+
+function resolveShelfPreview(item) {
+  const surface = inferReleaseSurface(item);
+  if (surface === "mobile" && item.thumbnail && item.fullName === "Harzva/mobilecode") {
+    return item.thumbnail.replace(/matrix\.png$/, "app.png");
+  }
+  return item.thumbnail || fallbackRepoPreview;
 }
 
 function App() {
@@ -1302,6 +1374,8 @@ function PortfolioMatrix() {
           <span>Releases</span>
         </div>
       </div>
+      <RepoShelf eyebrow="App / Release Outputs" title="App / Release 产出" items={appOutputItems} variant="app" />
+      <RepoShelf eyebrow="Meta Repositories" title="仓库的仓库" items={metaRepoItems} variant="meta" />
       {portfolioGroups.map((group) => (
         <div className="matrix-group" key={group.key}>
           <div className="matrix-group-head">
@@ -1322,18 +1396,62 @@ function PortfolioMatrix() {
   );
 }
 
+function RepoShelf({ eyebrow, title, items, variant }) {
+  if (!items.length) return null;
+
+  return (
+    <section className={`repo-shelf ${variant ? `${variant}-repo-shelf` : ""}`} aria-label={title}>
+      <div className="repo-shelf-head">
+        <div>
+          <p className="eyebrow">{eyebrow}</p>
+          <h3>{title}</h3>
+        </div>
+        <span>{items.length}</span>
+      </div>
+      <div className="repo-shelf-grid">
+        {items.map((item) => (
+          <RepoShelfCard item={item} key={item.fullName} variant={variant} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function RepoShelfCard({ item, variant }) {
+  const preview = item.shelfPreview || item.thumbnail || fallbackRepoPreview;
+  const surface = item.releaseSurface || inferReleaseSurface(item);
+
+  return (
+    <article className={`repo-shelf-card ${variant ? `${variant}-shelf-card` : ""} ${surface}-surface-card`}>
+      <img src={preview} alt={`${item.name} preview`} loading="lazy" />
+      <div>
+        <div className="matrix-badges">
+          {variant === "app" ? <span>{releaseSurfaceLabel(surface)}</span> : null}
+          <span>{item.language || item.owner}</span>
+          {item.pagesUrl ? <span>Pages</span> : null}
+          {item.releaseUrl ? <span>Release</span> : null}
+        </div>
+        <h4>{item.name}</h4>
+        <p>{item.description || item.fullName}</p>
+        <div className="matrix-links">
+          <a href={item.url} target="_blank" rel="noreferrer">GitHub</a>
+          {item.pagesUrl ? <a href={item.pagesUrl} target="_blank" rel="noreferrer">Pages</a> : null}
+          {item.releaseUrl ? <a href={item.releaseUrl} target="_blank" rel="noreferrer">Release</a> : null}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function PortfolioMatrixCard({ item }) {
   const topics = Array.isArray(item.topics) ? item.topics.slice(0, 4) : [];
   const isPaper = item.kind === "paper";
+  const preview = item.thumbnail || item.screenshot || fallbackRepoPreview;
 
   return (
     <article className={`matrix-card ${isPaper ? "paper-matrix-card" : ""}`}>
-      <div className="matrix-thumb">
-        {item.thumbnail || item.screenshot ? (
-          <img src={item.thumbnail || item.screenshot} alt={`${item.name} preview`} loading="lazy" />
-        ) : (
-          <Code2 size={34} />
-        )}
+      <div className={`matrix-thumb ${item.thumbnail || item.screenshot ? "" : "fallback-thumb"}`}>
+        <img src={preview} alt={`${item.name} preview`} loading="lazy" />
       </div>
       <div className="matrix-card-body">
         <div className="matrix-badges">

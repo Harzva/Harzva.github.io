@@ -57,6 +57,10 @@ Do not introduce new dominant colors. Add one local signal color only when a com
 - The first viewport should leave a visible hint of the project carousel below the fold on desktop.
 - The project carousel should feel like a product homepage feature strip: auto-advance, manual previous/next buttons, bottom progress bars, and scrolling keyword rails. Keep the copy direct: project name, status, links, and capability tags.
 - The portfolio matrix stays focused on `项目 / 工具`. Repositories with GitHub Pages must show a `Pages` tag and link. Repositories with releases must show a `Release` tag and link.
+- Add compact shelves for `App 产出` and `仓库的仓库` above the full matrix when inventory data exists.
+- `App / Release 产出` cards must respect release surface: APK/AAB/IPA mobile outputs can use the square mobile `app` preset; Windows/macOS/Linux/web outputs use horizontal PC previews; VSIX/CLI/package outputs use the engineering fallback.
+- Matrix thumbnails should use the `just-thumbnail` `matrix` preset. Do not use right-heavy OG cards inside project grids.
+- Repositories without GitHub Pages should still get a fallback preview image, not an empty code icon block.
 - Papers live in one merged `论文与研究` block. Keep the matrix-style count and direct tags there, but use the richer paper cards with cover images, summaries, and detail entry points.
 - Project cards should show repository link, Pages/Release state, tags, and preview media. Do not hard-code star or fork counts; use dynamic shields badges or omit counts.
 - Use mono for numeric proof (`08`, `11`, dates, repository stats labels), hashes, IDs, and metadata.
