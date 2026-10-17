@@ -1818,11 +1818,27 @@ const socialChannels = [
     accent: false
   },
   {
+    id: "portal",
+    name: "个人门户",
+    handle: "harzva.online",
+    url: "https://harzva.online/",
+    qr: "/social-qr/harzva-online.png",
+    accent: false
+  },
+  {
     id: "wechat",
     name: "微信公众号",
     handle: "JustAgent",
     url: null,
     qr: "/social-qr/wechat-justagent.jpg",
+    accent: false
+  },
+  {
+    id: "wechat-channels",
+    name: "微信视频号",
+    handle: "读书记事",
+    url: "https://channels.weixin.qq.com/mobile/profile.html?finderUsername=sphw1hPqxM6WpCc",
+    qr: "/social-qr/wechat-channels-dushujishi.png",
     accent: false
   },
   {
@@ -1855,6 +1871,14 @@ const socialChannels = [
     handle: "zehua hao",
     url: "https://www.youtube.com/channel/UCrPRmdfqvSh2T8FgqHuzw-g",
     qr: "/social-qr/youtube-zehua-hao.png",
+    accent: false
+  },
+  {
+    id: "dblp",
+    name: "DBLP",
+    handle: "Zehua Hao · pid/331/7255",
+    url: "https://dblp.org/pid/331/7255.html",
+    qr: "/social-qr/dblp-zehua-hao.png",
     accent: false
   },
   {
