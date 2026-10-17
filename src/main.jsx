@@ -1800,23 +1800,119 @@ function Experience() {
   );
 }
 
+const socialChannels = [
+  {
+    id: "github",
+    name: "GitHub",
+    handle: "@Harzva",
+    url: "https://github.com/Harzva",
+    qr: null,
+    accent: true
+  },
+  {
+    id: "email",
+    name: "Email",
+    handle: "626609967@qq.com",
+    url: "mailto:626609967@qq.com",
+    qr: null,
+    accent: false
+  },
+  {
+    id: "wechat",
+    name: "微信公众号",
+    handle: "JustAgent",
+    url: null,
+    qr: "/social-qr/wechat-justagent.jpg",
+    accent: false
+  },
+  {
+    id: "x",
+    name: "X",
+    handle: "@hzh39271 · JustAgent",
+    url: "https://x.com/hzh39271",
+    qr: "/social-qr/x-hzh39271.png",
+    accent: false
+  },
+  {
+    id: "xiaohongshu",
+    name: "小红书",
+    handle: "JustAgent · 2741459282",
+    url: "https://www.xiaohongshu.com/user/profile/6108a48400000000010067d4",
+    qr: "/social-qr/xiaohongshu-justagent.png",
+    accent: false
+  },
+  {
+    id: "zhihu",
+    name: "知乎",
+    handle: "安晓心 · hao-ze-hua-45",
+    url: "https://www.zhihu.com/people/hao-ze-hua-45",
+    qr: "/social-qr/zhihu-follow.png",
+    accent: false
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    handle: "zehua hao",
+    url: "https://www.youtube.com/channel/UCrPRmdfqvSh2T8FgqHuzw-g",
+    qr: "/social-qr/youtube-zehua-hao.png",
+    accent: false
+  },
+  {
+    id: "orcid",
+    name: "ORCID",
+    handle: "0009-0006-8057-2958",
+    url: "https://orcid.org/0009-0006-8057-2958",
+    qr: null,
+    accent: false
+  }
+];
+
+function ContactChannelIcon({ id }) {
+  if (id === "github") return <Github size={18} />;
+  if (id === "email") return <Mail size={18} />;
+  return <ExternalLink size={18} />;
+}
+
 function Contact() {
   return (
     <section id="contact" className="section contact-section">
-      <div>
+      <div className="contact-intro">
         <p className="eyebrow">Contact</p>
         <h2>联系我</h2>
-        <p>欢迎围绕 AI Agent 基础设施、视觉语言模型、学术合作和开源项目交流。</p>
+        <p>欢迎围绕 AI Agent 基础设施、视觉语言模型、学术合作和开源项目交流。也可通过下方社交媒体关注更新。</p>
       </div>
-      <div className="contact-actions">
-        <a className="primary-button" href="https://github.com/Harzva" target="_blank" rel="noreferrer">
-          <Github size={18} />
-          GitHub
-        </a>
-        <a className="secondary-button" href="mailto:626609967@qq.com">
-          <Mail size={18} />
-          Email
-        </a>
+      <div className="contact-social-grid">
+        {socialChannels.map((channel) => {
+          const hasUrl = Boolean(channel.url);
+          const isMailto = hasUrl && channel.url.startsWith("mailto:");
+          return (
+            <article className="contact-social-card" key={channel.id}>
+              <div className="contact-social-meta">
+                <p className="contact-social-name">{channel.name}</p>
+                <p className="contact-social-handle">{channel.handle}</p>
+                {hasUrl ? (
+                  <a
+                    className={channel.accent ? "primary-button" : "secondary-button"}
+                    href={channel.url}
+                    target={isMailto ? undefined : "_blank"}
+                    rel={isMailto ? undefined : "noreferrer"}
+                  >
+                    <ContactChannelIcon id={channel.id} />
+                    {isMailto ? "发邮件" : "打开主页"}
+                  </a>
+                ) : (
+                  <span className="contact-scan-hint">请扫码关注</span>
+                )}
+              </div>
+              {channel.qr ? (
+                <figure className="contact-social-qr">
+                  <img src={channel.qr} alt={`${channel.name} 二维码`} width={132} height={132} />
+                  <figcaption>扫码关注</figcaption>
+                </figure>
+              ) : null}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

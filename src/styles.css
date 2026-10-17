@@ -1747,13 +1747,100 @@ nav a:hover {
 
 .contact-section {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 28px;
 }
 
-.contact-section > div:first-child {
+.contact-intro {
   max-width: 700px;
+}
+
+.contact-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-social-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.contact-social-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.contact-social-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--fg);
+}
+
+.contact-social-handle {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-social-meta .primary-button,
+.contact-social-meta .secondary-button {
+  margin-top: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.contact-scan-hint {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 6px;
+  padding: 0 14px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contact-social-qr {
+  margin: 0;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.contact-social-qr img {
+  display: block;
+  width: 116px;
+  height: 116px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  image-rendering: pixelated;
+}
+
+.contact-social-qr figcaption {
+  margin-top: 6px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .timeline {
@@ -2279,10 +2366,23 @@ nav a:hover {
     word-break: normal;
   }
 
-  .hero-actions,
-  .contact-actions {
+  .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .contact-social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-social-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-social-meta .primary-button,
+  .contact-social-meta .secondary-button {
+    width: 100%;
   }
 
   .primary-button,
