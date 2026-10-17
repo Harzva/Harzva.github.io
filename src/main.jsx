@@ -19,87 +19,87 @@ import "./styles.css";
 const projects = [
   {
     id: "01",
-    layer: "Token Saver",
-    name: "make-agents-cheaper",
-    tagline: "Prompt cache cost optimizer",
-    description:
-      "围绕 coding agent 的 prompt-cache reuse 做成本优化，关注 trace 解析、稳定上下文识别、prompt layout 调整和 A/B 评估。",
-    image: "/project-cli-adapter.svg",
-    url: "https://github.com/Harzva/make-agents-cheaper",
-    topics: ["prompt-cache", "trace-eval", "rust-cli"],
-    badge: "https://img.shields.io/github/stars/Harzva/make-agents-cheaper?style=flat-square&label=stars"
-  },
-  {
-    id: "02",
-    layer: "AgentWorkOS",
-    name: "Project2AgentWorkOS",
-    tagline: "把项目过程沉淀成 Agent 操作系统",
-    description:
-      "把 projects、threads、failures 和半成品资产整理成 Agents、Memory、Skills、MCP、Workflow、Rules 与 Hooks。",
-    image: "/project-meta-agent.svg",
-    url: "https://github.com/Harzva/Project2AgentWorkOS",
-    topics: ["agent-workos", "memory", "skills", "hooks"],
-    badge: "https://img.shields.io/github/stars/Harzva/Project2AgentWorkOS?style=flat-square&label=stars"
-  },
-  {
-    id: "03",
-    layer: "Repo Ops",
-    name: "RepoAtlas",
-    tagline: "多账号仓库地图与同步漂移检查",
-    description:
-      "把 GitHub 账号、远端仓库、本地 checkout、同步状态和桌面入口放到一张可操作的仓库地图里。",
-    image: "/project-codex-agent.svg",
-    url: "https://github.com/Harzva/RepoAtlas",
-    topics: ["repo-map", "sync-drift", "desktop-tool"],
-    badge: "https://img.shields.io/github/stars/Harzva/RepoAtlas?style=flat-square&label=stars"
-  },
-  {
-    id: "04",
-    layer: "Mobile Workspace",
-    name: "mobilecode",
-    tagline: "移动端 AI coding workspace",
-    description:
-      "面向移动设备的 AI coding 工作区实验，把任务、文件、上下文和执行反馈带到更轻量的使用场景。",
-    image: "/project-like-code.svg",
-    url: "https://github.com/Harzva/mobilecode",
-    topics: ["mobile", "coding-workspace", "dart"],
-    badge: "https://img.shields.io/github/stars/Harzva/mobilecode?style=flat-square&label=stars"
-  },
-  {
-    id: "05",
     layer: "Claude Code Study",
     name: "learn-likecc",
-    tagline: "Claude Code 源码逆向恢复",
+    tagline: "Claude Code 源码逆向与课程化复现",
     description:
-      "通过 Source Map 分析、源码恢复、架构拆解和课程化输出，理解 Claude Code 这类 agent harness 的工作方式。",
+      "通过 Source Map 分析、源码恢复、架构拆解和 12 章课程输出，理解 Claude Code 这类 agent harness 的工作方式，并给出可运行复现路径。",
     image: "/project-learn-likecc.svg",
     url: "https://github.com/Harzva/learn-likecc",
-    topics: ["source-map", "claude-code", "agent-harness"],
+    topics: ["source-map", "claude-code", "agent-harness", "course"],
     badge: "https://img.shields.io/github/stars/Harzva/learn-likecc?style=flat-square&label=stars"
   },
   {
-    id: "06",
-    layer: "Hooks / Skills",
-    name: "codex-hooks",
-    tagline: "Codex 本地 hooks 与执行纪律",
+    id: "02",
+    layer: "Interview Suite",
+    name: "Agent-Job-Interview",
+    tagline: "Agent 岗位面试路线与训练套件",
     description:
-      "把结束前检查、写文件后更新索引、危险操作前提醒等规则做成可复用 hooks，让 agent 工作流更稳定。",
+      "面向 Agent / AI 工程岗位的面试路线图与练习套件，把知识点、题型和训练路径整理成可公开访问的 GitHub Pages。",
     image: "/project-skills.svg",
-    url: "https://github.com/Harzva/codex-hooks",
-    topics: ["codex", "hooks", "workflow-rules"],
-    badge: "https://img.shields.io/github/stars/Harzva/codex-hooks?style=flat-square&label=stars"
+    url: "https://github.com/Harzva/Agent-Job-Interview",
+    topics: ["interview", "agent-jobs", "roadmap", "pages"],
+    badge: "https://img.shields.io/github/stars/Harzva/Agent-Job-Interview?style=flat-square&label=stars"
+  },
+  {
+    id: "03",
+    layer: "AgentWorkOS",
+    name: "AgentWorkOS",
+    tagline: "Agent 工作区的包管理操作系统",
+    description:
+      "把 agent 工作区做成可扫描、可锁定、可同步、可 doctor 的操作系统层：Agents、Memory、Skills、MCP、Workflow、Rules 与 Hooks。",
+    image: "/project-meta-agent.svg",
+    url: "https://github.com/Harzva/AgentWorkOS",
+    topics: ["agent-workos", "skills", "package-manager", "codex"],
+    badge: "https://img.shields.io/github/stars/Harzva/AgentWorkOS?style=flat-square&label=stars"
+  },
+  {
+    id: "04",
+    layer: "DeepSeek Harness",
+    name: "deepseek-harness",
+    tagline: "Everything is a Plugin · DSH 生态",
+    description:
+      "DeepSeek Harness 插件主线：dsh-market、dsh-im、dsh-computer-use、dsh-superterminal、dsh-wemedia-workbench，把终端、IM、电脑控制和内容工作流接到同一 harness。",
+    image: "/project-cli-adapter.svg",
+    url: "https://github.com/Harzva/deepseek-harness",
+    topics: ["deepseek-harness", "dsh-plugin", "everything-is-plugin"],
+    badge: "https://img.shields.io/github/stars/Harzva/deepseek-harness?style=flat-square&label=stars"
+  },
+  {
+    id: "05",
+    layer: "On-device LLM",
+    name: "mobilecore",
+    tagline: "端侧本地 LLM runtime",
+    description:
+      "Android 本地 LLM runtime：GGUF / llama.cpp、OpenAI-compatible API、基准与机型建议；配套 mobile-model-playground 做适配、溯源、校验与分发。",
+    image: "/project-like-code.svg",
+    url: "https://github.com/Harzva/mobilecore",
+    topics: ["android", "gguf", "local-llm", "llama-cpp"],
+    badge: "https://img.shields.io/github/stars/Harzva/mobilecore?style=flat-square&label=stars"
+  },
+  {
+    id: "06",
+    layer: "China AI Map",
+    name: "ChinaAI-Roadmaps",
+    tagline: "国产开源 / 开源权重模型技术路线图",
+    description:
+      "整理 GLM、Kimi、DeepSeek、MiniMax 等中国开源与开源权重 LLM 公司的技术路线图，配套 awesome-ai-paper-notes 论文阅读索引。",
+    image: "/project-codex-agent.svg",
+    url: "https://github.com/Harzva/ChinaAI-Roadmaps",
+    topics: ["china-ai", "roadmap", "open-weight", "papers"],
+    badge: "https://img.shields.io/github/stars/Harzva/ChinaAI-Roadmaps?style=flat-square&label=stars"
   },
   {
     id: "07",
-    layer: "Meta Hubs",
-    name: "harzva-project-atlas",
-    tagline: "下载优先的项目与 release 入口",
+    layer: "Research Proof",
+    name: "LDB",
+    tagline: "Logits DeBiasing for Few-Shot Learning",
     description:
-      "把 APK、EXE、包、归档和 GitHub Release 资产整理成面向访问者的项目地图，并连接 Pages Hub、Release Hub 和 Skills Hub。",
-    image: "/project-meta-agent.svg",
-    url: "https://github.com/Harzva/harzva-project-atlas",
-    topics: ["meta-repo", "release-hub", "github-pages"],
-    badge: "https://img.shields.io/github/stars/Harzva/harzva-project-atlas?style=flat-square&label=stars"
+      "Few-Shot 学习中的 logits 去偏研究：协议、审计代码、证据链与项目页，和站点论文详情页一起作为研究可信背书。",
+    image: "/papers/ldc_page1.png",
+    url: "https://github.com/Harzva/LDB",
+    topics: ["few-shot", "calibration", "clip", "vlm"],
+    badge: "https://img.shields.io/github/stars/Harzva/LDB?style=flat-square&label=stars"
   },
   {
     id: "08",
@@ -118,27 +118,27 @@ const projects = [
 const focusCards = [
   {
     id: "01",
-    title: "Make Agents Cheaper",
-    text: "不是简单压缩上下文，而是识别 agent harness 里稳定、可缓存、可复用的部分，减少 uncached input 成本。",
-    proof: "make-agents-cheaper / keep-claude-cheaper"
+    title: "learn-likecc",
+    text: "把 Claude Code 这类 agent harness 拆开看：Source Map 恢复、架构拆解、可运行复现，再整理成可公开学习的课程。",
+    proof: "learn-likecc · Pages + Release"
   },
   {
     id: "02",
-    title: "AgentWorkOS",
-    text: "把项目、线程、失败复盘和半成品整理成 Agents、Memory、Skills、MCP、Workflow、Rules 与 Hooks。",
-    proof: "Project2AgentWorkOS"
+    title: "Agent Interview Suite",
+    text: "把 Agent / AI 工程岗位需要的知识点、题型和训练路径做成公开面试套件，方便自己练，也方便别人复用。",
+    proof: "Agent-Job-Interview"
   },
   {
     id: "03",
-    title: "Repo Operating Layer",
-    text: "RepoAtlas、release hub、pages hub 和 skills hub 正在承担仓库扫描、同步检查、发布入口和技能索引。",
-    proof: "RepoAtlas / Meta Hubs"
+    title: "AgentWorkOS + DeepSeek Harness",
+    text: "一边用 AgentWorkOS 管 workspace 上下文，一边用 DSH 插件生态接终端、IM、电脑控制和内容工作流。",
+    proof: "AgentWorkOS / deepseek-harness / dsh-*"
   },
   {
     id: "04",
-    title: "Research Credibility",
-    text: "保留 Few-Shot、Zero-Shot、VLM 研究主线，用论文详情页和图表说明研究问题、方法和证据链。",
-    proof: "11 papers / CVPR 2025"
+    title: "Research + On-device",
+    text: "保留 Few-Shot / VLM 论文与 LDB；同时推进 mobilecore 端侧 runtime，以及 ChinaAI-Roadmaps 与论文笔记索引。",
+    proof: "mobilecore · LDB · ChinaAI-Roadmaps · paper notes"
   }
 ];
 
@@ -819,34 +819,46 @@ const inventoryItems = Array.isArray(portfolioInventory.items) ? portfolioInvent
 const portfolioSummary = portfolioInventory.summary ?? {};
 const showcaseSpecs = [
   {
-    fullName: "Harzva/mobilecode",
-    headline: "MobileCode",
-    subline: "移动端 AI coding workspace",
-    keywords: ["Dart", "mobile", "AI coding", "Release"]
-  },
-  {
-    fullName: "Harzva/RepoAtlas",
-    headline: "RepoAtlas",
-    subline: "多账号仓库地图、Pages 与 Release 状态",
-    keywords: ["Rust", "repo map", "sync drift", "desktop"]
-  },
-  {
     fullName: "Harzva/learn-likecc",
     headline: "learn-likecc",
     subline: "Claude Code 源码逆向与课程化复现",
     keywords: ["TypeScript", "source map", "agent loop", "Claude Code"]
   },
   {
-    fullName: "Harzva/GitReleaseMarket",
-    headline: "GitReleaseMarket",
-    subline: "GitHub Release 桌面入口",
-    keywords: ["Rust", "release hub", "desktop", "download"]
+    fullName: "Harzva/Agent-Job-Interview",
+    headline: "Agent-Job-Interview",
+    subline: "Agent 岗位面试路线与训练套件",
+    keywords: ["interview", "roadmap", "Pages", "practice"]
   },
   {
-    fullName: "Just-Agent/Just-Thumbnail",
-    headline: "Just-Thumbnail",
-    subline: "Pages / README 缩略图生成",
-    keywords: ["screenshot", "Open Graph", "Playwright", "README"]
+    fullName: "Harzva/AgentWorkOS",
+    headline: "AgentWorkOS",
+    subline: "Agent 工作区包管理与上下文操作系统",
+    keywords: ["skills", "MCP", "doctor", "sync"]
+  },
+  {
+    fullName: "Harzva/dsh-superterminal",
+    headline: "DeepSeek Harness",
+    subline: "DSH 插件生态 · SuperTerminal 入口",
+    keywords: ["dsh-plugin", "terminal", "IM", "computer-use"]
+  },
+  {
+    fullName: "Harzva/mobilecore",
+    headline: "mobilecore",
+    subline: "端侧本地 LLM runtime 与模型分发",
+    keywords: ["Android", "GGUF", "llama.cpp", "local-llm"]
+  },
+  {
+    fullName: "Harzva/ChinaAI-Roadmaps",
+    headline: "ChinaAI-Roadmaps",
+    subline: "国产开源 / 开源权重模型技术路线图",
+    keywords: ["GLM", "Kimi", "DeepSeek", "MiniMax"]
+  },
+  {
+    fullName: "Harzva/LDB",
+    headline: "LDB",
+    subline: "Few-Shot Logits DeBiasing 研究页",
+    keywords: ["few-shot", "calibration", "CLIP", "evidence"]
   },
   {
     fullName: "Harzva/harzva-project-atlas",
@@ -855,6 +867,7 @@ const showcaseSpecs = [
     keywords: ["Pages Hub", "Release Hub", "meta repo", "matrix"]
   }
 ];
+
 
 const showcaseItems = showcaseSpecs
   .map((spec) => {
@@ -881,12 +894,12 @@ const portfolioGroups = [
 ];
 
 const appOutputItems = pickInventoryItems([
+  "Harzva/mobilecore",
   "Harzva/mobilecode",
+  "Harzva/dsh-superterminal",
   "Harzva/RepoAtlas",
   "Harzva/GitReleaseMarket",
-  "Harzva/CampusAgent-QA",
-  "Harzva/github-management-suite",
-  "Harzva/codex-managed-agent"
+  "Harzva/AgentWorkOS"
 ]).map((item) => ({
   ...item,
   releaseSurface: inferReleaseSurface(item),
@@ -903,18 +916,18 @@ const metaRepoItems = pickInventoryItems([
 ]);
 
 const showcaseKeywords = [
-  "MobileCode",
-  "RepoAtlas",
   "learn-likecc",
-  "GitReleaseMarket",
-  "Just-Thumbnail",
-  "Pages Hub",
-  "Release Hub",
+  "Agent-Job-Interview",
   "AgentWorkOS",
-  "prompt cache",
-  "trace eval",
+  "DeepSeek Harness",
+  "dsh-plugin",
+  "mobilecore",
+  "ChinaAI-Roadmaps",
+  "awesome-ai-paper-notes",
+  "LDB",
+  "Pages Hub",
   "VLM papers",
-  "Codex hooks"
+  "Make Agents Cheaper"
 ];
 
 function formatDate(value) {
@@ -1087,7 +1100,7 @@ function Hero() {
           <span>Cheaper</span>
         </h1>
         <p className="hero-lead">
-          我正在做 AI coding agent 的 token 成本优化，并把 prompt cache、trace eval、AgentWorkOS、RepoAtlas、hooks、skills 和移动端 coding workspace 整理成开源入口。
+          我正在做 Agent 基础设施与开源入口：learn-likecc、Agent 面试套件、AgentWorkOS、DeepSeek Harness 插件生态、端侧 mobilecore，以及 ChinaAI-Roadmaps / 论文笔记；同时保留 Make Agents Cheaper 与 VLM 研究背书。
         </p>
         <div className="hero-actions">
           <a className="primary-button" href="#token-saver">
@@ -1144,7 +1157,7 @@ function OpenSourceFocus() {
         <p className="eyebrow">latest focus</p>
         <h2>降低 Agent 成本，交付开源工具链</h2>
         <p>
-          当前主线：prompt-cache 复用、trace eval、RepoAtlas 仓库地图、AgentWorkOS 工作流、Codex hooks / skills 和移动端 coding workspace。
+          当前主线：learn-likecc、Agent-Job-Interview、AgentWorkOS + DeepSeek Harness（dsh-*）、mobilecore 端侧 runtime，以及 ChinaAI-Roadmaps / awesome-ai-paper-notes；研究侧保留 LDB 与 VLM 论文。
         </p>
       </div>
       <div className="focus-grid">
@@ -1166,7 +1179,7 @@ function PersonalSnapshot() {
     ["喜欢先建框架", "我会把零散经验整理成概念、规则和工具，再用这些结构反过来检查项目。这个过程需要持续落到可运行代码和公开页面。"],
     ["重视产品落地", "我不只关心技术能不能跑通，也关心它能不能做成作品、文章、项目入口，最后被别人理解、试用和复用。"],
     ["靠输出逼自己学", "我会用复盘、文章和知识库整理过程。这个习惯适合长期积累，也能暴露哪些地方其实还没有想清楚。"],
-    ["研究和工程并行", "我现在同时在做论文、源码分析、Agent 工具链和个人作品集。下一步是把这些线收束到少数可维护的开源入口。"]
+    ["研究和工程并行", "我现在同时在做论文、Claude Code 源码课、Agent 面试套件、DSH 插件和端侧模型。下一步是把这些线收束到少数可维护的开源入口。"]
   ];
   const risks = [
     "我的想法增长很快，容易同时开太多主题。",
