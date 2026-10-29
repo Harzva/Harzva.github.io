@@ -14,6 +14,8 @@ import {
   Workflow
 } from "lucide-react";
 import portfolioInventory from "./data/portfolioInventory.json";
+import projectUpdates from "./data/projectUpdates.json";
+import "./project-updates.css";
 import "./styles.css";
 
 const projects = [
@@ -1031,6 +1033,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <CurrentProjects />
         <ProjectShowcase />
         <OpenSourceFocus />
         <PersonalSnapshot />
@@ -1076,6 +1079,7 @@ function Header() {
     <header className="site-header">
       <a className="brand" href="#top">Harzva</a>
       <nav>
+        <a href="#current-projects">实战项目</a>
         <a href="#token-saver">主线</a>
         <a href="#projects">项目矩阵</a>
         <a href="#publications">研究</a>
@@ -1262,6 +1266,27 @@ function AvatarWall() {
           <article className="avatar-tile" key={file}>
             <img src={`/portrait_assets/${file}`} alt={`Harzva avatar ${label}`} loading="lazy" />
             <span>{label}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CurrentProjects() {
+  return (
+    <section id="current-projects" className="section current-projects" aria-labelledby="current-projects-title">
+      <div className="current-projects-heading">
+        <div><h2 id="current-projects-title">实战项目</h2><p>从个人工具、团队协作到文旅影像与行业问答，把模型能力接入具体工作。</p></div>
+        <p className="project-updated">更新于 <time dateTime={projectUpdates.updatedAt}>{projectUpdates.updatedAt}</time></p>
+      </div>
+      <div className="current-project-list">
+        {projectUpdates.projects.map((project, index) => (
+          <article className="current-project" id={`project-${project.id}`} key={project.id}>
+            <div className="current-project-identity"><span className="project-number">{String(index + 1).padStart(2, "0")}</span><p>{project.category}</p><h3>{project.name}</h3></div>
+            <div className="current-project-copy"><p>{project.summary}</p><p className="project-practice">{project.practice}</p><p className="project-status">{project.status}</p>{project.details ? <details className="project-details"><summary>技术实践</summary><ul>{project.details.map(detail => <li key={detail}>{detail}</li>)}</ul></details> : null}</div>
+            <div className="current-project-links">{project.links.map((link) => <a key={link.url} href={link.url} target={link.url.startsWith("https:") ? "_blank" : undefined} rel="noopener noreferrer">{link.label}<ExternalLink size={15} aria-hidden="true" /></a>)}</div>
+            {project.videos ? <div className="project-videos" aria-label="Wedding 作品示例">{project.videos.map(video => <figure key={video.url}><video controls playsInline preload="none" poster={video.poster} aria-label={`播放${video.title}`}><source src={video.url} type="video/mp4" />您的浏览器暂不支持内嵌视频。</video><figcaption><span>{video.title}</span><a href={video.url} target="_blank" rel="noopener noreferrer">单独播放 ↗</a></figcaption></figure>)}</div> : null}
           </article>
         ))}
       </div>

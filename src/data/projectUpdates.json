@@ -1,0 +1,95 @@
+{
+  "updatedAt": "2026-10-29",
+  "projects": [
+    {
+      "id": "teambot",
+      "name": "TeamBot",
+      "category": "企业 AI 协作",
+      "summary": "让员工拥有独立的 Bot 与工作区，以企业身份、团队权限和审计连接日常协作、知识与业务流程。",
+      "practice": "企业身份与权限 · 团队知识 · Bot 工作流",
+      "status": "内部试用候选；真实企业环境验收持续推进。",
+      "links": [
+        {
+          "label": "产品介绍",
+          "url": "https://harzva.github.io/team-bot/",
+          "waveUrl": "https://wave.sh.cn/teambot/"
+        }
+      ]
+    },
+    {
+      "id": "openbot",
+      "name": "OpenBot",
+      "category": "个人 AI 工作台",
+      "summary": "常驻本机的 Bot 工作台，将对话交办、授权执行、浏览器查看与接管、结果和记录连接起来。每个 Bot 拥有独立身份与工作空间。",
+      "practice": "多 Bot 协作 · 工具授权 · 桌面与浏览器",
+      "status": "个人 Bot 工作台；版本与支持范围以产品说明为准。",
+      "links": [
+        {
+          "label": "产品与文档",
+          "url": "https://harzva.github.io/openbot/",
+          "waveUrl": "https://wave.sh.cn/openbot/"
+        }
+      ]
+    },
+    {
+      "id": "wedding",
+      "name": "Wedding · 巨浪婚礼影像工坊",
+      "category": "AIGC 影像制作",
+      "summary": "提供 Web、macOS 与 Windows 客户端，将样片拆解为镜头、人物、服装和场景资产，结合多模态模型生成与代码剪辑，完成个性化婚礼影像制作。",
+      "practice": "样片结构化 · 人物一致性约束 · 多镜生成与精确剪辑",
+      "status": "桌面端与网页共用制作服务；生成结果需审片，按账号授权使用。",
+      "links": [
+        {
+          "label": "进入工作台",
+          "url": "https://wave.sh.cn/wedding/"
+        }
+      ],
+      "details": [
+        "可复用模板编译：将原片切点、动作、运镜与资产引用组织为经过校验的制作方案。",
+        "人物与场景约束：按镜头绑定已确认的人物、服装与背景资产，并分别处理独立分屏。",
+        "生成与剪辑解耦：在模型生成时间轴与原片剪辑时间轴之间建立映射，由 FFmpeg 复原时长、布局与音轨。",
+        "局部修订与追溯：只替换选定镜头，复用已成功素材，保留输入、版本和成片校验记录。"
+      ],
+      "videos": [
+        {
+          "title": "山顶婚礼 · 婚礼模板",
+          "url": "https://wave.sh.cn/assets/demos/wedding-mountain/film-approved-20261027-c0842a06b34d.mp4",
+          "poster": "https://wave.sh.cn/assets/demos/wedding-mountain/poster-approved-20261027-c0842a06b34d.webp"
+        },
+        {
+          "title": "三生三世 · 家中版",
+          "url": "https://wave.sh.cn/assets/demos/wedding-three-lives/film-approved-20261027-918936f194f8.mp4",
+          "poster": "https://wave.sh.cn/assets/demos/wedding-three-lives/poster-approved-20261027-918936f194f8.webp"
+        }
+      ]
+    },
+    {
+      "id": "wenlv-ningxia",
+      "name": "文旅宁夏小程序",
+      "category": "文博互动体验",
+      "summary": "与宁夏博物馆合作，围绕文物 IP 与游客互动体验，将选片、角色照片上传、视频生成、播放与保存串联为个性化影像流程。",
+      "practice": "微信小程序 · 视频生成 · 成片交付",
+      "status": "提供网页入口；小程序与制作开放范围以项目说明为准。",
+      "links": [
+        {
+          "label": "查看文旅体验",
+          "url": "https://wave.sh.cn/ningxia/"
+        }
+      ]
+    },
+    {
+      "id": "isshf",
+      "name": "宁夏公积金 Agent · ISSHF",
+      "category": "受控政策问答",
+      "summary": "面向住房公积金业务，以政策检索和证据引用支持问答，结合条件澄清、版本追溯与转人工机制；配套微信小程序、知识管理与评测工具。",
+      "practice": "RAG · 证据溯源 · 知识治理与评测",
+      "status": "原型与受控试用阶段；当前云端使用模拟资料，尚非正式政务服务。",
+      "links": [
+        {
+          "label": "交流与演示咨询",
+          "url": "mailto:626609967@qq.com?subject=ISSHF%20项目交流"
+        }
+      ]
+    }
+  ]
+}
