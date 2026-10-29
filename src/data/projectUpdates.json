@@ -112,14 +112,16 @@
       "role": "负责人物视频生成方案、小程序与网页、云函数、订单状态、生成执行器及播放下载交付的全栈研发，面向宁夏博物馆文旅场景落地。",
       "agent": "游客选片与上传 → 资格和订单核验 → 任务排队 → 角色片段生成 → 合成与交付。体现专用自动化工作流的落地能力；当前制作链使用固定规则，不由 LLM 自主规划或决定重试。",
       "agentKind": "文旅生成工作流",
-      "imageLayout": "landscape",
-      "images": [
+      "videos": [
         {
-          "url": "/project-media/wenlv-web-companion-make-desktop.png",
-          "alt": "文旅宁夏网页制作页，按角色上传照片并确认使用授权",
-          "caption": "配套网页制作界面：角色照片上传与授权确认。",
-          "width": 1440,
-          "height": 1511
+          "title": "铜牛耕田 · 文物 IP 模板样片",
+          "url": "https://wave.sh.cn/templates/wan-v1/bronze-ox-field-companions-634d696174a2.mp4",
+          "poster": "https://wave.sh.cn/ningxia/images/story-bronze-ox-field-companions.jpg"
+        },
+        {
+          "title": "双人舞俑 · 文物 IP 模板样片",
+          "url": "https://wave.sh.cn/templates/wan-v1/video-04-25967476c054.mp4",
+          "poster": "https://wave.sh.cn/ningxia/images/story-video-04.jpg"
         }
       ]
     },

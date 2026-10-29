@@ -68,12 +68,17 @@ Wedding 提供 Web、macOS 和 Windows 客户端。以下演示展示成片效�
 OpenBot 产品界面：Bot 对话与工作台。
 
 
-**文旅宁夏小程序**
+**文旅宁夏小程序 · 文物 IP 视频**
 
-[![文旅宁夏网页制作页，按角色上传照片并确认使用授权](public/project-media/wenlv-web-companion-make-desktop.png)](public/project-media/wenlv-web-companion-make-desktop.png)
+以下为产品公开展示的模板样片；点击封面进入主页播放器。
 
-配套网页制作界面：角色照片上传与授权确认。
+[![铜牛耕田 · 文物 IP 模板样片](https://wave.sh.cn/ningxia/images/story-bronze-ox-field-companions.jpg)](https://harzva.github.io/#project-wenlv-ningxia)
 
+铜牛耕田 · 文物 IP 模板样片 · [直接播放](https://wave.sh.cn/templates/wan-v1/bronze-ox-field-companions-634d696174a2.mp4)
+
+[![双人舞俑 · 文物 IP 模板样片](https://wave.sh.cn/ningxia/images/story-video-04.jpg)](https://harzva.github.io/#project-wenlv-ningxia)
+
+双人舞俑 · 文物 IP 模板样片 · [直接播放](https://wave.sh.cn/templates/wan-v1/video-04-25967476c054.mp4)
 
 **宁夏公积金 Agent · ISSHF**
 
