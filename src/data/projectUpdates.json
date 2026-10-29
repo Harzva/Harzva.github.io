@@ -14,6 +14,20 @@
           "url": "https://harzva.github.io/team-bot/",
           "waveUrl": "https://wave.sh.cn/teambot/"
         }
+      ],
+      "method": "以企业身份与团队 ACL 约束执行，结合任务状态机、领取租约、重复请求防护及审批前后复核；知识同步以版本和检查点控制增量与权限失效。",
+      "role": "负责算法与执行策略设计、企业服务、权限与审计、桌面工作区集成及部署测试等全栈研发。",
+      "agent": "员工提交任务 → 企业身份和能力授权 → 受控执行与状态记录 → 人工验收和结果归档。重点是让 Agent 在组织权限内协作；完整企业试点仍在推进。",
+      "agentKind": "企业协作 Agent",
+      "imageLayout": "landscape",
+      "images": [
+        {
+          "url": "/project-media/teambot-website-preview.png",
+          "alt": "TeamBot 协作概念演示界面",
+          "caption": "协作概念演示，使用合成数据。",
+          "width": 1440,
+          "height": 779
+        }
       ]
     },
     {
@@ -28,6 +42,20 @@
           "label": "产品与文档",
           "url": "https://harzva.github.io/openbot/",
           "waveUrl": "https://wave.sh.cn/openbot/"
+        }
+      ],
+      "method": "以主 Bot 委派、独立上下文与记忆、执行器适配和资源队列组织多 Bot 任务；工具执行遵循观察、授权、动作、结果反馈流程，并保留中断与恢复状态。",
+      "role": "负责 Agent 编排与执行控制方案，以及桌面交互、模型与工具接入、浏览器控制、自建节点和任务记录的全栈实现。",
+      "agent": "自然语言交办 → 主 Bot 分派任务 → 授权调用工具或浏览器 → 查看、接管或停止 → 汇总结果并留存记录。将模型对话接入可操作、可追踪的个人工作环境。",
+      "agentKind": "个人通用执行 Agent",
+      "imageLayout": "landscape",
+      "images": [
+        {
+          "url": "/project-media/openbot-chat.png",
+          "alt": "OpenBot 个人 Bot 对话与工作台界面",
+          "caption": "OpenBot 产品界面：Bot 对话与工作台。",
+          "width": 1440,
+          "height": 940
         }
       ]
     },
@@ -61,7 +89,11 @@
           "url": "https://wave.sh.cn/assets/demos/wedding-three-lives/film-approved-20261027-918936f194f8.mp4",
           "poster": "https://wave.sh.cn/assets/demos/wedding-three-lives/poster-approved-20261027-918936f194f8.webp"
         }
-      ]
+      ],
+      "method": "用多模态样片解析生成结构化镜头方案，按镜头绑定人物、服装和场景参考；建立生成与原片剪辑双时间轴映射，以 FFmpeg 精确合成，并支持局部重做与素材复用。",
+      "role": "负责可控生成方法与制作流程设计、模板编译、模型接口、后端任务服务、Web 工作台及 macOS / Windows 客户端研发。",
+      "agent": "样片与人物输入 → 辅助分析并编制方案 → 人工确认 → 调用生成与剪辑工具 → 技术校验、审片与局部修订。Agent 辅助制作准备，成片执行受已确认方案约束。",
+      "agentKind": "影像制作 Agent 与受控执行流程"
     },
     {
       "id": "wenlv-ningxia",
@@ -74,6 +106,20 @@
         {
           "label": "查看文旅体验",
           "url": "https://wave.sh.cn/ningxia/"
+        }
+      ],
+      "method": "以审核发布的模板固定镜头与角色，将正脸、全身参考照片绑定到指定角色；调用 Wan 视频编辑生成替换片段，复用未替换原片，并按固定时间线合成和校验。",
+      "role": "负责人物视频生成方案、小程序与网页、云函数、订单状态、生成执行器及播放下载交付的全栈研发，面向宁夏博物馆文旅场景落地。",
+      "agent": "游客选片与上传 → 资格和订单核验 → 任务排队 → 角色片段生成 → 合成与交付。体现专用自动化工作流的落地能力；当前制作链使用固定规则，不由 LLM 自主规划或决定重试。",
+      "agentKind": "文旅生成工作流",
+      "imageLayout": "landscape",
+      "images": [
+        {
+          "url": "/project-media/wenlv-web-companion-make-desktop.png",
+          "alt": "文旅宁夏网页制作页，按角色上传照片并确认使用授权",
+          "caption": "配套网页制作界面：角色照片上传与授权确认。",
+          "width": 1440,
+          "height": 1511
         }
       ]
     },
@@ -88,6 +134,27 @@
         {
           "label": "交流与演示咨询",
           "url": "mailto:626609967@qq.com?subject=ISSHF%20项目交流"
+        }
+      ],
+      "method": "将同义词归一、关键词匹配和字符 n-gram 召回以 RRF 排名融合，结合政策效力与版本过滤；依据证据充分度在答复、追问、拒答和转人工之间路由。当前检索未启用向量模型。",
+      "role": "负责受控检索与回答策略、引用和版本追溯、FastAPI 服务、微信小程序、知识管理后台及回归评测的全栈研发。",
+      "agent": "识别咨询范围 → 补问必要条件 → 检索适用政策 → 输出带引用的答复 → 证据不足时转人工。将问答决策限制在可追溯证据内；当前展示来自模拟资料试用环境。",
+      "agentKind": "受控政策问答 Agent",
+      "imageLayout": "portrait",
+      "images": [
+        {
+          "url": "/project-media/isshf-simulated-home.png",
+          "alt": "公积金小程序模拟环境服务首页",
+          "caption": "小程序首页 · 2026-09-14 开发者工具模拟环境。",
+          "width": 349,
+          "height": 751
+        },
+        {
+          "url": "/project-media/isshf-simulated-policy-chat.png",
+          "alt": "公积金小程序模拟政策答复与引用卡片",
+          "caption": "模拟资料答复与政策引用 · 非正式政务服务。",
+          "width": 349,
+          "height": 751
         }
       ]
     }
