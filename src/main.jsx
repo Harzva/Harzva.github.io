@@ -18,6 +18,12 @@ import projectUpdates from "./data/projectUpdates.json";
 import "./project-updates.css";
 import "./styles.css";
 
+const isPersonalMirror = import.meta.env.BASE_URL === "/portfolio/";
+const companionSite = isPersonalMirror
+  ? { label: "GitHub 主页", url: "https://harzva.github.io/" }
+  : { label: "个人网站", url: "https://harzva.online/" };
+const projectMediaUrl = (url) => `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
+
 const projects = [
   {
     id: "01",
@@ -1085,6 +1091,7 @@ function Header() {
         <a href="#publications">研究</a>
         <a href="#articles">文章</a>
         <a href="#contact">联系</a>
+        <a className="site-switch-link" href={companionSite.url} target="_blank" rel="noopener noreferrer">{companionSite.label} ↗</a>
       </nav>
     </header>
   );
@@ -1123,6 +1130,10 @@ function Hero() {
             <ExternalLink size={18} />
             GitHub Profile
           </a>
+          <a className="secondary-button site-switch-button" href={companionSite.url} target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={18} />
+            {companionSite.label}
+          </a>
         </div>
         <div className="hero-metrics" aria-label="homepage overview">
           <div>
@@ -1143,7 +1154,7 @@ function Hero() {
         </div>
       </div>
       <div className="hero-panel">
-        <div className="hero-url-pill">harzva.github.io</div>
+        <div className="hero-url-pill">{isPersonalMirror ? "harzva.online" : "harzva.github.io"}</div>
         <img src="/hero-illustration.png" alt="Harzva portfolio illustration" />
         <div className="hero-portrait-caption">
           <span>Harzva</span>
@@ -1286,7 +1297,7 @@ function CurrentProjects() {
             <div className="current-project-identity"><span className="project-number">{String(index + 1).padStart(2, "0")}</span><p>{project.category}</p><h3>{project.name}</h3></div>
             <div className="current-project-copy"><p>{project.summary}</p><p className="project-practice">{project.practice}</p><dl className="project-methods"><div><dt>核心算法与系统方法</dt><dd>{project.method}</dd></div><div><dt>我的职责 · 算法与全栈</dt><dd>{project.role}</dd></div><div><dt>{project.agentKind}</dt><dd>{project.agent}</dd></div></dl><p className="project-status">{project.status}</p>{project.details ? <details className="project-details"><summary>技术实践</summary><ul>{project.details.map(detail => <li key={detail}>{detail}</li>)}</ul></details> : null}</div>
             <div className="current-project-links">{project.links.map((link) => <a key={link.url} href={link.url} target={link.url.startsWith("https:") ? "_blank" : undefined} rel="noopener noreferrer">{link.label}<ExternalLink size={15} aria-hidden="true" /></a>)}</div>
-            {project.images ? <div className="project-gallery" data-layout={project.imageLayout || "landscape"} aria-label={`${project.name} 界面展示`}>{project.images.map(item => <figure key={item.url}><a className="project-image-link" href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`查看大图：${item.alt}`}><img src={item.url} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" /></a><figcaption>{item.caption}<span className="project-image-hint">点击查看大图 ↗</span></figcaption></figure>)}</div> : null}
+            {project.images ? <div className="project-gallery" data-layout={project.imageLayout || "landscape"} aria-label={`${project.name} 界面展示`}>{project.images.map(item => <figure key={item.url}><a className="project-image-link" href={projectMediaUrl(item.url)} target="_blank" rel="noopener noreferrer" aria-label={`查看大图：${item.alt}`}><img src={projectMediaUrl(item.url)} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" /></a><figcaption>{item.caption}<span className="project-image-hint">点击查看大图 ↗</span></figcaption></figure>)}</div> : null}
             {project.videos ? <div className="project-videos" aria-label={`${project.name} 作品示例`}>{project.videos.map(video => <figure key={video.url}><video controls playsInline preload="none" poster={video.poster} aria-label={`播放${video.title}`}><source src={video.url} type="video/mp4" />您的浏览器暂不支持内嵌视频。</video><figcaption><span>{video.title}</span><a href={video.url} target="_blank" rel="noopener noreferrer">单独播放 ↗</a></figcaption></figure>)}</div> : null}
           </article>
         ))}

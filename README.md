@@ -26,7 +26,9 @@ The source of truth is the React code under `src/`. Do not manually edit generat
 
 ## 实战项目与作品示例
 
-[TeamBot、OpenBot、Wedding、文旅宁夏小程序、ISSHF 公积金 Agent](https://harzva.github.io/#current-projects) · [阿里云项目入口](https://wave.sh.cn/#/projects)
+[TeamBot、OpenBot、Wedding、文旅宁夏小程序、ISSHF 公积金 Agent](https://harzva.github.io/#current-projects) · [个人网站 harzva.online](https://harzva.online/portfolio/#current-projects)
+
+个人展示发布于 GitHub Pages 与 harzva.online，两站提供互相跳转按钮。wave.sh.cn 是公司网站；下方公司产品和公开样片链接保留其业务用途。
 
 负责这些项目的算法方案设计与全栈研发，覆盖前端、服务端、模型和工具接入、任务运行及部署评测。各项目的具体职责、实现边界与演示见主页。
 
