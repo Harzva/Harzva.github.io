@@ -1,0 +1,226 @@
+#sidebar .ob-sidebar-window-space { display: none; }
+.desktop #sidebar .ob-sidebar-window-space {
+  display: block;
+  flex: 0 0 32px;
+  width: 100%;
+  height: 32px;
+  min-height: 32px;
+  -webkit-app-region: drag;
+}
+#sidebar .ob-sidebar-account-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding: 6px 8px max(6px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border-soft);
+}
+#sidebar-footer-actions {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+#sidebar .side-navigation:has(> #btn-hidden-bots[hidden]:only-child) { display: none; }
+#ob-sidebar-account { min-width: 0; }
+#ob-sidebar-account .ob-account-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  min-width: 32px;
+  min-height: 34px;
+  padding: 2px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+#ob-sidebar-account .ob-account-trigger:is(:hover, [aria-expanded='true']):not(:disabled) { background: var(--bg-hover); }
+#ob-sidebar-account .ob-account-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#ob-sidebar-account .ob-account-trigger:disabled { cursor: default; }
+#ob-sidebar-account .ob-account-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--bg-hover, #e9e9ed);
+  color: var(--text-2, #51515a);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+#ob-sidebar-account .ob-account-avatar[data-avatar-kind='local'],
+#ob-sidebar-account .ob-account-avatar[data-avatar-kind='initial'] { background: var(--bg-hover, #e9e9ed); color: var(--text-2, #51515a); }
+#ob-sidebar-account .ob-account-avatar[data-avatar-kind='image'] { background: var(--bg-hover, #e9e9ed); color: var(--text-2, #51515a); }
+#ob-sidebar-account .ob-account-avatar > svg[data-local-account-avatar='true'],
+#ob-sidebar-account .ob-account-avatar > img.ob-account-avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+#ob-sidebar-account .ob-account-avatar > img.ob-account-avatar-image { object-fit: cover; }
+[data-account-state='signed-out'] .ob-account-name { color: var(--accent); }
+.ob-account-name,
+.ob-account-meta { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ob-account-name { font-size: 13px; line-height: 17px; font-weight: 600; }
+.ob-account-meta { font-size: 11px; line-height: 15px; color: var(--text-2); }
+.ob-account-menu {
+  position: fixed;
+  z-index: 1400;
+  overflow: auto;
+  padding: 5px;
+  border: 1px solid var(--border-soft);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 14%);
+  -webkit-app-region: no-drag;
+}
+.ob-account-menu[hidden] { display: none; }
+.ob-account-menu-heading {
+  display: grid;
+  gap: 1px;
+  padding: 6px 8px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-2);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.ob-account-menu-heading strong { color: var(--text); font-size: 13px; }
+.ob-account-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  text-align: start;
+  cursor: pointer;
+}
+.ob-account-menu-item:not(:disabled):is(:hover, :focus-visible) { background: var(--bg-hover); }
+.ob-account-menu-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ob-account-menu-item:disabled { color: var(--text-3); opacity: 1; cursor: default; }
+.ob-account-menu-note { margin-inline-start: auto; font-size: 11px; }
+.ob-account-menu-separator { height: 1px; margin: 4px 4px; background: var(--border-soft); }
+#ob-sidebar-account-menu .ob-account-menu-item.side-action {
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 32px;
+  margin: 0;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  text-align: start;
+}
+#ob-sidebar-account-menu .ob-account-menu-item.side-action:not(:disabled):is(:hover, :focus-visible) { background: var(--bg-hover); }
+#ob-sidebar-account-menu .ob-account-menu-item.side-action:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+#ob-sidebar-account-menu .ob-account-menu-item.side-action .ob-icon { margin: 0; color: var(--text-2); }
+#ob-sidebar-account-menu .ob-account-menu-item.side-action .ob-action-label { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: nowrap; }
+.ob-account-provider-icon {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  mask: url('assets/app-logos/github.svg') center / contain no-repeat;
+}
+
+/* Keep one quiet account entry in the footer; creation and collaboration live in the top/menu actions. */
+#sidebar[data-navigation-mode] .ob-sidebar-account-footer {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding: 6px 8px max(6px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border-soft);
+}
+#sidebar[data-navigation-mode] #sidebar-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+}
+#sidebar[data-navigation-mode] #sidebar-footer-actions > :is(#btn-new-bot, #btn-human-team) { display: none!important; }
+#sidebar[data-navigation-mode] #ob-sidebar-account { flex: 0 0 32px; width: 32px; min-width: 32px; }
+#sidebar[data-navigation-mode] #ob-sidebar-account .ob-account-trigger {
+  justify-content: center;
+  width: 32px;
+  min-width: 32px;
+  min-height: 34px;
+  padding: 2px;
+}
+#sidebar[data-navigation-mode] #ob-sidebar-account .ob-account-avatar {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+}
+#sidebar[data-compact='true'] .ob-sidebar-account-footer { gap: 0; padding: 4px 1px max(4px, env(safe-area-inset-bottom)); }
+#sidebar[data-compact='true'] #sidebar-footer-actions { justify-content: flex-start; gap: 0; }
+#sidebar[data-compact='true'] #ob-sidebar-account { flex-basis: 22px; width: 22px; }
+#sidebar[data-compact='true'] #ob-sidebar-account .ob-account-trigger { width: 22px; min-width: 22px; min-height: 28px; padding: 0; }
+#sidebar[data-compact='true'] #ob-sidebar-account .ob-account-avatar { flex-basis: 22px; width: 22px; height: 22px; font-size: 11px; }
+
+/* Account avatar anchored at the very bottom of the leftmost #app-rail */
+#app-rail .ob-sidebar-account-footer {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-app-region: no-drag;
+}
+#app-rail #sidebar-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#app-rail #sidebar-footer-actions > :is(#btn-new-bot, #btn-human-team) {
+  display: none !important;
+}
+#app-rail #ob-sidebar-account {
+  flex: 0 0 34px;
+  width: 34px;
+  min-width: 34px;
+}
+#app-rail #ob-sidebar-account .ob-account-trigger {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 9px;
+}
+#app-rail #ob-sidebar-account .ob-account-avatar {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--border-soft);
+}

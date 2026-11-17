@@ -1,0 +1,312 @@
+#human-team-dialog .od-panel {
+  display: grid;
+  max-width: 720px;
+  gap: 16px;
+}
+#human-team-dialog .od-heading h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 650;
+  letter-spacing: -.015em;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-heading p {
+  margin: 4px 0 0;
+  color: var(--text-3, #686871);
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-section {
+  display: grid;
+  min-width: 0;
+  gap: 9px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+#human-team-dialog .od-section-head h3,
+#human-team-dialog .od-preview h3 {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 630;
+}
+#human-team-dialog .od-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 18px;
+  padding: 7px 0;
+  border-top: 1px solid var(--border-soft, var(--border));
+  border-bottom: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  color: var(--text-3, #686871);
+  font-size: 11px;
+  line-height: 1.45;
+}
+#human-team-dialog .od-count strong {
+  color: var(--text, #222226);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 620;
+}
+#human-team-dialog .od-watch-line,
+#human-team-dialog .od-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+#human-team-dialog .od-watch-line {
+  justify-content: space-between;
+}
+#human-team-dialog .od-muted,
+#human-team-dialog .od-row-meta {
+  margin: 0;
+  color: var(--text-3, #686871);
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-error {
+  margin: 0;
+  color: var(--danger, #bd332c);
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-notice {
+  margin: 0;
+  color: var(--ok, #237344);
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-empty {
+  margin: 0;
+  padding: 9px 0;
+  border-top: 1px solid var(--border-soft, var(--border));
+  color: var(--text-3, #686871);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+#human-team-dialog .od-queue {
+  display: grid;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-queue-row {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-row-main {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  flex: 1;
+}
+#human-team-dialog .od-row-main > strong {
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 620;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-row-meta {
+  font-size: 10.5px;
+}
+#human-team-dialog .od-source-field {
+  max-width: 540px;
+}
+#human-team-dialog .od-report-fields {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+#human-team-dialog .od-report-wide {
+  grid-column: 1 / -1;
+}
+#human-team-dialog .od-report-fields textarea {
+  min-height: 94px;
+  resize: vertical;
+}
+#human-team-dialog .od-subheading {
+  margin: 5px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 620;
+}
+#human-team-dialog .od-document-list {
+  display: grid;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-document {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-2, #51515a);
+  font-size: 11.5px;
+  line-height: 1.45;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-document:hover {
+  background: var(--bg-hover, #e9e9ed);
+  color: var(--text, #222226);
+}
+#human-team-dialog .od-document[aria-current="true"] {
+  background: var(--bg-active, #e0e6ee);
+  color: var(--text, #222226);
+  font-weight: 600;
+}
+#human-team-dialog .od-document > span {
+  flex: 0 0 auto;
+  font-weight: 400;
+}
+#human-team-dialog .od-thread-list {
+  display: grid;
+  max-height: 250px;
+  overflow: auto;
+  border-top: 1px solid var(--border-soft, var(--border));
+  scrollbar-color: var(--mac-scroll, rgb(65 65 74 / 25%)) transparent;
+  scrollbar-width: thin;
+}
+#human-team-dialog .od-thread {
+  display: block;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 4px;
+  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-2, #51515a);
+  font-size: 11.5px;
+  line-height: 1.45;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#human-team-dialog .od-thread:hover {
+  background: var(--bg-hover, #e9e9ed);
+  color: var(--text, #222226);
+}
+#human-team-dialog .od-thread[aria-current="true"] {
+  background: var(--bg-active, #e0e6ee);
+  color: var(--text, #222226);
+  font-weight: 600;
+}
+#human-team-dialog .od-scope {
+  display: grid;
+  max-width: 540px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+#human-team-dialog .od-preview {
+  display: grid;
+  min-width: 0;
+  gap: 10px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-destination {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-destination-row {
+  display: grid;
+  grid-template-columns: minmax(90px, .35fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+#human-team-dialog .od-destination dt {
+  color: var(--text-3, #686871);
+}
+#human-team-dialog .od-destination dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--text-2, #51515a);
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-preview-messages {
+  display: grid;
+  max-height: 240px;
+  overflow: auto;
+  scrollbar-color: var(--mac-scroll, rgb(65 65 74 / 25%)) transparent;
+  scrollbar-width: thin;
+}
+#human-team-dialog .od-preview-message {
+  display: grid;
+  gap: 4px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+#human-team-dialog .od-preview-message strong {
+  color: var(--text-3, #686871);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+#human-team-dialog .od-preview-message p {
+  margin: 0;
+  color: var(--text, #222226);
+  font-size: 11.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+#human-team-dialog .od-confirm {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+
+@media (max-width: 760px) {
+  #human-team-dialog .od-scope {
+    grid-template-columns: 1fr;
+  }
+  #human-team-dialog .od-report-fields {
+    grid-template-columns: 1fr;
+  }
+  #human-team-dialog .od-report-wide {
+    grid-column: auto;
+  }
+}
+@media (max-width: 520px) {
+  #human-team-dialog .od-queue-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  #human-team-dialog .od-destination-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}

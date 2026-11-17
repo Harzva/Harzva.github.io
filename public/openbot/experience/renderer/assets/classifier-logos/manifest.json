@@ -1,0 +1,20 @@
+[
+  {
+    "file": "tierflow.svg",
+    "source": "https://tierflow.cn/tierflow-logo.svg",
+    "sha256": "da8265ad6391d9b824c080fb18273cd1f37a1b175aef038a3d814944bdaff232",
+    "retrieved_at": "2026-10-22T05:33:48.746530+00:00",
+    "bytes": 729,
+    "request_headers": "Python urllib default; no auth"
+  },
+  {
+    "file": "typesafe.png",
+    "source": "https://docs.typesafe.ai/mintlify-assets/_mintlify/favicons/ts-docs/zg2v0DiYB7xPw0I2/_generated/favicon/android-chrome-192x192.png",
+    "source_page": "https://docs.typesafe.ai/introduction",
+    "asset_role": "official documentation favicon 192x192; not full wordmark",
+    "sha256": "0eecbdbff164c2c158e1f26ef112d22e52fd757f98d1090e7e6bb9fbcb6454cd",
+    "retrieved_at": "2026-10-22T05:35:04.294757+00:00",
+    "bytes": 8885,
+    "request_headers": "Python urllib default, no auth"
+  }
+]

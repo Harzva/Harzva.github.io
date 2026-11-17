@@ -1,0 +1,204 @@
+/* Cloud desktop workbench. It deliberately uses the same compact surfaces as
+   the browser workbench; the remote Linux frame remains the focus. */
+.ob-desktop-workbench {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 430px;
+  padding: 14px;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: var(--radius-card, 12px);
+  background: var(--bg-panel);
+}
+.ob-desktop-head,
+.ob-desktop-toolbar,
+.ob-desktop-meta,
+.ob-desktop-controls,
+.ob-desktop-files-head,
+.ob-desktop-file-row,
+.ob-desktop-task-row { display: flex; align-items: center; }
+.ob-desktop-head { justify-content: space-between; gap: 12px; }
+.ob-desktop-title { font-size: 13px; font-weight: 650; line-height: 1.35; }
+.ob-desktop-subtitle,
+.ob-desktop-note,
+.ob-desktop-file-meta,
+.ob-desktop-task-status { color: var(--text-3); font-size: 11.5px; line-height: 1.5; }
+.ob-desktop-subtitle { margin-top: 2px; }
+.ob-desktop-runtime { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); font-size: 11.5px; white-space: nowrap; }
+.ob-desktop-runtime-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); }
+.ob-desktop-runtime-mark[data-state="ready"] { background: var(--ok); }
+.ob-desktop-runtime-mark[data-state="loading"] { background: var(--accent); }
+.ob-desktop-runtime-mark[data-state="error"] { background: var(--danger); }
+.ob-desktop-toolbar { gap: 6px; flex-wrap: wrap; }
+.ob-desktop-toolbar .btn,
+.ob-desktop-controls .btn,
+.ob-desktop-files-head .btn { padding: 6px 9px; font-size: 11.5px; border-radius: 7px; }
+.ob-desktop-toolbar .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.ob-desktop-toolbar .btn.danger { color: var(--danger); border-color: rgba(229,83,75,.4); }
+.ob-desktop-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 244px;
+  max-height: 430px;
+  overflow: hidden;
+  background: #08080a;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 9px;
+}
+.ob-desktop-frame img { display: block; width: 100%; height: auto; max-height: 430px; object-fit: contain; cursor: crosshair; }
+.ob-desktop-frame[data-busy="true"] { cursor: progress; }
+.ob-desktop-placeholder { max-width: 390px; padding: 26px; color: var(--text-3); font-size: 12px; line-height: 1.65; text-align: center; }
+.ob-desktop-placeholder strong { display: block; color: var(--text-2); font-size: 13px; margin-bottom: 6px; }
+.ob-desktop-meta { justify-content: space-between; gap: 8px; min-height: 17px; color: var(--text-3); font-size: 11px; }
+.ob-desktop-meta .error { color: #f2b8b4; }
+.ob-desktop-controls { gap: 6px; flex-wrap: wrap; }
+.ob-desktop-input-row { display: flex; gap: 6px; }
+.ob-desktop-input-row textarea { flex: 1; min-width: 0; min-height: 34px; max-height: 72px; resize: vertical; background: var(--bg-side); border: 1px solid var(--border); border-radius: 7px; padding: 7px 8px; color: var(--text); font: inherit; font-size: 11.5px; outline: none; }
+.ob-desktop-input-row textarea:focus { border-color: var(--accent); }
+.ob-desktop-input-row .btn { align-self: flex-end; padding: 7px 10px; font-size: 11.5px; }
+.ob-desktop-key-row { display: flex; gap: 6px; }
+.ob-desktop-key-row select { flex: 1; min-width: 0; background: var(--bg-side); border: 1px solid var(--border); border-radius: 7px; padding: 7px 8px; color: var(--text); font: inherit; font-size: 11.5px; }
+.ob-desktop-files { border-top: 1px solid var(--border-soft, var(--border)); padding-top: 9px; }
+.ob-desktop-files-head { justify-content: space-between; gap: 8px; margin-bottom: 7px; }
+.ob-desktop-files-title { font-size: 12px; font-weight: 600; }
+.ob-desktop-file-list { display: flex; flex-direction: column; gap: 5px; max-height: 124px; overflow-y: auto; }
+.ob-desktop-file-row { gap: 8px; min-width: 0; padding: 6px 8px; background: var(--bg-side); border: 1px solid var(--border); border-radius: 7px; font-size: 11.5px; }
+.ob-desktop-file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ob-desktop-file-row button { border: 0; background: transparent; color: var(--text-3); font-size: 11px; cursor: pointer; padding: 2px 4px; }
+.ob-desktop-file-row button:hover { color: var(--accent); }
+.ob-desktop-task { border-top: 1px solid var(--border-soft, var(--border)); padding-top: 9px; }
+.ob-desktop-task-row { gap: 6px; }
+.ob-desktop-task-row input { flex: 1; min-width: 0; background: var(--bg-side); border: 1px solid var(--border); border-radius: 7px; padding: 7px 8px; color: var(--text); font: inherit; font-size: 11.5px; }
+.ob-desktop-task-row .btn { padding: 7px 9px; font-size: 11.5px; }
+.ob-desktop-task-status { margin-top: 5px; min-height: 17px; }
+.ob-desktop-artifact { margin-top: 7px; color: var(--text-2); font-size: 11.5px; }
+.ob-desktop-artifact summary { width: fit-content; color: var(--text-2); cursor: pointer; }
+.ob-desktop-artifact[open] summary { margin-bottom: 6px; }
+.ob-desktop-artifact-form { display: flex; flex-direction: column; gap: 7px; max-width: 620px; }
+.ob-desktop-artifact-form p { margin: 0; color: var(--text-3); line-height: 1.5; }
+.ob-desktop-artifact-form label { display: flex; flex-direction: column; gap: 4px; color: var(--text-3); }
+.ob-desktop-artifact-form input,
+.ob-desktop-artifact-form textarea { min-width: 0; background: var(--bg-side); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; color: var(--text); font: inherit; font-size: 11.5px; }
+.ob-desktop-artifact-form textarea { min-height: 56px; max-height: 96px; resize: vertical; line-height: 1.45; }
+.ob-desktop-artifact-form input:focus,
+.ob-desktop-artifact-form textarea:focus { border-color: var(--accent); outline: none; }
+.ob-desktop-artifact-form :disabled { opacity: .5; }
+.ob-desktop-artifact-unavailable { margin-top: 6px; color: var(--text-3); font-size: 11.5px; line-height: 1.5; }
+.ob-desktop-unsupported { color: var(--text-3); font-size: 12px; line-height: 1.6; }
+
+/* Focus view: a reversible in-app enlargement of the same cloud frame. The
+   right settings card remains mounted underneath it, so closing this layer
+   only returns to the card and never closes the remote desktop. */
+.ob-desktop-focus-modal[hidden] { display: none; }
+.ob-desktop-focus-modal {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(8, 9, 12, .82);
+  backdrop-filter: blur(3px);
+}
+.ob-desktop-focus-shell {
+  display: flex;
+  flex-direction: column;
+  width: min(1400px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow: hidden;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 12px;
+  background: var(--bg-panel);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+}
+.ob-desktop-focus-head,
+.ob-desktop-focus-toolbar,
+.ob-desktop-focus-meta,
+.ob-desktop-focus-key-row,
+.ob-desktop-focus-text-row {
+  display: flex;
+  align-items: center;
+}
+.ob-desktop-focus-head {
+  flex: 0 0 auto;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+}
+.ob-desktop-focus-title { font-size: 13px; font-weight: 650; line-height: 1.35; }
+.ob-desktop-focus-subtitle { margin-top: 2px; color: var(--text-3); font-size: 11.5px; }
+.ob-desktop-focus-status { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); font-size: 11.5px; white-space: nowrap; }
+.ob-desktop-focus-status-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); }
+.ob-desktop-focus-status-mark[data-state="ready"] { background: var(--ok); }
+.ob-desktop-focus-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 9px;
+  padding: 10px 12px 12px;
+  overflow: auto;
+}
+.ob-desktop-focus-toolbar { flex: 0 0 auto; gap: 6px; flex-wrap: wrap; }
+.ob-desktop-focus-toolbar .btn,
+.ob-desktop-focus-key-row .btn,
+.ob-desktop-focus-text-row .btn { padding: 6px 9px; font-size: 11.5px; border-radius: 7px; }
+.ob-desktop-focus-frame {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  background: #08080a;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 9px;
+}
+.ob-desktop-focus-frame img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  /* Reserve the header, toolbar, metadata, input rows, and their gaps before
+     sizing the frame. Keeping the image inside this bound prevents the flex
+     column from clipping the remote desktop's top panel or bottom edge. */
+  max-height: min(820px, calc(100vh - 300px));
+  object-fit: contain;
+  cursor: crosshair;
+}
+.ob-desktop-focus-meta { justify-content: space-between; gap: 10px; min-height: 17px; color: var(--text-3); font-size: 11px; }
+.ob-desktop-focus-meta .error { color: #f2b8b4; }
+.ob-desktop-focus-key-row { gap: 6px; }
+.ob-desktop-focus-key-row select,
+.ob-desktop-focus-text-row textarea {
+  min-width: 0;
+  background: var(--bg-side);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 7px 8px;
+  color: var(--text);
+  font: inherit;
+  font-size: 11.5px;
+}
+.ob-desktop-focus-key-row select { flex: 0 1 240px; }
+.ob-desktop-focus-text-row { gap: 6px; }
+.ob-desktop-focus-text-row textarea { flex: 1; min-height: 35px; max-height: 78px; resize: vertical; }
+.ob-desktop-focus-key-row select:focus,
+.ob-desktop-focus-text-row textarea:focus { border-color: var(--accent); outline: none; }
+.ob-desktop-focus-note { color: var(--text-3); font-size: 11px; line-height: 1.45; }
+@media (max-width: 760px) {
+  .ob-desktop-focus-modal { padding: 6px; }
+  .ob-desktop-focus-shell { width: calc(100vw - 12px); max-height: calc(100vh - 12px); }
+  .ob-desktop-focus-head { padding: 10px; }
+  .ob-desktop-focus-body { padding: 8px; }
+  .ob-desktop-focus-frame img { max-height: calc(100vh - 300px); }
+}
+@media (max-width: 760px) {
+  .ob-desktop-workbench { padding: 11px; }
+  .ob-desktop-frame { min-height: 190px; }
+  .ob-desktop-frame img { max-height: 300px; }
+}

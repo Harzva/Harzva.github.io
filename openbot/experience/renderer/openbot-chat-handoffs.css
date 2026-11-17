@@ -1,0 +1,176 @@
+/* Quiet task provenance: one row per BOT/task relationship. */
+.chat-handoff-row{align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;margin-block:-9px;color:var(--text-3)}
+.chat-handoff-row[data-direction="sent"]{align-items:flex-end}
+.chat-handoff-summary{display:flex;align-items:center;gap:5px;max-width:100%;min-height:30px;font-size:12px;line-height:1.4}
+.chat-handoff-toggle{display:inline-flex;align-items:center;gap:5px;min-height:28px;padding:2px 3px;border:0;border-radius:4px;background:transparent;color:var(--text-3);font:inherit;cursor:pointer}
+.chat-handoff-toggle:hover{color:var(--text)}
+.chat-handoff-chevron{display:inline-block;font-size:14px;line-height:1}
+.chat-handoff-toggle[aria-expanded="true"] .chat-handoff-chevron{transform:rotate(180deg)}
+.chat-handoff-toggle:focus-visible,.chat-handoff-peer-open:focus-visible,.chat-handoff-action:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chat-handoff-label,.chat-handoff-task-count{white-space:nowrap}
+.chat-handoff-more{font-size:10px;color:var(--text-3)}
+.chat-handoff-avatar{display:grid;place-items:center;width:100%;height:100%;overflow:visible}
+.chat-handoff-avatar .ob-avatar{width:26px!important;height:26px!important;min-width:26px!important;min-height:26px!important}
+.chat-handoff-avatar--neutral{box-sizing:border-box;width:12px;height:12px;border:1px solid var(--text-3);border-radius:50%;background:transparent}
+.chat-handoff-peer-open{display:grid;place-items:center;flex:0 0 28px;width:28px;height:30px;padding:0;border:0;border-radius:4px;background:transparent;color:var(--text-2);font:inherit;cursor:pointer;box-shadow:none}
+.chat-handoff-peer-open:hover,.chat-handoff-peer-open:active{background:transparent;box-shadow:none}
+.chat-handoff-peer-open:disabled{cursor:default}
+.chat-handoff-peer-avatar{display:grid;place-items:center;width:26px;height:26px}
+.chat-handoff-details{box-sizing:border-box;width:min(500px,100%);max-width:100%;padding:3px 0 7px;border:0;border-radius:0;background:transparent;color:var(--text);box-shadow:none;font-size:12px;line-height:1.45}
+.chat-handoff-details[hidden]{display:none!important}
+.chat-handoff-task-list{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.chat-handoff-task{display:flex;align-items:center;gap:10px;min-width:0;padding:7px 0}
+.chat-handoff-pair{display:inline-flex;align-items:center;gap:2px;flex:0 0 auto}
+.chat-handoff-pair-arrow{font-size:11px;color:var(--text-3)}
+.chat-handoff-task-copy{display:flex;flex:1 1 auto;flex-direction:column;gap:2px;min-width:0}
+.chat-handoff-task-meta{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:8px;min-width:0}
+.chat-handoff-peer-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-2)}
+.chat-handoff-peer-state,.chat-handoff-task-status{color:var(--text-3);font-size:11px}
+.chat-handoff-task-title{color:var(--text-3);overflow-wrap:anywhere}
+.chat-handoff-task-actions{display:flex;align-items:center;gap:1px;flex:0 0 auto}
+.chat-handoff-action{display:grid;place-items:center;width:28px;min-height:28px;box-sizing:border-box;padding:4px;border:0;border-radius:4px;background:transparent;color:var(--text-3);font:inherit;font-size:12px;cursor:pointer;white-space:nowrap;box-shadow:none}
+.chat-handoff-action .ob-icon{display:block;width:15px;height:15px}
+.chat-handoff-action:not(:disabled):hover{background:var(--bg-hover);color:var(--text)}
+.chat-handoff-action:disabled{opacity:.45;cursor:default}
+.chat-handoff-task-actions,.chat-handoff-summary > .chat-handoff-action{opacity:0;pointer-events:none}
+.chat-handoff-task:hover .chat-handoff-task-actions,.chat-handoff-task:focus-within .chat-handoff-task-actions,.chat-handoff-task:has(details[open]) .chat-handoff-task-actions,.chat-handoff-summary:hover > .chat-handoff-action,.chat-handoff-summary:focus-within > .chat-handoff-action{opacity:1;pointer-events:auto}
+.chat-handoff-overflow{position:relative}
+.chat-handoff-overflow > summary{list-style:none}
+.chat-handoff-overflow > summary::-webkit-details-marker{display:none}
+.chat-handoff-menu{position:absolute;inset-inline-end:0;bottom:calc(100% + 4px);z-index:10;min-width:112px;padding:4px;background:var(--bg);border:1px solid var(--border-soft);border-radius:6px;box-shadow:0 3px 10px rgb(0 0 0 / 8%)}
+.chat-handoff-menu .chat-handoff-action{display:block;width:100%;padding:6px 9px;text-align:start;color:var(--text-2)}
+.chat-handoff-empty{margin:0;color:var(--text-3)}
+.chat-handoff-section{display:flex;flex-direction:column;gap:12px;min-width:0;padding-top:5px}
+.chat-handoff-section-heading{margin:0 0 -4px;color:var(--text-3);font-size:11px;font-weight:600;line-height:1.4}
+.chat-handoff-section .chat-handoff-row{margin-block:0}
+@media(hover:none),(pointer:coarse){.chat-handoff-task-actions,.chat-handoff-summary > .chat-handoff-action{opacity:1;pointer-events:auto}}
+@media(max-width:640px){
+  .chat-handoff-summary{gap:3px;font-size:11px}
+  .chat-handoff-details{width:100%}
+  .chat-handoff-task{gap:6px}
+  .chat-handoff-task-copy{flex-basis:0}
+}
+
+/* Read-only pair history. The fixed surface replaces the composer while open. */
+.chat-handoff-exchange-scrim{
+  position:fixed;
+  inset:0;
+  z-index:1300;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  padding:20px;
+  background:var(--mac-scrim,rgba(20,20,24,.48));
+}
+.chat-handoff-exchange-dialog{
+  display:flex;
+  flex-direction:column;
+  width:min(720px,100%);
+  max-height:min(680px,calc(100vh - 40px));
+  min-height:min(440px,calc(100vh - 40px));
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--bg);
+  color:var(--text);
+  box-shadow:0 2px 8px rgb(0 0 0 / 12%);
+}
+.chat-handoff-exchange-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  gap:16px;
+  padding:18px 20px 14px;
+  border-bottom:1px solid var(--border-soft);
+}
+.chat-handoff-exchange-header-content{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0;text-align:center}
+.chat-handoff-exchange-heading{display:flex;flex-direction:column;align-items:center;gap:8px}
+.chat-handoff-exchange-heading-title{color:var(--text-3);font-size:11px;font-weight:600;letter-spacing:.02em}
+.chat-handoff-exchange-pair{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  max-width:100%;
+  padding:4px 0;
+  border:0;
+  background:transparent;
+  color:var(--text-2);
+  font-size:13px;
+  line-height:1.3;
+}
+.chat-handoff-exchange-pair-avatar{display:grid;place-items:center;width:22px;height:22px;flex:0 0 22px}
+.chat-handoff-exchange-pair-avatar .chat-handoff-avatar .ob-avatar{width:25px!important;height:25px!important;min-width:25px!important;min-height:25px!important}
+.chat-handoff-exchange-pair-name{max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
+.chat-handoff-exchange-note{margin:0;color:var(--text-3);font-size:11px;line-height:1.4}
+.chat-handoff-exchange-close{
+  display:grid;
+  place-items:center;
+  min-width:30px;
+  min-height:30px;
+  margin-inline-start:auto;
+  padding:4px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:var(--text-2);
+  font:inherit;
+  font-size:11px;
+  cursor:pointer;
+}
+.chat-handoff-exchange-close:hover{background:var(--bg-hover);color:var(--text)}
+.chat-handoff-exchange-close:focus-visible,
+.chat-handoff-exchange-open-task:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chat-handoff-exchange-content{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;padding:16px 22px 20px;scrollbar-gutter:stable}
+.chat-handoff-exchange-timeline{display:flex;flex-direction:column;gap:17px;width:min(560px,100%);margin:0 auto}
+.chat-handoff-exchange-date{align-self:center;padding:4px 0;color:var(--text-3);font-size:11px;line-height:1.35}
+.chat-handoff-exchange-item{display:flex;align-items:flex-start;gap:9px;max-width:88%;min-width:0}
+.chat-handoff-exchange-item[data-side="source"]{align-self:flex-end;flex-direction:row-reverse}
+.chat-handoff-exchange-item[data-side="unknown"]{opacity:.9}
+.chat-handoff-exchange-avatar{display:grid;place-items:center;width:27px;height:27px;flex:0 0 27px;margin-top:2px}
+.chat-handoff-exchange-avatar .chat-handoff-avatar .ob-avatar{width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important}
+.chat-handoff-exchange-body{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;max-width:calc(100% - 36px)}
+.chat-handoff-exchange-item[data-side="source"] .chat-handoff-exchange-body{align-items:flex-end}
+.chat-handoff-exchange-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;max-width:100%;padding-inline:3px;color:var(--text-3);font-size:11px;line-height:1.35}
+.chat-handoff-exchange-item[data-side="source"] .chat-handoff-exchange-meta{justify-content:flex-end}
+.chat-handoff-exchange-name{color:var(--text-2);font-size:11px;font-weight:600}
+.chat-handoff-exchange-time{white-space:nowrap;font-size:10px}
+.chat-handoff-exchange-bubble{max-width:100%;padding:9px 12px;border:1px solid var(--border-soft);border-radius:12px;background:var(--bg-side);color:var(--text);font-size:13px;line-height:1.58;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-handoff-exchange-kind{color:var(--text-3)}
+.chat-handoff-exchange-executor{display:inline-flex;align-items:center;gap:3px;color:var(--text-3);white-space:nowrap;vertical-align:middle}
+.chat-handoff-exchange-executor-logo{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;flex:0 0 14px;overflow:hidden}
+.chat-handoff-exchange-executor-logo img{display:block;width:14px;height:14px;object-fit:contain}
+.chat-handoff-exchange-error{max-width:100%;padding:7px 9px;border-inline-start:2px solid var(--danger);border-radius:0 7px 7px 0;background:var(--bg-panel);color:var(--danger);font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-handoff-exchange-badges{display:flex;flex-wrap:wrap;gap:5px}
+.chat-handoff-exchange-status,
+.chat-handoff-exchange-pending{padding:3px 0;color:var(--text-3);font-size:11px;line-height:1.3}
+.chat-handoff-exchange-pending{color:var(--danger)}
+.chat-handoff-exchange-open-task{opacity:0;pointer-events:none}
+.chat-handoff-exchange-item:hover .chat-handoff-exchange-open-task,.chat-handoff-exchange-item:focus-within .chat-handoff-exchange-open-task{opacity:1;pointer-events:auto}
+@media(hover:none),(pointer:coarse){.chat-handoff-exchange-open-task{opacity:1;pointer-events:auto}}
+.chat-handoff-exchange-state,
+.chat-handoff-exchange-empty,
+.chat-handoff-exchange-omitted{max-width:560px;margin:0 auto;padding:8px 10px;color:var(--text-3);font-size:12px;line-height:1.5}
+.chat-handoff-exchange-error[role="alert"]{max-width:560px;margin:0 auto;padding:9px 10px;border-inline-start:2px solid var(--danger);color:var(--danger);font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.chat-handoff-exchange-omitted{margin-bottom:12px;border:1px solid var(--border-soft);border-radius:8px;background:var(--bg-panel)}
+
+@media(prefers-color-scheme:dark){
+  .chat-handoff-exchange-executor-logo[data-brand="grok"] img,
+  .chat-handoff-exchange-executor-logo[data-brand="opencode"] img,
+  .chat-handoff-exchange-executor-logo[data-brand="cursor-agent"] img,
+  .chat-handoff-exchange-executor-logo[data-brand="goose"] img,
+  .chat-handoff-exchange-executor-logo[data-brand="cline"] img{filter:invert(1)}
+}
+
+@media(max-width:640px){
+  .chat-handoff-exchange-scrim{padding:10px}
+  .chat-handoff-exchange-dialog{max-height:calc(100vh - 20px);min-height:min(400px,calc(100vh - 20px));border-radius:11px}
+  .chat-handoff-exchange-header{gap:8px;padding:13px 12px 11px}
+  .chat-handoff-exchange-header-content{gap:6px}
+  .chat-handoff-exchange-pair{gap:5px;padding:5px 8px;font-size:12px}
+  .chat-handoff-exchange-pair-name{max-width:30vw}
+  .chat-handoff-exchange-close{min-width:40px;padding-inline:5px}
+  .chat-handoff-exchange-content{padding:13px 12px 16px}
+  .chat-handoff-exchange-item{max-width:96%}
+  .chat-handoff-exchange-bubble{font-size:12px}
+}

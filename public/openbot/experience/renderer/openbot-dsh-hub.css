@@ -1,0 +1,29 @@
+.ob-dsh-hub {
+  width: min(1060px, calc(100% - 48px));
+  height: min(780px, calc(100% - 48px));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg-panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color-scheme: light dark;
+}
+.ob-dsh-hub::backdrop { background: rgba(0, 0, 0, .34); }
+.ob-dsh-hub__frame { display: block; width: 100%; height: 100%; border: 0; }
+.ob-dsh-hub__loading { height: 100%; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 24px; }
+.ob-dsh-hub__status { text-align: center; }
+.ob-dsh-hub__dismiss {
+  padding: 6px 12px;
+  background: var(--bg-hover);
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ob-dsh-hub__dismiss:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ob-dsh-hub [hidden] { display: none; }
+@media (max-width: 720px) {
+  .ob-dsh-hub { width: calc(100% - 24px); height: calc(100% - 24px); }
+}

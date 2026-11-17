@@ -1,0 +1,290 @@
+#set-panel-apps .apps-card[data-app="github"] {
+  container-name: github-service;
+  container-type: inline-size;
+}
+
+#set-panel-apps .github-service-state {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 10px;
+  min-width: 0;
+  margin: 0 0 7px;
+}
+
+#set-panel-apps .github-service-message {
+  min-width: 0;
+  margin: 0;
+  color: var(--settings-muted, var(--text-3));
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#set-panel-apps .github-service-message[data-state="error"],
+#set-panel-apps .github-service-message[data-state="unavailable"] {
+  color: var(--danger);
+}
+
+#set-panel-apps .github-service-message[hidden],
+#set-panel-apps .github-service-actions[hidden],
+#set-panel-apps .github-service-actions button[hidden] {
+  display: none;
+}
+
+#set-panel-apps .github-service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+#set-panel-apps .github-service-actions .btn {
+  min-height: 26px;
+  padding: 4px 8px;
+  font-size: 11.5px;
+}
+
+@container github-service (max-width: 520px) {
+  #set-panel-apps .github-service-state {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #set-panel-apps .github-service-actions {
+    justify-content: flex-start;
+  }
+}
+
+#set-panel-apps .github-connection-dialog {
+  width: min(480px, calc(100vw - 32px));
+  max-width: 480px;
+  max-height: min(82vh, 680px);
+  margin: auto;
+  padding: 16px;
+  overflow: auto;
+  border: 1px solid var(--settings-line, var(--border-soft));
+  border-radius: 9px;
+  background: var(--settings-surface, var(--bg));
+  color: var(--text);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+}
+
+#set-panel-apps .github-connection-dialog::backdrop {
+  background: var(--mac-scrim, rgb(0 0 0 / 58%));
+}
+
+#set-panel-apps .github-connection-dialog[open] {
+  display: block;
+}
+
+#set-panel-apps .github-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+#set-panel-apps .github-dialog-header h3 {
+  margin: 1px 0 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#set-panel-apps .github-dialog-close {
+  flex: 0 0 auto;
+  min-height: 28px;
+  padding: 4px 8px;
+  font-size: 11.5px;
+}
+
+#set-panel-apps .github-dialog-description,
+#set-panel-apps .github-auth-message,
+#set-panel-apps .github-auth-expiry,
+#set-panel-apps .github-scope-note,
+#set-panel-apps .github-access-message,
+#set-panel-apps .github-access-connection-state,
+#set-panel-apps .github-access-empty {
+  margin: 7px 0;
+  color: var(--settings-muted, var(--text-3));
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#set-panel-apps .github-auth-message[data-state="error"],
+#set-panel-apps .github-access-connection-state[data-state="reconnect_required"],
+#set-panel-apps .github-access-connection-state[data-state="credential_pending"],
+#set-panel-apps .github-service-message[data-state="error"] {
+  color: var(--danger);
+}
+
+#set-panel-apps .github-user-code-box {
+  display: grid;
+  gap: 4px;
+  margin: 13px 0 9px;
+  padding: 10px 12px;
+  border: 1px solid var(--settings-line, var(--border-soft));
+  border-radius: 7px;
+  background: var(--mac-inset);
+}
+
+#set-panel-apps .github-user-code-label {
+  color: var(--settings-muted, var(--text-3));
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+#set-panel-apps .github-user-code {
+  color: var(--text);
+  font: 600 20px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .08em;
+  overflow-wrap: anywhere;
+}
+
+#set-panel-apps .github-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+#set-panel-apps .github-dialog-actions .btn {
+  min-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+#set-panel-apps .github-connection-dialog :is(button, select, input):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#set-panel-apps .github-access-field {
+  display: grid;
+  gap: 5px;
+  margin: 10px 0 6px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+#set-panel-apps .github-bot-select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid var(--settings-line, var(--border-soft));
+  border-radius: 6px;
+  background: var(--settings-control, var(--mac-control));
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+}
+
+#set-panel-apps .github-access-connection-state {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--settings-line, var(--border-soft));
+}
+
+#set-panel-apps .github-access-actions {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  margin: 11px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+#set-panel-apps .github-access-actions legend {
+  margin: 0 0 5px;
+  padding: 0;
+  color: var(--text-2);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+#set-panel-apps .github-access-action {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 35px;
+  border-bottom: 1px solid var(--settings-line, var(--border-soft));
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+#set-panel-apps .github-access-action input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--mac-action, var(--accent));
+}
+
+#set-panel-apps .github-access-action input:disabled {
+  cursor: default;
+}
+
+#set-panel-apps .github-action-state {
+  color: var(--settings-muted, var(--text-3));
+  font-size: 11px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+#set-panel-apps .github-action-state[data-state="active"] {
+  color: var(--ok);
+}
+
+#set-panel-apps .github-action-state[data-state="pending"] {
+  color: var(--danger);
+}
+
+#set-panel-apps .github-scope-note {
+  margin-top: 10px;
+  font-size: 11.5px;
+}
+
+#set-panel-apps .github-access-footer {
+  justify-content: flex-start;
+  padding-top: 10px;
+  border-top: 1px solid var(--settings-line, var(--border-soft));
+}
+
+#set-panel-apps .github-access-footer .github-disconnect-button {
+  margin-left: auto;
+}
+
+#set-panel-apps .github-connection-dialog button:disabled,
+#set-panel-apps .github-bot-select:disabled,
+#set-panel-apps .github-access-action input:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+@media(max-width:520px) {
+  #set-panel-apps .github-connection-dialog {
+    width: calc(100vw - 24px);
+    max-height: 86vh;
+    padding: 13px;
+  }
+  #set-panel-apps .github-access-footer .github-disconnect-button {
+    margin-left: 0;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  #set-panel-apps .github-connection-dialog * {
+    scroll-behavior: auto;
+  }
+}

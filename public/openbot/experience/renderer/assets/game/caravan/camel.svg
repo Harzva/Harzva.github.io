@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 84" role="img" aria-label="驼票">
+  <rect x="2" y="2" width="56" height="80" rx="8" fill="#f3e3c6" stroke="#8a6a2f" stroke-width="2.4"/>
+  <rect x="7" y="7" width="46" height="70" rx="5" fill="#fbf2de" stroke="#c2a25c" stroke-width="1.2"/>
+  <path d="M14 58c0-4 2-6 5-8 1-6 4-9 8-10 2-3 5-4 8-3s4 4 4 7c4 1 6 4 6 8l3 6" fill="none" stroke="#8a6a2f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 54c1-7 4-11 9-13M31 41c2-4 5-5 8-4" fill="none" stroke="#c2a25c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 58v12M27 56v14M35 58v12M43 60v10" stroke="#8a6a2f" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="24" cy="40" r="1.6" fill="#8a6a2f"/>
+</svg>

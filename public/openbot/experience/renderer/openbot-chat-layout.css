@@ -1,0 +1,589 @@
+/* Readable conversation and long dictation drafts. */
+:root{--ob-chat-font-family:inherit;--ob-chat-font-size:14px;--ob-composer-radius:24px}
+body[data-openbot-composer-shape="compact"]{--ob-composer-radius:8px}
+body[data-openbot-composer-shape="soft"]{--ob-composer-radius:16px}
+body[data-openbot-composer-shape="pill"]{--ob-composer-radius:24px}
+#messages{max-width:900px;padding:24px clamp(16px,2.8vw,32px) 16px;min-height:96px;gap:20px;scrollbar-gutter:stable}
+.msg{font-family:var(--ob-chat-font-family,inherit);font-size:var(--ob-chat-font-size,14px);line-height:1.62;overflow-wrap:anywhere}
+.msg.bot{max-width:100%}
+.msg.user{max-width:min(92%,78ch);padding:10px 14px}
+.msg .meta{font-size:12px;line-height:1.4}
+.msg .msg-body{display:block;min-width:0;max-width:100%}
+.msg.user .msg-body{white-space:pre-wrap}
+.msg .msg-body.uw-thread-markdown{white-space:normal}
+.uw-thread-markdown .md-h4{font-size:.98em}
+.uw-thread-markdown .md-h5{font-size:.94em}
+.uw-thread-markdown .md-h6{font-size:.9em;color:var(--text-2,#686c74)}
+.uw-thread-markdown .md-link{color:var(--accent,#5b8cff);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.uw-thread-markdown .md-link:hover{text-decoration-thickness:2px}
+.uw-thread-markdown .md-task{display:flex;align-items:flex-start;gap:6px;list-style:none;margin-inline-start:-1.35em}
+.uw-thread-markdown .md-task input{flex:none;margin:.32em 0 0;accent-color:var(--accent,#5b8cff)}
+.chat-input-bar{max-width:900px;display:flex;flex-direction:column;gap:7px;padding:10px clamp(16px,2.8vw,32px) 18px}
+.chat-input-bar .composer{min-width:0;border-radius:var(--ob-composer-radius,24px);padding:6px 8px 6px 12px;gap:8px;background:transparent;border-color:var(--border-soft,var(--border,#dedfe3));box-shadow:none}
+.chat-input-bar .composer:focus-within{border-color:var(--accent);box-shadow:none}
+.chat-input-bar .composer #chat-input{min-width:0;min-height:40px;max-height:min(180px,30vh);font-family:var(--ob-chat-font-family,inherit);font-size:var(--ob-chat-font-size,14px);line-height:1.5;padding:4px 0;background:transparent;border:0;overflow-y:hidden;scrollbar-gutter:stable}
+.composer-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;color:var(--text-3)}
+.composer-tools-actions{display:flex;gap:4px;flex-shrink:0}
+.composer-mode-control{position:relative;display:inline-flex;align-items:center;flex:0 0 auto;min-width:0}
+.composer-mode-control[hidden]{display:none}
+.composer-mode-control select{appearance:none;-webkit-appearance:none;max-width:160px;min-height:28px;padding:4px 19px 4px 7px;border:0;border-radius:5px;background:transparent;color:var(--text-2);font:inherit;font-size:12px;line-height:1.3;cursor:pointer}
+.composer-mode-control select:hover{background:var(--bg-hover);color:var(--text)}
+.composer-mode-control select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.composer-mode-control select:disabled{opacity:.5;cursor:default}
+.composer-mode-control::after{content:"";position:absolute;right:8px;top:50%;width:5px;height:5px;border-right:1px solid var(--text-3);border-bottom:1px solid var(--text-3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.composer-tools button{font:inherit;font-size:12px;color:var(--text-2);border:0;border-radius:5px;background:transparent;padding:5px 7px;cursor:pointer;white-space:nowrap}
+.composer-tools button:hover{background:var(--bg-hover);color:var(--text)}
+.composer-tools button[aria-pressed="true"]{color:var(--text);background:var(--accent-soft)}
+.composer-tools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+:is(.composer-tools-actions,.ouw-composer-top) [data-openbot-composer-shape-control]{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:24px;max-width:100%;padding:2px 6px;border:0;border-radius:5px;color:var(--text-2);background:transparent;font:inherit;font-size:11px;line-height:1.3;white-space:nowrap;cursor:pointer}
+:is(.composer-tools-actions,.ouw-composer-top) [data-openbot-composer-shape-control]:hover{color:var(--text);background:var(--bg-hover)}
+:is(.composer-tools-actions,.ouw-composer-top) [data-openbot-composer-shape-control]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+:is(.composer-tools-actions,.ouw-composer-top) [data-openbot-composer-shape-control] svg{display:block;width:14px;height:14px;flex:0 0 14px}
+.composer-hint{font-size:11px;line-height:1.5;white-space:nowrap}
+body[data-input-expanded="true"] .composer #chat-input{min-height:min(240px,38vh);max-height:min(380px,45vh)}
+body[data-chat-focus="true"] #sidebar,body[data-chat-focus="true"] #config-panel{display:none}
+/* Jarvis is a single primary-Bot surface; its workers remain in the work drawer. */
+body[data-jarvis-mode="true"] #sidebar{display:none}
+/* hiddenInset leaves the native traffic lights over the top-left header area. */
+body.desktop[data-jarvis-mode="true"] #bot-header{padding-left:92px}
+/* The board hides low-frequency controls in ordinary mode; Jarvis still needs its global More entry. */
+body[data-jarvis-mode="true"][data-view="board"] #header-more{display:block}
+body[data-chat-focus="true"] #messages,body[data-chat-focus="true"] .chat-input-bar{max-width:960px}
+body[data-chat-focus="true"] #chat-history-surface{--ob-history-reading-max:960px}
+@media(max-width:1100px){.composer-hint{display:none}.composer-tools{justify-content:flex-start}}
+@media(max-width:720px){
+  body:not([data-chat-focus="true"]) .chat-input-bar{padding-left:8px;padding-right:8px}
+  body:not([data-chat-focus="true"]) .composer{display:grid;grid-template-columns:30px minmax(0,1fr) 34px;align-items:stretch;column-gap:6px;row-gap:0;padding:8px}
+  body:not([data-chat-focus="true"]) .composer .app-observation-button{grid-column:1;grid-row:1;align-self:end;justify-self:start}
+  body:not([data-chat-focus="true"]) .composer #chat-input{grid-column:2;grid-row:1;width:100%;min-height:52px;line-height:1.4;padding:4px 0}
+  body:not([data-chat-focus="true"]) .composer .send-btn{grid-column:3;grid-row:1;align-self:end;justify-self:end}
+  body:not([data-chat-focus="true"]) .composer-tools{align-items:flex-start;justify-content:flex-start;flex-wrap:wrap;gap:4px}
+  body:not([data-chat-focus="true"]) .composer-tools-actions{flex:1 1 100%;min-width:0;flex-wrap:wrap;gap:4px}
+  body:not([data-chat-focus="true"]) .composer-tools button{max-width:100%;min-height:30px;padding-left:5px;padding-right:5px;white-space:normal}
+}
+@media(max-height:650px){.chat-input-bar{padding-bottom:10px}#messages{padding-top:18px;gap:18px}}
+
+/* A quiet map for long conversations. It is anchored to the reading column,
+   so the work drawer keeps its own boundary and the composer keeps its width. */
+#chat-history-surface{
+  --ob-history-reading-max:calc(var(--ob-reading-width, 780px) + 64px);
+  position:relative;
+  display:flex;
+  flex:1 1 auto;
+  min-width:0;
+  min-height:0;
+  width:100%;
+  isolation:isolate;
+}
+#chat-history-surface>#messages{
+  flex:1 1 auto;
+  min-width:0;
+  min-height:0;
+  width:100%;
+  padding:24px clamp(16px,2.8vw,32px) 16px;
+  gap:20px;
+}
+@media(max-height:650px){#chat-history-surface>#messages{padding-top:18px;gap:18px}}
+#chat-history-surface>#chat-history-latest[hidden]{display:none}
+/* The latest shortcut is an overlay on the reading surface. Give it a
+   temporary bottom lane only while it is visible, so the last message never
+   sits underneath the control. The hidden contract keeps the normal chat
+   height unchanged. */
+#chat-history-surface:has(>#chat-history-latest:not([hidden])){
+  padding-bottom:44px;
+  --ob-history-rail-bottom-inset:44px;
+}
+
+#chat-history-latest:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+#chat-history-surface>#chat-history-latest{
+  position:absolute;
+  left:calc((100% + min(var(--ob-history-reading-max,844px),calc(100% - 32px))) / 2 + 12px);
+  right:auto;
+  bottom:10px;
+  z-index:7;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  max-width:min(280px,calc(100% - 24px));
+  min-height:32px;
+  padding:7px 10px;
+  border:1px solid var(--border-soft);
+  border-radius:8px;
+  background:var(--mac-control,var(--bg-panel));
+  color:var(--accent);
+  font:inherit;
+  font-size:12px;
+  line-height:1.45;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 4px 16px rgb(0 0 0 / 8%);
+}
+#chat-history-surface>#chat-history-latest:hover{background:var(--bg-hover);color:var(--text)}
+
+/* A short, quiet landing cue after a history jump. The controller removes the
+   class after its brief focus window; there is no large motion here. */
+.msg.chat-history-target{
+  outline:2px solid var(--accent);
+  outline-offset:4px;
+}
+
+/* When a work drawer narrows the chat panel, keep the handle on this panel's
+   edge instead of letting it drift toward the drawer. */
+@container workbench (max-width:800px){
+
+  #chat-history-surface>#chat-history-latest{right:12px}
+}
+@container workbench (max-width:1000px){
+  #chat-history-surface>#chat-history-latest{left:auto;right:12px}
+}
+@container workbench (max-width:580px){
+
+  #chat-history-surface>#chat-history-latest{right:12px;bottom:8px}
+}
+/* Below the desktop workbench breakpoint the drawer overlays the app instead
+   of resizing it. Keep the chat-history controls on the visible chat side so
+   a click cannot land on the drawer backdrop. */
+@media(max-width:1279px){
+  body:has(#org-drawer:not(.hidden)){--ob-history-drawer-width:var(--ob-work-width,400px)}
+  body:has(#org-drawer.org-graph-open:not(.hidden)){--ob-history-drawer-width:min(760px,calc(100vw - 24px))}
+
+  body:has(#org-drawer:not(.hidden)) #chat-history-surface>#chat-history-latest{
+    left:auto;
+    right:calc(var(--ob-history-drawer-width,400px) + 12px)
+  }
+}
+@media(prefers-reduced-motion:reduce){
+#chat-history-surface,
+#messages{scroll-behavior:auto}
+
+  .msg.chat-history-target{transition:none!important;animation:none!important}
+}
+
+/* Six-pixel ticks sit on a ten-pixel rhythm, with a 26-pixel active tick.
+   The single rail supports pointer previews and keyboard navigation. */
+#chat-history-surface{
+  --ob-history-rail-width:42px;
+  --ob-history-rail-gap:20px;
+  --ob-history-rail-tick-left:16px;
+  --ob-history-rail-row:10px;
+  /* Media ticks keep the quiet text gray while giving visual work a small,
+     scan-friendly signature. JS may replace --ob-history-media-paint on a
+     mixed tick with an ordered segmented gradient. */
+  --ob-history-media-text:#a7a9af;
+  --ob-history-media-text-current:#6e727a;
+  --ob-history-media-video:#dd4e4e;
+  --ob-history-media-image:#4388ed;
+  --ob-history-media-audio:#9564d2;
+  --ob-history-rail-left:max(8px,calc((100% - min(var(--ob-history-reading-max),calc(100% - 32px))) / 2 - var(--ob-history-rail-width) - var(--ob-history-rail-gap)));
+}
+#chat-history-rail[hidden],
+#chat-history-preview[hidden]{display:none}
+#chat-history-surface::before{display:none}
+#chat-history-surface>#chat-history-rail{
+  position:absolute;
+  top:calc((100% - var(--ob-history-rail-bottom-inset,0px)) / 2);
+  bottom:auto;
+  left:var(--ob-history-rail-left);
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  box-sizing:border-box;
+  width:var(--ob-history-rail-width);
+  height:auto;
+  max-height:calc(100% - var(--ob-history-rail-bottom-inset,0px) - 32px);
+  min-height:0;
+  padding:4px 0;
+  gap:0;
+  transform:translateY(-50%);
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  scrollbar-width:none;
+  pointer-events:auto;
+}
+#chat-history-surface>#chat-history-rail::-webkit-scrollbar{width:0;height:0}
+#chat-history-rail::before{
+  display:none;
+}
+#chat-history-rail .chat-history-rail-item{
+  --ob-history-hover:0;
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex:0 0 var(--ob-history-rail-row);
+  align-items:center;
+  justify-content:flex-start;
+  min-width:var(--ob-history-rail-width);
+  min-height:var(--ob-history-rail-row);
+  height:var(--ob-history-rail-row);
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:transparent;
+  font:inherit;
+  cursor:pointer;
+  -webkit-app-region:no-drag;
+}
+#chat-history-rail .chat-history-rail-item::before{
+  content:"";
+  display:block;
+  width:6px;
+  height:2px;
+  margin-left:var(--ob-history-rail-tick-left);
+  border-radius:0;
+  background:var(--ob-history-media-paint,var(--ob-history-media-text));
+  opacity:1;
+  transform:scaleX(calc(1 + (var(--ob-history-hover,0) * 3.333)));
+  transform-origin:left center;
+  transition:transform 140ms cubic-bezier(.16,1,.3,1),background-color 140ms ease;
+}
+#chat-history-rail .chat-history-rail-item[data-media-types="video"]{--ob-history-media-paint:var(--ob-history-media-video)}
+#chat-history-rail .chat-history-rail-item[data-media-types="image"]{--ob-history-media-paint:var(--ob-history-media-image)}
+#chat-history-rail .chat-history-rail-item[data-media-types="audio"]{--ob-history-media-paint:var(--ob-history-media-audio)}
+/* Ordered fallbacks keep mixed ticks meaningful if the renderer has not
+   supplied the optional inline paint yet. */
+#chat-history-rail .chat-history-rail-item[data-media-types="video image"]{--ob-history-media-paint:linear-gradient(90deg,var(--ob-history-media-video) 0 50%,var(--ob-history-media-image) 50% 100%)}
+#chat-history-rail .chat-history-rail-item[data-media-types="video audio"]{--ob-history-media-paint:linear-gradient(90deg,var(--ob-history-media-video) 0 50%,var(--ob-history-media-audio) 50% 100%)}
+#chat-history-rail .chat-history-rail-item[data-media-types="image audio"]{--ob-history-media-paint:linear-gradient(90deg,var(--ob-history-media-image) 0 50%,var(--ob-history-media-audio) 50% 100%)}
+#chat-history-rail .chat-history-rail-item[data-media-types="video image audio"]{--ob-history-media-paint:linear-gradient(90deg,var(--ob-history-media-video) 0 33.333%,var(--ob-history-media-image) 33.333% 66.666%,var(--ob-history-media-audio) 66.666% 100%)}
+#chat-history-rail .chat-history-rail-item:hover,
+#chat-history-rail .chat-history-rail-item:focus-visible{
+  --ob-history-hover:1;
+}
+#chat-history-rail .chat-history-rail-item:hover::before,
+#chat-history-rail .chat-history-rail-item:focus-visible::before{
+  background:var(--ob-history-media-paint,var(--ob-history-media-text));
+  filter:saturate(1.08) brightness(1.08);
+}
+#chat-history-rail .chat-history-rail-item[aria-current="location"]::before{
+  width:26px;
+  background:var(--ob-history-media-paint,var(--ob-history-media-text-current));
+  filter:saturate(1.08) brightness(.9);
+  transform:none;
+}
+#chat-history-rail .chat-history-rail-item[aria-current="location"]:hover::before,
+#chat-history-rail .chat-history-rail-item[aria-current="location"]:focus-visible::before{
+  width:26px;
+  background:var(--ob-history-media-paint,var(--ob-history-media-text-current));
+  filter:saturate(1.08) brightness(.96);
+}
+#chat-history-rail .chat-history-rail-item:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+@media(prefers-color-scheme:dark){
+  #chat-history-surface{
+    --ob-history-media-text:#777a83;
+    --ob-history-media-text-current:#b8bbc2;
+    --ob-history-media-video:#f06a6a;
+    --ob-history-media-image:#78a9ff;
+    --ob-history-media-audio:#c08aff;
+  }
+}
+
+/* JS supplies the preview position and clamps it to the visible surface.
+   The card deliberately stays neutral and non-interactive so a hover never
+   steals the rail item's focus or causes a second navigation target. */
+#chat-history-surface>#chat-history-preview{
+  position:absolute;
+  z-index:8;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  width:min(320px,calc(100vw - 48px));
+  min-width:min(240px,calc(100vw - 48px));
+  max-height:min(220px,calc(100vh - 144px));
+  overflow:hidden;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--mac-control,var(--bg-panel));
+  color:var(--text);
+  box-shadow:0 10px 26px rgb(0 0 0 / 14%);
+  pointer-events:none;
+  backface-visibility:hidden;
+}
+#chat-history-surface>#chat-history-preview[data-motion="open"]{
+  will-change:transform,opacity;
+}
+#chat-history-surface>#chat-history-preview[data-motion="closing"]{
+  pointer-events:none;
+}
+#chat-history-preview .chat-history-preview-question,
+#chat-history-preview .chat-history-preview-media,
+#chat-history-preview .chat-history-preview-answer{
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+  overflow-wrap:anywhere;
+}
+#chat-history-preview .chat-history-preview-media[hidden]{display:none}
+#chat-history-preview .chat-history-preview-media{
+  color:var(--text-2);
+  font-size:11px;
+  font-weight:500;
+  line-height:1.35;
+}
+#chat-history-preview .chat-history-preview-question{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  color:var(--text);
+  font-size:12px;
+  font-weight:600;
+  line-height:1.45;
+}
+#chat-history-preview .chat-history-preview-answer{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  color:var(--text-2);
+  font-size:11px;
+  line-height:1.5;
+}
+
+@container workbench (max-width:760px){
+  #chat-history-surface{
+    --ob-history-rail-width:30px;
+    --ob-history-rail-gap:4px;
+    --ob-history-rail-tick-left:10px;
+    --ob-history-rail-left:4px;
+  }
+  #chat-history-rail .chat-history-rail-item::before{margin-left:10px;width:6px}
+  #chat-history-rail .chat-history-rail-item[aria-current="location"]::before{width:20px}
+  #chat-history-rail .chat-history-rail-item[aria-current="location"]:hover::before,
+  #chat-history-rail .chat-history-rail-item[aria-current="location"]:focus-visible::before{width:20px}
+
+  #chat-history-surface>#chat-history-preview{
+    width:min(300px,calc(100vw - 40px));
+    min-width:min(200px,calc(100vw - 40px));
+  }
+}
+@container workbench (max-width:580px){
+
+  #chat-history-surface>#chat-history-preview{
+    width:min(248px,calc(100vw - 32px));
+    min-width:min(168px,calc(100vw - 32px));
+    max-height:calc(100vh - 168px);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #chat-history-rail .chat-history-rail-item::before{transition:none;transform:none}
+  #chat-history-surface>#chat-history-preview{will-change:auto}
+}
+
+/* Keep the DOM hidden contract authoritative over the visible rail rules. */
+#chat-history-surface>#chat-history-rail[hidden],
+#chat-history-surface>#chat-history-preview[hidden]{display:none}
+
+/* The history index can mirror the reading column without becoming a second
+   sidebar.  The renderer supplies the right inset when the work drawer owns
+   the far edge of the window; the fallback keeps the rail on the chat side
+   for older layouts that only expose the drawer width. */
+body[data-history-side="right"] #chat-history-surface>#chat-history-rail{
+  left:auto;
+  right:calc(
+    var(--ob-history-right-inset,var(--ob-history-drawer-width,0px)) +
+    max(8px,calc((100% - min(var(--ob-history-reading-max),calc(100% - 32px))) / 2 - var(--ob-history-rail-width) - var(--ob-history-rail-gap)))
+  );
+}
+
+body[data-history-side="right"] #chat-history-surface>#chat-history-rail .chat-history-rail-item{
+  justify-content:flex-end;
+}
+body[data-history-side="right"] #chat-history-surface>#chat-history-rail .chat-history-rail-item::before{
+  margin-left:0;
+  margin-right:var(--ob-history-rail-tick-left);
+  transform-origin:right center;
+}
+body[data-history-side="right"] #chat-history-surface>#chat-history-rail::before{
+  display:none;
+}
+@container workbench (max-width:760px){
+  body[data-history-side="right"] #chat-history-surface>#chat-history-rail .chat-history-rail-item::before{margin-right:10px}
+}
+
+/* The overlay rail needs a real text gutter when the reading column reaches
+   the edge. Subtract the centered column margin so wide layouts keep their
+   existing reading width. Reserve space only while navigation is visible. */
+#chat-history-surface{
+  --ob-history-content-gutter:max(clamp(16px,2.8vw,32px),calc(var(--ob-history-rail-left) + var(--ob-history-rail-width) + 20px - max(0px,(100% - var(--ob-history-reading-max)) / 2)));
+}
+body:not([data-history-side="right"]) #chat-history-surface:has(>#chat-history-rail:not([hidden]))>#messages{
+  padding-left:var(--ob-history-content-gutter);
+}
+body[data-history-side="right"] #chat-history-surface:has(>#chat-history-rail:not([hidden]))>#messages{
+  padding-right:calc(var(--ob-history-right-inset,var(--ob-history-drawer-width,0px)) + var(--ob-history-content-gutter));
+}
+
+/* Jarvis identity strip: the primary stays prominent, companions open their
+   workspace; ordinary chat uses the existing Bot list. */
+#bot-header:has(#header-bot-switcher){
+  grid-template-columns:minmax(0,1fr) auto auto minmax(0,1fr);
+}
+#bot-header:has(#header-bot-switcher)>#header-bot-switcher{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:3px;
+  grid-column:3;
+  grid-row:1;
+  align-self:center;
+  justify-self:start;
+  min-width:0;
+  max-width:min(244px,28vw);
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+}
+#bot-header:has(#header-bot-switcher)>#header-bot-switcher::-webkit-scrollbar{display:none}
+#bot-header:has(#header-bot-switcher)>#header-bot-switcher>[role="group"]{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:3px;
+  min-width:0;
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+}
+#bot-header:has(#header-bot-switcher)>#header-bot-switcher>[role="group"]::-webkit-scrollbar{display:none}
+#bot-header:has(#header-bot-switcher)>.header-actions{
+  grid-column:4;
+  grid-row:1;
+  min-width:0;
+}
+#bot-header #header-bot-switcher .header-bot-option{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  padding:2px;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:var(--text-2);
+  cursor:pointer;
+  -webkit-app-region:no-drag;
+}
+#bot-header #header-bot-switcher .header-bot-option:hover{background:var(--bg-hover);color:var(--text)}
+#bot-header #header-bot-switcher .header-bot-option:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+#bot-header #header-bot-switcher .header-bot-option[aria-pressed="true"],
+#bot-header #header-bot-switcher .header-bot-option[selected]{
+  width:38px;
+  height:38px;
+  flex-basis:38px;
+  padding:1px;
+  background:var(--bg-active,var(--bg-hover));
+  color:var(--text);
+}
+#bot-header #header-bot-switcher .header-bot-option[data-primary="true"]{
+  width:42px;
+  height:42px;
+  flex-basis:42px;
+  padding:0;
+}
+#bot-header #header-bot-switcher .header-bot-option[data-primary="true"][aria-pressed="true"],
+#bot-header #header-bot-switcher .header-bot-option[data-primary="true"][selected]{
+  width:44px;
+  height:44px;
+  flex-basis:44px;
+}
+#bot-header #header-bot-switcher .header-bot-option>:is(.avatar,.ob-avatar){
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+}
+
+/* #btn-avatar remains the current identity control.  Its size follows the
+   same hierarchy when the renderer annotates it with data-primary. */
+#bot-header #btn-avatar[data-primary="false"]>:is(.avatar,.ob-avatar){width:36px;height:36px}
+#bot-header #btn-avatar[data-primary="true"]>:is(.avatar,.ob-avatar){width:44px;height:44px}
+
+@container workbench (max-width:800px){
+  #bot-header:has(#header-bot-switcher){
+    height:100px;
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-rows:40px 32px;
+    gap:4px 12px;
+    padding:10px 20px;
+  }
+  #bot-header:has(#header-bot-switcher)>.header-identity{grid-column:1;grid-row:1}
+  #bot-header:has(#header-bot-switcher)>.header-actions{grid-column:2;grid-row:1}
+  #bot-header:has(#header-bot-switcher)>.view-switch{grid-column:1;grid-row:2;justify-self:start}
+  #bot-header:has(#header-bot-switcher)>#header-bot-switcher{max-width:min(184px,26vw)}
+  #bot-header #header-bot-switcher .header-bot-option{width:28px;height:28px;flex-basis:28px}
+  #bot-header #header-bot-switcher .header-bot-option[aria-pressed="true"],
+  #bot-header #header-bot-switcher .header-bot-option[selected]{width:34px;height:34px;flex-basis:34px}
+  #bot-header #header-bot-switcher .header-bot-option[data-primary="true"]{width:38px;height:38px;flex-basis:38px}
+  #bot-header #header-bot-switcher .header-bot-option[data-primary="true"][aria-pressed="true"],
+  #bot-header #header-bot-switcher .header-bot-option[data-primary="true"][selected]{width:40px;height:40px;flex-basis:40px}
+}
+@container workbench (max-width:760px){
+  body[data-history-side="right"] #chat-history-surface>#chat-history-rail{
+    right:calc(var(--ob-history-right-inset,var(--ob-history-drawer-width,0px)) + 4px);
+  }
+
+}
+@container workbench (max-width:580px){
+  #bot-header:has(#header-bot-switcher){
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-rows:40px 32px;
+    gap:4px 12px;
+  }
+  #bot-header:has(#header-bot-switcher)>#header-bot-switcher{
+    grid-column:2;
+    grid-row:2;
+    align-self:center;
+    justify-self:end;
+    max-width:min(184px,100%);
+  }
+  #bot-header:has(#header-bot-switcher)>.header-identity{grid-column:1;grid-row:1}
+  #bot-header:has(#header-bot-switcher)>.header-actions{grid-column:2;grid-row:1}
+  #bot-header:has(#header-bot-switcher)>.view-switch{grid-column:1;grid-row:2;justify-self:start}
+
+}
+@media(prefers-reduced-motion:reduce){
+  #bot-header #header-bot-switcher .header-bot-option,
+  #bot-header #header-bot-switcher .header-bot-option>:is(.avatar,.ob-avatar){transition:none!important}
+}
+
+/* Below the desktop workbench breakpoint the drawer overlays the app instead
+   of resizing its header.  Use the visible chat width for the second row so
+   Bot choices stay reachable instead of being painted underneath the drawer. */
+@media(max-width:1279px){
+  body:has(#org-drawer:not(.hidden)) #bot-header:has(#header-bot-switcher){
+    height:100px;
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-rows:40px 32px;
+    gap:4px 12px;
+    padding:10px 20px;
+  }
+  body:has(#org-drawer:not(.hidden)) #bot-header:has(#header-bot-switcher)>.header-identity{grid-column:1;grid-row:1}
+  body:has(#org-drawer:not(.hidden)) #bot-header:has(#header-bot-switcher)>.header-actions{grid-column:2;grid-row:1}
+  body:has(#org-drawer:not(.hidden)) #bot-header:has(#header-bot-switcher)>.view-switch{grid-column:1;grid-row:2;justify-self:start}
+  body:has(#org-drawer:not(.hidden)) #bot-header:has(#header-bot-switcher)>#header-bot-switcher{
+    grid-column:2;
+    grid-row:2;
+    justify-self:start;
+    max-width:min(184px,100%);
+  }
+}

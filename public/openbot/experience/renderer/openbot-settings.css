@@ -1,0 +1,492 @@
+/* Settings are a destination: navigation on the left, aligned controls on the right. */
+#set-mask{
+  --settings-surface:var(--bg);--settings-sidebar:var(--bg-side);--settings-line:var(--border-soft);
+  --settings-selected:var(--bg-hover);--settings-control:var(--mac-control);--settings-muted:var(--text-3);
+  background:var(--settings-surface);backdrop-filter:none;-webkit-backdrop-filter:none;
+  color:var(--text);align-items:stretch;justify-content:stretch;
+}
+#set-mask .settings-modal{position:relative;display:grid;grid-template-columns:var(--ob-sidebar-width) minmax(0,1fr);width:100%;max-width:none;height:100%;max-height:none;padding:0;margin:0;border:0;border-radius:0;background:var(--settings-surface);box-shadow:none;overflow:hidden}
+.settings-sidebar{min-width:0;overflow:auto;padding:28px 14px;background:var(--settings-sidebar);border-right:1px solid var(--settings-line)}
+.desktop .settings-sidebar{padding-top:48px}
+.settings-sidebar-heading{display:flex;align-items:center;gap:7px;margin:0 8px 20px}
+#set-title{font-size:17px;font-weight:600;line-height:24px;margin:0;-webkit-app-region:drag}
+.settings-back{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;min-height:30px;padding:6px;border:0;border-radius:7px;background:transparent;color:var(--settings-muted);cursor:pointer;-webkit-app-region:no-drag}
+.settings-back:hover{background:var(--settings-selected);color:var(--text)}
+.settings-back .ob-icon{width:17px;height:17px}
+.settings-back:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.settings-search{display:flex;align-items:center;gap:8px;padding:0 6px 0 10px;min-height:36px;border-radius:8px;background:var(--settings-selected);color:var(--settings-muted);margin:0 0 24px}
+.settings-search .ob-icon{width:15px;height:15px;flex:0 0 15px}
+.settings-search input{flex:1 1 auto;min-width:0;width:100%;height:36px;border:0;background:transparent;color:var(--text);font:inherit;font-size:13px;outline:none;padding:0}
+.settings-search input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
+.settings-search input::placeholder{color:var(--settings-muted)}
+.settings-search>button#set-search-clear{display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;min-height:26px;padding:5px;border:0;border-radius:6px;background:transparent;color:var(--settings-muted);cursor:pointer}
+.settings-search>button#set-search-clear[hidden]{display:none}
+.settings-search>button#set-search-clear:hover{background:var(--bg);color:var(--text)}
+.settings-search>button#set-search-clear:focus-visible{outline:2px solid var(--accent);outline-offset:1px;color:var(--text)}
+.settings-search>button#set-search-clear .ob-icon{width:15px;height:15px}
+.settings-search:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.settings-search input:focus-visible{outline:none}
+.settings-search-hint{display:block;margin:-16px 8px 18px;color:var(--settings-muted);font-size:11px;line-height:1.4}
+.settings-search-hint[hidden]{display:none}
+.settings-nav-label{color:var(--settings-muted);font-size:12px;padding:0 8px;margin-bottom:8px}
+.settings-tabs{display:flex;flex-direction:column;gap:3px;margin:0}
+.settings-tabs button{display:flex;align-items:center;gap:9px;min-height:34px;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:var(--text-2);font:inherit;font-size:13px;font-weight:400;padding:7px 9px;cursor:pointer;transition:background-color 120ms ease,color 120ms ease}
+.settings-tabs button:hover:not([aria-selected="true"]){background:color-mix(in srgb,var(--settings-selected) 48%,transparent);color:var(--text)}
+.settings-tabs button[aria-selected="true"]{background:var(--settings-selected);color:var(--text);font-weight:600;border:0}
+#set-mask .settings-tabs button[aria-selected="true"]>span:not([data-settings-icon]){color:var(--text)}
+[data-settings-icon]{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.settings-tabs .ob-icon{width:16px;height:16px;flex-basis:16px;stroke-width:1.5}
+.settings-main{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.settings-panels{flex:1;min-height:0;overflow:auto;padding:56px 40px 32px;scroll-padding:24px;scrollbar-gutter:stable;overscroll-behavior:contain}
+.settings-page-head,.settings-panel,.settings-search-results{max-width:var(--ob-reading-width);margin:0 auto}
+.settings-page-head{margin-bottom:32px;-webkit-app-region:drag}
+.settings-page-head h2{margin:0;font-size:24px;font-weight:600;line-height:1.4;letter-spacing:0}
+.settings-panel[hidden],.settings-search-results[hidden],.settings-model-actions[hidden],.settings-auto-note[hidden],#set-footer[hidden],#set-search-list[hidden]{display:none}
+#set-panel-apps>[hidden],#set-panel-apps .apps-grid>[hidden]{display:none!important}
+.settings-section{margin:0 0 28px}
+.settings-section h4{font-size:14px;line-height:1.5;font-weight:500;color:var(--text);margin:0 0 12px}
+.settings-group{border:1px solid var(--settings-line);border-radius:10px;padding:0 16px;background:transparent;overflow:hidden}
+#set-mask .setting-row{display:flex;align-items:center;gap:24px;min-width:0;min-height:68px;margin:0;padding:12px 0;border:0;border-bottom:1px solid var(--settings-line);border-radius:0;background:transparent;box-shadow:none}
+#set-mask .setting-row:last-child{border-bottom:0}
+.setting-copy,.settings-panel .preference-switch-main{flex:1;min-width:0}
+.setting-copy label,.setting-label,.settings-panel .preference-switch-title{display:block;color:var(--text);font-size:14px;font-weight:500;line-height:1.5;margin:0}
+.setting-copy p,.settings-panel .preference-switch-note{display:block;font-size:12.5px;line-height:1.55;color:var(--settings-muted);margin:3px 0 0;overflow-wrap:anywhere}
+#set-mask .setting-row>.t{flex:0 1 288px;width:288px;min-width:0;max-width:48%;min-height:32px;padding:6px 10px;background-color:var(--settings-control);border:1px solid var(--settings-line);border-radius:8px;box-shadow:none;font-size:12px}
+#set-mask .setting-row>select.t{padding-right:30px}
+#set-mask .chat-typography-controls{display:flex;align-items:center;gap:6px;flex:0 1 288px;width:288px;max-width:48%;min-width:0}
+#set-mask .chat-typography-controls>.t{box-sizing:border-box;flex:1 1 0;width:0;min-width:0;max-width:none;min-height:32px;padding:6px 8px;background-color:var(--settings-control);border:1px solid var(--settings-line);border-radius:8px;box-shadow:none;font-size:12px}
+#set-mask .chat-typography-controls>#set-chat-font{flex-grow:1.35}
+#set-mask .chat-typography-controls>#set-chat-font-size{flex-grow:.85}
+#set-mask .chat-typography-controls>select.t{padding-right:22px}
+#set-mask .chat-typography-controls>.t:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+#set-mask .setting-row>.sidebar-avatar-size-options{display:flex;align-items:center;justify-content:flex-end;gap:2px;flex:0 0 auto;width:auto;max-width:48%}
+#set-mask .sidebar-avatar-size-options>button{display:inline-grid;place-items:center;box-sizing:border-box;min-width:46px;min-height:32px;padding:6px 12px;border:0;border-radius:7px;background:transparent;color:var(--text);font:inherit;font-size:12px;font-weight:400;line-height:1.3;cursor:pointer;box-shadow:none;transition:background-color .12s ease,color .12s ease}
+#set-mask .sidebar-avatar-size-options>button:hover:not(:disabled):not([aria-checked="true"]){background:var(--bg-hover)}
+#set-mask .sidebar-avatar-size-options>button[aria-checked="true"]{background:var(--settings-selected);color:var(--text);font-weight:500}
+#set-mask .sidebar-avatar-size-options>button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-mask .sidebar-avatar-size-options>button:disabled{cursor:default;opacity:.62}
+#set-mask .sidebar-avatar-size-status{min-height:1em;color:var(--settings-muted);font-size:11px;line-height:1.35}
+#set-mask .setting-row>.t:focus-visible,#config-panel .t:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+#set-mask .setting-row>#set-companion-mode{flex:0 0 94px;width:94px;max-width:40%}
+#set-mask .setting-row>.btn{flex:0 0 auto;min-height:30px;padding:5px 10px;border:0;border-radius:7px;background:var(--settings-selected);font-size:12px;color:var(--text)}
+#set-mask .setting-row>.btn .ob-icon{display:none}
+#set-mask .setting-row>.btn:hover{background:var(--bg-hover)}
+#set-mask .settings-intro{font-size:13px;line-height:1.7;color:var(--settings-muted);margin:0 0 28px}
+#set-mask #set-status{font-size:12px;line-height:1.65;color:var(--settings-muted);margin-top:-20px;overflow-wrap:anywhere}
+#set-mask #set-status.error{color:var(--danger)}
+#set-mask .settings-footer{display:flex;align-items:center;flex:0 0 auto;width:100%;max-width:calc(var(--ob-reading-width) + 80px);min-height:68px;margin:0 auto;padding:12px 40px 24px;border:0;background:var(--settings-surface)}
+.settings-model-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+.settings-model-actions .btn{min-height:32px;border-radius:7px;font-size:12px;padding:6px 12px}
+.settings-model-actions .ob-icon{display:none}
+.settings-auto-note{font-size:12px;color:var(--settings-muted);margin:0}
+#set-close{position:absolute;top:18px;right:20px;display:grid;place-items:center;width:32px;height:32px;min-height:32px;padding:7px;border:0;border-radius:7px;background:transparent;color:var(--settings-muted);z-index:2;-webkit-app-region:no-drag}
+#set-close:hover{color:var(--text);background:var(--settings-selected)}
+#set-close .ob-icon{width:18px;height:18px}
+#set-search-status{font-size:13px;color:var(--settings-muted);line-height:1.7;margin:0 0 16px}
+.settings-search-result{box-sizing:border-box;display:flex;align-items:flex-start;gap:16px;width:100%;min-height:60px;border:0;border-bottom:1px solid var(--settings-line);background:transparent;color:var(--text);font:inherit;font-size:13px;line-height:1.5;text-align:left;padding:14px 4px 14px 0;cursor:pointer}
+.settings-search-result-label{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+.settings-search-result:last-child{border-bottom:0}
+.settings-search-result:hover{background:var(--settings-sidebar)}
+.settings-result-category{flex:0 0 auto;margin:2px 0 0 auto;color:var(--settings-muted);font-size:12px;line-height:1.4;white-space:nowrap}
+.settings-search-result:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.settings-tabs button:focus-visible,#set-mask .setting-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* One switch treatment in both application settings and the Bot inspector. */
+#set-mask .preference-switch input,:is(#config-panel .tool-switch input,#org-minimal){
+  appearance:none;-webkit-appearance:none;position:relative;order:1;flex:0 0 32px;width:32px;height:20px;margin:0;padding:0;border:0;border-radius:10px;background:#b2b2b7;cursor:pointer;transition:background-color 140ms ease;
+}
+#set-mask .preference-switch input::after,:is(#config-panel .tool-switch input,#org-minimal)::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgb(0 0 0 / 12%);transition:transform 140ms ease}
+#set-mask .preference-switch input:checked,:is(#config-panel .tool-switch input,#org-minimal):checked{background:var(--mac-action)}
+#set-mask .preference-switch input:checked::after,:is(#config-panel .tool-switch input,#org-minimal):checked::after{transform:translateX(12px)}
+#set-mask .preference-switch input:disabled,:is(#config-panel .tool-switch input,#org-minimal):disabled{opacity:.5;cursor:default}
+#set-mask .preference-switch input:focus-visible,:is(#config-panel .tool-switch input,#org-minimal):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* The compact inspector uses the same rows, type and control alignment. */
+#config-panel{padding:24px 20px;background:var(--bg);border-left-color:var(--border-soft)}
+#config-panel .inspector-header{position:sticky;top:0;z-index:4;display:flex;align-items:flex-start;gap:8px;min-width:0;margin:0 0 12px;padding:14px 0 9px;border-bottom:1px solid var(--border-soft);background:inherit}
+#config-panel .inspector-header-copy{flex:1 1 auto;min-width:0}
+#config-panel .inspector-heading{font-size:16px;font-weight:600;line-height:24px;margin:0;color:var(--text)}
+#config-panel .inspector-target-name{display:block;max-width:100%;margin-top:2px;color:var(--text-2);font-size:12px;font-weight:500;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#config-panel .inspector-close{display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:30px;margin:0;padding:4px 8px;border:1px solid var(--border-soft);border-radius:6px;background:transparent;color:var(--text-2);font:inherit;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer}
+#config-panel .inspector-close:hover{background:var(--bg-hover);color:var(--text)}
+#config-panel .inspector-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#config-panel .inspector-scope-note{margin:0 0 16px;color:var(--text-2);font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+#config-panel .cfg-section{margin-bottom:24px}
+#config-panel .cfg-title{font-size:13px;font-weight:500;margin-bottom:10px}
+#config-panel .f{font-size:12px;color:var(--text-2)}
+#config-panel .cfg-note{font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+#config-panel .cfg-row:has(>#cfg-name){display:flex;align-items:center;gap:14px;margin-bottom:14px}
+#config-panel .cfg-row:has(>#cfg-name) .f{flex:0 0 48px;margin:0}
+#config-panel #cfg-name{min-width:0;flex:1;width:0}
+#config-panel .cfg-section:has(>#cfg-model){display:grid;grid-template-columns:62px minmax(0,1fr);align-items:center;gap:8px 0;margin-bottom:18px}
+#config-panel .cfg-section:has(>#cfg-model)>.cfg-title{display:none}
+#config-panel .cfg-section:has(>#cfg-model)>.f{margin:0}
+#config-panel .model-custom{grid-column:1/-1;margin:0}
+#config-panel .inspector-disclosure{margin:0 0 8px;padding:0}
+#config-panel .inspector-disclosure>summary{font-size:13px;min-height:44px;padding:4px 0}
+#config-panel .inspector-preview .ob-avatar{width:24px;height:24px}
+#config-panel .inspector-screen-status,#config-panel .inspector-summary-state{font-size:12px}
+#config-panel .inspector-content{padding:12px 0 8px}
+#config-panel .inspector-content>.cfg-section{margin:0}
+#config-panel .cfg-section:has(#cfg-persona){margin-top:24px;margin-bottom:16px}
+#config-panel .tool-switch{display:flex;align-items:center;gap:20px;padding:0 0 20px;margin:0;border:0;background:transparent}
+#config-panel .tool-switch-main{order:0;flex:1;min-width:0}
+#config-panel .tool-switch-title{font-size:13px;font-weight:500}
+#config-panel .tool-switch-note{font-size:12px;color:var(--text-3);margin-top:4px}
+#config-panel .cfg-harness-row{display:grid;grid-template-columns:62px minmax(0,1fr);align-items:center;gap:8px 0;margin:0 0 12px}
+#config-panel .cfg-harness-row>.f{margin:0}
+#config-panel .cfg-harness-row>.cfg-note{grid-column:1/-1;margin:0}
+@media (max-width: 1100px) {
+  #config-panel .cfg-harness-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px 0;
+  }
+}
+#config-panel input.t,#config-panel select.t,#config-panel textarea.t{border-color:var(--border-soft);border-radius:7px;box-shadow:none}
+#config-panel .runtime-health{margin:4px 0 16px}
+#config-panel .runtime-health-title{font-size:13px}
+#config-panel .primary-setting{gap:10px;align-items:center}
+#config-panel .primary-setting .btn{flex-shrink:0;font-size:12px}
+#config-panel .inspector-advanced{margin-top:6px}
+#config-panel .inspector-advanced-toggle{display:flex;align-items:center;width:100%;min-height:44px;margin:0;padding:4px 2px;border:0;border-radius:5px;background:transparent;color:var(--text);font:inherit;font-size:13px;font-weight:500;text-align:left;cursor:pointer}
+#config-panel .inspector-advanced-toggle::after{content:"";width:5px;height:5px;flex:0 0 5px;margin-left:auto;margin-right:4px;border-right:1px solid var(--text-3);border-bottom:1px solid var(--text-3);transform:rotate(-45deg)}
+#config-panel .inspector-advanced-toggle[aria-expanded="true"]::after{transform:rotate(45deg)}
+#config-panel .inspector-advanced-toggle:hover{background:var(--bg-hover)}
+#config-panel .inspector-advanced-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#config-panel .inspector-advanced-body{padding-top:6px}
+#config-panel .inspector-advanced-body>.inspector-disclosure:last-child{margin-bottom:0}
+@media(max-width:1100px){
+  .settings-panels{padding:48px 32px 28px}
+  #set-mask .settings-footer{padding:12px 32px 24px}
+  #config-panel{padding:20px 16px}
+}
+@media(max-width:680px){
+  #set-mask .settings-modal{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+  .settings-sidebar{padding:18px 16px 12px;border-right:0;border-bottom:1px solid var(--settings-line);overflow:visible}
+  .settings-sidebar-heading{margin-bottom:14px}
+  .settings-search{margin-bottom:12px}
+  .settings-search-hint{margin:-8px 8px 12px}
+  .settings-nav-label{display:none}
+  .settings-tabs{flex-direction:row;flex-wrap:wrap;gap:4px}
+  .settings-tabs button{width:auto;flex:1 1 calc(33.333% - 4px);min-width:0;justify-content:center;padding:6px 5px;gap:5px;font-size:12px;white-space:nowrap}
+  .settings-tabs .ob-icon{width:14px;height:14px;flex-basis:14px}
+  .settings-panels{padding:28px 20px}
+  .settings-page-head{margin-bottom:28px}
+  .settings-page-head h2{font-size:24px}
+  #set-mask .setting-row{gap:16px}
+  #set-mask .setting-row:has(>input.t),#set-mask .setting-row:has(>#set-profile){flex-wrap:wrap;gap:10px}
+  #set-mask .setting-row>input.t,#set-mask .setting-row>#set-profile{flex:1 1 100%;max-width:none;width:100%}
+  #set-mask .settings-footer{padding:12px 20px 20px;min-height:56px}
+  #set-close{top:14px;right:14px}
+}
+@media(prefers-reduced-motion:reduce){#set-mask .preference-switch input,#set-mask .preference-switch input::after,:is(#config-panel .tool-switch input,#org-minimal),:is(#config-panel .tool-switch input,#org-minimal)::after{transition:none}}
+@media(forced-colors:active){#set-mask .preference-switch input,:is(#config-panel .tool-switch input,#org-minimal){appearance:auto;-webkit-appearance:auto}#set-mask .preference-switch input::after,:is(#config-panel .tool-switch input,#org-minimal)::after{display:none}}
+
+/* Application connections stay inside the native settings surface. The cards
+   are deliberately quiet: only the connection action is emphasized, while
+   provider-specific setup remains inside an explicit guide disclosure. */
+#set-panel-apps .apps-intro{
+  max-width:62ch;
+  margin:0 0 16px;
+  color:var(--settings-muted,var(--text-3));
+  font-size:13px;
+  line-height:1.6;
+}
+#set-panel-apps>.apps-section{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  margin:0 0 16px;
+  padding:12px 14px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:10px;
+  background:transparent;
+}
+#set-panel-apps>.apps-section header h3{margin:0;font-size:13.5px;font-weight:600;line-height:1.4;color:var(--text)}
+#set-panel-apps>.apps-section p{flex:1 1 220px;margin:0;color:var(--settings-muted,var(--text-3));font-size:12.5px;line-height:1.5}
+#set-panel-apps .apps-target{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  margin:0 0 18px;
+  padding:8px 11px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:9px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text);
+}
+#set-panel-apps .apps-target .ob-avatar,
+#set-panel-apps .apps-target .ob-avatar--list{
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+}
+#set-panel-apps .apps-target>*{min-width:0}
+#set-panel-apps .apps-target strong,
+#set-panel-apps .apps-target h3{
+  display:block;
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+  color:var(--text);
+  font-size:13px;
+  font-weight:600;
+  line-height:1.45;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+#set-panel-apps .apps-target p{
+  margin:2px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.5;
+}
+#set-panel-apps .apps-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:10px;
+  min-width:0;
+  margin:0;
+}
+#set-panel-apps .apps-card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:136px;
+  padding:12px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:9px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text);
+}
+#set-panel-apps .apps-card>header{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  min-width:0;
+  margin:0 0 7px;
+}
+#set-panel-apps .app-connection-icon{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:7px;
+  background:var(--mac-inset);
+  color:var(--text-2);
+}
+#set-panel-apps .app-connection-icon svg,
+#set-panel-apps .app-connection-icon .ob-icon{
+  width:18px;
+  height:18px;
+}
+#set-panel-apps .app-connection-icon:has(img){
+  background:#fff;
+  border-color:#e5e5e5;
+}
+#set-panel-apps .app-connection-icon img{
+  display:block;
+  width:22px;
+  height:22px;
+  object-fit:contain;
+}
+#set-panel-apps .apps-card>header>div{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+  min-width:0;
+  flex:1;
+}
+#set-panel-apps .apps-card h3{
+  min-width:0;
+  margin:0;
+  color:var(--text);
+  font-size:13.5px;
+  font-weight:600;
+  line-height:1.35;
+}
+#set-panel-apps .apps-status{
+  flex:0 0 auto;
+  color:var(--settings-muted,var(--text-3));
+  font-size:11px;
+  line-height:1.35;
+  white-space:nowrap;
+}
+#set-panel-apps .apps-card.is-connected .apps-status,
+#set-panel-apps .apps-status[data-state="connected"]{color:var(--ok)}
+#set-panel-apps .apps-card.is-unavailable .apps-status,
+#set-panel-apps .apps-status[data-state="setup"]{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps .apps-description{
+  margin:0 0 10px;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12.5px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .apps-card>.btn,
+#set-panel-apps #apps-telegram{
+  align-self:flex-start;
+  min-height:28px;
+  margin-top:auto;
+  padding:4px 10px;
+  font-size:12px;
+}
+#set-panel-apps .apps-catalog-card>.btn + .apps-guide{margin-top:6px}
+#set-panel-apps .apps-guide{
+  margin-top:auto;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+  padding-top:8px;
+}
+#set-panel-apps .apps-guide>summary{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:28px;
+  padding:3px 2px;
+  border-radius:5px;
+  color:var(--text-2);
+  font-size:12px;
+  line-height:1.5;
+  list-style:none;
+  cursor:pointer;
+}
+#set-panel-apps .apps-guide>summary::-webkit-details-marker{display:none}
+#set-panel-apps .apps-guide>summary::after{
+  content:"";
+  width:5px;
+  height:5px;
+  flex:0 0 5px;
+  margin-left:auto;
+  margin-right:3px;
+  border-right:1px solid currentColor;
+  border-bottom:1px solid currentColor;
+  transform:rotate(-45deg);
+}
+#set-panel-apps .apps-guide[open]>summary::after{transform:rotate(45deg)}
+#set-panel-apps .apps-guide>summary:hover{background:var(--bg-hover);color:var(--text)}
+#set-panel-apps .apps-guide>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .apps-guide>p{
+  margin:8px 2px 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.6;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .apps-grid .apps-guide{padding-top:6px}
+#set-panel-apps .apps-grid .apps-guide>summary{
+  min-height:24px;
+  padding:2px;
+  line-height:1.4;
+}
+#set-panel-apps .apps-grid .apps-guide>p{margin:6px 2px 0}
+#set-panel-apps .apps-guide code,
+#set-panel-apps .apps-guide pre{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+}
+#set-panel-apps .apps-guide code{
+  padding:1px 4px;
+  border-radius:4px;
+  background:var(--mac-inset);
+  color:var(--text-2);
+}
+#set-panel-apps .apps-guide pre{
+  max-height:150px;
+  margin:8px 0 0;
+  padding:8px 9px;
+  overflow:auto;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:6px;
+  background:var(--mac-inset);
+  color:var(--text-2);
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .apps-empty{
+  margin:0;
+  padding:16px;
+  border:1px dashed var(--settings-line,var(--border-soft));
+  border-radius:9px;
+  color:var(--settings-muted,var(--text-3));
+  font-size:13px;
+  line-height:1.65;
+  text-align:center;
+}
+#set-panel-apps .apps-cooperation{
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+}
+#set-panel-apps .apps-cooperation p{
+  margin:3px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12.5px;
+  line-height:1.55;
+}
+#set-panel-apps .apps-cooperation .btn:focus-visible,
+#set-panel-apps .apps-card .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:680px){
+  #set-panel-apps .apps-grid{grid-template-columns:minmax(0,1fr);gap:10px}
+  #set-panel-apps .apps-card{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  #set-panel-apps .apps-card .btn,
+  #set-panel-apps .apps-guide>summary{transition:none}
+}
+
+/* The history rail is a placement preference, so keep its control beside the
+   copy instead of promoting it to a separate settings card. */
+#set-panel-general #s-history-side{
+  flex:0 1 168px;
+  width:168px;
+  max-width:48%;
+}
+@media(max-width:680px){
+  #set-panel-general #s-history-side{
+    flex:1 1 100%;
+    width:100%;
+    max-width:none;
+  }
+  #set-panel-general .setting-row>.sidebar-avatar-size-options{flex:1 1 100%;width:100%;max-width:none;justify-content:flex-start}
+}
+
+/* General settings controls use their surface colour for shape, not a resting
+   stroke. Keep one clear keyboard ring on every interactive control. */
+#set-mask #set-panel-general :is(input.t,select.t,textarea.t){
+  border:0;
+  box-shadow:none;
+  background-color:var(--settings-control,var(--mac-control));
+}
+#set-mask #set-panel-general :is(input.t,select.t,textarea.t):hover:not(:disabled){
+  background-color:var(--bg-hover);
+}
+#set-mask #set-panel-general :is(input.t,select.t,textarea.t):focus-visible,
+#set-mask #set-panel-general :is(.btn,.role-label-reset-menu>summary):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+#set-mask #set-panel-general .btn{
+  border:0;
+  box-shadow:none;
+}
+@media(prefers-color-scheme:light){
+  #set-mask #set-panel-general :is(input.t,select.t,textarea.t){
+    background-color:var(--mac-inset,var(--bg-hover));
+  }
+}
+
+/* Personality annotation (manual MBTI tag + interaction style) */
+#config-panel .cfg-personality-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+#config-panel .cfg-personality-row .f{flex:0 0 auto;margin:0}
+#config-panel .cfg-personality-row select.t{flex:1 1 150px;min-width:130px}
+#config-panel #cfg-personality-note{margin-bottom:10px}
+#config-panel .cfg-check{display:flex;align-items:center;gap:6px;margin:2px 0 6px;font-size:12px;color:var(--text-2,#51515a)}
+#config-panel .cfg-check input[type="checkbox"]{width:14px;height:14px;margin:0}

@@ -1,0 +1,202 @@
+#set-panel-apps #hardware-section{
+  display:flex;
+  grid-column:1/-1;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  margin:0 0 10px;
+  padding:14px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:9px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text);
+}
+#set-panel-apps #hardware-section #hardware-root{min-width:0}
+#set-panel-apps #hardware-section .hardware-header{display:flex;align-items:flex-start;gap:9px;min-width:0;margin:0 0 7px}
+#set-panel-apps #hardware-section .hardware-icon{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent)}
+#set-panel-apps #hardware-section .hardware-icon svg{width:18px;height:18px}
+#set-panel-apps #hardware-section .hardware-heading{flex:1;min-width:0}
+#set-panel-apps #hardware-section .hardware-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+#set-panel-apps #hardware-section .hardware-title-row h3{min-width:0;margin:0;color:var(--text);font-size:13.5px;font-weight:600;line-height:1.35}
+#set-panel-apps #hardware-section .hardware-status-wrap{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+#set-panel-apps #hardware-section .hardware-status{color:var(--settings-muted,var(--text-3));font-size:11px;font-weight:600;line-height:1.4;white-space:nowrap}
+#set-panel-apps #hardware-section .hardware-status[data-state="connected"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-status[data-state="error"]{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-status-wrap>.btn,
+#set-panel-apps #hardware-section .hardware-device-actions>.btn,
+#set-panel-apps #hardware-section .hardware-import-body>.btn{min-height:28px;padding:4px 9px;font-size:11.5px}
+#set-panel-apps #hardware-section .hardware-description{margin:3px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.5;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-checked-at{margin:3px 0 0;color:var(--settings-muted,var(--text-3));font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-message{min-height:17px;margin:7px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-message[data-state="ok"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-message[data-state="error"]{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-message[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-companion,
+#set-panel-apps #hardware-section .hardware-devices,
+#set-panel-apps #hardware-section .hardware-import{margin-top:10px;padding-top:9px;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-companion h4,
+#set-panel-apps #hardware-section .hardware-devices h4{margin:0;color:var(--text-2);font-size:11.5px;font-weight:600;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-companion-row{display:flex;align-items:center;gap:8px;min-width:0;margin-top:7px}
+#set-panel-apps #hardware-section .hardware-avatar{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px}
+#set-panel-apps #hardware-section .hardware-avatar .ob-avatar{width:28px;height:28px;flex:0 0 28px}
+#set-panel-apps #hardware-section .hardware-companion-identity{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+#set-panel-apps #hardware-section .hardware-target-label{color:var(--settings-muted,var(--text-3));font-size:11px;line-height:1.35}
+#set-panel-apps #hardware-section .hardware-companion-details{display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-width:0}
+#set-panel-apps #hardware-section .hardware-companion-name{min-width:0;overflow:hidden;color:var(--text);font-size:12px;font-weight:600;line-height:1.45;text-overflow:ellipsis;white-space:nowrap}
+#set-panel-apps #hardware-section .hardware-presence{flex:0 0 auto;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-sync-rule{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;margin-top:8px}
+#set-panel-apps #hardware-section .hardware-sync-label{color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-sync-policy{color:var(--text-2);font-size:11px;font-weight:500;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-sync-status{color:var(--settings-muted,var(--text-3));font-size:10.5px;font-weight:600;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-sync-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-sync-note{margin:3px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-section-heading{display:flex;align-items:baseline;gap:9px;min-width:0}
+#set-panel-apps #hardware-section .hardware-device-count{color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-empty{margin:5px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.5;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-empty-error{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-device{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:7px 12px;min-width:0;padding:9px 0;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-device:first-child{margin-top:5px}
+#set-panel-apps #hardware-section .hardware-device-main{min-width:0}
+#set-panel-apps #hardware-section .hardware-device-title-row{display:flex;align-items:baseline;gap:9px;min-width:0}
+#set-panel-apps #hardware-section .hardware-device-name{min-width:0;margin:0;overflow:hidden;color:var(--text);font-size:12px;font-weight:600;line-height:1.45;text-overflow:ellipsis;white-space:nowrap}
+#set-panel-apps #hardware-section .hardware-device-status{flex:0 0 auto;color:var(--settings-muted,var(--text-3));font-size:11.5px;font-weight:600;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-device-status[data-state="connected"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-device-status[data-state="offline"]{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps #hardware-section .hardware-device-meta,
+#set-panel-apps #hardware-section .hardware-port,
+#set-panel-apps #hardware-section .hardware-serial-state,
+#set-panel-apps #hardware-section .hardware-last-seen,
+#set-panel-apps #hardware-section .hardware-device-sync{margin:2px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+#set-panel-apps #hardware-section .hardware-serial-state[data-state="ok"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-serial-state[data-state="error"]{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-serial-state[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-device-sync[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-device-actions{display:flex;align-items:flex-start;justify-content:flex-end;min-width:0}
+#set-panel-apps #hardware-section button:disabled{cursor:not-allowed;opacity:.52}
+#set-panel-apps #hardware-section .hardware-info{grid-column:1/-1;min-width:0}
+#set-panel-apps #hardware-section .hardware-info>summary,
+#set-panel-apps #hardware-section .hardware-import>summary{display:list-item;padding:3px 2px;color:var(--text-2);font-size:11px;line-height:1.4;cursor:pointer}
+#set-panel-apps #hardware-section .hardware-info>summary:hover,
+#set-panel-apps #hardware-section .hardware-import>summary:hover{color:var(--text)}
+#set-panel-apps #hardware-section .hardware-info>summary:focus-visible,
+#set-panel-apps #hardware-section .hardware-import>summary:focus-visible,
+#set-panel-apps #hardware-section button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+#set-panel-apps #hardware-section .hardware-info-body{padding:3px 2px 0;min-width:0}
+#set-panel-apps #hardware-section .hardware-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 16px;min-width:0;margin:0}
+#set-panel-apps #hardware-section .hardware-fact{display:grid;grid-template-columns:minmax(70px,auto) minmax(0,1fr);gap:8px;min-width:0;color:var(--text-2);font-size:11.5px;line-height:1.45}
+#set-panel-apps #hardware-section .hardware-fact dt{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps #hardware-section .hardware-fact dd{min-width:0;margin:0;overflow-wrap:anywhere;word-break:break-word}
+#set-panel-apps #hardware-section .hardware-fact-note{grid-column:2;margin:0;color:var(--settings-muted,var(--text-3));font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-observed,
+#set-panel-apps #hardware-section .hardware-empty-info,
+#set-panel-apps #hardware-section .hardware-import-note,
+#set-panel-apps #hardware-section .hardware-list-note{margin:7px 2px 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-import-body>.btn{margin:7px 2px 0}
+@media(max-width:900px){
+  #set-panel-apps #hardware-section .hardware-title-row{align-items:flex-start;flex-direction:column;gap:5px}
+  #set-panel-apps #hardware-section .hardware-status-wrap{width:100%;justify-content:flex-start}
+  #set-panel-apps #hardware-section .hardware-companion-details{align-items:flex-start;flex-direction:column;gap:2px}
+  #set-panel-apps #hardware-section .hardware-facts{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+  #set-panel-apps #hardware-section{padding:12px}
+  #set-panel-apps #hardware-section .hardware-device{grid-template-columns:minmax(0,1fr);gap:5px}
+  #set-panel-apps #hardware-section .hardware-device-actions{justify-content:flex-start}
+  #set-panel-apps #hardware-section .hardware-device-title-row{align-items:flex-start;flex-direction:column;gap:2px}
+  #set-panel-apps #hardware-section .hardware-fact{grid-template-columns:minmax(76px,auto) minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){#set-panel-apps #hardware-section *{scroll-behavior:auto}}
+
+/* Keep the hardware panel's richer display and gateway UI inside this card. */
+#set-panel-apps #hardware-section .hardware-content{display:flex;flex-direction:column;gap:0;min-width:0}
+#set-panel-apps #hardware-section .hardware-devices{min-width:0;margin-top:4px;padding-top:0;border-top:0}
+#set-panel-apps #hardware-section .hardware-section-heading{margin-bottom:8px}
+#set-panel-apps #hardware-section .hardware-section-heading h4{margin:0;color:var(--text);font-size:13px;font-weight:650;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-device-list{display:grid;gap:10px;min-width:0}
+#set-panel-apps #hardware-section .hardware-device{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"main actions" "mirror mirror" "info info";gap:8px 12px;min-width:0;margin:0;padding:12px;border:1px solid var(--settings-line,var(--border-soft));border-radius:9px;background:var(--settings-control,var(--mac-control))}
+#set-panel-apps #hardware-section .hardware-device-connected{border-color:color-mix(in srgb,var(--ok) 30%,var(--settings-line,var(--border-soft)))}
+#set-panel-apps #hardware-section .hardware-device:first-child{margin-top:0}
+#set-panel-apps #hardware-section .hardware-device-main{grid-area:main;min-width:0}
+#set-panel-apps #hardware-section .hardware-device-title-row{align-items:center;justify-content:space-between;gap:10px}
+#set-panel-apps #hardware-section .hardware-device-name{font-size:13px;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-device-status{font-size:11.5px}
+#set-panel-apps #hardware-section .hardware-device-actions{grid-area:actions;align-self:start}
+#set-panel-apps #hardware-section .hardware-device-actions>.btn{border:1px solid var(--settings-line,var(--border-soft));border-radius:7px;background:var(--settings-control,var(--mac-control));color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-device-actions>.btn:hover:not(:disabled){background:var(--bg-hover);color:var(--text)}
+#set-panel-apps #hardware-section .hardware-info{grid-area:info}
+#set-panel-apps #hardware-section .hardware-mirror{grid-area:mirror;min-width:0;max-width:100%;margin:9px 0 2px;padding:9px;border:1px solid var(--settings-line,var(--border-soft));border-radius:8px;background:color-mix(in srgb,var(--settings-control,var(--mac-control)) 82%,var(--settings-line,var(--border-soft)));overflow-x:auto;overscroll-behavior-inline:contain}
+#set-panel-apps #hardware-section .hardware-mirror-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-bottom:8px}
+#set-panel-apps #hardware-section .hardware-mirror-head>.btn{min-height:28px;padding:4px 10px;font-size:11.5px}
+#set-panel-apps #hardware-section .hardware-mirror-auto{display:inline-flex;align-items:center;gap:6px;color:var(--text-2);font-size:11px;line-height:1.4;cursor:pointer}
+#set-panel-apps #hardware-section .hardware-mirror-auto input{margin:0;accent-color:var(--accent)}
+#set-panel-apps #hardware-section .hardware-mirror-img{display:block;width:320px;height:240px;max-width:none;object-fit:fill;background:#f4f6f8;outline:1px solid color-mix(in srgb,var(--text) 10%,transparent);image-rendering:auto}
+#set-panel-apps #hardware-section .hardware-live-status{margin:7px 0 0;color:var(--text-2);font-size:11.5px;font-weight:600;line-height:1.45;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-live-status::before{display:inline-block;width:6px;height:6px;margin:0 6px 1px 1px;border-radius:50%;background:currentColor;content:"";vertical-align:middle}
+#set-panel-apps #hardware-section .hardware-live-status[data-state="connected"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-live-status[data-state="offline"]{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps #hardware-section .hardware-live-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-companion,
+#set-panel-apps #hardware-section .hardware-voice,
+#set-panel-apps #hardware-section .hardware-display{margin-top:12px;padding:12px;border:1px solid var(--settings-line,var(--border-soft));border-radius:9px;background:var(--settings-control,var(--mac-control))}
+#set-panel-apps #hardware-section .hardware-companion h4,
+#set-panel-apps #hardware-section .hardware-voice-heading h4,
+#set-panel-apps #hardware-section .hardware-display-heading h4{color:var(--text);font-size:12.5px;font-weight:650}
+#set-panel-apps #hardware-section .hardware-companion-row{margin-top:8px}
+#set-panel-apps #hardware-section .hardware-sync-rule{margin-top:9px;padding-top:8px;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-voice-heading,
+#set-panel-apps #hardware-section .hardware-display-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:5px 10px;min-width:0}
+#set-panel-apps #hardware-section .hardware-voice-heading h4,
+#set-panel-apps #hardware-section .hardware-display-heading h4{margin:0}
+#set-panel-apps #hardware-section .hardware-voice-status,
+#set-panel-apps #hardware-section .hardware-display-status{min-width:0;color:var(--settings-muted,var(--text-3));font-size:11px;font-weight:600;line-height:1.4;text-align:right;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-voice-status[data-state="connected"],
+#set-panel-apps #hardware-section .hardware-gateway-device-status[data-state="connected"],
+#set-panel-apps #hardware-section .hardware-display-status[data-state="synced"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-voice-status[data-state="error"],
+#set-panel-apps #hardware-section .hardware-display-status[data-state="error"]{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-voice-status[data-state="pending"],
+#set-panel-apps #hardware-section .hardware-display-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-voice-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;min-width:0;margin:10px 0 0}
+#set-panel-apps #hardware-section .hardware-voice-facts .hardware-fact{grid-template-columns:minmax(82px,auto) minmax(0,1fr)}
+#set-panel-apps #hardware-section .hardware-display-facts{margin:6px 0 0}
+#set-panel-apps #hardware-section .hardware-display-note,
+#set-panel-apps #hardware-section .hardware-voice-note,
+#set-panel-apps #hardware-section .hardware-voice-error,
+#set-panel-apps #hardware-section .hardware-gateway-device-meta{margin:4px 0 0;color:var(--settings-muted,var(--text-3));font-size:10.5px;line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+#set-panel-apps #hardware-section .hardware-voice-error{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-gateway-devices{min-width:0;margin-top:8px}
+#set-panel-apps #hardware-section .hardware-gateway-devices>summary{display:list-item;padding:3px 2px;color:var(--text-2);font-size:10.5px;line-height:1.4;cursor:pointer}
+#set-panel-apps #hardware-section .hardware-gateway-devices>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+#set-panel-apps #hardware-section .hardware-gateway-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 16px;padding-top:5px}
+#set-panel-apps #hardware-section .hardware-gateway-device{min-width:0;padding:6px 8px;border:1px solid var(--settings-line,var(--border-soft));border-radius:6px;background:color-mix(in srgb,var(--settings-control,var(--mac-control)) 76%,transparent)}
+#set-panel-apps #hardware-section .hardware-gateway-device-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}
+#set-panel-apps #hardware-section .hardware-gateway-device-id{min-width:0;overflow:hidden;color:var(--text);font-size:11px;font-weight:600;line-height:1.4;text-overflow:ellipsis;white-space:nowrap}
+#set-panel-apps #hardware-section .hardware-gateway-device-status{flex:0 0 auto;color:var(--settings-muted,var(--text-3));font-size:10.5px;font-weight:600;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-gateway-device-status[data-state="offline"]{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps #hardware-section .hardware-ptt-candidate{display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 10px;margin-top:10px;padding-top:9px;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-ptt-button{min-height:34px;padding:6px 12px;font-size:11.5px;font-weight:600;white-space:nowrap;touch-action:none;user-select:none}
+#set-panel-apps #hardware-section .hardware-ptt-button:disabled{cursor:default;opacity:.55}
+#set-panel-apps #hardware-section .hardware-ptt-button[aria-pressed="true"]{filter:brightness(.94)}
+#set-panel-apps #hardware-section .hardware-ptt-note{flex:1 1 260px;min-width:0;margin:0;color:var(--settings-muted,var(--text-3));font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+#set-panel-apps #hardware-section .hardware-ptt-note[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps #hardware-section .hardware-ptt-note[data-state="ok"]{color:var(--ok)}
+#set-panel-apps #hardware-section .hardware-ptt-note[data-state="error"]{color:var(--danger)}
+#set-panel-apps #hardware-section .hardware-current-firmware{min-width:0;margin:8px 0 0;padding:7px 2px 0;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-current-firmware-title{margin:0 0 5px;color:var(--text-2);font-size:11.5px;font-weight:600;line-height:1.4}
+#set-panel-apps #hardware-section .hardware-current-firmware-facts{margin:0}
+#set-panel-apps #hardware-section .hardware-firmware-hash-value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:.01em}
+#set-panel-apps #hardware-section .hardware-import{padding-top:8px;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps #hardware-section .hardware-import-body>.btn{margin:7px 2px 0}
+@media(max-width:760px){
+  #set-panel-apps #hardware-section .hardware-device{grid-template-columns:minmax(0,1fr);grid-template-areas:"main" "actions" "mirror" "info";gap:8px}
+  #set-panel-apps #hardware-section .hardware-device-actions{justify-content:flex-start}
+  #set-panel-apps #hardware-section .hardware-voice-facts{grid-template-columns:minmax(0,1fr)}
+  #set-panel-apps #hardware-section .hardware-gateway-list{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+  #set-panel-apps #hardware-section .hardware-mirror{margin-left:-4px;margin-right:-4px;padding:7px}
+  #set-panel-apps #hardware-section .hardware-device-title-row{align-items:flex-start;flex-direction:column;gap:2px}
+  #set-panel-apps #hardware-section .hardware-ptt-note{flex-basis:100%}
+  #set-panel-apps #hardware-section .hardware-ptt-button{min-height:40px}
+}

@@ -1,0 +1,276 @@
+/* 大富翁牌桌：环形棋盘、骰子、资产榜与机会记录。颜色走宿主主题变量，深浅自适应。 */
+
+.obgt-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 268px;
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+}
+
+.obgt-ring-wrap {
+  position: relative;
+  min-width: 0;
+  padding: 4px;
+}
+
+.obgt-ring {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+}
+
+.obgt-tile {
+  position: relative;
+  display: flex;
+  min-height: 62px;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 6px 4px 9px;
+  overflow: hidden;
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 7px;
+  background: var(--bg-panel, #faf9f6);
+}
+.obgt-tile.is-owned {
+  border-color: color-mix(in srgb, var(--accent, #4a89e8) 38%, var(--line-1, #e3e1da));
+}
+.obgt-tile-band {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 7px 0 0 7px;
+}
+.obgt-tile-head {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+.obgt-tile-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-1, #252723);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.obgt-tile-icon {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  color: var(--text-3, #8a8a92);
+}
+.obgt-tile-note {
+  color: var(--text-3, #8a8a92);
+  font-size: 9.5px;
+  font-variant-numeric: tabular-nums;
+}
+.obgt-tile-foot {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+}
+.obgt-owner-dot {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--bg-panel, #fff);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--line-1, #e3e1da);
+}
+.obgt-owner-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-2, #51515a);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.obgt-level {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 2px;
+}
+.obgt-level-pip {
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--text-3, #b9b6ad);
+  border-radius: 2px;
+}
+.obgt-level-pip.is-on {
+  border-color: var(--accent, #4a89e8);
+  background: var(--accent, #4a89e8);
+}
+
+.obgt-center {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  grid-area: 2 / 2 / 6 / 8;
+  margin: 4px;
+  border: 1.5px dashed var(--line-1, #e3e1da);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent, #4a89e8) 4%, var(--bg-panel, #faf9f6));
+  pointer-events: none;
+}
+.obgt-center-title {
+  color: var(--text-2, #51515a);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 6px;
+}
+.obgt-center-sub {
+  color: var(--text-3, #8a8a92);
+  font-size: 11px;
+}
+
+.obgt-tokens {
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+}
+.obgt-token {
+  position: absolute;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.25s ease, top 0.25s ease;
+}
+.obgt-token-avatar {
+  position: relative;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  overflow: hidden;
+  transform: scale(0.82);
+}
+.obgt-token-avatar .ob-avatar { width: 100%; height: 100%; }
+.obgt-token-avatar .ob-avatar svg,
+.obgt-token-avatar .ob-avatar img { display: block; width: 100%; height: 100%; }
+.obgt-token-ring {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #57606d;
+  border-radius: 50%;
+  background: var(--bg-panel, #fff);
+}
+.obgt-token.is-current .obgt-token-ring {
+  box-shadow: 0 0 0 2px var(--accent, #4a89e8);
+}
+
+.obgt-side {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.obgt-dice-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+.obgt-die {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 6px;
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 9px;
+  background: var(--bg-panel, #fff);
+}
+.obgt-die.is-idle {
+  opacity: 0.45;
+}
+.obgt-die-pip {
+  border-radius: 50%;
+}
+.obgt-die-pip.is-on {
+  background: var(--text-1, #252723);
+}
+.obgt-dice-note {
+  margin: 6px 0 0;
+}
+
+.obgt-standings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.obgt-standing {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px;
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 9px;
+  background: var(--bg-panel, #fff);
+  font-size: 11px;
+}
+.obgt-standing.is-current {
+  border-color: var(--accent, #4a89e8);
+  box-shadow: 0 0 0 1px var(--accent, #4a89e8) inset;
+}
+.obgt-standing.is-bankrupt {
+  opacity: 0.55;
+}
+.obgt-standing-name {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  color: var(--text-1, #252723);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.obgt-standing-cash,
+.obgt-standing-worth {
+  flex: 0 0 auto;
+  color: var(--text-2, #51515a);
+  font-variant-numeric: tabular-nums;
+}
+.obgt-standing-badge {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: var(--danger-soft, #f6dfd8);
+  color: var(--danger, #bd332c);
+  font-size: 9.5px;
+}
+
+.obgt-event-note p {
+  margin: 4px 0 0;
+}
+
+@media (max-width: 1100px) {
+  .obgt-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-height: 820px) {
+  .obgt-tile {
+    min-height: 54px;
+    padding: 3px 5px 3px 8px;
+  }
+  .obgt-tile-name {
+    font-size: 9.5px;
+  }
+  .obgt-die {
+    width: 38px;
+    height: 38px;
+  }
+}

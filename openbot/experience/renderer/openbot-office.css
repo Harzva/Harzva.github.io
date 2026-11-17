@@ -1,0 +1,33 @@
+/* Original OpenBot office. No upstream character or furniture artwork bundled. */
+.ob-office-note{margin:0 0 16px;color:var(--text-2);font-size:12px;line-height:1.6}
+.ob-office-floor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:10px;overflow:hidden}
+.ob-workstation{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 10px 16px;border:0;border-radius:0;background:var(--bg-panel);color:var(--text);font:inherit;cursor:pointer;text-align:center}
+.ob-workstation:hover{background:var(--bg-hover)}
+.ob-workstation:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;z-index:1}
+.ob-workstation.is-current .ob-worker-name{color:var(--accent)}
+.ob-workstation-scene{position:relative;display:block;width:144px;height:104px;margin-bottom:6px}
+.ob-office-worker{position:absolute;left:44px;top:0;width:56px;height:56px;z-index:2}
+.ob-office-worker .ob-avatar{width:56px;height:56px;background:transparent}
+.ob-office-chair{position:absolute;left:49px;top:27px;width:46px;height:42px;border-radius:8px;background:var(--border);border-bottom:6px solid var(--text-3)}
+.ob-office-desk{position:absolute;left:12px;top:57px;width:120px;height:29px;border-radius:5px;background:var(--bg-active);border:1px solid var(--border);z-index:3}
+.ob-office-desk::before,.ob-office-desk::after{content:'';position:absolute;top:28px;width:5px;height:15px;background:var(--border)}
+.ob-office-desk::before{left:9px}.ob-office-desk::after{right:9px}
+.ob-office-monitor{position:absolute;left:41px;top:-18px;width:38px;height:27px;border-radius:4px;background:var(--text-2);border:3px solid var(--border)}
+.ob-office-keyboard{position:absolute;left:43px;top:16px;width:34px;height:5px;border-radius:2px;background:var(--text-3)}
+.ob-worker-name{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:600}
+.ob-worker-status{font-size:12px;line-height:1.5;color:var(--text-2)}
+.ob-workstation[data-presence="waiting"] .ob-worker-status{color:var(--accent);font-weight:600}
+.ob-workstation[data-presence="error"] .ob-worker-status,.ob-workstation[data-presence="interrupted"] .ob-worker-status{color:var(--danger)}
+.ob-workstation[data-presence="done"] .ob-worker-status{color:var(--ok)}
+.ob-avatar[data-presence="working"] svg,.ob-workstation[data-presence="working"] .ob-office-worker{animation:ob-work 1.4s ease-in-out infinite}
+.ob-avatar[data-presence="thinking"] svg,.ob-workstation[data-presence="thinking"] .ob-office-worker{animation:ob-think 3s ease-in-out infinite}
+.ob-avatar:is([data-presence="waiting"],[data-presence="error"],[data-presence="interrupted"],[data-presence="done"])::after{content:"";position:absolute;z-index:5;left:1px;bottom:1px;width:6px;height:6px;box-sizing:border-box;border:1px solid var(--bg-panel);border-radius:50%;pointer-events:none}
+.ob-avatar[data-presence="waiting"]::after{background:var(--accent)}
+.ob-avatar:is([data-presence="error"],[data-presence="interrupted"])::after{background:var(--danger)}
+.ob-avatar[data-presence="done"]::after{background:var(--ok)}
+.ob-avatar[data-presence="queued"]{opacity:.65}
+@keyframes ob-work{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+@keyframes ob-think{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.ob-office *,.ob-avatar[data-presence] svg{animation:none!important}}
+body[data-page-hidden="true"] .ob-office *{animation-play-state:paused!important}
+@media(max-width:420px){.ob-office-floor{grid-template-columns:minmax(0,1fr)}}

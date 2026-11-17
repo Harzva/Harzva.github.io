@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="accept-title accept-desc" style="--body:#A38AF7;--body-deep:#4A3067;--fold:#C4B2FD;--face:#F7F8EE;--ink:#4A3067;--check:#83C342;--check-pad:#F7F8EE">
+<title id="accept-title">验收 Bot · 勾选折页</title>
+<desc id="accept-desc">一张带折角的紫色任务卡长出小脸，醒目的绿色勾号表示验收通过。颜色可通过根节点的 CSS 自定义属性修改。</desc>
+<!-- Transparent 128×128 canvas. Main artwork is kept inside a centered 112px circular-crop safe area. All visible artwork is SVG geometry. -->
+<g aria-hidden="true">
+  <!-- Soft folded-card silhouette, inspired by the existing page-shaped avatar family. -->
+  <path d="M39 20 H73 L103 50 V90 C103 100 97 106 87 106 H41 C31 106 25 100 25 90 V36 C25 26 31 20 39 20Z" fill="var(--body)" stroke="var(--body-deep)" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M73 21 V39 C73 46 77 50 84 50 H102Z" fill="var(--fold)" stroke="var(--body-deep)" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- Small friendly face above the confirmation mark. -->
+  <circle cx="49" cy="60" r="3" fill="var(--ink)"/>
+  <circle cx="63" cy="60" r="3" fill="var(--ink)"/>
+  <path d="M52 68 Q56 71 60 68" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Large check tile stays legible when the avatar is reduced to 24px. -->
+  <rect x="42" y="77" width="40" height="23" rx="7" fill="var(--check-pad)" stroke="var(--body-deep)" stroke-width="2.4"/>
+  <path d="M51 88 L58 94 L73 82" fill="none" stroke="var(--check)" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

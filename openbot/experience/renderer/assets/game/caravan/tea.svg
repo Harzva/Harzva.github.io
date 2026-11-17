@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 84" role="img" aria-label="茶票">
+  <rect x="2" y="2" width="56" height="80" rx="8" fill="#e7d3b4" stroke="#a5763a" stroke-width="2.4"/>
+  <rect x="7" y="7" width="46" height="70" rx="5" fill="#f6ecd9" stroke="#c79a5f" stroke-width="1.2"/>
+  <path d="M30 22c9 4 14 11 14 19s-6 14-14 14-14-6-14-14 5-15 14-19Z" fill="#7d9a58" stroke="#4d6b34" stroke-width="2"/>
+  <path d="M30 24v38" stroke="#4d6b34" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 33l-7-5M30 33l7-5M30 43l-8-6M30 43l8-6M30 53l-6-5M30 53l6-5" stroke="#4d6b34" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

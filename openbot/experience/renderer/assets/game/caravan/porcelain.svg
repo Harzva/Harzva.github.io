@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 84" role="img" aria-label="瓷票">
+  <rect x="2" y="2" width="56" height="80" rx="8" fill="#dceaf2" stroke="#2f6c95" stroke-width="2.4"/>
+  <rect x="7" y="7" width="46" height="70" rx="5" fill="#eff7fb" stroke="#79acc9" stroke-width="1.2"/>
+  <path d="M30 24c-6 3-8 8-8 14 0 9 5 14 8 18 3-4 8-9 8-18 0-6-2-11-8-14Z" fill="#9ec8de" stroke="#2f6c95" stroke-width="2.2"/>
+  <path d="M25 38h10M24 46h12M26 54h8" stroke="#2f6c95" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22 24h16" stroke="#2f6c95" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

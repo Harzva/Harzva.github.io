@@ -1,0 +1,318 @@
+/*
+ * OpenBot interaction cues
+ *
+ * Root/renderer contract:
+ * - .bot-avatar-stack wraps the main .ob-avatar (its direct child).
+ * - .bot-peer-overlay is a passive, decorative priority-peer avatar. It may
+ *   carry data-peer-direction="outgoing" or "incoming", contain one .ob-avatar,
+ *   and an optional .bot-peer-count.
+ * - .bot-peer-flow is an aria-hidden connector shown only in the Bot sidebar.
+ * - .bot-task-route contains the passive task identity avatar in the chat strip.
+ *
+ * These cues keep the existing row/button hit areas and message hierarchy.
+ * They only expose a relationship when the renderer has real peer/task data.
+ */
+
+/* ---------- Bot identity stacks ---------- */
+.bot-avatar-stack{
+  --bot-stack-size:32px;
+  --bot-peer-size:14px;
+  position:relative;
+  display:inline-grid;
+  place-items:center;
+  flex:0 0 var(--bot-stack-size);
+  width:var(--bot-stack-size);
+  height:var(--bot-stack-size);
+  min-width:var(--bot-stack-size);
+  min-height:var(--bot-stack-size);
+  overflow:visible;
+  pointer-events:none;
+}
+.bot-avatar-stack > :is(.ob-avatar,.avatar){
+  grid-area:1 / 1;
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+}
+.bot-avatar-stack > :is(.ob-avatar,.avatar){
+  position:relative;
+  z-index:0;
+}
+.bot-peer-overlay{
+  position:absolute;
+  z-index:2;
+  right:-2px;
+  bottom:-2px;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  width:var(--bot-peer-size);
+  height:var(--bot-peer-size);
+  min-width:var(--bot-peer-size);
+  min-height:var(--bot-peer-size);
+  padding:0;
+  border:1px solid var(--mac-control,var(--bg-side));
+  border-radius:50%;
+  background:var(--mac-control,var(--bg-panel));
+  overflow:visible;
+  pointer-events:none;
+}
+.bot-peer-overlay[data-peer-direction="incoming"]{
+  top:-2px;
+  right:-2px;
+  bottom:auto;
+}
+.bot-peer-overlay[data-peer-direction="outgoing"]{
+  top:auto;
+  right:-2px;
+  bottom:-2px;
+}
+.bot-peer-overlay[hidden],
+.bot-peer-count[hidden]{display:none}
+/* This narrow invariant wins over list/header avatar rules that target every
+   descendant .ob-avatar; the main face above remains free to keep its state. */
+.bot-peer-overlay > :is(.ob-avatar,.avatar){
+  width:var(--bot-peer-size)!important;
+  height:var(--bot-peer-size)!important;
+  min-width:var(--bot-peer-size)!important;
+  min-height:var(--bot-peer-size)!important;
+  flex:0 0 var(--bot-peer-size)!important;
+}
+.bot-peer-count{
+  position:absolute;
+  z-index:3;
+  right:-8px;
+  top:-8px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  min-width:12px;
+  height:12px;
+  padding:0 3px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  background:var(--mac-control,var(--bg-panel));
+  color:var(--text-2);
+  font-size:9px;
+  font-weight:600;
+  line-height:10px;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.bot-peer-overlay[data-peer-direction="incoming"] .bot-peer-count{
+  top:-8px;
+  right:-8px;
+  bottom:auto;
+}
+.bot-peer-overlay[data-peer-direction="outgoing"] .bot-peer-count{
+  top:auto;
+  right:-8px;
+  bottom:-8px;
+}
+
+/* The short connector is rendered only for Bot rows in the sidebar. */
+.bot-peer-flow{display:none}
+#bot-list .bot-avatar-stack > .bot-peer-flow:not([hidden]){display:block}
+#bot-list .bot-avatar-stack > .bot-peer-flow[hidden]{display:none!important}
+#bot-list .bot-avatar-stack > .bot-peer-overlay{z-index:auto;right:0}
+#bot-list .bot-avatar-stack > .bot-peer-overlay[data-peer-direction="incoming"]{top:0;right:0;bottom:auto}
+#bot-list .bot-avatar-stack > .bot-peer-overlay[data-peer-direction="outgoing"]{top:auto;right:0;bottom:0}
+#bot-list .bot-avatar-stack > .bot-peer-flow{
+  --bot-peer-flow-line:color-mix(in srgb,var(--text-3) 72%,transparent);
+  --bot-peer-flow-dot:var(--text-2);
+  position:absolute;
+  z-index:2;
+  left:0;
+  top:0;
+  width:52px;
+  height:32px;
+  margin:0;
+  overflow:visible;
+  pointer-events:none;
+}
+#bot-list .bot-peer-overlay > .bot-peer-count{z-index:3;right:0}
+#bot-list .bot-peer-flow-line{
+  position:absolute;
+  left:31px;
+  top:20px;
+  width:7.5px;
+  height:1.5px;
+  border-radius:1px;
+  background:var(--bot-peer-flow-line);
+  transform-origin:left center;
+  transform:rotate(17deg);
+}
+#bot-list .bot-peer-flow-dot{
+  position:absolute;
+  left:34.8px;
+  top:21.8px;
+  width:5px;
+  height:5px;
+  border:1px solid color-mix(in srgb,var(--bg) 50%,var(--text));
+  border-radius:50%;
+  background:var(--bot-peer-flow-dot);
+  transform:translate(-50%,-50%);
+}
+#bot-list .bot-peer-flow[data-peer-direction="outgoing"] .bot-peer-flow-line{
+  left:31px;
+  top:20px;
+  transform:rotate(17deg);
+}
+#bot-list .bot-peer-flow[data-peer-direction="incoming"] .bot-peer-flow-line{
+  left:31px;
+  top:10.5px;
+  transform:rotate(-17deg);
+}
+#bot-list .bot-peer-flow[data-peer-direction="incoming"] .bot-peer-flow-dot{
+  top:10.2px;
+}
+#bot-list .bot-peer-flow[data-interaction-phase="running"]{
+  --bot-peer-flow-line:color-mix(in srgb,var(--ok) 78%,var(--border));
+  --bot-peer-flow-dot:#fff2a6;
+}
+#bot-list .bot-peer-flow[data-interaction-phase="approval"]{
+  --bot-peer-flow-line:color-mix(in srgb,#986512 46%,var(--border));
+  --bot-peer-flow-dot:#986512;
+}
+@media(prefers-color-scheme:dark){
+  #bot-list .bot-peer-flow[data-interaction-phase="approval"]{
+    --bot-peer-flow-line:color-mix(in srgb,#d8b264 52%,var(--border));
+    --bot-peer-flow-dot:#d8b264;
+  }
+}
+#bot-list .bot-peer-flow[data-interaction-phase="running"][data-peer-direction="outgoing"] .bot-peer-flow-dot{
+  animation:bot-peer-flow-outgoing 1.35s ease-in-out infinite;
+}
+#bot-list .bot-peer-flow[data-interaction-phase="running"][data-peer-direction="incoming"] .bot-peer-flow-dot{
+  animation:bot-peer-flow-incoming 1.35s ease-in-out infinite;
+}
+@keyframes bot-peer-flow-outgoing{
+  0%{left:31.3px;top:20.7px;opacity:.82;transform:translate(-50%,-50%) scale(.9)}
+  72%{left:38.3px;top:22.9px;opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{left:38.3px;top:22.9px;opacity:.82;transform:translate(-50%,-50%) scale(.9)}
+}
+@keyframes bot-peer-flow-incoming{
+  0%{left:38.3px;top:9.1px;opacity:.82;transform:translate(-50%,-50%) scale(.9)}
+  72%{left:31.3px;top:11.3px;opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{left:31.3px;top:11.3px;opacity:.82;transform:translate(-50%,-50%) scale(.9)}
+}
+.bot-peer-overlay > :is(.ob-avatar,.avatar),
+.bot-peer-overlay > .bot-peer-count{
+  position:relative;
+  z-index:1;
+}
+
+/* The sidebar remains a full-row control. The visual stack never steals a
+   click or creates a second tab stop. */
+#bot-list .bot-item .bot-avatar-stack{
+  --bot-stack-size:36px;
+  flex-basis:36px;
+  width:36px;
+  height:32px;
+  min-width:36px;
+  min-height:32px;
+}
+#bot-list .bot-item .bot-avatar-stack:has(> .bot-peer-overlay:not([hidden]), > .bot-peer-flow:not([hidden])){
+  --bot-stack-size:52px;
+  flex-basis:52px;
+  width:52px;
+  min-width:52px;
+}
+#bot-list .bot-avatar-stack > :is(.ob-avatar,.avatar){
+  justify-self:start;
+  align-self:center;
+  width:32px!important;
+  height:32px!important;
+  min-width:32px!important;
+  min-height:32px!important;
+  flex:0 0 32px!important;
+}
+#bot-list .bot-item>.bot-select{z-index:1}
+#bot-list .bot-item .bot-avatar-stack{z-index:0}
+
+/* The primary identity keeps the established large face. A header-strip
+   companion stays compact while its peer overlay remains protected at 12px. */
+#bot-header #btn-avatar .bot-avatar-stack{
+  --bot-stack-size:44px;
+  --bot-peer-size:14px;
+  width:44px;
+  height:44px;
+  flex-basis:44px;
+}
+#bot-header #header-bot-switcher .header-bot-option{
+  overflow:visible;
+}
+#bot-header #header-bot-switcher .header-bot-option .bot-avatar-stack{
+  --bot-stack-size:26px;
+  --bot-peer-size:12px;
+  width:26px;
+  height:26px;
+  min-width:26px;
+  min-height:26px;
+  flex-basis:26px;
+}
+#bot-header #header-bot-switcher .header-bot-option[data-primary="true"] .bot-avatar-stack,
+#bot-header #header-bot-switcher .header-bot-option[data-primary="true"][aria-pressed="true"] .bot-avatar-stack{
+  --bot-stack-size:44px;
+  --bot-peer-size:14px;
+  width:44px;
+  height:44px;
+  min-width:44px;
+  min-height:44px;
+  flex-basis:44px;
+}
+#bot-header #header-bot-switcher .header-bot-option .bot-avatar-stack > :is(.ob-avatar,.avatar){
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+}
+#bot-header #header-bot-switcher .bot-peer-overlay > :is(.ob-avatar,.avatar){
+  width:var(--bot-peer-size)!important;
+  height:var(--bot-peer-size)!important;
+}
+
+/* ---------- Delegation route inside the existing task strip ---------- */
+#task-strip .bot-task-route{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 22px;
+  width:22px;
+  min-width:22px;
+  height:24px;
+  margin:-1px 0;
+  pointer-events:none;
+}
+#task-strip .bot-task-route > :is(.ob-avatar,.avatar){
+  position:relative;
+  z-index:1;
+  flex:0 0 auto;
+  overflow:visible;
+  background:var(--mac-control,var(--bg-panel));
+  outline:1px solid var(--mac-control,var(--bg-panel));
+  outline-offset:0;
+}
+#task-strip .bot-task-route > :is(.ob-avatar,.avatar):first-child{
+  width:20px;
+  height:20px;
+}
+#task-strip .bot-task-route > :is(.ob-avatar,.avatar):last-child{
+  width:22px;
+  height:22px;
+}
+@media(prefers-reduced-motion:reduce){
+  .bot-avatar-stack *,
+  #task-strip .bot-task-route{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+body[data-companion-mode="quiet"] .bot-avatar-stack *,
+body[data-companion-mode="quiet"] #task-strip .bot-task-route{
+  animation:none!important;
+  transition:none!important;
+}

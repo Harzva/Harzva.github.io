@@ -1,0 +1,375 @@
+/* Thread workbench: compact task context inside the existing detail page.
+   Reuse unified-workspace tokens, message styles and action classes. */
+.uw-thread-workbench {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%;
+  max-width:900px;
+  min-width:0;
+  box-sizing:border-box;
+  margin:0 auto;
+  padding:4px 0;
+  color:var(--text,#25272b);
+}
+.uw-thread-workbench > * { min-width:0; }
+
+.uw-thread-task {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  min-width:0;
+  padding:0 0 8px;
+  border-bottom:1px solid var(--border-soft,var(--border,#e1e2e5));
+}
+.uw-thread-task-goal {
+  max-width:100%;
+  margin:0;
+  color:var(--text,#25272b);
+  font-size:15px;
+  font-weight:600;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+.uw-thread-task-status {
+  max-width:100%;
+  padding:2px 6px;
+  border:1px solid var(--border-soft,var(--border,#e1e2e5));
+  border-radius:6px;
+  color:var(--text-2,#686c74);
+  font-size:11px;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+}
+.uw-thread-task-criteria-label {
+  margin-top:2px;
+  color:var(--text-3,#858991);
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+}
+.uw-thread-task-criteria {
+  max-width:760px;
+  margin:0;
+  color:var(--text-2,#686c74);
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.uw-thread-progress {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px 10px;
+  min-width:0;
+  min-height:34px;
+  padding:5px 9px;
+  border-inline-start:2px solid var(--accent,#5b8cff);
+  color:var(--text-2,#686c74);
+  font-size:12px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.uw-thread-progress[data-state="queued"],
+.uw-thread-progress[data-state="running"] {
+  border-inline-start-color:var(--accent,#5b8cff);
+}
+.uw-thread-progress[data-state="awaiting_review"] {
+  border-inline-start-color:#d4971e;
+}
+.uw-thread-progress[data-state="failed"],
+.uw-thread-progress[data-state="corrupt"] {
+  border-inline-start-color:var(--danger,#c6453d);
+}
+.uw-thread-progress[data-state="completed"] {
+  border-inline-start-color:var(--ok,#2eaa65);
+}
+.uw-thread-progress[data-state="unknown"],
+.uw-thread-progress[data-state="missing"] {
+  border-inline-start-color:var(--border,#a7abb2);
+}
+.uw-thread-progress > * { min-width:0; }
+.uw-thread-progress-label { overflow-wrap:anywhere; }
+.uw-thread-progress-error {
+  flex:1 1 100%;
+  color:var(--danger,#c6453d);
+  font-size:11px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.uw-thread-progress .uw-thread-stop {
+  flex:0 0 auto;
+  margin-inline-start:auto;
+  white-space:nowrap;
+}
+.uw-thread-stop:disabled { cursor:wait; }
+
+.uw-thread-delivery {
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  min-width:0;
+}
+.uw-thread-delivery .ouw-message-text {
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.uw-thread-result-actions {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:4px 7px;
+  min-width:0;
+  padding-top:2px;
+}
+.uw-thread-result-actions > :where(button,a) {
+  flex:0 0 auto;
+  max-width:100%;
+  min-height:30px;
+}
+.uw-thread-result-actions [data-uw-thread-revise] {
+  border-color:var(--accent,#5b8cff);
+  color:var(--accent,#5b8cff);
+}
+.uw-thread-result-actions > :where(button,a):disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+.uw-thread-completion {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:7px;
+  min-width:0;
+  margin-top:3px;
+  padding:9px 0 0;
+  border-top:1px solid var(--border-soft,var(--border,#e1e2e5));
+}
+.uw-thread-completion :where(p,li) {
+  max-width:100%;
+  margin:0;
+  color:var(--text-2,#686c74);
+  font-size:12px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.uw-thread-completion-status {
+  color:var(--text-2,#686c74);
+  font-size:12px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.uw-thread-completion-status[role="alert"] { color:var(--danger,#c6453d); }
+
+.uw-thread-technical {
+  min-width:0;
+  padding-top:7px;
+  border-top:1px solid var(--border-soft,var(--border,#e1e2e5));
+  color:var(--text-2,#686c74);
+  font-size:12px;
+}
+.uw-thread-technical > summary {
+  min-height:30px;
+  padding:5px 2px;
+  color:var(--text-2,#686c74);
+  line-height:1.45;
+  cursor:pointer;
+}
+.uw-thread-technical > summary:hover { color:var(--text,#25272b); }
+.uw-thread-technical > summary:focus-visible,
+.uw-thread-workbench :where(button,a):focus-visible {
+  outline:2px solid var(--accent,#5b8cff);
+  outline-offset:2px;
+}
+.uw-thread-technical[open] > :not(summary) {
+  max-width:100%;
+  margin-top:7px;
+  overflow-wrap:anywhere;
+}
+.uw-thread-workbench :where(button,a):disabled {
+  cursor:not-allowed;
+}
+
+@media (max-width:1040px) {
+  .uw-thread-workbench {
+    gap:8px;
+    padding-block:8px 2px;
+  }
+  .uw-thread-progress { gap:5px 8px; padding-inline:7px; }
+  .uw-thread-result-actions { gap:4px 6px; }
+}
+@media (max-width:640px) {
+  .uw-thread-workbench { gap:7px; }
+  .uw-thread-task { padding-bottom:8px; }
+  .uw-thread-progress { align-items:flex-start; }
+  .uw-thread-progress .uw-thread-stop { min-height:32px; }
+  .uw-thread-result-actions > :where(button,a) { min-height:34px; }
+  .uw-thread-technical > summary { min-height:36px; }
+}
+
+/* Bot identity is useful context, but secondary to the task goal. */
+.uw-thread-workbench .uw-thread-task-owner {
+  min-height:26px;
+  margin:0;
+  padding:3px 5px;
+  border-color:transparent;
+  color:var(--text-2,#686c74);
+  background:transparent;
+  font-size:11px;
+}
+.uw-thread-workbench .uw-thread-task-owner:hover {
+  color:var(--accent,#5b8cff);
+  background:var(--bg-hover,rgba(0,0,0,.045));
+}
+
+.uw-thread-files {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:5px 7px;
+  min-width:0;
+  padding-top:7px;
+  border-top:1px solid var(--border-soft,var(--border,#e1e2e5));
+}
+.uw-thread-files > h3 {
+  flex:0 0 100%;
+  margin:0;
+  color:var(--text-3,#858991);
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+}
+.uw-thread-file {
+  max-width:100%;
+  min-width:0;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+.uw-thread-task-error {
+  max-width:100%;
+  padding:7px 9px;
+  border-inline-start:2px solid var(--danger,#c6453d);
+  color:var(--danger,#c6453d);
+  font-size:12px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+
+/* Markdown is rendered only for BOT messages inside the thread workbench.
+   Keep each block inside its bubble and give long code/tables their own scroll area. */
+.uw-thread-markdown {
+  display:block;
+  max-width:100%;
+  min-width:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown > :first-child { margin-top:0; }
+.uw-thread-markdown > :last-child { margin-bottom:0; }
+.uw-thread-markdown .md-p {
+  max-width:100%;
+  margin:0 0 .6em;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-heading {
+  max-width:100%;
+  margin:.8em 0 .35em;
+  color:var(--text,#25272b);
+  font-weight:600;
+  line-height:1.4;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-h1 { font-size:1.18em; }
+.uw-thread-markdown .md-h2 { font-size:1.1em; }
+.uw-thread-markdown .md-h3 { font-size:1.03em; }
+.uw-thread-markdown .md-list {
+  max-width:100%;
+  margin:.4em 0 .65em;
+  padding-inline-start:1.55em;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-list li {
+  min-width:0;
+  padding-inline-start:.08em;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-list li + li { margin-top:.2em; }
+.uw-thread-markdown .md-quote {
+  max-width:100%;
+  margin:.5em 0;
+  padding:.15em 0 .15em .8em;
+  border-inline-start:2px solid var(--border,#b7bbc2);
+  color:var(--text-2,#686c74);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-code {
+  padding:.08em .28em;
+  border-radius:4px;
+  color:var(--text,#25272b);
+  background:var(--bg-side,#f2f2f4);
+  font: .93em/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-pre {
+  display:block;
+  max-width:100%;
+  margin:.55em 0;
+  padding:8px 9px;
+  overflow:auto;
+  border:1px solid var(--border-soft,var(--border,#e1e2e5));
+  border-radius:6px;
+  color:var(--text,#25272b);
+  background:var(--bg-side,#f2f2f4);
+  font: .92em/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  tab-size:2;
+  white-space:pre;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.uw-thread-markdown .md-pre > code {
+  display:block;
+  min-width:max-content;
+  font:inherit;
+  white-space:inherit;
+}
+.uw-thread-markdown .md-table {
+  display:block;
+  width:max-content;
+  min-width:100%;
+  max-width:100%;
+  margin:.55em 0;
+  overflow:auto;
+  border-collapse:collapse;
+  font-size:.94em;
+  white-space:normal;
+}
+.uw-thread-markdown .md-table th,
+.uw-thread-markdown .md-table td {
+  max-width:300px;
+  padding:5px 7px;
+  border:1px solid var(--border-soft,var(--border,#e1e2e5));
+  text-align:left;
+  vertical-align:top;
+  overflow-wrap:anywhere;
+}
+.uw-thread-markdown .md-table th {
+  color:var(--text-2,#686c74);
+  background:var(--bg-side,#f2f2f4);
+  font-weight:600;
+}
+.uw-thread-markdown .md-table td { background:var(--bg-panel,#fff); }
+.uw-thread-markdown .md-rule {
+  max-width:100%;
+  margin:.7em 0;
+  border:0;
+  border-top:1px solid var(--border-soft,var(--border,#e1e2e5));
+}

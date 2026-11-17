@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 84" role="img" aria-label="玉票">
+  <rect x="2" y="2" width="56" height="80" rx="8" fill="#dcecdf" stroke="#37724e" stroke-width="2.4"/>
+  <rect x="7" y="7" width="46" height="70" rx="5" fill="#eff7f0" stroke="#79ac8f" stroke-width="1.2"/>
+  <path d="M30 22h9l-6 8 6 8h-9z" fill="#6fae86" stroke="#37724e" stroke-width="2"/>
+  <path d="M30 38h9l-6 8 6 8h-9z" fill="#8fc69f" stroke="#37724e" stroke-width="2"/>
+  <path d="M30 54h9l-6 8 6 8h-9z" fill="#6fae86" stroke="#37724e" stroke-width="2"/>
+  <path d="M21 30v40" stroke="#37724e" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

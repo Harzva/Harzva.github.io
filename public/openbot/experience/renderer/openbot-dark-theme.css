@@ -1,0 +1,473 @@
+/*
+ * OpenBot neutral dark theme
+ *
+ * This file is deliberately a final, semantic layer.  It is loaded after the
+ * existing macOS and feature stylesheets and only participates when the
+ * platform appearance is dark.  Light mode keeps the established UI tokens.
+ *
+ * The palette uses charcoal elevation rather than a black canvas or a blue
+ * gradient.  Blue is reserved for focus, selection and the primary action;
+ * Bot avatars and the OB mark keep their own colour systems.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg: #1d1d1d;
+    --bg-side: #242424;
+    --bg-panel: #2b2b2b;
+    --bg-hover: #333333;
+    --bg-active: #3b3b3b;
+
+    --border: #4a4a4a;
+    --border-soft: rgba(255, 255, 255, .09);
+    --text: #f2f2f2;
+    --text-2: #c7c7c7;
+    --text-3: #a6a6a6;
+
+    --accent: #5b8cff;
+    --accent-soft: rgba(91, 140, 255, .16);
+    --accent-ink: #fff;
+    --danger: #f07c74;
+    --ok: #79d3a5;
+
+    --mac-control: #303030;
+    --mac-inset: #282828;
+    --mac-selection: #454545;
+    --mac-action: #356dcc;
+    --mac-scrim: rgba(0, 0, 0, .58);
+    --mac-scroll: rgba(255, 255, 255, .22);
+  }
+
+  html,
+  body,
+  #app,
+  #main,
+  #chat-panel,
+  #chat-view,
+  #space-view,
+  #board-view,
+  #workspace {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* The previous design language used a white radial wash at the top. */
+  body {
+    background-image: none !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Keep the three main columns on distinct, quiet charcoal layers. */
+  #sidebar,
+  .sidebar {
+    background: var(--bg-side);
+    border-color: var(--border-soft);
+  }
+
+  #bot-header,
+  .bot-header,
+  #config-panel,
+  .config-panel {
+    background: var(--bg-panel);
+    border-color: var(--border-soft);
+  }
+
+  #messages,
+  #chat-history-surface,
+  .chat-history-surface {
+    background: transparent;
+  }
+
+  /* Quiet, readable text hierarchy. */
+  .brand .tag,
+  .side-label,
+  .side-footer,
+  .bot-item .bsub,
+  .hd-sub,
+  .msg .meta,
+  .msg.status,
+  .tool-event,
+  .cfg-note,
+  .ch-meta,
+  .ch-hint,
+  .screen-boundary,
+  .runtime-health-target,
+  .runtime-health-meta,
+  .composer-hint,
+  .settings-intro,
+  .settings-nav-label,
+  .apps-description,
+  .apps-target,
+  .apps-status,
+  .cloud-note,
+  .cloud-secondary,
+  .ob-browser-subtitle,
+  .ob-browser-note,
+  .ob-browser-file-meta,
+  .ob-browser-foot-note {
+    color: var(--text-3);
+  }
+
+  .brand .name,
+  .bot-item .bname,
+  .hd-name,
+  .msg.bot,
+  .chat-hint .hint-title,
+  .modal h3,
+  .settings-page-head,
+  .apps-card h3,
+  .cloud-title,
+  .ob-browser-title {
+    color: var(--text);
+  }
+
+  .cfg-title,
+  label.f,
+  .msg.user,
+  .chat-hint .hint-sub,
+  .chat-hint .chip,
+  .hint-action,
+  .runtime-health-title,
+  .runtime-health-status,
+  .apps-intro,
+  .cloud-field label,
+  .cloud-choice span,
+  .ob-browser-dialog-copy,
+  .ob-browser-file-name {
+    color: var(--text-2);
+  }
+
+  /* Sidebar and selection remain neutral; blue is reserved for action/focus. */
+  .bot-item:hover,
+  .side-action:hover,
+  .new-bot-btn:hover,
+  .chat-history-rail-item:hover,
+  .more-menu .more-item:hover,
+  .org-row:hover,
+  .org-bot-row:hover,
+  .space-item:hover,
+  .screen-bot-row:hover,
+  .cloud-choice:hover,
+  .apps-card:hover,
+  .ob-browser-tab:hover,
+  .ob-browser-icon-button:hover:not(:disabled) {
+    background: var(--bg-hover);
+  }
+
+  .bot-item.active,
+  .screen-bot-row.selected,
+  .view-tab.on,
+  #bot-header .view-tab.on {
+    background: var(--bg-active);
+    color: var(--text);
+  }
+
+  .brand .logo {
+    /* The OB SVG supplies its own brand colour and black-dot motion. */
+    background: transparent;
+  }
+
+  /* Native controls and compact cards share the same elevation language. */
+  .btn,
+  .org-close,
+  .side-action,
+  .new-bot-btn,
+  input.t,
+  textarea.t,
+  select.t,
+  .space-add input,
+  .scr-url-row input,
+  .screen-workspace-input input,
+  .ob-browser-address,
+  .ob-browser-remote-input input {
+    background: var(--mac-control);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .btn:hover,
+  .org-close:hover,
+  .side-action:hover,
+  .new-bot-btn:hover,
+  .space-add button:hover,
+  .scr-url-row button:hover,
+  .scr-actions button:hover:not(:disabled),
+  .ob-browser-action:hover:not(:disabled),
+  .ob-browser-new-tab:hover:not(:disabled) {
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .btn.primary,
+  .screen-workspace-actions .btn.primary,
+  .send-btn,
+  .unread,
+  .ob-browser-action.primary,
+  .org-chart-detail-open,
+  .org-bot-dashboard-open,
+  .org-workspaces-send {
+    background: var(--mac-action);
+    border-color: var(--mac-action);
+    color: #fff;
+  }
+
+  .btn.primary:hover,
+  .send-btn:hover,
+  .ob-browser-action.primary:hover:not(:disabled),
+  .org-chart-detail-open:hover,
+  .org-bot-dashboard-open:hover,
+  .org-workspaces-send:hover {
+    background: #3b6fd8;
+    border-color: #3b6fd8;
+  }
+
+  .send-btn.stop {
+    background: #b0443c;
+    border-color: #b0443c;
+    color: #fff;
+  }
+
+  .send-btn.stop:hover {
+    background: #bd4e45;
+    border-color: #bd4e45;
+    color: #fff;
+  }
+
+  .btn.danger,
+  .runtime-health-status[data-health-status="unavailable"],
+  .cfg-note.error,
+  .screen-control-note.error,
+  .screen-workspace-error,
+  .ob-browser-error {
+    color: var(--danger);
+  }
+
+  .badge,
+  .agent-tag,
+  .pill,
+  .space-tag,
+  .view-switch,
+  .chat-hint .chip,
+  .hint-action,
+  .apps-status,
+  .space-mode-badge,
+  .bot-type-tag,
+  .bot-tag-editor-chip,
+  .ob-browser-runtime,
+  .ob-browser-file-row {
+    background: var(--mac-inset);
+    border-color: var(--border-soft);
+    color: var(--text-2);
+  }
+
+  .badge.ok,
+  .agent-tag.on,
+  .pill.on,
+  .status.on,
+  .runtime-health-status[data-health-status="healthy"] {
+    color: var(--ok);
+  }
+
+  .badge.ok,
+  .agent-tag.on,
+  .pill.on {
+    background: rgba(121, 211, 165, .14);
+  }
+
+  :is(.badge, .agent-tag, .pill)[data-state="error"],
+  :is(.badge, .agent-tag, .pill).error,
+  :is(.badge, .agent-tag, .pill).danger {
+    background: rgba(240, 124, 116, .14);
+    border-color: rgba(240, 124, 116, .34);
+    color: var(--danger);
+  }
+
+  .apps-card.is-connected .apps-status,
+  .apps-status[data-state="connected"] {
+    color: var(--ok);
+  }
+
+  .view-tab,
+  .chat-history-rail-item,
+  .settings-nav button,
+  .settings-tabs button,
+  .more-menu .more-item {
+    color: var(--text-2);
+  }
+
+  .view-tab.on,
+  .org-tab.on,
+  .settings-nav button[aria-selected="true"],
+  .settings-tabs button[aria-selected="true"],
+  .runtime-health-status[data-health-status="stale"],
+  .org-tab:hover,
+  .primary-setting .btn,
+  .runtime-health-action .btn {
+    color: var(--accent);
+  }
+
+  .view-switch,
+  .composer,
+  .screen-workspace-preview,
+  .scr-preview,
+  .ctx-layer pre,
+  .tool-approval-details pre,
+  .runtime-health,
+  .space-item,
+  .task-file,
+  .ch-row,
+  .conn-row,
+  .ctx-layer,
+  .agent-row,
+  .vault-item,
+  .space-card,
+  .org-audit,
+  .tool-switch,
+  .preference-switch,
+  .task-item,
+  .tool-approval,
+  .apps-card,
+  .apps-guide,
+  .ob-browser-workbench,
+  .ob-browser-dialog {
+    border-color: var(--border-soft);
+    background: var(--mac-inset);
+  }
+
+  .composer {
+    background: var(--mac-control);
+    border-color: var(--border);
+  }
+
+  .composer:focus-within,
+  input.t:focus,
+  textarea.t:focus,
+  select.t:focus,
+  .screen-workspace-input input:focus,
+  .ob-browser-address:focus,
+  .ob-browser-remote-input input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(91, 140, 255, .18);
+  }
+
+  .msg.user {
+    background: var(--mac-inset);
+    color: var(--text);
+  }
+
+  .msg.error,
+  .msg.look,
+  .inline-notice {
+    background: var(--bg-panel);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .msg.look {
+    background-image: none;
+  }
+
+  /* Sheets, drawers and cloud/app surfaces must not fall back to white. */
+  #modal-mask,
+  #ctx-mask,
+  #agent-mask,
+  #task-mask,
+  #node-mask,
+  #cloud-mask,
+  #org-workspaces-dialog,
+  .modal-mask,
+  .agent-mask {
+    background: var(--mac-scrim);
+  }
+
+  .modal:not(.settings-modal),
+  .modal.settings-modal,
+  #org-drawer,
+  .settings-modal,
+  .cloud-modal,
+  .agent-card,
+  .apps-guide[open],
+  .more-menu,
+  #toast,
+  .chat-history-preview {
+    background: var(--bg-panel);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  #board-view {
+    --ob-window-surface: var(--bg-panel);
+  }
+
+  .org-row,
+  .org-row:first-child,
+  .org-audit,
+  .org-footer,
+  .cloud-actions,
+  .channel-access,
+  .settings-group,
+  .settings-section,
+  .ob-browser-head,
+  .ob-browser-foot {
+    border-color: var(--border-soft);
+  }
+
+  /* Keep app connection and browser workbench cards visually compact. */
+  .apps-card,
+  .apps-guide,
+  .ob-browser-workbench,
+  .ob-browser-dialog {
+    box-shadow: none;
+  }
+
+  .apps-card:focus-within,
+  .apps-guide:focus-within,
+  .ob-browser-workbench:focus-within {
+    border-color: var(--accent);
+  }
+
+  /* Colourful Bot avatars are intentionally excluded from this theme layer. */
+  .ob-avatar,
+  .avatar,
+  .screen-bot-avatar,
+  .org-chart-avatar,
+  .org-bot-dashboard-avatar,
+  .org-workspaces-avatar,
+  .ob-meetings-avatar,
+  .bot-avatar-stack {
+    filter: none;
+  }
+
+  ::selection {
+    background: var(--mac-selection);
+    color: var(--text);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--mac-scroll);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-3);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    accent-color: var(--mac-action);
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline-color: var(--accent);
+  }
+}

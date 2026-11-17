@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="u-title u-desc" style="--body:#DE9B6B;--body-deep:#624335;--face:#FBF5E9;--ink:#49372D;--lining:#F1C89A;--leaf:#88A95A;--paper:#FBF5E9;--paper-line:#C98758">
+  <title id="u-title">U · 收纳篮</title>
+  <desc id="u-desc">一只杏橙色的软质收纳篮以清楚的 U 形轮廓承托两张文件卡片，篮身带着奶油色微笑脸。颜色可通过根节点 CSS 自定义属性修改。</desc>
+  <!-- Transparent 128×128 canvas; artwork sits within the centered circular-avatar safe area. -->
+  <g aria-hidden="true">
+    <!-- Double-stroked rounded U makes a soft, open basket silhouette. -->
+    <path d="M36 37 V67 C36 87 47 100 64 100 C81 100 92 87 92 67 V37" fill="none" stroke="var(--body-deep)" stroke-width="29" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36 37 V67 C36 87 47 100 64 100 C81 100 92 87 92 67 V37" fill="none" stroke="var(--body)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Stored cards rise from the open center, kept compact so the U remains dominant. -->
+    <path d="M47 56 V43 Q47 40 50 40 H61 L67 46 V58 H50 Q47 58 47 56Z" fill="var(--paper)" stroke="var(--body-deep)" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M61 40 V46 H67" fill="none" stroke="var(--paper-line)" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M58 60 V49 Q58 46 61 46 H73 L79 52 V62 H61 Q58 62 58 60Z" fill="var(--lining)" stroke="var(--body-deep)" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M73 46 V52 H79" fill="none" stroke="var(--paper-line)" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- Friendly face sits on the broad lower curve of the basket. -->
+    <ellipse cx="64" cy="87" rx="15" ry="9" fill="var(--face)"/>
+    <circle cx="59" cy="85.5" r="1.8" fill="var(--ink)"/>
+    <circle cx="69" cy="85.5" r="1.8" fill="var(--ink)"/>
+    <path d="M60.5 91 Q64 94 67.5 91" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="53.8" cy="89" r="1.5" fill="var(--leaf)"/>
+    <circle cx="74.2" cy="89" r="1.5" fill="var(--leaf)"/>
+  </g>
+</svg>

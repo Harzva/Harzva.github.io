@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="t-title t-desc" style="--body:#69B7D0;--body-deep:#254B5D;--face:#F8F5E9;--ink:#203F4C;--glass:#F4C46E;--glass-deep:#A8623F;--highlight:#BDE5E8">
+  <title id="t-title">T · 灯塔</title>
+  <desc id="t-desc">一座蓝绿色的小灯塔以宽阔帽檐与笔直塔身构成字母 T，暖金灯窗和微笑让它成为亲和的导航角色。颜色可通过根节点 CSS 自定义属性修改。</desc>
+  <!-- Transparent 128×128 canvas; all features remain inside a centered circular-avatar safe area. -->
+  <g aria-hidden="true">
+    <!-- One sturdy silhouette keeps the capital T legible at small avatar sizes. -->
+    <path d="M31 22 H97 Q104 22 104 29 V43 Q104 50 97 50 H78 L82 96 Q83 106 74 107 H54 Q45 107 46 97 L50 50 H31 Q24 50 24 43 V29 Q24 22 31 22Z" fill="var(--body)" stroke="var(--body-deep)" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Flat lantern roof and warm glass sit within the crossbar. -->
+    <path d="M48 31 Q64 25 80 31 L77 35 H51Z" fill="var(--body-deep)"/>
+    <rect x="52" y="35" width="24" height="10" rx="3" fill="var(--glass)" stroke="var(--body-deep)" stroke-width="2"/>
+    <path d="M57 37 V43 M64 37 V43 M71 37 V43" stroke="var(--glass-deep)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Tiny beacon rays hint at the lighthouse role without extending beyond the letter. -->
+    <path d="M44 38 H39 M84 38 H89" stroke="var(--highlight)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Tower bands reinforce the taper; the face stays clear in the center of the stem. -->
+    <path d="M50 57 H78 M51 94 H81" stroke="var(--highlight)" stroke-width="3" stroke-linecap="round" opacity=".95"/>
+    <ellipse cx="64" cy="74" rx="13" ry="10" fill="var(--face)"/>
+    <circle cx="59.5" cy="72" r="1.8" fill="var(--ink)"/>
+    <circle cx="68.5" cy="72" r="1.8" fill="var(--ink)"/>
+    <path d="M60.5 78 Q64 81 67.5 78" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- A small doorway marks the base of the tower. -->
+    <path d="M60 104 V96 Q60 91 64 91 Q68 91 68 96 V104Z" fill="var(--glass)" stroke="var(--body-deep)" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>

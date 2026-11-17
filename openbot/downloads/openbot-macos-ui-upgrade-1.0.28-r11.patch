@@ -1,0 +1,312 @@
+From 35d2ffe9ba657ff9dd6d4ef9c3a956bf3c4caef9 Mon Sep 17 00:00:00 2001
+From: Mac <mac@Macs-Mac-Studio-2.local>
+Date: Fri, 6 Nov 2026 08:40:50 +0800
+Subject: [PATCH] ui(round-11): deep pillar optimization for 3-device hub
+ topology, dark sidebar switcher, and header/composer polish
+
+---
+ renderer/index.html             | 34 ++++++++++--
+ renderer/openbot-mobile-web.css | 96 +++++++++++++++++++++++++++++++--
+ renderer/openbot-quiet-ui.css   | 17 ++++--
+ renderer/ui-baseline.json       |  4 +-
+ 4 files changed, 137 insertions(+), 14 deletions(-)
+
+diff --git a/renderer/index.html b/renderer/index.html
+index 25d1793..47ea059 100644
+--- a/renderer/index.html
++++ b/renderer/index.html
+@@ -4053,7 +4053,7 @@ function renderChat(){
+       ? window.OpenBotChatMessageActions.markup(m,index,b.id) : '';
+     if (m.role === 'user') {
+       var originAttrs = m.kind === 'mobile-user'
+-        ? ' data-msg-origin="mobile" data-msg-origin-label="'+esc(tr("手机端发起", "From Mobile"))+'" data-msg-origin-meta="'+esc(tr("荣耀手机 · 局域网 TLS 加密直连", "Mobile · LAN TLS direct"))+'"'
++        ? ' data-msg-origin="mobile" data-msg-origin-label="'+esc(tr("手机端发起", "From Mobile"))+'" data-msg-origin-meta="'+esc(tr("荣耀手机 · 局域网 TLS 加密直连 · ✓ 已送达主脑", "Mobile · LAN TLS direct · ✓ Delivered"))+'"'
+         : '';
+       return '<div class="msg user" data-chat-index="'+index+'" data-chat-bot-id="'+esc(b.id)+'"'+originAttrs+'>'+esc(m.text)+messageActions+'</div>';
+     }
+@@ -10299,7 +10299,7 @@ function renderMultiDeviceHubUI(){
+               : (firstBot.name + tr(" · 1 个 Bot · 实时同步", " · 1 Bot · Live sync")))
+           : (tr("可访问 ", "Scoped to ") + count + tr(" 个 Bot · 实时同步", " Bots · Live sync"));
+         return '<div class="ob-hub-item">'
+-          + '<div class="ob-hub-item-copy"><div class="ob-hub-item-name"><span class="ob-hub-device-dot" aria-hidden="true"></span>' + esc(d.name || tr("已授权手机", "Authorized phone")) + '</div>'
++          + '<div class="ob-hub-item-copy"><div class="ob-hub-item-name"><span class="ob-hub-device-dot" aria-hidden="true"></span><span>' + esc(d.name || tr("已授权手机", "Authorized phone")) + '</span><span class="ob-hub-live-pill">' + esc(tr("实时同步", "Live sync")) + '</span></div>'
+           + '<div class="ob-hub-item-sub">' + esc(scopeText) + '</div></div>'
+           + '<button type="button" class="mwb-button mwb-button-danger" data-hub-revoke="'+esc(d.id)+'">' + esc(tr("断开", "Revoke")) + '</button>'
+           + '</div>';
+@@ -10317,11 +10317,24 @@ function renderMultiDeviceHubUI(){
+   var phoneStateText = multiDeviceHubState.devices.length > 0
+     ? (multiDeviceHubState.devices.length + tr(" 台在线", " online"))
+     : (multiDeviceHubState.running ? tr("等待连接", "Ready") : tr("未开启", "Off"));
++  var phoneTopoState = multiDeviceHubState.pendingRequests.length > 0 ? 'pending'
++    : (multiDeviceHubState.devices.length > 0 ? 'online' : (multiDeviceHubState.running ? 'ready' : 'idle'));
++  var phoneTopoSub = multiDeviceHubState.pendingRequests.length > 0
++    ? (multiDeviceHubState.pendingRequests.length + tr(" 项待批", " pending"))
++    : (multiDeviceHubState.devices.length > 0 ? (multiDeviceHubState.devices.length + tr(" 台在线", " online")) : (multiDeviceHubState.running ? tr("待连接", "Ready") : tr("未开启", "Off")));
++  var topoHtml = '<div class="ob-hub-topology" role="group" aria-label="'+esc(tr("三端实时拓扑", "3-Device Live Topology"))+'">'
++    + '<div class="ob-hub-topo-node" data-topo-state="online"><span class="ob-hub-topo-dot" aria-hidden="true"></span><span class="ob-hub-topo-label">' + esc(tr("Mac 主控", "Mac Host")) + '</span><span class="ob-hub-topo-sub">' + esc(tr("在线", "Online")) + '</span></div>'
++    + '<span class="ob-hub-topo-link" aria-hidden="true">⇄</span>'
++    + '<div class="ob-hub-topo-node" data-topo-state="'+phoneTopoState+'"><span class="ob-hub-topo-dot" aria-hidden="true"></span><span class="ob-hub-topo-label">' + esc(tr("手机终端", "Mobile")) + '</span><span class="ob-hub-topo-sub">' + esc(phoneTopoSub) + '</span></div>'
++    + '<span class="ob-hub-topo-link" aria-hidden="true">⇄</span>'
++    + '<div class="ob-hub-topo-node" data-topo-state="'+(nasConnected ? 'online' : 'idle')+'"><span class="ob-hub-topo-dot" aria-hidden="true"></span><span class="ob-hub-topo-label">' + esc(tr("家庭 NAS", "NAS Node")) + '</span><span class="ob-hub-topo-sub">' + esc(nasConnected ? tr("已挂载", "Mounted") : tr("待机", "Standby")) + '</span></div>'
++    + '</div>';
+   popover.innerHTML = '<div class="ob-hub-head">'
+     + '<div class="ob-hub-title-wrap"><h3 class="ob-hub-title">' + esc(tr("多端协同中心", "Multi-Device Collaboration Hub")) + '</h3>'
+     + '<span class="ob-hub-state-tag" data-state="'+(multiDeviceHubState.running || nasConnected ? 'active' : 'idle')+'">' + esc(multiDeviceHubState.running ? tr("运行中", "Active") : tr("待机", "Standby")) + '</span></div>'
+     + '<button type="button" class="mwb-button '+(multiDeviceHubState.running ? '' : 'mwb-button-primary')+'" data-hub-toggle-service>' + esc(multiDeviceHubState.running ? tr("停止服务", "Stop") : tr("开启手机协同", "Start Mobile")) + '</button>'
+     + '</div>'
++    + topoHtml
+     + pendingHtml
+     + '<div class="ob-hub-card" data-hub-section="phone">'
+     + '<div class="ob-hub-card-head"><span class="ob-hub-card-title">' + esc(tr("手机端直连 (Mac ↔ 手机)", "Phone Direct Access (Mac ↔ Mobile)")) + '</span>'
+@@ -10332,7 +10345,7 @@ function renderMultiDeviceHubUI(){
+     + '<div class="ob-hub-card" data-hub-section="nas">'
+     + '<div class="ob-hub-card-head"><span class="ob-hub-card-title">' + esc(tr("远端执行节点 (Mac ↔ NAS)", "Remote Execution Node (Mac ↔ NAS)")) + '</span>'
+     + '<span class="ob-hub-state-tag" data-state="'+(nasConnected ? 'active' : 'idle')+'">' + esc(nasConnected ? tr("已连接", "Connected") : tr("本地执行", "Local")) + '</span></div>'
+-    + '<div class="ob-hub-item"><div class="ob-hub-item-copy"><div class="ob-hub-item-name"><span class="ob-hub-device-dot" data-state="'+(nasConnected ? 'online' : 'idle')+'" aria-hidden="true"></span>' + esc(nasHost && (nasHost.name || nasHost.url) ? (nasHost.name || nasHost.url) : tr("Mac 本机与 NAS 协同执行", "Mac & NAS Co-Execution")) + '</div>'
++    + '<div class="ob-hub-item"><div class="ob-hub-item-copy"><div class="ob-hub-item-name"><span class="ob-hub-device-dot" data-state="'+(nasConnected ? 'online' : 'idle')+'" aria-hidden="true"></span><span>' + esc(nasHost && (nasHost.name || nasHost.url) ? (nasHost.name || nasHost.url) : tr("Mac 本机与 NAS 协同执行", "Mac & NAS Co-Execution")) + '</span>' + (nasConnected ? '<span class="ob-hub-live-pill" data-tone="nas">' + esc(tr("TLS 已挂载", "TLS Mounted")) + '</span>' : '') + '</div>'
+     + '<div class="ob-hub-item-sub">' + esc(nasSubText) + '</div></div>'
+     + '<button type="button" class="mwb-button" data-hub-open-node>' + esc(tr("节点配置", "Configure")) + '</button></div>'
+     + '</div>'
+@@ -10420,8 +10433,21 @@ function handleMultiDeviceHubAction(event){
+   }
+   if (btn.hasAttribute('data-hub-copy')){
+     var url = btn.getAttribute('data-hub-copy');
++    var showCopied = function(){
++      btn.classList.add('is-copied');
++      btn.textContent = tr("✓ 已复制", "✓ Copied");
++      toast(tr("已复制手机直连地址", "Copied mobile URL"));
++      setTimeout(function(){
++        if (btn.isConnected){
++          btn.classList.remove('is-copied');
++          btn.textContent = tr("复制地址", "Copy URL");
++        }
++      }, 1800);
++    };
+     if (navigator.clipboard && navigator.clipboard.writeText){
+-      navigator.clipboard.writeText(url).then(function(){ toast(tr("已复制手机直连地址", "Copied mobile URL")); }).catch(function(){});
++      navigator.clipboard.writeText(url).then(showCopied).catch(showCopied);
++    } else {
++      showCopied();
+     }
+     return;
+   }
+diff --git a/renderer/openbot-mobile-web.css b/renderer/openbot-mobile-web.css
+index a5e6194..00dd07a 100644
+--- a/renderer/openbot-mobile-web.css
++++ b/renderer/openbot-mobile-web.css
+@@ -13,9 +13,9 @@
+ #mobile-web-root * { box-sizing: border-box; }
+ #mobile-web-root [hidden] { display: none !important; }
+ .mwb-panel { display: grid; gap: 12px; min-width: 0; }
+-.mwb-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
++.mwb-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+ .mwb-heading h3 { margin: 0; color: var(--text, #202124); font-size: 14px; font-weight: 600; line-height: 1.4; }
+-.mwb-heading p { margin: 0; color: var(--mwb-muted); font-size: 12px; }
++.mwb-heading p { margin: 0; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--mwb-line); background: color-mix(in srgb, var(--bg-panel, #f8f9fa) 80%, transparent); color: var(--mwb-muted); font-size: 11px; font-weight: 600; }
+ .mwb-description { max-width: 70ch; margin: -7px 0 0; color: var(--mwb-muted); font-size: 12.5px; line-height: 1.55; }
+ .mwb-service-row { display: grid; grid-template-columns: minmax(150px, 1fr) auto auto; align-items: end; gap: 8px; }
+ .mwb-field { display: grid; min-width: 0; gap: 4px; color: var(--mwb-muted); font-size: 12px; }
+@@ -35,8 +35,9 @@
+ .mwb-section-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+ .mwb-section-head h4 { margin: 0; color: var(--text, #202124); font-size: 13px; font-weight: 600; }
+ .mwb-help { margin: 0; color: var(--mwb-muted); font-size: 12px; line-height: 1.55; }
+-.mwb-bot-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2px 12px; }
+-.mwb-bot-option { min-width: 0; display: flex; align-items: center; gap: 8px; padding: 4px 2px; color: var(--text, #202124); font-size: 12.5px; overflow-wrap: anywhere; }
++.mwb-bot-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px 10px; }
++.mwb-bot-option { min-width: 0; display: flex; align-items: center; gap: 8px; padding: 6px 9px; border: 1px solid var(--mwb-line); border-radius: 7px; background: color-mix(in srgb, var(--bg-panel, #fafafa) 75%, transparent); color: var(--text, #202124); font-size: 12.5px; overflow-wrap: anywhere; cursor: pointer; transition: border-color 120ms ease, background-color 120ms ease; }
++.mwb-bot-option:has(input:checked) { border-color: color-mix(in srgb, var(--accent, #5b8cff) 42%, var(--mwb-line)); background: color-mix(in srgb, var(--accent, #5b8cff) 8%, var(--bg-panel, #fafafa)); font-weight: 550; }
+ .mwb-bot-option input { width: 15px; height: 15px; margin: 0; flex: 0 0 auto; accent-color: var(--accent, #5b8cff); }
+ .mwb-qr-panel { position: relative; width: min(100%, 420px); display: grid; grid-template-columns: 144px minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px 34px 10px 10px; border: 1px solid var(--mwb-line); border-radius: 7px; background: var(--bg-panel, #fafafa); }
+ .mwb-qr-image { display: block; width: 144px; height: 144px; border: 1px solid #fff; background: #fff; object-fit: contain; image-rendering: pixelated; }
+@@ -365,6 +366,69 @@
+   background: color-mix(in srgb, var(--warn, #c4841d) 18%, transparent);
+   color: var(--warn, #b27110);
+ }
++.ob-hub-topology {
++  display: grid;
++  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
++  align-items: center;
++  gap: 5px;
++  padding: 6px 8px;
++  border: 1px solid color-mix(in srgb, var(--accent, #5b8cff) 20%, var(--border-soft, #dedee2));
++  border-radius: 8px;
++  background: color-mix(in srgb, var(--accent, #5b8cff) 5%, var(--bg-panel, #f8f9fa));
++}
++.ob-hub-topo-node {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 4px;
++  min-width: 0;
++  padding: 4px 6px;
++  border: 1px solid color-mix(in srgb, var(--border, #d0d0d5) 60%, var(--border-soft, #dedee2));
++  border-radius: 6px;
++  background: color-mix(in srgb, var(--bg, #fff) 82%, transparent);
++  font-size: 10.5px;
++  line-height: 1.25;
++  white-space: nowrap;
++}
++.ob-hub-topo-dot {
++  flex: 0 0 6px;
++  width: 6px;
++  height: 6px;
++  border-radius: 50%;
++  background: var(--text-3, #8a8f98);
++}
++.ob-hub-topo-node[data-topo-state="online"] .ob-hub-topo-dot {
++  background: var(--ok, #2d8c5b);
++  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--ok, #2d8c5b) 20%, transparent);
++}
++.ob-hub-topo-node[data-topo-state="pending"] .ob-hub-topo-dot {
++  background: var(--warn, #c4841d);
++  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--warn, #c4841d) 24%, transparent);
++}
++.ob-hub-topo-node[data-topo-state="ready"] .ob-hub-topo-dot {
++  background: var(--accent, #5b8cff);
++}
++.ob-hub-topo-label {
++  font-weight: 600;
++  color: var(--text, #202124);
++}
++.ob-hub-topo-sub {
++  color: var(--text-3, #666a73);
++  font-size: 10px;
++}
++.ob-hub-topo-node[data-topo-state="online"] .ob-hub-topo-sub {
++  color: var(--ok, #2d8c5b);
++  font-weight: 600;
++}
++.ob-hub-topo-node[data-topo-state="pending"] .ob-hub-topo-sub {
++  color: var(--warn, #b27110);
++  font-weight: 600;
++}
++.ob-hub-topo-link {
++  color: var(--text-3, #8a8f98);
++  font-size: 11px;
++  line-height: 1;
++}
+ .ob-hub-card {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr);
+@@ -454,6 +518,12 @@
+   background: color-mix(in srgb, var(--accent, #5b8cff) 10%, transparent);
+   color: var(--accent, #5b8cff);
+ }
++.ob-device-hub-popover .ob-hub-origin-row .mwb-button.is-copied {
++  border-color: color-mix(in srgb, var(--ok, #2d8c5b) 48%, var(--border-soft, #dedee2));
++  background: color-mix(in srgb, var(--ok, #2d8c5b) 12%, transparent);
++  color: var(--ok, #2d8c5b);
++  font-weight: 600;
++}
+ .ob-hub-qr-box {
+   display: grid;
+   grid-template-columns: 112px minmax(0, 1fr);
+@@ -555,6 +625,24 @@
+   text-overflow: ellipsis;
+   white-space: nowrap;
+ }
++.ob-hub-live-pill {
++  display: inline-flex;
++  align-items: center;
++  flex-shrink: 0;
++  padding: 1px 6px;
++  border-radius: 999px;
++  border: 1px solid color-mix(in srgb, var(--ok, #2d8c5b) 28%, transparent);
++  background: color-mix(in srgb, var(--ok, #2d8c5b) 10%, transparent);
++  color: var(--ok, #2d8c5b);
++  font-size: 9.5px;
++  font-weight: 600;
++  line-height: 1.3;
++}
++.ob-hub-live-pill[data-tone="nas"] {
++  border-color: color-mix(in srgb, var(--accent, #5b8cff) 28%, transparent);
++  background: color-mix(in srgb, var(--accent, #5b8cff) 10%, transparent);
++  color: var(--accent, #5b8cff);
++}
+ .ob-hub-device-dot {
+   flex: 0 0 7px;
+   width: 7px;
+diff --git a/renderer/openbot-quiet-ui.css b/renderer/openbot-quiet-ui.css
+index 06b7b86..0019c75 100644
+--- a/renderer/openbot-quiet-ui.css
++++ b/renderer/openbot-quiet-ui.css
+@@ -19,8 +19,12 @@
+ .bot-item:hover{border-color:var(--border);background:var(--bg-hover)}
+ .bot-item .ob-avatar--list{width:32px;height:32px}
+ .bot-item .bname{font-size:12.5px;font-weight:500}
+-.bot-item.active{border-color:color-mix(in srgb,var(--accent) 28%,var(--border-soft));background:color-mix(in srgb,var(--accent) 7%,var(--bg-active));box-shadow:inset 3px 0 0 var(--accent),0 1px 2px rgb(0 0 0 / 4%)}
++.bot-item.active{border-color:color-mix(in srgb,var(--accent) 28%,var(--border-soft));background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 11%,var(--bg-active)) 0%,color-mix(in srgb,var(--accent) 4%,var(--bg-active)) 100%);box-shadow:inset 3px 0 0 var(--accent),0 1px 2px rgb(0 0 0 / 4%)}
+ .bot-item.active .bname{font-weight:600}
++#sidebar .ouw-switcher{background:var(--mac-inset);border-color:var(--border-soft);padding:3px;border-radius:9px}
++#sidebar .ouw-switcher-tab{border:1px solid transparent;font-weight:550;transition:background-color 120ms ease,color 120ms ease,border-color 120ms ease}
++#sidebar .ouw-switcher-tab[aria-selected="true"]{background:var(--mac-control);border-color:color-mix(in srgb,var(--border) 65%,transparent);box-shadow:0 1px 3px rgb(0 0 0 / 9%);color:var(--text);font-weight:600}
++#sidebar:not([data-compact="true"]) .ouw-switcher-tab[aria-selected="true"]::before{background-color:var(--accent);opacity:1}
+ .bot-type-tag[data-tag-type="node"]{border-color:color-mix(in srgb,var(--accent) 32%,var(--border-soft));background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent)}
+ .bot-type-tag[data-tag-type="mobile"]{border-color:color-mix(in srgb,var(--ok,#2d8c5b) 34%,var(--border-soft));background:color-mix(in srgb,var(--ok,#2d8c5b) 10%,transparent);color:var(--ok,#2d8c5b)}
+ /* Bot names are quiet labels until the user chooses to edit one. */
+@@ -50,9 +54,12 @@
+ .bot-item[data-bot-live] .bsub::before{content:"";flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--text-3);opacity:.45}
+ .bot-item[data-bot-live="true"] .bsub::before{background:var(--ok,#2d8c5b);opacity:1;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--ok,#2d8c5b) 18%,transparent)}
+ .bot-item[data-bot-live="true"][data-bot-exec="node"] .bsub::before{background:var(--accent);opacity:1;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--accent) 20%,transparent)}
+-#sidebar:not([data-compact="true"]) #ob-sidebar-account .ob-account-trigger{border:1px solid var(--border-soft);border-radius:8px;background:color-mix(in srgb,var(--bg-panel) 72%,transparent);padding:5px 8px}
++#sidebar:not([data-compact="true"]) #ob-sidebar-account .ob-account-trigger{border:1px solid var(--border-soft);border-radius:8px;background:color-mix(in srgb,var(--bg-panel) 72%,transparent);padding:5px 8px;transition:background-color 120ms ease,border-color 120ms ease,box-shadow 120ms ease}
++#sidebar:not([data-compact="true"]) #ob-sidebar-account .ob-account-trigger:hover{border-color:var(--border);box-shadow:0 1px 3px rgb(0 0 0 / 5%)}
++[data-account-state="connected"] .ob-account-avatar{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 26%,transparent)}
+ #sidebar:not([data-compact="true"]) #ob-sidebar-account .ob-account-arrow{width:20px;height:20px;flex:0 0 20px;border-radius:5px;background:color-mix(in srgb,var(--text-3) 10%,transparent)}
+ #sidebar:not([data-compact="true"]) #bot-list .bot-item>.bot-association-menu-trigger{position:absolute;top:5px;right:4px;height:20px;margin:0}
++#sidebar:not([data-compact="true"]) #bot-list .bot-item.active>.bot-association-menu-trigger{color:var(--text-2)}
+ #sidebar:not([data-compact="true"]) #bot-list .bot-item:has(.bot-name.is-editing) .bname{padding-right:0}
+ #sidebar:not([data-compact="true"]) #bot-list .bot-item:has(.bot-name.is-editing)>.bot-association-menu-trigger{display:none}
+ .bot-item .bname>.primary-mark,#bot-header .primary-mark{display:inline-flex;align-items:center;flex-shrink:0;padding:1px 6px;border:1px solid color-mix(in srgb,var(--accent) 24%,transparent);border-radius:999px;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-size:9.5px;font-weight:600;line-height:1.35;white-space:nowrap}
+@@ -82,7 +89,7 @@
+ #bot-header #btn-more[aria-expanded="true"]{border-color:var(--border);background:var(--bg-active);color:var(--text);box-shadow:inset 0 1px 2px rgb(0 0 0 / 8%)}
+ #bot-header .hd-sub{display:none}
+ #bot-header .hd-name{display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:visible}
+-#bot-header .hd-identity{min-width:72px;max-width:min(460px,38vw);flex:0 1 auto}
++#bot-header .hd-identity{min-width:72px;max-width:min(520px,42vw);flex:0 1 auto}
+ .header-channels{display:flex;gap:6px;margin-left:6px}
+ #bot-header .jarvis-mode-badge{display:none}
+ .jarvis-sidebar-note{margin:0 10px 10px;padding:0 0 0 42px;border:0;background:transparent}
+@@ -107,6 +114,7 @@
+ .more-menu .more-item:hover{background:var(--bg-hover)}
+ .more-menu .more-item:focus-visible{background:var(--bg-hover);outline:2px solid var(--accent);outline-offset:-2px}
+ #bot-header #llm-badge{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:transparent;border:0;padding:0;margin-top:2px;color:var(--text-3);font-size:11px;line-height:1.5}
++#bot-header #llm-badge.ok{color:var(--text-2)}
+ #bot-header #llm-badge::before{content:"";display:inline-block;width:6px;height:6px;margin-right:5px;vertical-align:middle;transform:translateY(-1px);border-radius:50%;background:var(--text-3);opacity:.55}
+ #bot-header #llm-badge.ok::before{background:var(--ok,#2d8c5b);opacity:1;box-shadow:0 0 0 2px color-mix(in srgb,var(--ok,#2d8c5b) 18%,transparent)}
+ #bot-header #llm-badge.ok[data-exec-mode="node"]::before{background:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}
+@@ -145,7 +153,8 @@
+ .chat-hint .hint-chips{margin-top:16px;gap:6px}
+ .composer #chat-input:focus-visible{outline:none}
+ .composer .send-btn:not(:disabled){box-shadow:0 2px 5px color-mix(in srgb,var(--mac-action,var(--accent)) 36%,transparent),inset 0 1px 0 rgb(255 255 255 / 22%)}
+-.composer-tools button,.composer-tools [data-openbot-composer-shape-control]{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid color-mix(in srgb,var(--border) 72%,var(--border-soft));background:color-mix(in srgb,var(--mac-inset) 75%,var(--bg-panel));color:var(--text-2);font-size:11px;line-height:1.35}
++.composer-tools button,.composer-tools [data-openbot-composer-shape-control]{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid color-mix(in srgb,var(--border) 72%,var(--border-soft));background:color-mix(in srgb,var(--mac-inset) 75%,var(--bg-panel));color:var(--text-2);font-size:11px;line-height:1.35;transition:background-color 120ms ease,border-color 120ms ease,color 120ms ease}
++.composer-tools button:hover,.composer-tools [data-openbot-composer-shape-control]:hover{border-color:var(--border);background:var(--bg-hover);color:var(--text)}
+ .composer-tools :is(#composer-expand,#composer-focus)::before{content:"";flex:0 0 11px;width:11px;height:11px;background-color:currentColor;opacity:.75}
+ .composer-tools #composer-expand::before{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5l-4.5 4.5M2.5 13.5 7 9'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5l-4.5 4.5M2.5 13.5 7 9'/%3E%3C/svg%3E") center/contain no-repeat}
+ .composer-tools #composer-focus::before{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 5.5v-3h3M10.5 2.5h3v3M13.5 10.5v3h-3M5.5 13.5h-3v-3'/%3E%3Ccircle cx='8' cy='8' r='1.8'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 5.5v-3h3M10.5 2.5h3v3M13.5 10.5v3h-3M5.5 13.5h-3v-3'/%3E%3Ccircle cx='8' cy='8' r='1.8'/%3E%3C/svg%3E") center/contain no-repeat}
+diff --git a/renderer/ui-baseline.json b/renderer/ui-baseline.json
+index cdb4939..ec49bb8 100644
+--- a/renderer/ui-baseline.json
++++ b/renderer/ui-baseline.json
+@@ -87,7 +87,7 @@
+     "renderer/openbot-office.css": "0d5f5f2fd735a054acfa6fe2935340f0661d8f0082800ec1f63dd35ba5a1128b",
+     "renderer/openbot-presence.js": "9279f380833b2ee879420de09d386d3604bc51a19c322b67838e532576a24397",
+     "renderer/openbot-produce-characters.js": "6e723ebbd02f5b9af789a191aa45e8281864ee395eb54f3016fddbfdf5604ded",
+-    "renderer/openbot-quiet-ui.css": "3a7cdfdd21504acbef1425463ec01ed1a15bd16342c8e9a5fe7e66faea54ebd1",
++    "renderer/openbot-quiet-ui.css": "b8f36f3999760321993b892d025dbde7d54a39c4755e9c00412a11f660929aea",
+     "renderer/openbot-settings.css": "248beedc02a17542d6e0ab4c83ff1d01d6ca84a12b1c2b6efba5bda8bdb72922",
+     "renderer/openbot-app-catalog.js": "590709fa3575464939f3acef463d956a458e5d9bfc606deab0f9958b64a5e9c4",
+     "renderer/openbot-history-media.js": "2b07762e1fc39934abbac546adda38bb4b3bc2a86dce724af5d7aed6ee035e10",
+@@ -451,7 +451,7 @@
+     "renderer/openbot-desktop-plugins.css": "2d855aed6d47a23c2e6674775c47c59d8e10713a718d729591785d4766f0fac9",
+     "renderer/openbot-desktop-plugins.js": "efcfd973e7d38b92c075b4a02d56dd905010abade8811fdcee3591d744809f21",
+     "renderer/openbot-mobile-web.js": "a59bd3a9fc346d0712271581a53630c31b023879f5d63b6e133583f83912a250",
+-    "renderer/openbot-mobile-web.css": "c2a0ae3b9d885f168ca57f162fbe3d306e44693783fce720238eda935fc524a8",
++    "renderer/openbot-mobile-web.css": "3aa665b5f7a7b6d3311f92c9db87301c09b5bb93f8e74085600d8d4e597390a5",
+     "mobile-web/index.html": "ec1e5d9a51970d4e58aed5730b70743048791ee624eac4db27180d423e2f349a",
+     "mobile-web/styles.css": "f917315030e54cd6a4dadf7aea35303281e32937a620e739a200f09bd6bdc8d5",
+     "mobile-web/app.js": "1e209a69e5385358e825c75df2860c89e85b9ef263b8f317f22ad434156d3d1f",
+-- 
+2.39.2 (Apple Git-143)
+

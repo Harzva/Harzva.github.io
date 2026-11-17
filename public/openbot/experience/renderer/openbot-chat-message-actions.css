@@ -1,0 +1,15 @@
+/* Quiet per-message controls; request IDs are rendered only when persisted. */
+.msg{position:relative;overflow:visible}
+.chat-message-actions{position:absolute;z-index:8;top:-12px;right:5px;display:flex;align-items:flex-start;gap:4px;opacity:0;pointer-events:none;transition:opacity 120ms ease}
+.msg:is(:hover,:focus-within) .chat-message-actions{opacity:1;pointer-events:auto}
+.chat-message-more,.chat-message-speak{display:grid;place-items:center;width:28px;height:28px;min-height:28px;padding:5px;border:1px solid var(--border-soft);border-radius:7px;background:var(--mac-control,var(--bg-panel));color:var(--text-2);cursor:pointer;box-shadow:0 2px 7px rgb(0 0 0 / 8%)}
+.chat-message-more:hover,.chat-message-more[aria-expanded="true"],.chat-message-speak:hover{background:var(--bg-hover);color:var(--text)}
+.chat-message-more .ob-icon{width:16px;height:16px}
+.chat-message-speak-icon{width:16px;height:16px}
+.chat-message-menu{position:absolute;top:31px;right:0;z-index:10;display:flex;min-width:156px;flex-direction:column;gap:2px;padding:5px;border:1px solid var(--border);border-radius:9px;background:var(--bg-panel);box-shadow:0 8px 24px rgb(0 0 0 / 14%)}
+.chat-message-menu[hidden]{display:none}
+.chat-message-menu [role="menuitem"]{display:flex;align-items:center;width:100%;min-height:32px;padding:6px 9px;border:0;border-radius:6px;background:transparent;color:var(--text);font:inherit;font-size:12px;text-align:left;white-space:nowrap;cursor:pointer}
+.chat-message-menu [role="menuitem"]:hover,.chat-message-menu [role="menuitem"]:focus-visible{background:var(--bg-hover);outline:none}
+.chat-message-more:focus-visible,.chat-message-speak:focus-visible,.chat-message-menu [role="menuitem"]:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+@media(hover:none),(pointer:coarse){.chat-message-actions{opacity:1;pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.chat-message-actions{transition:none}}

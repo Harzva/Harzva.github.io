@@ -1,0 +1,225 @@
+/*
+ * OpenBot companion night palette
+ *
+ * The artwork keeps its original light-mode fallbacks in the SVG generators.
+ * This layer only supplies semantic paint values when the platform is dark:
+ * body, secondary detail, shadow, face fill, face ink and mouth accent.  The
+ * wrapper's --ob-accent remains the stored Bot color and is intentionally not
+ * reassigned here.
+ */
+@media (prefers-color-scheme: dark) {
+  /* Runtime product mark only. Static files use deep moss green; dark UI keeps moss-lime contrast. */
+  .brand .logo {
+    --ob-brand-night-fill: #DDF2A5;
+    --ob-brand-counter-fill: transparent;
+  }
+
+  .brand .logo .ob-brand-mark > path:first-of-type {
+    fill: var(--ob-brand-night-fill, #DDF2A5) !important;
+  }
+
+  .brand .logo .ob-brand-mark[data-ob-brand-eyes="true"] .ob-brand-eye {
+    fill: var(--ob-brand-night-fill, #DDF2A5) !important;
+  }
+
+  /* Shared face defaults: warm paper whites and small, readable ink dots. */
+  .ob-avatar--family svg.obf-avatar,
+  .ob-avatar--family svg.obx-avatar {
+    --ob-avatar-body-fill: #e3aa42;
+    --ob-avatar-detail-fill: #bc8641;
+    --ob-avatar-shadow-fill: #a36d37;
+    --ob-avatar-face-fill: #fff7e7;
+    --ob-avatar-face-ink: #17181b;
+    --ob-avatar-face-line: #17181b;
+    --ob-avatar-mouth-accent: #e8796f;
+    --ob-avatar-cheek-fill: #e79a87;
+    --ob-avatar-spark: #f5bd52;
+  }
+
+  .ob-avatar--family svg.obf-avatar .obf-line,
+  .ob-avatar--family svg.obx-avatar .obx-line {
+    stroke: var(--ob-avatar-face-ink, #17181b) !important;
+  }
+
+  .ob-avatar--family svg.obf-avatar[data-character="peek"] .obf-line {
+    stroke: var(--ob-avatar-face-line, #fff7e7) !important;
+  }
+
+  .ob-avatar--family svg.obf-avatar .obf-gaze > ellipse,
+  .ob-avatar--family svg.obx-avatar .obx-pupil > ellipse:first-child {
+    fill: var(--ob-avatar-face-ink, #17181b) !important;
+  }
+
+  .ob-avatar--family svg.obf-avatar .obf-spark,
+  .ob-avatar--family svg.obx-avatar .obx-spark {
+    stroke: var(--ob-avatar-spark, #f5bd52) !important;
+  }
+
+  /* The first twelve approved geometric companions. */
+  .ob-avatar--family svg[data-character="peek"] {
+    --ob-avatar-body-fill: #f2b742;
+    --ob-avatar-detail-fill: #dc8e31;
+    --ob-avatar-shadow-fill: #c9792a;
+    --ob-avatar-face-fill: #fff8e8;
+    --ob-avatar-face-ink: #17181b;
+    --ob-avatar-face-line: #fff8e8;
+  }
+  .ob-avatar--family svg[data-character="sprout"] {
+    --ob-avatar-body-fill: #a8c16d;
+    --ob-avatar-detail-fill: #82b77d;
+    --ob-avatar-shadow-fill: #799b52;
+  }
+  .ob-avatar--family svg[data-character="tuantuan"] {
+    --ob-avatar-body-fill: #e86c6d;
+    --ob-avatar-detail-fill: #d35a5e;
+    --ob-avatar-shadow-fill: #c54a53;
+  }
+  .ob-avatar--family svg[data-character="bubble"] {
+    --ob-avatar-body-fill: #70c4b6;
+    --ob-avatar-detail-fill: #5aaca2;
+    --ob-avatar-shadow-fill: #4a9b96;
+  }
+  .ob-avatar--family svg[data-character="fold"] {
+    --ob-avatar-body-fill: #ae89d8;
+    --ob-avatar-detail-fill: #c8a9ed;
+    --ob-avatar-shadow-fill: #8b69b9;
+  }
+  .ob-avatar--family svg[data-character="mochi"] {
+    --ob-avatar-body-fill: #e9b84a;
+    --ob-avatar-detail-fill: #df9c3f;
+    --ob-avatar-shadow-fill: #d18d2a;
+  }
+  .ob-avatar--family svg[data-character="ghost"] {
+    --ob-avatar-body-fill: #a178d2;
+    --ob-avatar-detail-fill: #8962b8;
+    --ob-avatar-shadow-fill: #7b57a6;
+  }
+  .ob-avatar--family svg[data-character="moon"] {
+    --ob-avatar-body-fill: #89a8d6;
+    --ob-avatar-detail-fill: #718fc0;
+    --ob-avatar-shadow-fill: #6682b1;
+  }
+  .ob-avatar--family svg[data-character="curl"] {
+    --ob-avatar-body-fill: #ee9250;
+    --ob-avatar-detail-fill: #d57a35;
+    --ob-avatar-shadow-fill: #c66b2b;
+  }
+  .ob-avatar--family svg[data-character="clover"] {
+    --ob-avatar-body-fill: #d96886;
+    --ob-avatar-detail-fill: #bd4f70;
+    --ob-avatar-shadow-fill: #b44663;
+  }
+  .ob-avatar--family svg[data-character="seed"] {
+    --ob-avatar-body-fill: #98b976;
+    --ob-avatar-detail-fill: #74a96c;
+    --ob-avatar-shadow-fill: #6b955b;
+  }
+  .ob-avatar--family svg[data-character="capsule"] {
+    --ob-avatar-body-fill: #e9ac3a;
+    --ob-avatar-detail-fill: #d58a2c;
+    --ob-avatar-shadow-fill: #c97824;
+  }
+
+  /* The twenty produce/spirit companions. */
+  .ob-avatar--family svg[data-character="strawberry"] {
+    --ob-avatar-body-fill: #e97663;
+    --ob-avatar-detail-fill: #79b688;
+    --ob-avatar-shadow-fill: #c95e55;
+  }
+  .ob-avatar--family svg[data-character="peach"] {
+    --ob-avatar-body-fill: #f0937d;
+    --ob-avatar-detail-fill: #6ea56f;
+    --ob-avatar-shadow-fill: #db766a;
+  }
+  .ob-avatar--family svg[data-character="banana"] {
+    --ob-avatar-body-fill: #e8b838;
+    --ob-avatar-detail-fill: #8c6b46;
+    --ob-avatar-shadow-fill: #cc922a;
+  }
+  .ob-avatar--family svg[data-character="lemon"] {
+    --ob-avatar-body-fill: #e4c24a;
+    --ob-avatar-detail-fill: #88ab53;
+    --ob-avatar-shadow-fill: #c8a63a;
+  }
+  .ob-avatar--family svg[data-character="pear"] {
+    --ob-avatar-body-fill: #afc968;
+    --ob-avatar-detail-fill: #78a866;
+    --ob-avatar-shadow-fill: #8ea94f;
+  }
+  .ob-avatar--family svg[data-character="watermelon"] {
+    --ob-avatar-body-fill: #ef736e;
+    --ob-avatar-detail-fill: #73a889;
+    --ob-avatar-shadow-fill: #c95c60;
+  }
+  .ob-avatar--family svg[data-character="pineapple"] {
+    --ob-avatar-body-fill: #e5af3f;
+    --ob-avatar-detail-fill: #6fa787;
+    --ob-avatar-shadow-fill: #c88a2a;
+  }
+  .ob-avatar--family svg[data-character="blueberry"] {
+    --ob-avatar-body-fill: #6f7bc9;
+    --ob-avatar-detail-fill: #8b83c7;
+    --ob-avatar-shadow-fill: #5c64b0;
+  }
+  .ob-avatar--family svg[data-character="eggplant"] {
+    --ob-avatar-body-fill: #9b6bc0;
+    --ob-avatar-detail-fill: #72a477;
+    --ob-avatar-shadow-fill: #78539f;
+  }
+  .ob-avatar--family svg[data-character="chili"] {
+    --ob-avatar-body-fill: #e56a62;
+    --ob-avatar-detail-fill: #79a866;
+    --ob-avatar-shadow-fill: #c54b50;
+  }
+  .ob-avatar--family svg[data-character="carrot"] {
+    --ob-avatar-body-fill: #e9964e;
+    --ob-avatar-detail-fill: #83ab60;
+    --ob-avatar-shadow-fill: #d17835;
+  }
+  .ob-avatar--family svg[data-character="mushroom"] {
+    --ob-avatar-body-fill: #d7676c;
+    --ob-avatar-detail-fill: #efd4bf;
+    --ob-avatar-shadow-fill: #b94f5c;
+  }
+  .ob-avatar--family svg[data-character="peas"] {
+    --ob-avatar-body-fill: #72b67a;
+    --ob-avatar-detail-fill: #a7c982;
+    --ob-avatar-shadow-fill: #498e65;
+  }
+  .ob-avatar--family svg[data-character="broccoli"] {
+    --ob-avatar-body-fill: #5aa878;
+    --ob-avatar-detail-fill: #7caf67;
+    --ob-avatar-shadow-fill: #4a8c65;
+  }
+  .ob-avatar--family svg[data-character="garlic"] {
+    --ob-avatar-body-fill: #e6d8c4;
+    --ob-avatar-detail-fill: #bba4d2;
+    --ob-avatar-shadow-fill: #cdb99f;
+  }
+  .ob-avatar--family svg[data-character="pumpkin"] {
+    --ob-avatar-body-fill: #e29a49;
+    --ob-avatar-detail-fill: #59a98b;
+    --ob-avatar-shadow-fill: #c87832;
+  }
+  .ob-avatar--family svg[data-character="cloud"] {
+    --ob-avatar-body-fill: #8aaecf;
+    --ob-avatar-detail-fill: #6f97c1;
+    --ob-avatar-shadow-fill: #6b8fb8;
+  }
+  .ob-avatar--family svg[data-character="bolt"] {
+    --ob-avatar-body-fill: #6d92db;
+    --ob-avatar-detail-fill: #8498d1;
+    --ob-avatar-shadow-fill: #526faf;
+  }
+  .ob-avatar--family svg[data-character="jelly"] {
+    --ob-avatar-body-fill: #64c7b2;
+    --ob-avatar-detail-fill: #d3859a;
+    --ob-avatar-shadow-fill: #45a890;
+  }
+  .ob-avatar--family svg[data-character="ink"] {
+    --ob-avatar-body-fill: #737b8d;
+    --ob-avatar-detail-fill: #aeb7ca;
+    --ob-avatar-shadow-fill: #596273;
+    --ob-avatar-face-line: #e6ebf2;
+  }
+}

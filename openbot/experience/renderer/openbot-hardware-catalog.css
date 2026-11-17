@@ -1,0 +1,95 @@
+/* Devices use compact rows; software retains its branded application cards. */
+#set-panel-apps .apps-hardware{margin:0 0 28px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#set-panel-apps .apps-hardware>summary{min-height:44px;padding:6px 2px;font-size:14px}
+#set-panel-apps .apps-hardware-label{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}
+#set-panel-apps .apps-hardware-title{color:var(--text);font-weight:600}
+#set-panel-apps .apps-hardware-subtitle{color:var(--text-2);font-size:12px}
+#set-panel-apps .apps-hardware>p{color:var(--text-2)}
+#set-panel-apps .apps-hardware>summary::after{margin-left:auto}
+#set-panel-apps .hardware-host{margin:12px 0 20px}
+#set-panel-apps .hardware-host-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#set-panel-apps .hardware-host-heading h3{margin:0;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+#set-panel-apps .hardware-refresh{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;min-width:88px;min-height:32px;padding:6px 8px;border:0;border-radius:7px;color:var(--text-2);background:transparent;box-shadow:none;font:inherit;font-size:12px;cursor:pointer;transition:background-color 120ms ease-out,color 120ms ease-out}
+#set-panel-apps .hardware-refresh .ob-icon{width:14px;height:14px}
+#set-panel-apps .hardware-refresh:hover:not(:disabled),#set-panel-apps .hardware-refresh:active:not(:disabled){color:var(--text);background:var(--bg-hover)}
+#set-panel-apps .hardware-refresh:disabled{cursor:wait}
+#set-panel-apps .hardware-refresh:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .hardware-host-status,#set-panel-apps .hardware-host-empty,#set-panel-apps .hardware-host-warning{margin:8px 0 12px;color:var(--text-2);font-size:12px;line-height:1.65}
+#set-panel-apps .hardware-host-group{margin:16px 0 4px;font-size:12px;font-weight:500;color:var(--text-2)}
+#set-panel-apps .hardware-host-list{list-style:none;margin:0;padding:0}
+#set-panel-apps .hardware-host-device{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps .hardware-host-device:last-child{border-bottom:0}
+#set-panel-apps .hardware-host-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px;overflow-wrap:anywhere}
+#set-panel-apps .hardware-host-more{margin:4px 0 0;padding:0;border:0}
+#set-panel-apps .hardware-host-more>summary{min-height:32px;color:var(--text-2);font-size:12px}
+#set-panel-apps .hardware-plans{padding:8px 0 0}
+#set-panel-apps .hardware-plans>summary{min-height:36px;color:var(--text)}
+#set-panel-apps .hardware-plan-count{margin-left:6px;color:var(--text-2)}
+#set-panel-apps .apps-hardware-list{margin-top:12px;padding:0;background:transparent}
+#set-panel-apps .hardware-device{margin:0;padding:0;border:0;border-radius:0}
+#set-panel-apps .hardware-device+.hardware-device{border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps .hardware-device>summary{display:flex;align-items:center;gap:12px;min-height:68px;padding:12px 2px;border-radius:5px;list-style:none;cursor:pointer}
+#set-panel-apps .hardware-device>summary::-webkit-details-marker{display:none}
+#set-panel-apps .hardware-device>summary::after{content:"";width:5px;height:5px;flex:0 0 5px;margin-right:4px;border-right:1px solid var(--text-2);border-bottom:1px solid var(--text-2);transform:rotate(-45deg)}
+#set-panel-apps .hardware-device[open]>summary::after{transform:rotate(45deg)}
+#set-panel-apps .hardware-device>summary:hover{background:var(--bg-hover)}
+#set-panel-apps .hardware-device>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:5px}
+#set-panel-apps .hardware-device-icon{display:grid;place-items:center;flex:0 0 24px;color:var(--text-2)}
+#set-panel-apps .hardware-device-icon svg{width:22px;height:22px}
+#set-panel-apps .hardware-device-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+#set-panel-apps .hardware-device-name{font-size:13px;font-weight:500;color:var(--text);line-height:1.5}
+#set-panel-apps .hardware-device-description{font-size:12px;line-height:1.6;color:var(--text-2);overflow-wrap:anywhere}
+#set-panel-apps .hardware-device-status{flex-shrink:0;font-size:12px;color:var(--text-2);white-space:nowrap}
+#set-panel-apps .hardware-device-plan{padding:0 18px 16px 38px}
+#set-panel-apps .hardware-device-plan>p{margin:0 0 8px;color:var(--text-2);font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+#set-panel-apps .hardware-device-plan .apps-developer-link{display:inline-flex;align-items:center;min-height:28px;margin:0;color:var(--accent);font-size:12px;line-height:1.6;text-decoration:none;text-underline-offset:3px;border-radius:3px}
+#set-panel-apps .hardware-device-plan .apps-developer-link:hover{text-decoration:underline}
+#set-panel-apps .hardware-device-plan .apps-developer-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .apps-software-title{margin:0 0 14px;color:var(--text);font-size:14px;font-weight:600;line-height:1.5}
+@media(max-width:680px){
+  #set-panel-apps .apps-hardware-label{flex-direction:column;gap:2px}
+  #set-panel-apps .hardware-device>summary{gap:10px}
+  #set-panel-apps .hardware-device-plan{padding-left:36px;padding-right:0}
+}
+#set-panel-apps .hardware-phone-panel{margin:4px 0 16px;padding:0 0 16px;border-bottom:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps .hardware-phone-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#set-panel-apps .hardware-phone-heading h3{margin:0;font-size:14px;font-weight:600;line-height:1.55}
+#set-panel-apps .hardware-phone-refresh{min-width:82px;min-height:32px;padding:6px 10px;border:0;border-radius:7px;background:var(--settings-selected,var(--bg-hover));color:var(--text);font:inherit;font-size:12px;cursor:pointer}
+#set-panel-apps .hardware-phone-refresh:hover:not(:disabled){background:var(--bg-hover)}
+#set-panel-apps .hardware-phone-refresh:disabled{cursor:wait;opacity:.75}
+#set-panel-apps .hardware-phone-refresh:focus-visible,#set-panel-apps .hardware-phone-actions button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .hardware-phone-status,#set-panel-apps .hardware-phone-empty{margin:6px 0 8px;color:var(--text-2);font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+#set-panel-apps .hardware-phone-status[data-state="error"],#set-panel-apps .hardware-phone-feedback{color:var(--danger)}
+#set-panel-apps .hardware-phone-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps .hardware-phone-device{padding:12px 0;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps .hardware-phone-device-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#set-panel-apps .hardware-phone-copy{display:flex;min-width:0;flex-direction:column}
+#set-panel-apps .hardware-phone-name{min-width:0;color:var(--text);font-size:13px;font-weight:500;line-height:1.5;overflow-wrap:anywhere}
+#set-panel-apps .hardware-phone-device-state{flex:0 0 auto;color:var(--text-2);font-size:12px;line-height:1.5;text-align:right}
+#set-panel-apps .hardware-phone-device-state[data-state="online"]{color:var(--ok)}
+#set-panel-apps .hardware-phone-device-state[data-state="error"]{color:var(--danger)}
+#set-panel-apps .hardware-phone-task{margin:3px 0 10px;color:var(--text-2);font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+#set-panel-apps .hardware-phone-task[data-active="true"]{color:var(--text)}
+#set-panel-apps .hardware-phone-controls{display:grid;grid-template-columns:minmax(132px,.72fr) minmax(220px,1.5fr) auto;align-items:end;gap:14px;min-width:0}
+#set-panel-apps .hardware-phone-field{display:grid;gap:5px;min-width:0;color:var(--text-2);font-size:12px;line-height:1.4}
+#set-panel-apps .hardware-phone-field select{width:100%;min-width:0;min-height:32px;padding:5px 26px 5px 8px;border:1px solid var(--settings-line,var(--border-soft));border-radius:7px;background-color:var(--settings-control,var(--bg));color:var(--text);font:inherit;font-size:12px}
+#set-panel-apps .hardware-phone-field select:focus-visible,#set-panel-apps .hardware-phone-app input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .hardware-phone-apps{display:flex;align-items:center;flex-wrap:wrap;gap:5px 12px;min-width:0;margin:0;padding:0;border:0}
+#set-panel-apps .hardware-phone-apps legend{float:left;width:100%;margin:0 0 2px;color:var(--text-2);font-size:12px;line-height:1.4}
+#set-panel-apps .hardware-phone-app{display:inline-flex;align-items:center;gap:5px;min-height:24px;color:var(--text);font-size:12px;line-height:1.4;white-space:nowrap}
+#set-panel-apps .hardware-phone-app input{width:14px;height:14px;margin:0;accent-color:var(--accent)}
+#set-panel-apps .hardware-phone-app input:disabled{opacity:.55}
+#set-panel-apps .hardware-phone-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#set-panel-apps .hardware-phone-actions .btn{min-height:32px;padding:6px 9px;border:0;border-radius:7px;font:inherit;font-size:12px;cursor:pointer}
+#set-panel-apps .hardware-phone-save.btn{background:var(--settings-selected,var(--bg-hover));color:var(--text)}
+#set-panel-apps .hardware-phone-save.btn:hover:not(:disabled){background:var(--bg-hover)}
+#set-panel-apps .hardware-phone-stop.btn{border:1px solid var(--settings-line,var(--border-soft));background:transparent;color:var(--text)}
+#set-panel-apps .hardware-phone-stop.btn:hover:not(:disabled){background:var(--bg-hover)}
+#set-panel-apps .hardware-phone-actions .btn:disabled{cursor:default;opacity:.5}
+#set-panel-apps .hardware-phone-feedback{margin:7px 0 0;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+@media(pointer:coarse){
+  #set-panel-apps .hardware-refresh,#set-panel-apps .hardware-host-more>summary,#set-panel-apps .hardware-plans>summary{min-height:44px}
+  #set-panel-apps .hardware-phone-refresh,#set-panel-apps .hardware-phone-field select,#set-panel-apps .hardware-phone-app,#set-panel-apps .hardware-phone-actions .btn{min-height:44px}
+}
+@media(max-width:720px){#set-panel-apps .hardware-phone-controls{grid-template-columns:minmax(0,1fr);align-items:stretch;gap:10px}#set-panel-apps .hardware-phone-actions{padding-top:2px}}
+@media(prefers-reduced-motion:reduce){#set-panel-apps .hardware-refresh{transition:none}}

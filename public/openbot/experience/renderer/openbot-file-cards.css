@@ -1,0 +1,27 @@
+/* 聊天消息附属的文件卡片（任务产物 / files_present）。样式独立成档，不动内联样式。 */
+.msg-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  max-width: 420px;
+}
+.msg-file .msg-file-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.msg-file .mini { flex: none; }
+@media (prefers-color-scheme: light) {
+  .msg-file {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+  }
+}

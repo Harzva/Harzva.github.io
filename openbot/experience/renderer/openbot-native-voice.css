@@ -1,0 +1,312 @@
+#native-voice-root {
+  --nvv-line: var(--settings-line, var(--border-soft, #e0e0e5));
+  --nvv-muted: var(--settings-muted, var(--text-3, #686871));
+  container: native-voice / inline-size;
+  min-width: 0;
+  color: var(--text, #222226);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+#native-voice-root *,
+#native-voice-root *::before,
+#native-voice-root *::after { box-sizing: border-box; }
+
+#native-voice-root [hidden] { display: none !important; }
+
+#native-voice-root .nvv-panel {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 0;
+}
+
+#native-voice-root .nvv-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-heading h3 {
+  margin: 0;
+  color: var(--text, #222226);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+#native-voice-root .nvv-state {
+  flex: 0 1 auto;
+  margin: 0;
+  color: var(--nvv-muted);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-state[data-online="true"] { color: var(--ok, #237344); }
+
+#native-voice-root .nvv-description {
+  max-width: 70ch;
+  margin: -7px 0 0;
+  color: var(--nvv-muted);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+#native-voice-root .nvv-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(128px, .62fr) auto;
+  align-items: end;
+  gap: 8px;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-field {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  color: var(--nvv-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+#native-voice-root .nvv-field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 33px;
+  padding: 5px 8px;
+  border: 1px solid var(--nvv-line);
+  border-radius: 6px;
+  background: var(--settings-control, var(--mac-control, #fff));
+  color: var(--text, #222226);
+  font: inherit;
+  font-size: 12px;
+}
+
+#native-voice-root .nvv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2, #51515a);
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: center;
+  cursor: pointer;
+}
+
+#native-voice-root .nvv-button:hover:not(:disabled) {
+  background: var(--settings-selected, var(--bg-hover, #e9e9ed));
+  color: var(--text, #222226);
+}
+
+#native-voice-root .nvv-button:disabled { opacity: .48; cursor: not-allowed; }
+
+#native-voice-root .nvv-button.nvv-primary {
+  background: var(--mac-action, var(--accent, #0866d5));
+  color: var(--accent-ink, #fff);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#native-voice-root .nvv-button.nvv-primary:hover:not(:disabled) {
+  background: var(--mac-action, var(--accent, #0866d5));
+  filter: brightness(.96);
+}
+
+#native-voice-root .nvv-button.nvv-danger { color: var(--danger, #bd332c); }
+
+#native-voice-root .nvv-button.nvv-danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger, #bd332c) 8%, transparent);
+  color: var(--danger, #bd332c);
+}
+
+#native-voice-root .nvv-message,
+#native-voice-root .nvv-origin {
+  margin: -4px 0 0;
+  color: var(--nvv-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-message[data-kind="error"] { color: var(--danger, #bd332c); }
+
+#native-voice-root .nvv-origin { margin-top: -8px; font-size: 11.5px; }
+
+#native-voice-root .nvv-section {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  border-top: 1px solid var(--nvv-line);
+  padding-top: 11px;
+}
+
+#native-voice-root .nvv-section h4 {
+  margin: 0;
+  color: var(--text, #222226);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+#native-voice-root .nvv-help {
+  margin: 0;
+  color: var(--nvv-muted);
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-certificate {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 9px;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-cert-label {
+  color: var(--nvv-muted);
+  font-size: 11px;
+}
+
+#native-voice-root .nvv-fingerprint {
+  min-width: 0;
+  color: var(--text-2, #51515a);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-bots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 2px 12px;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-bot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 4px 2px;
+  color: var(--text, #222226);
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-bot input {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--mac-action, var(--accent, #0866d5));
+}
+
+#native-voice-root #nvv-pair { justify-self: start; }
+
+#native-voice-root .nvv-pairing {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--nvv-line);
+}
+
+#native-voice-root .nvv-code {
+  width: 100%;
+  min-width: 0;
+  min-height: 58px;
+  padding: 8px;
+  border: 1px solid var(--nvv-line);
+  border-radius: 6px;
+  background: var(--mac-inset, var(--settings-control, #f0f0f3));
+  color: var(--text, #222226);
+  font: 11.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow-wrap: anywhere;
+  resize: vertical;
+  scrollbar-color: var(--mac-scroll, #aaa) transparent;
+}
+
+#native-voice-root .nvv-pair-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+
+#native-voice-root .nvv-expiry { font-variant-numeric: tabular-nums; }
+
+#native-voice-root .nvv-devices {
+  display: grid;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-device {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--nvv-line);
+}
+
+#native-voice-root .nvv-device:last-child { border-bottom: 0; }
+
+#native-voice-root .nvv-device-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+#native-voice-root .nvv-device-name {
+  color: var(--text, #222226);
+  font-size: 12.5px;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+#native-voice-root .nvv-footnote {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--nvv-muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+#native-voice-root .nvv-button:focus-visible,
+#native-voice-root .nvv-field select:focus-visible,
+#native-voice-root .nvv-code:focus-visible,
+#native-voice-root .nvv-bot input:focus-visible {
+  outline: 2px solid var(--accent, #0866d5);
+  outline-offset: 2px;
+}
+
+#native-voice-root ::selection { background: var(--mac-selection, #dce8f8); color: var(--text, #222226); }
+
+@container native-voice (max-width: 560px) {
+  #native-voice-root .nvv-controls { grid-template-columns: minmax(0, 1fr) minmax(112px, .72fr); }
+  #native-voice-root .nvv-controls > .nvv-button { justify-self: start; }
+}
+
+@container native-voice (max-width: 410px) {
+  #native-voice-root .nvv-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #native-voice-root .nvv-controls > .nvv-field { grid-column: 1 / -1; }
+  #native-voice-root .nvv-controls > .nvv-button { justify-self: start; }
+  #native-voice-root .nvv-device { align-items: flex-start; gap: 8px; }
+  #native-voice-root .nvv-device > .nvv-button { flex: 0 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #native-voice-root .nvv-button { transition: none; }
+}

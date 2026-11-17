@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="瓷器">
+  <path d="M27 10h10c1 6 2 9 6 12 6 4 9 10 9 17 0 9-9 15-20 15s-20-6-20-15c0-7 3-13 9-17 4-3 5-6 6-12Z" fill="#efeade" stroke="#8d8676" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M27 10h10c0 2 .2 3.6.6 5H26.4c.4-1.4.6-3 .6-5Z" fill="#dad2c1" stroke="#8d8676" stroke-width="1.4"/>
+  <path d="M25 39c4-5 10-5 14 0 4 5 1 11-7 11s-11-6-7-11Z" fill="none" stroke="#2f5da8" stroke-width="2.2"/>
+  <circle cx="32" cy="45" r="2.6" fill="#2f5da8"/>
+  <path d="M20 55c4-3 8-4 12-4s8 1 12 4" fill="none" stroke="#2f5da8" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M24 32c5-3 11-3 16 0" fill="none" stroke="#2f5da8" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

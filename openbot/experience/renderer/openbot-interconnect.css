@@ -1,0 +1,47 @@
+#set-panel-apps .apps-pathways{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:5px;
+  margin:0 0 14px;
+  padding:4px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:8px;
+  background:var(--settings-control,var(--mac-control));
+}
+#set-panel-apps .apps-pathways a,
+#set-panel-apps .apps-pathways button{
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  padding:5px 9px;
+  border:0;
+  border-radius:6px;
+  background:transparent;
+  color:var(--text-2);
+  font:inherit;
+  font-size:12px;
+  line-height:1.35;
+  text-decoration:none;
+  cursor:pointer;
+}
+#set-panel-apps .apps-pathways a:hover,
+#set-panel-apps .apps-pathways button:hover{background:var(--bg-hover);color:var(--text)}
+#set-panel-apps .apps-pathways a:focus-visible,
+#set-panel-apps .apps-pathways button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+#set-panel-apps .apps-channel-heading{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  font-weight:600;
+  line-height:1.4;
+}
+#set-panel-apps .apps-channel-heading{margin:0 0 10px}
+#set-panel-apps .apps-channel-heading:focus{outline:none}
+#set-panel-apps .apps-channel-heading:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+@media(max-width:480px){
+  #set-panel-apps .apps-pathways{align-items:stretch}
+  #set-panel-apps .apps-pathways a,
+  #set-panel-apps .apps-pathways button{flex:1 1 calc(50% - 5px);justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){#set-panel-apps .apps-pathways *{scroll-behavior:auto}}

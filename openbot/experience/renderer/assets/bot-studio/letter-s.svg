@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="s-title s-desc" style="--body:#91B353;--body-deep:#244A35;--face:#F8F5E9;--ink:#203D2C;--highlight:#C5D98D;--cheek:#E9A58D">
+  <title id="s-title">S · 曲线精灵</title>
+  <desc id="s-desc">一条柔软的苔绿色 S 曲线化作亲和的小精灵，带有奶油色脸颊和圆点五官。颜色可通过根节点 CSS 自定义属性修改。</desc>
+  <!-- Transparent 128×128 canvas; artwork stays inside the centered circular-avatar safe area. -->
+  <g aria-hidden="true" transform="translate(0 -1)">
+    <!-- A broad, woven ribbon makes the S silhouette readable before the small face details. -->
+    <path d="M91 32 C81 24 67 23 55 27 C42 31 34 41 35 51 C36 61 45 66 61 68 L73 70 C88 73 96 80 94 90 C92 101 80 106 66 106 C56 106 47 103 39 98" fill="none" stroke="var(--body-deep)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M91 32 C81 24 67 23 55 27 C42 31 34 41 35 51 C36 61 45 66 61 68 L73 70 C88 73 96 80 94 90 C92 101 80 106 66 106 C56 106 47 103 39 98" fill="none" stroke="var(--body)" stroke-width="21" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- A short felt seam catches light along the top bend. -->
+    <path d="M46 34 C53 28 63 27 71 28" fill="none" stroke="var(--highlight)" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>
+    <!-- Face rests on the upper bend without breaking the S outline. -->
+    <ellipse cx="52" cy="45" rx="11.5" ry="8.5" fill="var(--face)"/>
+    <circle cx="48.5" cy="44.5" r="1.8" fill="var(--ink)"/>
+    <circle cx="56" cy="44.5" r="1.8" fill="var(--ink)"/>
+    <path d="M50 49 Q52.5 51 55 49" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="44.6" cy="48" r="1.4" fill="var(--cheek)"/>
+    <circle cx="59.3" cy="48" r="1.4" fill="var(--cheek)"/>
+  </g>
+</svg>

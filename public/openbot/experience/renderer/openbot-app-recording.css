@@ -1,0 +1,70 @@
+.app-recording-status[hidden]{display:none}
+.app-recording-status{
+  position:relative;z-index:210;align-self:center;flex:0 0 auto;
+  display:flex;align-items:center;gap:18px;width:min(600px,calc(100% - 24px));min-height:66px;margin:8px auto;padding:10px 12px;
+  border:1px solid var(--border);border-left:3px solid var(--danger);border-radius:8px;
+  background:var(--bg-panel);color:var(--text);box-shadow:0 2px 8px rgb(0 0 0 / 18%);
+  -webkit-app-region:no-drag;
+}
+#set-mask .settings-main>#app-recording-status,
+#ob-market>#app-recording-status,
+#app-recording-preview-dialog>#app-recording-status{width:min(600px,calc(100% - 32px));margin:10px auto 12px}
+#agent-mask.aw-mask .aw-dialog>#app-recording-status{width:min(600px,100%);margin:10px auto 12px}
+#app-recording-preview-dialog>#app-recording-status #app-recording-preview,
+#app-recording-preview-dialog>#app-recording-status #app-recording-send{display:none}
+.app-recording-status[data-state="saved"]{border-left-color:var(--accent)}
+.app-recording-status-copy{flex:1;min-width:0}
+.app-recording-status-heading{display:flex;align-items:center;gap:8px;min-width:0;font-size:12px}
+.app-recording-status-heading strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:650}
+.app-recording-status-heading time{flex:none;font-variant-numeric:tabular-nums;font-weight:650}
+.app-recording-indicator{display:block;flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--danger)}
+.app-recording-status[data-state="starting"] .app-recording-indicator,.app-recording-status[data-state="stopping"] .app-recording-indicator{background:var(--text-3)}
+.app-recording-status[data-state="saved"] .app-recording-indicator{background:var(--accent)}
+.app-recording-status-detail,.app-recording-audio-status,.app-recording-status-message{margin:3px 0 0;color:var(--text-2);font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+.app-recording-audio-status{color:var(--text-3)}
+.app-recording-audio-status[hidden]{display:none}
+.app-recording-audio-status [aria-hidden="true"]{color:var(--ok);font-weight:700}
+.app-recording-status-message[data-error="true"]{color:var(--danger)}
+.app-recording-status-message[hidden]{display:none}
+.app-recording-status-actions{display:flex;flex:none;align-items:center;gap:6px}
+.app-recording-stop,.app-recording-send,.app-recording-secondary{
+  min-height:34px;padding:0 11px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--text);font:inherit;font-size:12px;white-space:nowrap;cursor:pointer
+}
+.app-recording-stop{border-color:var(--danger);background:var(--danger);color:#fff;font-weight:650}
+.app-recording-stop:hover:not(:disabled){filter:brightness(1.08)}
+.app-recording-send{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600}
+.app-recording-secondary:hover:not(:disabled){background:var(--bg-hover)}
+.app-recording-stop:focus-visible,.app-recording-send:focus-visible,.app-recording-secondary:focus-visible,.app-recording-preview-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app-recording-stop:disabled,.app-recording-send:disabled,.app-recording-secondary:disabled{opacity:.6;cursor:wait}
+.app-recording-status-actions [hidden]{display:none}
+.app-recording-preview-dialog{
+  width:min(760px,calc(100vw - 28px));max-width:calc(100vw - 28px);max-height:calc(100vh - 32px);overflow:auto;
+  padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--bg-panel);color:var(--text);
+  box-shadow:0 2px 8px rgb(0 0 0 / 18%);
+}
+.app-recording-preview-dialog::backdrop{background:rgb(0 0 0 / 48%)}
+.app-recording-preview-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:13px}
+.app-recording-preview-header strong{min-width:0;flex:1}
+.app-recording-preview-close{display:grid;place-items:center;width:28px;height:28px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--text-2);font:inherit;font-size:20px;cursor:pointer}
+.app-recording-preview-close:hover{background:var(--bg-hover);color:var(--text)}
+.app-recording-preview-dialog>video{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100vh - 170px);margin:0 auto;background:#000}
+.app-recording-preview-dialog>video[hidden]{display:none}
+.app-recording-preview-dialog>p{margin:0 0 8px;color:var(--text-2);font-size:12px;line-height:1.45}
+.app-recording-preview-dialog>p[data-error="true"]{color:var(--danger)}
+.app-recording-preview-dialog>p[hidden],.app-recording-preview-dialog>footer [hidden]{display:none}
+.app-recording-preview-dialog>footer{display:flex;justify-content:flex-end;margin-top:10px}
+.app-recording-retry{display:block;margin:0 0 8px auto}
+.app-recording-retry[hidden]{display:none}
+.app-recording-attachment{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:8px;max-width:min(280px,72vw);padding:8px;border:1px solid var(--border-soft);border-radius:7px;background:var(--bg-panel);color:var(--text);text-align:left;cursor:pointer}
+.app-recording-attachment:hover{border-color:var(--border)}
+.app-recording-attachment:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app-recording-attachment-icon{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--border-soft);border-radius:6px;color:var(--text-2)}
+.app-recording-attachment-copy{display:grid;min-width:0;gap:2px}
+.app-recording-attachment-copy strong{font-size:11px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-recording-attachment-copy small{color:var(--text-3);font-size:10px;line-height:1.35;overflow-wrap:anywhere}
+@media(max-width:700px){
+  .app-recording-status{width:calc(100% - 16px);gap:8px;padding:8px}
+  .app-recording-status-actions{gap:4px}
+  .app-recording-stop,.app-recording-send,.app-recording-secondary{min-height:32px;padding:0 8px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.app-recording-status,.app-recording-preview-dialog{scroll-behavior:auto}}

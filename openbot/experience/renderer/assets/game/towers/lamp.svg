@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" id="svg2" version="1.1">
+<defs>
+<radialGradient id="lw-lamp-glow" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-color="#ffe9b0" stop-opacity="0.95" />
+<stop offset="0.6" stop-color="#ffcf6b" stop-opacity="0.3" />
+<stop offset="1" stop-color="#ffcf6b" stop-opacity="0" />
+</radialGradient>
+</defs>
+<g id="game-lantern-lamp">
+<circle cx="60" cy="60" r="42" fill="url(#lw-lamp-glow)" />
+<path d="M60 22 L60 8" stroke="#6b5330" stroke-width="5" stroke-linecap="round" />
+<path d="M40 34 a20 20 0 0 1 40 0 L80 82 a8 8 0 0 1 -8 8 L48 90 a8 8 0 0 1 -8 -8 Z" fill="#8a6a3f" />
+<path d="M46 38 a14 14 0 0 1 28 0 L74 78 a6 6 0 0 1 -6 6 L52 84 a6 6 0 0 1 -6 -6 Z" fill="#ffd479" />
+<path d="M60 46 L60 78" stroke="#fff3cf" stroke-width="4" stroke-linecap="round" />
+<rect x="44" y="90" width="32" height="8" rx="3" fill="#6b5330" />
+</g>
+</svg>

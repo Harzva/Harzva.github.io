@@ -1,0 +1,125 @@
+/* Shared companion sizes and task-state motion. Approved artwork comes from the colorful family. */
+.ob-avatar{--ob-accent:#719be9;--ob-body:#30343e;--ob-body-deep:#20232b;--ob-line:#f5f5f7;position:relative;display:inline-grid;place-items:center;flex:0 0 auto;overflow:visible;color:var(--ob-line);background:transparent!important;border-radius:0!important;font-size:0!important;font-weight:400!important}
+.ob-avatar--list{width:32px;height:32px}.ob-avatar--header{width:30px;height:30px}.ob-avatar--picker{width:40px;height:40px}
+.ob-avatar svg,.ob-avatar>img{width:100%;height:100%;display:block;overflow:visible}
+.ob-avatar>img.ob-agent-light,.ob-avatar>img.ob-agent-dark,.ob-avatar>img.ob-studio-avatar{grid-area:1/1;object-fit:contain}
+.ob-avatar>img.ob-agent-dark{display:none}
+@media(prefers-color-scheme:dark){.ob-avatar>img.ob-agent-light{display:none}.ob-avatar>img.ob-agent-dark{display:block}}
+.avatar-group-label{grid-column:1/-1;font-size:12px;color:var(--text-2);padding:6px 4px 2px}
+.ob-shadow{fill:var(--ob-body);stroke:var(--ob-body-deep);stroke-width:1;stroke-linejoin:round}
+.ob-feet,.ob-hand{fill:none;stroke:var(--ob-body-deep);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ob-hand{stroke:var(--ob-body);stroke-width:3.4}
+.ob-face-stroke{fill:none;stroke:var(--ob-line);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.ob-pupil,.ob-mouth-o{fill:var(--ob-line)}
+.ob-face-happy,.ob-face-sleep,.ob-face-brows,.ob-mouth-o,.ob-mouth-flat,.ob-mouth-worry{display:none}
+.ob-blush{fill:var(--ob-accent);opacity:0}
+.ob-portal-back,.ob-portal-front{fill:none;stroke:var(--ob-accent);stroke-width:6.5;stroke-linecap:round}
+.ob-portal-glint{fill:none;stroke:#fff;stroke-width:1;stroke-linecap:round;opacity:.32}
+.ob-peek-hand{stroke:var(--ob-body-deep);stroke-width:3.5}
+.ob-accent-fill,.ob-leaf,.ob-stone-cap,.ob-wink-tuft,.ob-accent-patch,.ob-lamp-light,.ob-nook-bib{fill:var(--ob-accent)}
+.ob-leaf,.ob-roof{stroke:var(--ob-body-deep);stroke-width:1;stroke-linejoin:round}
+.ob-leaf-right{opacity:.8}
+.ob-stem,.ob-lamp-stem{fill:none;stroke:var(--ob-accent);stroke-width:1.6;stroke-linecap:round}
+.ob-body-sheen{fill:none;stroke:#fff;stroke-width:1;stroke-linecap:round;opacity:.16}
+.ob-stone-cap{opacity:.9}.ob-stone-seam{fill:none;stroke:var(--ob-body-deep);stroke-width:.8;opacity:.5}
+.ob-tail{fill:var(--ob-accent);stroke:var(--ob-body-deep);stroke-width:1;stroke-linejoin:round}
+.ob-lamp-light{stroke:var(--ob-body-deep);stroke-width:1}
+.ob-roof{fill:var(--ob-accent)}.ob-nook-bib{opacity:.8}
+/* Expression is independent of motion: quiet mode still communicates state. */
+.ob-face{transform:translate(var(--ob-look-x,0px),var(--ob-look-y,0px));transition:transform 180ms ease-out}
+.ob-face-open{transform-box:fill-box;transform-origin:center;animation:ob-face-blink 9s ease-in-out infinite}
+.ob-avatar--sprout .ob-face-open{animation-delay:-2s}.ob-avatar--pebble .ob-face-open{animation-delay:-4s}.ob-avatar--luma .ob-face-open{animation-delay:-6s}
+.ob-avatar:is([data-expression="queued"],[data-expression="thinking"],[data-expression="working"],[data-expression="waiting"],[data-expression="error"],[data-expression="interrupted"],[data-expression="rest"]) .ob-mouth-smile{display:none}
+.ob-avatar:is([data-expression="thinking"],[data-expression="waiting"]) .ob-mouth-o{display:inline}
+.ob-avatar[data-expression="thinking"] .ob-face-open{transform:translate(1px,-1.3px);animation:none}
+.ob-avatar[data-expression="working"] .ob-face-open{transform:scaleY(.72);animation:none}
+.ob-avatar:is([data-expression="working"],[data-expression="queued"],[data-expression="interrupted"],[data-expression="rest"]) .ob-mouth-flat{display:inline}
+.ob-avatar[data-expression="waiting"] .ob-pupil{ry:2.3px}
+.ob-avatar[data-expression="error"] .ob-face-brows,.ob-avatar[data-expression="error"] .ob-mouth-worry{display:inline}
+.ob-avatar:is([data-expression="done"],[data-expression="pet"],[data-expression="wave"],[data-expression="cheer"]) .ob-face-open,.ob-avatar:is([data-expression="rest"],[data-expression="interrupted"]) .ob-face-open{display:none}
+.ob-avatar:is([data-expression="done"],[data-expression="pet"],[data-expression="wave"],[data-expression="cheer"]) .ob-face-happy{display:inline}
+.ob-avatar:is([data-expression="rest"],[data-expression="interrupted"]) .ob-face-sleep{display:inline}
+.ob-avatar:is([data-expression="done"],[data-expression="pet"],[data-expression="wave"],[data-expression="cheer"]) .ob-blush{opacity:.55}
+.ob-avatar[data-expression="queued"] .ob-face-open{transform:scaleY(.85);animation:none}
+/* Selected characters move a small detail rather than their clickable bounds. */
+.ob-avatar.is-selected .ob-leaf-right{transform-origin:24px 13px;animation:ob-leaf-sway 5s ease-in-out infinite}
+.ob-avatar[data-expression="wave"] .ob-hand-right{transform-origin:35px 30px;animation:ob-hand-wave 700ms ease-in-out 2}
+.ob-avatar[data-expression="pet"] .ob-peeker{transform-origin:32px 36px;animation:ob-peek-nuzzle 650ms ease-in-out 1}
+@keyframes ob-face-blink{0%,92%,100%{transform:scaleY(1)}94%,96%{transform:scaleY(.1)}}
+@keyframes ob-leaf-sway{0%,100%{transform:rotate(0)}50%{transform:rotate(7deg)}}
+@keyframes ob-hand-wave{0%,100%{transform:rotate(0)}50%{transform:rotate(-24deg)}}
+@keyframes ob-peek-nuzzle{0%,100%{transform:rotate(0)}40%{transform:rotate(-5deg)}}
+.avatar-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:2px}
+.avatar-option{min-width:0;min-height:64px;display:flex;align-items:center;gap:7px;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--mac-control);color:var(--text-2);cursor:pointer;font:inherit;text-align:left;transition:border-color 140ms ease,background 140ms ease}
+.avatar-option:hover{background:var(--bg-hover);color:var(--text)}
+.avatar-option.selected{border-color:var(--ob-accent);background:var(--bg-active);color:var(--text)}
+.avatar-option:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.avatar-option-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.avatar-option-name{font-size:12px;font-weight:600;line-height:1.4}
+.avatar-option-desc{font-size:11px;line-height:1.5;color:var(--text-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.avatar-note{margin-top:7px}
+/* The character gallery stays compact; its controls use the same quiet surface. */
+.avatar-family-options{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.avatar-picker>.avatar-family-options{max-height:280px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--border) transparent;padding:3px}
+.avatar-family-options .avatar-option{min-height:48px;padding:6px 4px;gap:4px;border-color:transparent;background:transparent}
+.avatar-family-options .avatar-option .ob-avatar{width:30px;height:30px}
+.avatar-family-options .avatar-option-copy{flex:1}
+.avatar-family-options .avatar-option-name{white-space:nowrap;font-size:12px}
+.avatar-family-options .avatar-option.selected{background:var(--accent-soft);border-color:transparent}
+.avatar-legacy{grid-column:1/-1;margin-top:6px}
+.avatar-legacy>summary{font-size:12px;color:var(--text-2);cursor:pointer;padding:7px 2px;list-style-position:inside}
+.avatar-legacy>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+/* Task truth overrides playful default traits, including a permanent wink. */
+.ob-avatar.ob-avatar--family:is([data-expression="queued"],[data-expression="working"],[data-expression="waiting"],[data-expression="error"],[data-expression="interrupted"]) :is(.obf-mouth-idle,.obf-mouth-rest,.obf-mouth-done){display:none}
+.ob-avatar.ob-avatar--family:is([data-expression="queued"],[data-expression="working"],[data-expression="interrupted"]) .obf-mouth-flat{display:inline}
+.ob-avatar.ob-avatar--family[data-expression="waiting"] .obf-mouth-await{display:inline}
+.ob-avatar.ob-avatar--family[data-expression="error"] .obf-mouth-worry{display:inline}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="waiting"]) .obf-eye :is(.obf-sleepy,.obf-happy){display:none}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="waiting"]) .obf-eye .obf-open{display:inline}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="working"],[data-expression="queued"]) .obf-gaze{animation:none;transform:translate(0,-1px)}
+.ob-avatar.ob-avatar--family[data-expression="error"] :is(.obf-body,.obf-peeker,.obf-face-sway){animation:none}
+.ob-avatar.ob-avatar--family[data-expression="working"] .obf-face-sway{transform-origin:64px 80px;transform:rotate(-2deg)}
+/* The twenty produce/spirit companions use the same task truth as the first twelve. */
+.ob-avatar.ob-avatar--family:is([data-expression="queued"],[data-expression="working"],[data-expression="waiting"],[data-expression="error"],[data-expression="interrupted"]) :is(.obx-mouth-idle,.obx-mouth-rest,.obx-mouth-done,.obx-idle-detail){display:none}
+.ob-avatar.ob-avatar--family:is([data-expression="queued"],[data-expression="working"],[data-expression="interrupted"]) .obx-mouth-flat{display:inline}
+.ob-avatar.ob-avatar--family[data-expression="waiting"] .obx-mouth-await{display:inline}
+.ob-avatar.ob-avatar--family[data-expression="error"] .obx-mouth-worry{display:inline}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="waiting"]) :is(.obx-eye-idle,.obx-eye-rest,.obx-eye-wink,.obx-glasses){display:none}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="waiting"]) .obx-eye-awake{display:inline}
+.ob-avatar.ob-avatar--family:is([data-expression="error"],[data-expression="working"],[data-expression="queued"]) .obx-pupil{animation:none;transform:translate(0,-1px)}
+.ob-avatar.ob-avatar--family[data-expression="error"] :is(.obx-body,.obx-peeker,.obx-face,.obx-crown,.obx-leaf,.obx-tuft){animation:none}
+.ob-avatar.ob-avatar--family[data-expression="working"] .obx-face{transform-origin:64px 74px;transform:rotate(-2deg)}
+.ob-avatar.ob-avatar--family svg:not([data-state="idle"]) .obx-idle-detail{display:none}
+@media(prefers-reduced-motion:reduce){.ob-avatar,.ob-avatar *,.avatar-option{animation:none!important;transition:none!important}.ob-face{transform:none}}
+body[data-page-hidden="true"] .ob-avatar *{animation-play-state:paused!important}
+body[data-companion-mode="quiet"] .ob-avatar *{animation:none!important;transition:none!important}
+body[data-companion-mode="quiet"] .ob-face{transform:none}
+
+/* Keep the new-Bot picker inside short windows while leaving the gallery scrollable. */
+#modal-mask .avatar-picker>.avatar-family-options{max-height:clamp(48px,calc(100vh - 660px),280px)}
+
+.ob-avatar--peek[data-expression="idle"] .ob-mouth-smile{display:none}
+.chat-hint .hint-character{margin-bottom:16px}
+.chat-hint .hint-character .ob-avatar{width:84px;height:84px}
+
+/* A native popover keeps character choice alongside the current conversation. */
+#btn-avatar{display:flex;flex:0 0 auto;padding:2px;border:0;border-radius:6px;background:transparent;cursor:pointer}
+#btn-avatar:hover{background:var(--bg-hover)}
+#btn-avatar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#bot-appearance-popover{position:fixed;inset:auto;margin:0;width:min(376px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:16px;overflow:auto;border:0;border-radius:12px;background:var(--mac-control);color:var(--text);box-shadow:0 3px 8px rgb(0 0 0 / 14%)}
+#bot-appearance-popover::backdrop{background:transparent}
+#bot-appearance-popover>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+#bot-appearance-popover h2{font-size:15px;font-weight:600;line-height:1.5}
+#bot-appearance-popover header p{font-size:12px;color:var(--text-3);margin-top:2px;overflow-wrap:anywhere}
+.appearance-close{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border:0;border-radius:6px;background:transparent;color:var(--text-2);cursor:pointer}
+.appearance-close:hover{background:var(--bg-hover)}
+.appearance-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#bot-appearance-popover .avatar-family-options{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:84px;align-content:start;gap:6px}
+#bot-appearance-popover .avatar-picker>.avatar-family-options{max-height:340px}
+#bot-appearance-popover .avatar-option{flex-direction:column;justify-content:center;gap:4px;padding:8px 4px}
+#bot-appearance-popover .avatar-option .ob-avatar{width:44px;height:44px}
+#bot-appearance-popover .avatar-option-copy{flex:0 0 auto}
+#bot-appearance-popover .avatar-option-name{font-weight:400}
+/* Group labels take natural height; the selectable avatar tiles retain their grid rhythm. */
+#bot-appearance-popover .avatar-family-options{grid-auto-rows:auto}
+#bot-appearance-popover .avatar-family-options>.avatar-option{min-height:84px}

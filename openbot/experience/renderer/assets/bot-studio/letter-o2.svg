@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#EBA562;--detail:#F5C17E;--ink:#173F2F;--face:#FFF4DF;--accent:#72B8B0;--eye:#173F2F;--moon:#F4D36E">
+  <title id="title">O · 轨道</title>
+  <desc id="desc">杏色圆环形成大写 O，内圈的小行星带笑脸，浅青轨迹与卫星点缀。</desc>
+  <ellipse cx="64" cy="64" rx="41" ry="16" transform="rotate(-34 64 64)" fill="none" stroke="var(--accent)" stroke-width="3.5"/>
+  <path d="M64 17A47 47 0 1 1 64 111A47 47 0 1 1 64 17ZM64 39A25 25 0 1 0 64 89A25 25 0 1 0 64 39Z" fill="var(--body)" fill-rule="evenodd" stroke="var(--ink)" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M29 42Q39 27 54 21" fill="none" stroke="var(--detail)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="92" cy="31" r="6.5" fill="var(--moon)" stroke="var(--ink)" stroke-width="3"/>
+  <circle cx="94" cy="29" r="1.8" fill="var(--face)"/>
+  <circle cx="64" cy="64" r="16.5" fill="var(--face)" stroke="var(--ink)" stroke-width="3.5"/>
+  <circle cx="59" cy="61" r="2.7" fill="var(--eye)"/>
+  <circle cx="69" cy="61" r="2.7" fill="var(--eye)"/>
+  <path d="M59 68Q64 73 69 68" fill="none" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

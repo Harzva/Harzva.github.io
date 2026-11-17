@@ -1,0 +1,118 @@
+/* Scoped to App connections and the AG-UI row in the existing Bot picker. */
+#set-panel-apps .agui-connections{
+  min-width:0;
+  margin:18px 0 22px;
+  padding:14px 0 16px;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+  border-bottom:1px solid var(--settings-line,var(--border-soft));
+  color:var(--text);
+}
+#set-panel-apps .agui-connections-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+#set-panel-apps .agui-connections-heading>div{min-width:0;flex:1}
+#set-panel-apps .agui-connections h3{
+  margin:0;
+  color:var(--text);
+  font-size:14px;
+  font-weight:600;
+  line-height:1.45;
+}
+#set-panel-apps .agui-connections-heading p,
+#set-panel-apps .agui-connection-note,
+#set-panel-apps .agui-connection-meta,
+#set-panel-apps .agui-connections-empty{
+  margin:4px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .agui-connections .btn{
+  min-height:30px;
+  padding:5px 10px;
+  border-radius:7px;
+  font-size:12px;
+}
+#set-panel-apps .agui-connections-status{
+  min-height:0;
+  margin:8px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .agui-connections-status:empty{display:none}
+#set-panel-apps .agui-connections-status[data-state="error"]{color:var(--danger)}
+#set-panel-apps .agui-connections-retry{margin-top:6px}
+#set-panel-apps .agui-connections-list{min-width:0;margin-top:8px}
+#set-panel-apps .agui-connection-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  padding:9px 0;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+}
+#set-panel-apps .agui-connection-copy{display:grid;gap:3px;min-width:0}
+#set-panel-apps .agui-connection-name{font-size:13px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+#set-panel-apps .agui-connection-endpoint{
+  min-width:0;
+  color:var(--text-2);
+  font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+#set-panel-apps .agui-connection-meta{margin:0;font-size:11.5px}
+#set-panel-apps .agui-connection-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
+#set-panel-apps .agui-connection-state{flex:0 0 100%;color:var(--settings-muted,var(--text-3));font-size:11.5px;text-align:right}
+#set-panel-apps .agui-connections-editor{margin-top:10px;border-top:1px solid var(--settings-line,var(--border-soft))}
+#set-panel-apps .agui-connections-editor>summary{
+  min-height:36px;
+  padding:8px 1px 4px;
+  color:var(--text-2);
+  font-size:12.5px;
+  cursor:pointer;
+}
+#set-panel-apps .agui-connections-editor>summary:focus-visible,
+#set-panel-apps .agui-connections :is(input,button):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+#set-panel-apps .agui-connection-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;padding:7px 0 0}
+#set-panel-apps .agui-connection-field{display:grid;align-content:start;gap:5px;min-width:0;color:var(--text-2);font-size:12px;line-height:1.4}
+#set-panel-apps .agui-connection-field input{
+  width:100%;
+  min-width:0;
+  min-height:34px;
+  padding:7px 9px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:6px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text);
+  font:inherit;
+  font-size:12.5px;
+}
+#set-panel-apps .agui-connection-token-field{grid-column:1/-1}
+#set-panel-apps .agui-connection-clear-token{display:flex;align-items:center;gap:7px;min-height:28px;color:var(--text-2);font-size:12px}
+#set-panel-apps .agui-connection-clear-token[hidden]{display:none}
+#set-panel-apps .agui-connection-form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:11px}
+#set-panel-apps .agui-connection-form-actions [hidden]{display:none}
+#set-panel-apps .agui-connections [hidden]{display:none!important}
+#modal-mask .executor-option[data-executor-id^="agui:"] .executor-status{display:none}
+#config-panel.agui-executor [hidden]{display:none!important}
+@media(max-width:680px){
+  #set-panel-apps .agui-connections-heading{align-items:flex-start}
+  #set-panel-apps .agui-connection-row{grid-template-columns:minmax(0,1fr)}
+  #set-panel-apps .agui-connection-actions{justify-content:flex-start}
+  #set-panel-apps .agui-connection-state{text-align:left}
+}
+@media(max-width:420px){
+  #set-panel-apps .agui-connections-heading{flex-direction:column}
+  #set-panel-apps .agui-connection-fields{grid-template-columns:minmax(0,1fr)}
+  #set-panel-apps .agui-connection-token-field{grid-column:auto}
+}

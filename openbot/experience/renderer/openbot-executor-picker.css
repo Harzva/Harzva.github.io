@@ -1,0 +1,341 @@
+#modal-mask .executor-picker {
+  position: relative;
+  width: 100%;
+}
+
+#modal-mask .executor-native-bridge {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+#modal-mask .executor-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 42px;
+  padding: 6px 11px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg-panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+
+#modal-mask .executor-trigger:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--border) 55%, var(--text-3));
+  background: var(--bg-hover);
+}
+
+#modal-mask .executor-trigger:focus-visible,
+#modal-mask .executor-search:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#modal-mask .executor-trigger:disabled {
+  color: var(--text-3);
+  cursor: not-allowed;
+}
+
+#modal-mask .executor-current-logo,
+#modal-mask .executor-option-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 8px;
+  background: var(--bg-hover);
+}
+
+#modal-mask .executor-current-logo-image,
+#modal-mask .executor-option-logo {
+  position: relative;
+}
+
+#modal-mask .executor-current-logo-image {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#modal-mask .executor-current-logo-image img,
+#modal-mask .executor-option-logo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+#modal-mask .executor-current-logo-image img[hidden] {
+  display: none;
+}
+
+#modal-mask .executor-option-logo img[hidden] {
+  display: none;
+}
+
+#modal-mask .executor-logo-plain {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 35% 35%, var(--text-3) 0 1.7px, transparent 2px),
+    radial-gradient(circle at 65% 35%, var(--text-3) 0 1.7px, transparent 2px),
+    radial-gradient(circle at 35% 65%, var(--text-3) 0 1.7px, transparent 2px),
+    radial-gradient(circle at 65% 65%, var(--text-3) 0 1.7px, transparent 2px);
+  opacity: .75;
+}
+
+#modal-mask .executor-current-logo-image.is-fallback .executor-logo-plain,
+#modal-mask .executor-option-logo.is-fallback .executor-logo-plain {
+  display: block;
+}
+
+#modal-mask .executor-current-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#modal-mask .executor-chevron {
+  position: relative;
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  margin: -4px 2px 0 4px;
+  border-right: 1.5px solid var(--text-3);
+  border-bottom: 1.5px solid var(--text-3);
+  transform: rotate(45deg);
+  transition: transform .14s ease, margin-top .14s ease;
+}
+
+#modal-mask .executor-trigger[aria-expanded="true"] .executor-chevron {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
+
+#modal-mask .executor-popover {
+  position: absolute;
+  z-index: 80;
+  inset: calc(100% + 7px) 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: min(360px, calc(100vh - 150px));
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-side);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .23), 0 2px 8px rgba(0, 0, 0, .12);
+}
+
+#modal-mask .executor-search {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  outline: none;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+}
+
+#modal-mask .executor-search::placeholder {
+  color: var(--text-3);
+}
+
+#modal-mask .executor-search:focus {
+  border-color: var(--accent);
+}
+
+#modal-mask .executor-options {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1px 0;
+  scrollbar-width: thin;
+}
+
+#modal-mask .executor-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+#modal-mask .executor-option:hover,
+#modal-mask .executor-option.is-active {
+  background: var(--bg-hover);
+}
+
+#modal-mask .executor-option.is-selected {
+  background: var(--accent-soft);
+}
+
+#modal-mask .executor-option.is-selected.is-active,
+#modal-mask .executor-option.is-selected:hover {
+  background: color-mix(in srgb, var(--accent-soft) 65%, var(--bg-hover));
+}
+
+#modal-mask .executor-option.is-unavailable {
+  color: var(--text-3);
+  cursor: not-allowed;
+}
+
+#modal-mask .executor-option.is-unavailable:hover,
+#modal-mask .executor-option.is-unavailable.is-active {
+  background: transparent;
+}
+
+#modal-mask .executor-option-logo {
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+}
+
+#modal-mask .executor-option-logo img {
+  max-width: 22px;
+  max-height: 22px;
+}
+
+#modal-mask .executor-option-logo[data-brand="kimi"],
+#modal-mask .executor-current-logo-image[data-brand="kimi"] {
+  background: #0b2a4a;
+}
+
+#modal-mask .executor-option-copy {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+}
+
+#modal-mask .executor-option-name {
+  overflow: hidden;
+  font-size: 12.5px;
+  font-weight: 520;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#modal-mask .executor-status {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 10.5px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+#modal-mask .executor-status[data-state="default"] {
+  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+#modal-mask .executor-status[data-state="available"] {
+  border-color: color-mix(in srgb, var(--ok) 30%, transparent);
+  color: var(--ok);
+}
+
+#modal-mask .executor-status[data-state="missing"] {
+  background: color-mix(in srgb, var(--bg-hover) 60%, transparent);
+  color: var(--text-3);
+}
+
+#modal-mask .executor-selected-mark {
+  display: flex;
+  flex: 0 0 16px;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+}
+
+#modal-mask .executor-option[aria-selected="true"] .executor-selected-mark {
+  opacity: 1;
+}
+
+#modal-mask .executor-empty {
+  padding: 14px 9px 12px;
+  color: var(--text-3);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  #modal-mask .executor-popover {
+    max-height: min(320px, calc(100vh - 136px));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #modal-mask .executor-option-logo[data-brand="grok"] img,
+  #modal-mask .executor-option-logo[data-brand="opencode"] img,
+  #modal-mask .executor-option-logo[data-brand="cursor-agent"] img,
+  #modal-mask .executor-option-logo[data-brand="goose"] img,
+  #modal-mask .executor-option-logo[data-brand="cline"] img,
+  #modal-mask .executor-current-logo-image[data-brand="grok"] img,
+  #modal-mask .executor-current-logo-image[data-brand="opencode"] img,
+  #modal-mask .executor-current-logo-image[data-brand="cursor-agent"] img,
+  #modal-mask .executor-current-logo-image[data-brand="goose"] img,
+  #modal-mask .executor-current-logo-image[data-brand="cline"] img {
+    filter: invert(1);
+  }
+}
+
+@media (max-width: 520px) {
+  #modal-mask .executor-popover {
+    max-height: min(270px, calc(100vh - 124px));
+  }
+
+  #modal-mask .executor-option {
+    gap: 7px;
+    padding-inline: 6px;
+  }
+
+  #modal-mask .executor-status {
+    padding-inline: 5px;
+  }
+}

@@ -1,0 +1,8 @@
+1c204c9eed06959111a358047074a989b2f7fdfe3bba1ad00b6c4ca0b89305d3  openbot-macos-ui-upgrade-1.0.28-r11.patch
+d62012b491c626bd2f94903b595690d09cb50c88e5ea0d788b32dd409b5af370  openbot-win32-x64-packaging-kit-1.0.28.tar.gz
+bf74710bdd2c1b02083a5a3ee96971b87d62bb776973d225235aca992f8143ba  openbot-preview-1.0.0-dev.8.apk
+1a6eda6f677ac8a3c73541b9e7ac4ae57e0c6b9f568cdfdfb4efc86c76f18602  openbot-voice-preview-0.1.0-dev.1.apk
+1cf68d3c950a1bc6b7757758a35b6e94c20c0395463543543dacea8949bb8d82  openbot-tablet-0.1.2-huawei-debug.hap
+1bcb9fb7524ba107a597f226f7dc8637e6775d5a3612af4f55952e2393e6d779  openbot-public-sdk-debug.hap
+b37ef1c6cced1c17bec3f03e88e69d58b293f5fdb18be096a0949da3f9aec81f  openbot-ios-simulator-0.3.0-universal.zip
+e3bd852557ae84a9d4c35be95383c558f3d42c350749a86ce9ea6186870f607b  openbot-mobile-web-1.0.28.tar.gz

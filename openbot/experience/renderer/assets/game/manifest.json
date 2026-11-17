@@ -1,0 +1,902 @@
+{
+  "schema": 1,
+  "format": "svg",
+  "license": "CC0-1.0 AND MIT",
+  "method": "reviewed vector import and tile-body composition, no raster wrapper; original lot artwork for sealed-bid is hand-authored vector",
+  "templates": {
+    "mahjong-face-surface.svg": {
+      "sha256": "b60bd1e102fa4107873bad26f1bf3dfffffc5e92035fa5d6a3d2d94098119e55",
+      "license": "MIT"
+    },
+    "mahjong-back.svg": {
+      "sha256": "cb0346994e554078b198d22966a9aed24d2b8906a2b47908f51ec1175ce89b5b",
+      "license": "MIT"
+    },
+    "poker-back.svg": {
+      "sha256": "2a52bebe15c63e9b13de3043e19b306ab1891d15d4b77502ee744072175c7891",
+      "license": "MIT"
+    }
+  },
+  "sources": {
+    "mahjong": {
+      "author": "FluffyStuff",
+      "url": "https://github.com/FluffyStuff/riichi-mahjong-tiles",
+      "commit": "26e127ba2117f45cdce5ea0225748cc0cfad3169",
+      "license": "CC0-1.0"
+    },
+    "poker": {
+      "author": "Adrian Kennard (RevK)",
+      "url": "https://www.me.uk/cards/",
+      "generator": "https://www.me.uk/cards/makeadeck.cgi",
+      "license": "CC0-1.0",
+      "archiveSha256": "b705796f22879174b0d650b0b7b8a4184bc61500d3f83202a0205073cef0c5cd",
+      "options": {
+        "size": "poker",
+        "ace": "Fancy",
+        "back": "Diamond",
+        "backcolour": "#244b43",
+        "frontcolour": "#ffffff",
+        "value": "0",
+        "super": "0",
+        "pip": "1",
+        "ace1": "",
+        "ace2": "",
+        "qr": ""
+      }
+    },
+    "rails": {
+      "author": "OpenBot 原创绘制（脚本组合基础几何图元）",
+      "method": "original vector art composed from primitive shapes; no bitmap wrap, no third-party art",
+      "license": "MIT",
+      "designNotes": "renderer/assets/game/rails/README.md",
+      "icons": [
+        "icons/rails.svg"
+      ]
+    },
+    "tycoon": {
+      "author": "OpenBot 原创绘制（棋盘格/骰子/代币为 DOM 渲染，图标为原创 SVG）",
+      "method": "original vector art; DOM-rendered board pieces from theme variables",
+      "license": "MIT",
+      "icons": [
+        "icons/tycoon.svg"
+      ]
+    },
+    "caravan": {
+      "description": "Original hand-authored vector goods cards and card back for Caravan Routes.",
+      "author": "OpenBot contributors",
+      "license": "MIT",
+      "method": "Original hand-authored flat vector, no raster or font conversion.",
+      "files": [
+        "caravan/tea.svg",
+        "caravan/silk.svg",
+        "caravan/porcelain.svg",
+        "caravan/jade.svg",
+        "caravan/camel.svg",
+        "caravan/back.svg"
+      ],
+      "icons": [
+        "icons/caravan.svg"
+      ]
+    },
+    "lantern-watch": {
+      "description": "Original hand-authored vector artwork for the Lantern Watch game: four stone lighthouses, one oil lamp and one storm cloud.",
+      "author": "OpenBot contributors",
+      "license": "MIT",
+      "generator": "scripts/game-lantern-watch-art.js",
+      "method": "Every shape, gradient and size is defined in the generator script; re-running it reproduces byte-identical files.",
+      "icons": [
+        "icons/lantern-watch.svg"
+      ],
+      "files": [
+        "towers/north.svg",
+        "towers/east.svg",
+        "towers/south.svg",
+        "towers/west.svg",
+        "towers/lamp.svg",
+        "towers/storm.svg"
+      ]
+    }
+  },
+  "files": {
+    "mahjong/Man1.svg": {
+      "sourceSha256": "9b8c52bef39c94b3fac5b1f2a4b6193cd7d8736f79d2c2ae764dd7342f7190b3",
+      "sha256": "2a8f8922be941dbf58999e149977ccdf3db269669d4addfe04c3f04221c16457",
+      "bytes": 10232,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man2.svg": {
+      "sourceSha256": "db430b747ebe8e3ad8bc152c6381a0a71c40f94da27be702a2a2aa8e8924cd10",
+      "sha256": "a7c824b3b2435b67ae46648232521edf97bb4afe5daf368c67bd7b5c26b14cc3",
+      "bytes": 10629,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man3.svg": {
+      "sourceSha256": "6c8b4af104169189305f2c0eb465a0ac98a7d7c70dc7d40a70f840d780bbd92e",
+      "sha256": "362f826b2dd2b8a76ec35c7eb9488125667f76fc3f1f7a386fd8fa59e4f32e50",
+      "bytes": 11110,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man4.svg": {
+      "sourceSha256": "a65cde442a6b15e5f33a8dbe753f5d8a30ec1d07f917edc784186e0bdf3abb2e",
+      "sha256": "50cdcd75f308c6ea208508ae8fdceb7ee9a6e36164f2b73ebd23ccdda5d3049c",
+      "bytes": 11520,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man5.svg": {
+      "sourceSha256": "88687841beb6eda143d2a973aaa9e2af9a8896472a9b0260d5c4d198a160bba5",
+      "sha256": "638c6519c07a181e41862fe8cd1cede8e6da09ce5951ce722c1a4e27db856d93",
+      "bytes": 12739,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man6.svg": {
+      "sourceSha256": "279df4110edaee428a00df4115df4de7f99829cc9e4f4b259e61036cae8fe0d3",
+      "sha256": "c1281793ab8586e2cce50fc81eab11656c484dcdb65748c7d66b969fba8b6a54",
+      "bytes": 11680,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man7.svg": {
+      "sourceSha256": "a5a1a19ef1156d4bc33d5ae0551806f683cf959b90b244f9fa90ae1bf6402485",
+      "sha256": "87007f8b3a0576229517d48e821558f80349b66074765fba3f1363188d95594b",
+      "bytes": 10691,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man8.svg": {
+      "sourceSha256": "28babd56acfb1f710c78a50e962edc48af5f739035fbf1f5f5ce62da9c196ec5",
+      "sha256": "80974386d9af6e1e66d9a0302b4981a0d4050822787ae22afb60ebe1b50114fe",
+      "bytes": 10671,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Man9.svg": {
+      "sourceSha256": "0b31a26657af8ecfd330332068c22c69516e43ac31a8f3bdfeff19a994088c23",
+      "sha256": "9b28d572a08a1ee5eb32095477ad9b38bd3ef581007d81a77ea4660563d33bc7",
+      "bytes": 11252,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin1.svg": {
+      "sourceSha256": "477c6311f8c3e8456a8ca510a6b6ee4d146ecc4ef2d51cb801575e5b55122175",
+      "sha256": "20bb1dadf33323f724a80bf3b439a6f172e219de3fbf2f6ecf47665fb030bb91",
+      "bytes": 11818,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin2.svg": {
+      "sourceSha256": "518a4f1831a7743a12898a81c14b91edad909f264dcd410ff7a074975ee0188a",
+      "sha256": "2cb00f93783d4cdfab65c4bee1dde020bba62cbe84966eeb01fb4f105347cfb8",
+      "bytes": 9366,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin3.svg": {
+      "sourceSha256": "0d57651db6c2d96a99d65a44bdd21e5f550336580310edec029428494326759f",
+      "sha256": "b9938a065a713b2113b2cc420d37a1ac008210087ea1aa2af5b899afaeb6c04c",
+      "bytes": 11007,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin4.svg": {
+      "sourceSha256": "c9231df1f9a83b90ca3e7c333ca56a11bc323a9e765702714a273a58797aaef0",
+      "sha256": "be33a211b2776d4c6865d9a3b710facaea24d455a57dd5eefef23dc37dca93fc",
+      "bytes": 13122,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin5.svg": {
+      "sourceSha256": "5574c14b911befee26b821147d54f6d92cafd66f272e1da5c12a63a0143bc213",
+      "sha256": "ee63426fd5a9c244057068dbd26b5d1afe27d767297e4b2043c9dc68de6f27a4",
+      "bytes": 15236,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin6.svg": {
+      "sourceSha256": "38605c2f30a762fada49d4d4ba1b2beb8a707469478ec173b800be06b95562ad",
+      "sha256": "b37030e4d9d33822cc870cf184262dd1f750603c9c39fb855234aee1fdcb7ffd",
+      "bytes": 16716,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin7.svg": {
+      "sourceSha256": "97efa9eec79944518511a4f461f1468490a95ca13b3d952eff1ca02bb05b4589",
+      "sha256": "840058f49df68b754b7943b54d4eb3a1e7c19fecfb59d2ae9d7afed909241fbc",
+      "bytes": 20800,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin8.svg": {
+      "sourceSha256": "523b82c7c4a7cd8999780a7b3b5a7b6670eaf86eb1a8e9ad1317b43c6d8f81d8",
+      "sha256": "d53aa2c06ad68907f677cf2fc5be6e39bde606453cdb6bcf3574304dde2cd8f3",
+      "bytes": 20844,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pin9.svg": {
+      "sourceSha256": "ffd648051b26c2afd770120c9405d7eec550fdb7f7b42406feadb0969f277087",
+      "sha256": "6f9a1e0a2d89eb8ff6a963a440896b67eeb3637b3566b2b5d7afad39ff706f65",
+      "bytes": 23086,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou1.svg": {
+      "sourceSha256": "2c50459c118560dbbe90f38006d636c1cf83c7e31128fed32e4df30f3c543d6c",
+      "sha256": "4c2ecdee41005a0707e0be146a029711fecadb94125131cf3d6b6bf2323f84c9",
+      "bytes": 44736,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou2.svg": {
+      "sourceSha256": "fdc5a6860051ae60f815c4acfaa3ade2b2a067a3b7518b6096f8e9356a650e04",
+      "sha256": "d88829ff653d885dfe3aab9958d64698011267f9299629c652cbeb1b7fffda38",
+      "bytes": 11666,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou3.svg": {
+      "sourceSha256": "d0f26555368992a285f0ae3f3588d6229518a25fa212466627134f54cc6a3bac",
+      "sha256": "9a5b2de3a0aa617cd8717f817ea458d36f3b68f1bc1976a4ba345f5793d3e60c",
+      "bytes": 15339,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou4.svg": {
+      "sourceSha256": "c0861613ee9a6eda77f29a7e685068dd0619bc7aefcc6fcd8d7356782043a518",
+      "sha256": "ae4958495a31b9524c9e3ca9cd05e3ae025724639b1c4a77e5b0c0385b68ae54",
+      "bytes": 19442,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou5.svg": {
+      "sourceSha256": "cbd9b02c63976954d44b373966c886c457a5903262a2fb9ea958450d86746144",
+      "sha256": "7d1ae054477d9053e605388e147c6932ee4c57874f04ff5aca93834d9809f049",
+      "bytes": 22238,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou6.svg": {
+      "sourceSha256": "cf6489ecb0ff073efd94d76b4281e91711e74e3b5eb14c641f8c5e71c2d335b5",
+      "sha256": "b3bc21824781a9cc993f8b620858794c58f74dd9ba33476792a26b173bce678b",
+      "bytes": 25793,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou7.svg": {
+      "sourceSha256": "9afdfc3cef41b3012895d90c1fc34c7c33111171d2a3ea248fbb8ec441009426",
+      "sha256": "e61ab14f1d63767d6ecc5c2378548c43aafb0e1cb7d6209af47d7d5d7048bad2",
+      "bytes": 24123,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou8.svg": {
+      "sourceSha256": "dccec0736c9855c6ccc628238b49afb343f68797302f4129861cb3fc451f8d61",
+      "sha256": "69a71f6d8e71a4e799e98446db0ed0bf883b33d414b08c5aece8f3caee8ee4cc",
+      "bytes": 25968,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Sou9.svg": {
+      "sourceSha256": "5a3369477214b72ddc727130abd0a97126cbaf703eb5ad3226a5b1083dc6635b",
+      "sha256": "199516f2a19b8d47ff3a867a6cf6a149bf8023ed4996cf52c375e5833d414561",
+      "bytes": 29732,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Ton.svg": {
+      "sourceSha256": "955eba50b3de787ffad2eaa09a1f7ecaae487bc0afef253fd29e4a93e7dd76df",
+      "sha256": "374097dc3d0fc938861b41ba14956c6d28c1a79ffb9b0c9f7a796290d65c7d18",
+      "bytes": 8206,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Nan.svg": {
+      "sourceSha256": "28a3fe9e6226016c09539150bd40c22af6e006ed1ae23ef8f7e8dccd7d891f9b",
+      "sha256": "894f197276eb19ff5c86d8e692cda7db5db4144cddfa2a2c06473e74c8e4b848",
+      "bytes": 9061,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Shaa.svg": {
+      "sourceSha256": "10d4b6e7e8cbe8410f376c28b8892ecab5b03c1f8d89db93acf0da2302523577",
+      "sha256": "4d7a67f8e359e319e06dd02f6ec86344a1f3e3ad9f385c177192e37fa85462e9",
+      "bytes": 7637,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Pei.svg": {
+      "sourceSha256": "a8efd3f32aa46c70a04233d499097ab75ec221635bdf68e8ee2817cb0c45d824",
+      "sha256": "79db422b748c40132b0fe895cd83801bb5bee740198a0e563c1581a2a4eca266",
+      "bytes": 7256,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Chun.svg": {
+      "sourceSha256": "7aecefcb257e5278cf3d4d0d9d03b16c3c6e3ba4080d54f60d424c3f35ffd5bb",
+      "sha256": "8767035f5639ee242958517cf831c99512b24282389127cdd7dd2527f4ebd906",
+      "bytes": 6695,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Hatsu.svg": {
+      "sourceSha256": "9197066680636f5d6b43e49b687103e7b347334f5ea838220edb41ec803e3ad9",
+      "sha256": "139105e8735e866ffd8354210ea7178d2ad899676a9da470ec78a6c4530e34fd",
+      "bytes": 11884,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Haku.svg": {
+      "sourceSha256": "d6023d8cf3b810b74b2f7c14a4254dd7a65c57b9389e63f90aed8f6cd3607032",
+      "sha256": "c9b3ab493820e5d684dff92b2ceb6c62ef267405f47695e2b5d5472855d5ba57",
+      "bytes": 4576,
+      "license": "CC0-1.0 AND MIT",
+      "template": "mahjong-face-surface.svg"
+    },
+    "mahjong/Back.svg": {
+      "sourceSha256": "73230b9874786e0514fdd469e6b8ad6adb6eaad549a3936e4942c67e2fa78879",
+      "sha256": "65d238deb72820a77d227dfd8c03ec52eff45d261a9d012e43db31d84d77f7ee",
+      "bytes": 2003,
+      "license": "MIT",
+      "template": "mahjong-back.svg"
+    },
+    "poker/2S.svg": {
+      "sourceSha256": "f99b52c6d22b039caf039e0face75c60cc9ecf4be976812e81962a7ab3d0115b",
+      "sha256": "179be96cb9429f958e343e84563acc537260f03ae651d1e67213b0a54cb99841",
+      "bytes": 1421,
+      "license": "CC0-1.0"
+    },
+    "poker/3S.svg": {
+      "sourceSha256": "51d1f4595aeb7b6436cbfba52bbeece7167c79f88debbd52c6cde7b9d99d5925",
+      "sha256": "c08020c2f622afb12fe7d1ee9b447296cf28465848aec399a38f839c9c4280c1",
+      "bytes": 1515,
+      "license": "CC0-1.0"
+    },
+    "poker/4S.svg": {
+      "sourceSha256": "750fac16716b80456bbc5d39ae283024879e75e953959deddfa18344afbc51e4",
+      "sha256": "29c24a8b83400a53ee92abb72c5d505f7fcda5146766d4afa46d7517f0ec75e5",
+      "bytes": 1524,
+      "license": "CC0-1.0"
+    },
+    "poker/5S.svg": {
+      "sourceSha256": "547c00c84fc80e6b67e989d83c1e4b5eb550659849144c8740f5cdd827e3cc53",
+      "sha256": "86fda8b22e150b0e53ef10aefd7fd96446cc558d28ef740d218dcba6e76d29d0",
+      "bytes": 1662,
+      "license": "CC0-1.0"
+    },
+    "poker/6S.svg": {
+      "sourceSha256": "f5944fdda428d4c806315948665891e789536bc36ebd29cd4adef572b82b9d4e",
+      "sha256": "9ae799ea545dc47643168a70a64cf23d57bd6f00dfc287327d5c0291d24f34ef",
+      "bytes": 1721,
+      "license": "CC0-1.0"
+    },
+    "poker/7S.svg": {
+      "sourceSha256": "3c2e422d87b6bf0284eb7b1af6ee739fd0658e48ce7442afb30d87cffed7491f",
+      "sha256": "b6b656d59bd43387afb912267e06e02c21697b5f2395b250c7b35fc71f2c2140",
+      "bytes": 1722,
+      "license": "CC0-1.0"
+    },
+    "poker/8S.svg": {
+      "sourceSha256": "078d825fe009c29b8464a50c0b17c33d3ae3316e547783ea0e2d9844f55248b6",
+      "sha256": "63bc725617244c5ebedfb8de9ea5d519532ce8725423f7ae2ebe5183b855acff",
+      "bytes": 1790,
+      "license": "CC0-1.0"
+    },
+    "poker/9S.svg": {
+      "sourceSha256": "6e565bede3d8fb794710da1c5acf4b83846c028b70e96e78f2cf3454c2204df2",
+      "sha256": "2ee030fb35aaf48b9a2daac7ed997a3427dc12cfc2f153d33d5b56278f6115e7",
+      "bytes": 1929,
+      "license": "CC0-1.0"
+    },
+    "poker/TS.svg": {
+      "sourceSha256": "9501c78ef834ea2dbe88df549d008e0249ef08a66f664aac64b6e4b3c4a10c62",
+      "sha256": "57cfaa88148a01f9a79aebdafadcbc8fa87c064aaadbf01e8c8e32bc3d7938ea",
+      "bytes": 1962,
+      "license": "CC0-1.0"
+    },
+    "poker/JS.svg": {
+      "sourceSha256": "16453a65b8c4f0e661e289c17117cac8942ba2447f9627edc218f30e3ab5d436",
+      "sha256": "1dbcd2de861f247bbd0cb8e5629823e06ea6ff3a648d43cbe0f97e090e8dc6fb",
+      "bytes": 43194,
+      "license": "CC0-1.0"
+    },
+    "poker/QS.svg": {
+      "sourceSha256": "f9e217543bd49b71e2f266a2e92e935165d5ed4b45901a6c15981e00a94e7d10",
+      "sha256": "d78bc4be716fd3befdec027319377f159c9dd0a1c907475a738c99d1ab49d205",
+      "bytes": 38643,
+      "license": "CC0-1.0"
+    },
+    "poker/KS.svg": {
+      "sourceSha256": "08cac14e74d6590937c55ce5993619f3264a3e042de5e90b5779b767f55c3bfb",
+      "sha256": "d26e461ef52596453b0423b28f90620416c5a8436e87c6ee4ee64a069de2d4a5",
+      "bytes": 63144,
+      "license": "CC0-1.0"
+    },
+    "poker/AS.svg": {
+      "sourceSha256": "1bbd4002e73287b2f453ffbe62c4fff8d9fca9d5a9df27d7e4fdedd4246a5a0b",
+      "sha256": "d5f7bdd4b97b5433b192ce39cc964d26b52657e3e38e9989675bf4177ba63172",
+      "bytes": 1648,
+      "license": "CC0-1.0"
+    },
+    "poker/2H.svg": {
+      "sourceSha256": "db245b0f6cb236a42ac208defbb4d3231659a7074b11bf8f0fcc497d446c0e7c",
+      "sha256": "9a2943bd42502fb848ad6d45b53e3d4277470978b49b0ae78d24cadec3830c70",
+      "bytes": 1374,
+      "license": "CC0-1.0"
+    },
+    "poker/3H.svg": {
+      "sourceSha256": "bcfd619cd3f197d957a10a1d759c161858d939e3c5fe6964edde4f7792528e1b",
+      "sha256": "c2e31d451486b9c3baa6673963473acd3599a8a28579db826f4e3a2fdf2e8f56",
+      "bytes": 1468,
+      "license": "CC0-1.0"
+    },
+    "poker/4H.svg": {
+      "sourceSha256": "1771c9250afb0c966673778f0cf4fe4f767cc3ce9b05c822f47cff4ed63386fa",
+      "sha256": "122b95674ae44e590c041afa055079434fc1efe452c9b0b61f548f807760f016",
+      "bytes": 1477,
+      "license": "CC0-1.0"
+    },
+    "poker/5H.svg": {
+      "sourceSha256": "81f1852159dab3d77575555f2a3014fec697e19ad3383953f56c63c72bec117a",
+      "sha256": "53faad37e00f1b3c762f97b785f07e4130de8038db46c493bb57d9d764057da8",
+      "bytes": 1615,
+      "license": "CC0-1.0"
+    },
+    "poker/6H.svg": {
+      "sourceSha256": "3234c529c5d9f55a25484444341a3319e93e9dc847a674d94b6671bed27b8587",
+      "sha256": "10197a0ca3e00bd06097b55ebd74e05ceddd3e5ad62d09997177df554b386b26",
+      "bytes": 1674,
+      "license": "CC0-1.0"
+    },
+    "poker/7H.svg": {
+      "sourceSha256": "71c33d7074cbb993edaef1d90baf6c9db4bae2abb111fbfede7dfe3c3d6fc01c",
+      "sha256": "42c97b328a23cb590f25293b5ba8135af306d566d753c3e09b25c4c78dc2beec",
+      "bytes": 1675,
+      "license": "CC0-1.0"
+    },
+    "poker/8H.svg": {
+      "sourceSha256": "b16032cdc21b3775b74a7bea4379cbf4ab2191074f26a8427f44177b67a1842d",
+      "sha256": "7bff7c89e709889e8c754afbfa3dc9be2d8b49f2728fbcd2d1102968f53c1f45",
+      "bytes": 1743,
+      "license": "CC0-1.0"
+    },
+    "poker/9H.svg": {
+      "sourceSha256": "bfae75999ec36dfe6fef19fd5561f9d3dcc9292f0f73e7d1315b7f47f39e70e1",
+      "sha256": "b87e7277f9a40d1fcddfaecbd4d0e061d05198a7a2b70db06a90abef3800290a",
+      "bytes": 1882,
+      "license": "CC0-1.0"
+    },
+    "poker/TH.svg": {
+      "sourceSha256": "0c53ab6af9d6f998cc706650d4cfa26d7a3d34b6f6d619b2b3827ffe2539db78",
+      "sha256": "d88df347a3c68db900550f9cd1d36ac27dd3a729cf7a6f36bd9de5387de6bc2a",
+      "bytes": 1915,
+      "license": "CC0-1.0"
+    },
+    "poker/JH.svg": {
+      "sourceSha256": "7cc061ad708a831abde5603d3adf35e5101847376e9b728a8409172fdfee4b51",
+      "sha256": "f43d76aa873f43385dacb2e31aea15bb26660f6cf806130ab6888af05a9c9bfc",
+      "bytes": 38518,
+      "license": "CC0-1.0"
+    },
+    "poker/QH.svg": {
+      "sourceSha256": "77281e00c00eb41cf31b52b53425af07f9251e45753e8d2ab02fec01e6f68049",
+      "sha256": "99e0cd234f604c615ef9b49098b2ef9863d50d676aa2e2829e8ace2c8702576f",
+      "bytes": 47571,
+      "license": "CC0-1.0"
+    },
+    "poker/KH.svg": {
+      "sourceSha256": "f4c59c854cc29a51b0f0b1ec1807eb8daee9619f6b63c875cbf958a6360d0847",
+      "sha256": "e6a1f2cf6e61e2618124f71b1f59861821db80a494bbd584d8714114efdde387",
+      "bytes": 50849,
+      "license": "CC0-1.0"
+    },
+    "poker/AH.svg": {
+      "sourceSha256": "be13853c1379a1c978f5417ed1ef7771c119c9e51782bbd39a854e3492310025",
+      "sha256": "23a407d03595df790d772dfb94d5b02416c2a5344178683079da605ae06a8018",
+      "bytes": 1268,
+      "license": "CC0-1.0"
+    },
+    "poker/2C.svg": {
+      "sourceSha256": "8beb83b8b25bd4e68c1ead2712fd9fd74f052e3ae528b13e4458b3e054708f3e",
+      "sha256": "9c31b12c7d705e37a5b234c294f08e641f8cf78a906fe3489c6969c1906ed654",
+      "bytes": 1431,
+      "license": "CC0-1.0"
+    },
+    "poker/3C.svg": {
+      "sourceSha256": "dd1b9c874babb6435fbb57c0a932bdede7562f98221d242fe93484d7deb904a0",
+      "sha256": "6fc9831f6c173d1e081031553ca3426861395d41ef158c8804310fd0860cb67e",
+      "bytes": 1525,
+      "license": "CC0-1.0"
+    },
+    "poker/4C.svg": {
+      "sourceSha256": "66a4c9ed84e53ace8cd3a437a9073bd3737ea5858be8027d4a2944aba547540c",
+      "sha256": "7d967bf27778730d660064a6e594c1d256a6a941f91a0d6152f5c72e95b72b2a",
+      "bytes": 1534,
+      "license": "CC0-1.0"
+    },
+    "poker/5C.svg": {
+      "sourceSha256": "3d78f1b50d8f5414f3c570f53ef9728960708bba75e2d27de9e2f3855a678376",
+      "sha256": "f20d22efb283a2e548930d30f04a30ca1fd2678f90f50089630ee295002fd74c",
+      "bytes": 1672,
+      "license": "CC0-1.0"
+    },
+    "poker/6C.svg": {
+      "sourceSha256": "0f92c510d14613266b1761f637df6eea766b06817c335df003647789398fc658",
+      "sha256": "2d507383fcf8a3c37a475ea9820afce8f95f96ccb7a55f398de78537e8076f28",
+      "bytes": 1731,
+      "license": "CC0-1.0"
+    },
+    "poker/7C.svg": {
+      "sourceSha256": "01cc394e9a602e81dacbdc4e2f761c62875a7d54ad1ea94adc5f8b6213678ed0",
+      "sha256": "43748ba4bc8f5754302c9b7fccb246af7526f52ac1e192ab9c0f97c86ba83be3",
+      "bytes": 1733,
+      "license": "CC0-1.0"
+    },
+    "poker/8C.svg": {
+      "sourceSha256": "a38fec11b143aa26f2e0b665ce1b2c6735ec4ffc2853c372697724a2b2147102",
+      "sha256": "8fa545e545859c07b555f3b527ce4e725383d44471336b91a1a2728bc4354d7d",
+      "bytes": 1802,
+      "license": "CC0-1.0"
+    },
+    "poker/9C.svg": {
+      "sourceSha256": "bfda711dc105520f24444ef6d836cb1152cd19f66f0185093e40dc7a1876e1ac",
+      "sha256": "78968b6e8ecd8a798b9c14dec3807fb38ce954c44c5b131bd8cb2ceaaef2762d",
+      "bytes": 1947,
+      "license": "CC0-1.0"
+    },
+    "poker/TC.svg": {
+      "sourceSha256": "e4fee9a6b8105890233abd45e834776fc3791f002d89009f521389ae5cfc26f4",
+      "sha256": "916d3ac8bc024add713125c72b7fa315dcf57727ababd9b9a7dde8f9418ef6ab",
+      "bytes": 1988,
+      "license": "CC0-1.0"
+    },
+    "poker/JC.svg": {
+      "sourceSha256": "a6edc9766748d6fad6761f2a88b70895b9c9ecc751ff5825af371f1c7fd8993c",
+      "sha256": "88d2d3ecf1aafb49741b3f49afdcb2740ff28906516c47a4d388451d456cc2bd",
+      "bytes": 37217,
+      "license": "CC0-1.0"
+    },
+    "poker/QC.svg": {
+      "sourceSha256": "de060a70e7ea022231b3981fe6ee0056a9c8c8563b4b444675c4521662fa39c9",
+      "sha256": "7068851355f3260654edca2c1abbdd00ef400dd6fef6db79174a2a7d17643804",
+      "bytes": 42167,
+      "license": "CC0-1.0"
+    },
+    "poker/KC.svg": {
+      "sourceSha256": "feacf36db651e04641debbbe742b4616fdb597b9f08a2f99eec5743073294cb9",
+      "sha256": "cfd20c5aff080881ac267dede8157b2e04d3fc08151123027285cfd6f5cb3ca5",
+      "bytes": 37634,
+      "license": "CC0-1.0"
+    },
+    "poker/AC.svg": {
+      "sourceSha256": "97d528b6a8fdbc63fd5ad4ac451e1945c7cc4ad3568972c758f28af1b1d5736c",
+      "sha256": "0f121eda07c93b2284d509e3645c7fb798de5cfddc3887e59111f5a9710bad71",
+      "bytes": 1325,
+      "license": "CC0-1.0"
+    },
+    "poker/2D.svg": {
+      "sourceSha256": "b10be63c316c892af18508ba71b732f8eb59f4e8b59a67584afdcf39f80b1a8b",
+      "sha256": "1254157ee33e61b71a81e0406457c5f97e362e993ec7b38f8256e407d7d3058b",
+      "bytes": 1304,
+      "license": "CC0-1.0"
+    },
+    "poker/3D.svg": {
+      "sourceSha256": "90cbb77cda699c8955317ce5dbe38f61582871988a64af241aaa1a1a2592baac",
+      "sha256": "2af69934f6ecf29c0d4368ac1d4b6733ccef9034b444a609b7f54486169a51a6",
+      "bytes": 1398,
+      "license": "CC0-1.0"
+    },
+    "poker/4D.svg": {
+      "sourceSha256": "d91613b482cbf921663f39a4969e69e106e17c0704c1093990acc02fe64477b3",
+      "sha256": "3ddf0d0f7e3fa56af26e66d179f3a84927c4db336b003df666c0a3cc3584575f",
+      "bytes": 1407,
+      "license": "CC0-1.0"
+    },
+    "poker/5D.svg": {
+      "sourceSha256": "91c704ff175127392661f7a55fa72fb9e61b6f0c549ba68667d787ccc1a4854e",
+      "sha256": "54f2b068c5a253f693ed27217aa696212ccdc421133e17536dec2687c5c68810",
+      "bytes": 1545,
+      "license": "CC0-1.0"
+    },
+    "poker/6D.svg": {
+      "sourceSha256": "e2d035f2f585b6b1c85dd0f8943f6dbe76ea42a821422a7c4825e3287b196056",
+      "sha256": "43c871600afaefc6b6da8f40cdee33c3de9bd00aa3b3a41b9cbf8fcbcdee05fd",
+      "bytes": 1604,
+      "license": "CC0-1.0"
+    },
+    "poker/7D.svg": {
+      "sourceSha256": "a45a1e7e2ed59034ec67c2242bf4e39571e4e3d9104cc7a6e20bd54c38d8d8cc",
+      "sha256": "2753ef1713c1c5eb0abad866dca7ff608129da186d4e02832c96e0814f5c67fd",
+      "bytes": 1605,
+      "license": "CC0-1.0"
+    },
+    "poker/8D.svg": {
+      "sourceSha256": "d28032382aaaccbd44c0e26044a3558c9b4df18afb405d97cfd2f42752c0a670",
+      "sha256": "3990684ca464ecdf4f11846844cf5839e0449c82e9de818bd3069c2c3bc24108",
+      "bytes": 1673,
+      "license": "CC0-1.0"
+    },
+    "poker/9D.svg": {
+      "sourceSha256": "0c0c9057985b07c865a90f6e5b5b7179be68350946743dbc3627c77baf39c01b",
+      "sha256": "563580a90953658b5cd73055c35be51d528a4ee4dd4ff5d2b0b3b45c76032264",
+      "bytes": 1812,
+      "license": "CC0-1.0"
+    },
+    "poker/TD.svg": {
+      "sourceSha256": "a5bd873d401f94cd3f265677b36faddcede64792b9c2e468226b0dc428439d0d",
+      "sha256": "872bb90936c8b88db6eaa76fe14defcd2516de3f7be5c102fce3825f1d173c87",
+      "bytes": 1845,
+      "license": "CC0-1.0"
+    },
+    "poker/JD.svg": {
+      "sourceSha256": "504308b8adaa752a685abf53b8dfd3ff4707b1a540abd543d32be6514dd9683b",
+      "sha256": "4b7f06fc0a99307a017012cb7c4d1399f964b2f6a6cdd195998c2be3987a9503",
+      "bytes": 32291,
+      "license": "CC0-1.0"
+    },
+    "poker/QD.svg": {
+      "sourceSha256": "1409b7344dbefa8aee703b7e141667fd31f96d6067d44f684b185a20ce717583",
+      "sha256": "c02f23bc5046850197f22fef16f1fc2e02391ab899b537431abb822acc251dc6",
+      "bytes": 43113,
+      "license": "CC0-1.0"
+    },
+    "poker/KD.svg": {
+      "sourceSha256": "2f6de442343a695e5972eae0e11cf0312e0448e483fbb862b5110c8bc17e3074",
+      "sha256": "cd238bdf73d08ed6161a4d0532a58c494230cd8b2226769311762b5edad3a0c6",
+      "bytes": 33860,
+      "license": "CC0-1.0"
+    },
+    "poker/AD.svg": {
+      "sourceSha256": "eac9bdc7ba3aee0a5ee8cba06b5db6d7dff3101ab229a342c842f696ffd85fc0",
+      "sha256": "e07f6390a24a3c392cf0f35869f27cae229247b1469f3c7af8bf9a4d0963a28e",
+      "bytes": 1198,
+      "license": "CC0-1.0"
+    },
+    "poker/1J.svg": {
+      "sourceSha256": "cfb9b1c4ad1c9ac088ed53a683f5c0e4379afec51737e523271217d4ec45d83b",
+      "sha256": "f5ceaec56c8ed7d63e933ea3472db622d1d88f04a8392349e96d4fa81d90f23a",
+      "bytes": 3370,
+      "license": "CC0-1.0"
+    },
+    "poker/2J.svg": {
+      "sourceSha256": "a1d6a04d0e70cd619da9110a80f975da9f9e13f63b14a4a7c06af0a82cc20fa8",
+      "sha256": "384bc6fe71d9208e57ddb934478e98a7b284386eb5427031a73459e1f0b8e385",
+      "bytes": 2200,
+      "license": "CC0-1.0"
+    },
+    "poker/1B.svg": {
+      "sourceSha256": "ed0e1d90b4dbe81e10bd30a96252131dad8c442ac0deaf36a59a1e74783d1b4f",
+      "sha256": "f7b8b4e59ebc6c9d6f6a45e492459ce1b82cefcc05aca1786939518d1f8fb24a",
+      "bytes": 2161,
+      "license": "MIT",
+      "template": "poker-back.svg"
+    },
+    "lots/tea.svg": {
+      "sha256": "869fa198c3207366cefe92fdbf85d56e15591b53cf3ad5b87f573cd3850254e9",
+      "bytes": 785,
+      "license": "MIT",
+      "source": "original"
+    },
+    "lots/silk.svg": {
+      "sha256": "bc25465b844819a897862ba2e4da7a21a87e1790fa0ae5884bf18128b00c89b7",
+      "bytes": 821,
+      "license": "MIT",
+      "source": "original"
+    },
+    "lots/porcelain.svg": {
+      "sha256": "a71fbb5add4dcf33bdfcbeddb9dd1ff561b8f8129e9346ee50c99986fb5d6f9c",
+      "bytes": 772,
+      "license": "MIT",
+      "source": "original"
+    },
+    "lots/jade.svg": {
+      "sha256": "31d7ac55e380004ef125b510c62ff7f8b64bc7fc268a7af2bc9ea907a28e9c83",
+      "bytes": 595,
+      "license": "MIT",
+      "source": "original"
+    },
+    "lots/ink.svg": {
+      "sha256": "a54bc26dccf2304fdb8eadcb82f0c65cae82db2b074a228e8ee91698e6930c1b",
+      "bytes": 737,
+      "license": "MIT",
+      "source": "original"
+    },
+    "lots/lacquer.svg": {
+      "sha256": "d05c565f4435460adf2b7d838258d686b2358642f79765df6b09d8591b19bb85",
+      "bytes": 695,
+      "license": "MIT",
+      "source": "original"
+    },
+    "rails/ticket.svg": {
+      "sha256": "656df5b732520f981c650e0bd3e5cfb48b412140fdc217c303f761d7854b1965",
+      "bytes": 657,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-black.svg": {
+      "sha256": "e99317971ac8c9eb87057b84b6f6fb983efb7cded7df2c5d94c12cf74860fac0",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-blue.svg": {
+      "sha256": "ed66535cfa965fe69c48c73270dc792f61e16a0fac9542fa93f5597b92ff07a1",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-green.svg": {
+      "sha256": "6cb53bb4817de5bf8abcdcdd4d0194b877d01c6d2fee353871071afff7b57fc1",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-loc.svg": {
+      "sha256": "ab5f9d0dc9573a335a71c37479df353688c99a43db9331a488d5f23cf77129f7",
+      "bytes": 989,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-orange.svg": {
+      "sha256": "632d5b7d1c74c3406c1c1b02becf36652921b0c6e88f813f1cffab065b118b79",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-piece.svg": {
+      "sha256": "26e52783d258d3785838485f61324e063a8d8d4701dd7a1f66b8f5fe9a933950",
+      "bytes": 463,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-purple.svg": {
+      "sha256": "026ad2463fd83f558b20c8b75ff91bb2b0e8e68620ba4f40b935523ff1f37748",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-red.svg": {
+      "sha256": "bf4f4127440538ac43f4de3b3ecf0bbaa9f4ff77f30d031177812afdba65fcf9",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-white.svg": {
+      "sha256": "63d211563e207d0fdf9c81624015be143f88148b88b770c0f40839f8723a1726",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "rails/train-yellow.svg": {
+      "sha256": "4d6c422b0f8604c59c6412457a8c0187f42fd6d060fb58e5138e9297b81d5cbb",
+      "bytes": 890,
+      "license": "MIT",
+      "method": "original script-composed vector primitives (see rails/README.md)"
+    },
+    "caravan/tea.svg": {
+      "sha256": "7c2c0a0b335e38735460822a684b45d09e73e574a3724513dedb54958ea77c62",
+      "bytes": 644,
+      "license": "MIT",
+      "source": "original"
+    },
+    "caravan/silk.svg": {
+      "sha256": "3bed2ad445eb4c93e043d93c195f6f1bbe712484737f57e613418b98219f9d76",
+      "bytes": 684,
+      "license": "MIT",
+      "source": "original"
+    },
+    "caravan/porcelain.svg": {
+      "sha256": "269733bb141f1a5312f40f885a7233b9bf465fc55a90b1efed9979889268d2b4",
+      "bytes": 616,
+      "license": "MIT",
+      "source": "original"
+    },
+    "caravan/jade.svg": {
+      "sha256": "e7ced3e51650d5f1a6c2b993c045a85adf3607acc1fd5badb4808ebd87141e2c",
+      "bytes": 643,
+      "license": "MIT",
+      "source": "original"
+    },
+    "caravan/camel.svg": {
+      "sha256": "e4f287dff027fa522ceaff0d088a363badf1cc3a8b639fba25e7b7ed7840328b",
+      "bytes": 765,
+      "license": "MIT",
+      "source": "original"
+    },
+    "caravan/back.svg": {
+      "sha256": "553a1b6bb21014ad51bccae91a34fb30372f2cfdeb5a20debbf49fe54a833f17",
+      "bytes": 614,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/north.svg": {
+      "sha256": "742f630377afdb4751ea7abb1de33a7a110a78aa974766b00b23ba7c35b04e0a",
+      "bytes": 1274,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/east.svg": {
+      "sha256": "edb08bd7e8de03021a16d5db032a70207f3177b8d43bb697361ecf3edfc63e95",
+      "bytes": 1274,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/south.svg": {
+      "sha256": "287bf314790dc0f9dbbbc35abc84528244ca954d74cfee072d566aad5ae5bff9",
+      "bytes": 1274,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/west.svg": {
+      "sha256": "5e58d90c465280b966900fb99e8aca5dfa8057c6b4d8251e395652b30a36b8db",
+      "bytes": 1274,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/lamp.svg": {
+      "sha256": "c145aa06362562c3e85e4039bbea8d51449069c9b49cb8c1447af771b3328d16",
+      "bytes": 963,
+      "license": "MIT",
+      "source": "original"
+    },
+    "towers/storm.svg": {
+      "sha256": "00084559f61af734df0de4bf7d67a445c5ef849cc9fc968191ea910c558e3a8f",
+      "bytes": 837,
+      "license": "MIT",
+      "source": "original"
+    }
+  },
+  "lots": {
+    "license": "MIT",
+    "method": "original hand-authored flat vector, no raster or font conversion",
+    "files": {
+      "lots/tea.svg": "869fa198c3207366cefe92fdbf85d56e15591b53cf3ad5b87f573cd3850254e9",
+      "lots/silk.svg": "bc25465b844819a897862ba2e4da7a21a87e1790fa0ae5884bf18128b00c89b7",
+      "lots/porcelain.svg": "a71fbb5add4dcf33bdfcbeddb9dd1ff561b8f8129e9346ee50c99986fb5d6f9c",
+      "lots/jade.svg": "31d7ac55e380004ef125b510c62ff7f8b64bc7fc268a7af2bc9ea907a28e9c83",
+      "lots/ink.svg": "a54bc26dccf2304fdb8eadcb82f0c65cae82db2b074a228e8ee91698e6930c1b",
+      "lots/lacquer.svg": "d05c565f4435460adf2b7d838258d686b2358642f79765df6b09d8591b19bb85"
+    }
+  },
+  "caravan": {
+    "license": "MIT",
+    "method": "original hand-authored flat vector, no raster or font conversion",
+    "files": {
+      "caravan/tea.svg": "7c2c0a0b335e38735460822a684b45d09e73e574a3724513dedb54958ea77c62",
+      "caravan/silk.svg": "3bed2ad445eb4c93e043d93c195f6f1bbe712484737f57e613418b98219f9d76",
+      "caravan/porcelain.svg": "269733bb141f1a5312f40f885a7233b9bf465fc55a90b1efed9979889268d2b4",
+      "caravan/jade.svg": "e7ced3e51650d5f1a6c2b993c045a85adf3607acc1fd5badb4808ebd87141e2c",
+      "caravan/camel.svg": "e4f287dff027fa522ceaff0d088a363badf1cc3a8b639fba25e7b7ed7840328b",
+      "caravan/back.svg": "553a1b6bb21014ad51bccae91a34fb30372f2cfdeb5a20debbf49fe54a833f17"
+    }
+  },
+  "icons": {
+    "icons/lantern-watch.svg": {
+      "sha256": "cd9dc50bb1056901465650b1c08dd7ee3c627825d9b1e7a614f351194ff740ea",
+      "bytes": 704,
+      "license": "MIT",
+      "source": "original"
+    },
+    "icons/tycoon.svg": {
+      "sha256": "ce538d2409a26400ddca6737bc9f4c71ff7506dfe3366bd716cde60094155bb6",
+      "bytes": 990,
+      "license": "MIT",
+      "method": "original vector icon composed from primitive shapes"
+    },
+    "icons/rails.svg": {
+      "sha256": "31c0cf2ff8d95dd642cf7b1a6e274ffcdbf3d5c9c2737598c3863af1d6b4caa2",
+      "bytes": 824,
+      "license": "MIT",
+      "method": "Original OpenBot vector game icon."
+    },
+    "icons/caravan.svg": {
+      "sha256": "709ad12ac1fe2f3ed3bb519bd8cb38949a13f36545fcd3317e8bfc26ca83ad55",
+      "bytes": 953,
+      "license": "MIT",
+      "method": "Original OpenBot vector game icon."
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/*
+ * OpenBot product mark motion.
+ *
+ * The mark's silhouette never moves: only the two tiny B-counter eyes close
+ * for a brief blink. Static SVG and Dock artwork do not include this group.
+ */
+.brand .logo .ob-brand-mark[data-ob-brand-eyes="true"] .ob-brand-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.brand .logo .ob-brand-mark[data-ob-brand-eyes="true"] .ob-brand-eye-backing {
+  fill: var(--ob-brand-counter-fill, #FFFFFF);
+}
+
+.brand .logo .ob-brand-mark[data-ob-brand-eyes="true"].is-blinking .ob-brand-eye {
+  will-change: transform;
+  animation: ob-brand-eye-blink 150ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+@keyframes ob-brand-eye-blink {
+  0%, 34%, 76%, 100% { transform: scaleY(1); }
+  48%, 62% { transform: scaleY(.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand .logo .ob-brand-mark[data-ob-brand-eyes="true"] .ob-brand-eye {
+    animation: none !important;
+    transform: none !important;
+  }
+}

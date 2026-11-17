@@ -1,0 +1,281 @@
+.openbot-platform-account {
+  box-sizing: border-box;
+  width: min(680px, calc(100vw - 32px));
+  max-height: min(780px, calc(100vh - 40px));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 18px 54px rgb(0 0 0 / 24%);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: start;
+}
+.openbot-platform-account[open] { display: flex; flex-direction: column; }
+.openbot-platform-account::backdrop { background: var(--mac-scrim, rgb(0 0 0 / 58%)); }
+.openbot-platform-account .pa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  padding: 18px 24px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  background: color-mix(in srgb, var(--bg) 92%, var(--bg-hover));
+}
+.openbot-platform-account h2,
+.openbot-platform-account h3 { margin: 0; font-weight: 600; color: var(--text); }
+.openbot-platform-account h2 { display: grid; gap: 1px; font-size: 18px; line-height: 1.2; }
+.openbot-platform-account .pa-brand-name { font-weight: 680; letter-spacing: -.02em; }
+.openbot-platform-account .pa-brand-context { color: var(--text-2); font-size: 12px; font-weight: 500; letter-spacing: 0; }
+.openbot-platform-account h3 { font-size: 14px; }
+.openbot-platform-account h4 { margin: 0; color: var(--text); font-size: 13px; font-weight: 600; }
+.openbot-platform-account .pa-body {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 18px 24px 28px;
+  scrollbar-gutter: stable;
+}
+.openbot-platform-account .pa-body > .pa-note:first-child { margin-top: 0; }
+.openbot-platform-account .pa-note {
+  margin: 5px 0 0;
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+.openbot-platform-account .pa-lead {
+  max-width: 58ch;
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.openbot-platform-account .pa-feedback:not(:empty) {
+  flex: none;
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+.openbot-platform-account .pa-feedback[data-state='error'] { color: var(--danger); }
+.openbot-platform-account .pa-section + .pa-section { margin-top: 22px; }
+.openbot-platform-account .pa-section > h3 { margin-bottom: 8px; }
+.openbot-platform-account .pa-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin: 0 0 18px;
+  padding: 3px;
+  border-radius: 9px;
+  background: var(--bg-hover);
+}
+.openbot-platform-account .pa-count {
+  display: inline-block;
+  margin-inline-start: 4px;
+  color: var(--text-2);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.openbot-platform-account .pa-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  margin: 0 0 22px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--bg-hover);
+}
+.openbot-platform-account .pa-identity-avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 650;
+}
+.openbot-platform-account .pa-identity-copy { display: grid; min-width: 0; flex: 1; gap: 2px; }
+.openbot-platform-account .pa-identity-name { overflow-wrap: anywhere; font-size: 15px; font-weight: 600; }
+.openbot-platform-account .pa-identity-provider { color: var(--text-2); overflow-wrap: anywhere; }
+.openbot-platform-account .pa-status-badge {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ok, #278052) 12%, transparent);
+  color: var(--ok, #278052);
+  font-size: 11px;
+  font-weight: 600;
+}
+.openbot-platform-account .pa-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.openbot-platform-account .pa-body > .pa-row { margin-bottom: 14px; }
+.openbot-platform-account .pa-row-copy { min-width: 0; overflow-wrap: anywhere; }
+.openbot-platform-account .pa-row-copy > strong { font-weight: 550; }
+.openbot-platform-account .pa-row-copy > .pa-note { margin-top: 2px; }
+.openbot-platform-account :is(.pa-actions, .pa-code-row) { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.openbot-platform-account .pa-section > :is(.pa-actions, .pa-code-row, button) { margin-top: 11px; }
+.openbot-platform-account .pa-row > .pa-actions { justify-content: flex-end; }
+.openbot-platform-account .pa-row > button { flex: none; }
+.openbot-platform-account .pa-scope { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0; padding: 0; list-style: none; }
+.openbot-platform-account .pa-scope li { padding: 3px 9px; border-radius: 999px; background: var(--bg-hover); color: var(--text-2); }
+.openbot-platform-account .pa-code {
+  display: block;
+  width: fit-content;
+  margin-top: 5px;
+  padding: 7px 11px;
+  border: 1px solid var(--border-soft);
+  border-radius: 7px;
+  background: var(--bg-hover);
+  font-size: 16px;
+  letter-spacing: .04em;
+  user-select: all;
+}
+.openbot-platform-account .pa-field-label { display: block; margin-top: 13px; color: var(--text-2); font-size: 11.5px; font-weight: 550; }
+.openbot-platform-account .pa-login-method {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 58px;
+  margin-top: 7px;
+  padding: 9px 11px;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: var(--bg);
+  text-align: start;
+}
+.openbot-platform-account .pa-login-method + .pa-login-method { margin-top: 7px; }
+.openbot-platform-account .pa-login-method.is-preferred { border-color: color-mix(in srgb, var(--accent) 40%, var(--border-soft)); }
+.openbot-platform-account .pa-login-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--bg-hover);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+.openbot-platform-account .pa-login-copy { display: grid; gap: 2px; min-width: 0; }
+.openbot-platform-account .pa-login-copy strong { font-size: 13px; font-weight: 600; }
+.openbot-platform-account .pa-login-copy > span { color: var(--text-2); overflow-wrap: anywhere; }
+.openbot-platform-account .pa-login-state { color: var(--text-2); font-size: 11px; white-space: nowrap; }
+.openbot-platform-account .pa-auth-grid {
+  display: grid;
+  grid-template-columns: minmax(190px, 220px) minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
+  margin-top: 12px;
+}
+.openbot-platform-account .pa-qr-column { display: grid; place-items: center; }
+.openbot-platform-account .pa-auth-instructions { display: grid; align-content: center; min-width: 0; }
+.openbot-platform-account .pa-auth-provider-mark {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  min-height: 190px;
+  border-radius: 12px;
+  background: var(--bg-hover);
+  color: var(--text-2);
+}
+.openbot-platform-account .pa-auth-provider-mark .pa-login-mark { width: 44px; height: 44px; background: var(--bg); font-size: 13px; }
+.openbot-platform-account .pa-publish-choices { min-width: 0; border: 0; margin: 11px 0 0; padding: 0; }
+.openbot-platform-account .pa-publish-choices legend { padding: 0; font-weight: 550; }
+.openbot-platform-account .pa-choice { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; margin-inline-end: 18px; }
+.openbot-platform-account .pa-choice input { accent-color: var(--accent); }
+.openbot-platform-account .pa-record-title { margin-top: 9px; overflow-wrap: anywhere; }
+.openbot-platform-account .pa-record-text { margin: 5px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.openbot-platform-account .pa-details { margin-top: 5px; }
+.openbot-platform-account .pa-details summary { cursor: pointer; width: fit-content; color: var(--text-2); }
+.openbot-platform-account button.btn {
+  min-height: 30px;
+  padding: 4px 10px;
+  gap: 6px;
+  white-space: normal;
+  color: var(--text);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  box-shadow: none;
+  font: inherit;
+}
+.openbot-platform-account button.pa-primary {
+  color: white;
+  background: var(--mac-action, var(--accent));
+  border-color: transparent;
+  font-weight: 600;
+  /* Match the scope checkbox immediately; a newly enabled action must look available. */
+  transition: none;
+}
+.openbot-platform-account .pa-nav button { flex: 1 1 auto; min-width: 72px; border-color: transparent; background: transparent; }
+.openbot-platform-account .pa-nav button[aria-current='page'] { background: var(--bg-hover); font-weight: 600; }
+.openbot-platform-account button:not(:disabled):hover { filter: brightness(.96); }
+.openbot-platform-account .pa-nav button:not(:disabled):hover { background: var(--bg-hover); }
+.openbot-platform-account button:disabled { opacity: .55; cursor: default; }
+.openbot-platform-account button.pa-primary:disabled { color: var(--text-2); background: var(--bg-hover); border-color: var(--border-soft); opacity: 1; }
+.openbot-platform-account :is(button, input, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.openbot-platform-account .pa-wechat-qr {
+  display: block;
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: white;
+  object-fit: contain;
+}
+@media (max-width: 520px) {
+  .openbot-platform-account { width: calc(100vw - 20px); max-height: calc(100vh - 20px); }
+  .openbot-platform-account :is(.pa-header, .pa-body, .pa-feedback:not(:empty)) { padding-inline: 13px; }
+  .openbot-platform-account .pa-row { flex-wrap: wrap; }
+  .openbot-platform-account .pa-identity { padding: 12px; }
+  .openbot-platform-account .pa-identity-avatar { width: 36px; height: 36px; }
+  .openbot-platform-account .pa-row > .pa-actions { justify-content: flex-start; }
+  .openbot-platform-account .pa-auth-grid { grid-template-columns: minmax(0, 1fr); }
+  .openbot-platform-account .pa-auth-provider-mark { display: none; }
+  .openbot-platform-account .pa-wechat-qr { width: 176px; height: 176px; }
+  .openbot-platform-account .pa-status-badge { display: none; }
+}
+.openbot-platform-account .pa-select {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: 30px;
+  padding: 3px 8px;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  background: var(--bg-hover);
+  color: var(--text);
+  font: inherit;
+}
+.openbot-platform-account .pa-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.openbot-platform-account .pa-identity-brand {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #fff;
+  padding: 3px;
+  box-sizing: border-box;
+}
+.openbot-platform-account .pa-login-mark.is-brand { background: #fff; border-radius: 6px; padding: 2px; }
+.openbot-platform-account .pa-login-mark.is-brand img { display: block; width: 20px; height: 20px; }

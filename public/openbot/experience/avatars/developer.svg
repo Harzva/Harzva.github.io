@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="obx-avatar" data-character="bolt" data-state="idle" data-motion="off" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="OpenBot companion: bolt" style="--obx-phase:0s"><title>OpenBot companion: bolt</title><style>
+.obx-avatar{display:block;overflow:hidden;isolation:isolate}
+.obx-avatar .obx-body{transform-origin:64px 112px;animation:obx-breathe 7.2s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-lid{transform-box:fill-box;transform-origin:center;animation:obx-blink 7.6s linear infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-pupil{animation:obx-gaze 9s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-eye-awake,.obx-avatar .obx-eye-rest,.obx-avatar .obx-eye-wink,.obx-avatar .obx-mouth-done,.obx-avatar .obx-mouth-rest,.obx-avatar .obx-mouth-flat,.obx-avatar .obx-mouth-worry,.obx-avatar .obx-mouth-await,.obx-avatar .obx-spark{display:none}
+.obx-avatar .obx-line{fill:none;stroke:var(--ob-avatar-face-ink,#25252B);stroke-width:2.15;stroke-linecap:round;stroke-linejoin:round}
+.obx-avatar .obx-brow{stroke-width:2.9}
+.obx-avatar .obx-leaf{transform-origin:64px 31px;animation:obx-leaf 6.8s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-crown{transform-origin:64px 46px;animation:obx-crown 6.2s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-tuft{transform-origin:62px 29px;animation:obx-tuft 8s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-glasses{transform-origin:64px 65px;animation:obx-glasses 9s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-glasses ellipse{stroke:#575A64;stroke-width:1}
+.obx-avatar .obx-cap{transform-origin:64px 72px;animation:obx-cap 8.2s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-peeker{animation:obx-peek 8.2s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-pea-left{animation:obx-pea-left 6s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-pea-right{animation:obx-pea-right 6s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar .obx-pea-center{animation:obx-pea-center 6s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar[data-character="peach"] .obx-body,.obx-avatar[data-character="watermelon"] .obx-body,.obx-avatar[data-character="eggplant"] .obx-body{animation-name:obx-sway}
+.obx-avatar[data-character="pear"] .obx-body,.obx-avatar[data-character="ink"] .obx-body{animation-name:obx-sneak;animation-duration:9s}
+.obx-avatar[data-character="pear"] .obx-pupil,.obx-avatar[data-character="garlic"] .obx-pupil,.obx-avatar[data-character="ink"] .obx-pupil{animation-name:obx-side-eye}
+.obx-avatar[data-character="cloud"] .obx-body{animation-name:obx-float;animation-duration:6.4s}
+.obx-avatar[data-character="jelly"] .obx-body{animation-name:obx-jelly;animation-duration:5.6s}
+.obx-avatar[data-character="carrot"] .obx-body{animation-name:obx-hop;animation-duration:7s}
+.obx-avatar[data-character="bolt"] .obx-body,.obx-avatar[data-character="chili"] .obx-body{animation-name:obx-ready;animation-duration:6.8s}
+.obx-avatar[data-character="lemon"] .obx-body{animation-name:obx-curious}
+.obx-avatar[data-character="pumpkin"] .obx-body{animation-name:obx-nod;animation-duration:7.8s}
+.obx-avatar[data-character="blueberry"] .obx-lid{animation-duration:10s}
+.obx-avatar[data-character="broccoli"] .obx-pupil{animation-name:obx-think;animation-duration:8.5s}
+.obx-avatar[data-state="thinking"] .obx-face{transform:rotate(-2deg);transform-origin:64px 74px;animation:obx-think-tilt 6s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar[data-state="thinking"] .obx-pupil{transform:translate(0,-1.6px);animation-name:obx-think;animation-duration:5s}
+.obx-avatar[data-state="peeking"] .obx-pupil{transform:translate(1.6px,-.25px);animation-name:obx-side-eye;animation-duration:5.8s}
+.obx-avatar[data-state="peeking"] .obx-body{transform:translateX(-1.7px) rotate(-1.5deg);animation-name:obx-sneak;animation-duration:6.2s}
+.obx-avatar[data-state="done"] .obx-body{animation:obx-done .68s ease-out 1}
+.obx-avatar[data-state="done"] .obx-eye-idle,.obx-avatar[data-state="done"] .obx-mouth-idle{display:none}
+.obx-avatar[data-state="done"] .obx-eye-left .obx-eye-awake,.obx-avatar[data-state="done"] .obx-eye-right .obx-eye-wink,.obx-avatar[data-state="done"] .obx-mouth-done,.obx-avatar[data-state="done"] .obx-spark{display:inline}
+.obx-avatar[data-state="done"] .obx-spark{transform-origin:110px 21px;animation:obx-spark .68s ease-out 1}
+.obx-avatar[data-state="rest"] .obx-eye-idle,.obx-avatar[data-state="rest"] .obx-mouth-idle,.obx-avatar[data-state="rest"] .obx-brow,.obx-avatar[data-state="rest"] .obx-glasses{display:none}
+.obx-avatar[data-state="rest"] .obx-eye-rest,.obx-avatar[data-state="rest"] .obx-mouth-rest{display:inline}
+.obx-avatar[data-state="rest"] .obx-body{animation:obx-rest 8.6s ease-in-out infinite;animation-delay:var(--obx-phase)}
+.obx-avatar[data-state="rest"] .obx-body *,.obx-avatar[data-state="done"] .obx-body *{animation:none}
+.obx-avatar[data-character="ink"] .obx-line{stroke:#E2E6ED}
+.obx-avatar[data-character="ink"] .obx-mouth-done>path:first-child{stroke:#E2E6ED;stroke-width:1.2}
+.obx-avatar[data-motion="paused"] *{animation-play-state:paused!important}
+.obx-avatar[data-motion="off"] *{animation:none!important;transition:none!important}
+@keyframes obx-breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-.7px) scale(1.007,.994)}}
+@keyframes obx-blink{0%,38%,42%,100%{transform:scaleY(1)}39.5%,40.5%{transform:scaleY(.07)}}
+@keyframes obx-gaze{0%,25%,65%,100%{transform:translate(0,0)}33%,50%{transform:translate(1.2px,-.4px)}75%,89%{transform:translate(-1px,.3px)}}
+@keyframes obx-leaf{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes obx-crown{0%,100%{transform:rotate(-1.3deg)}50%{transform:rotate(2.4deg)}}
+@keyframes obx-tuft{0%,26%,74%,100%{transform:rotate(0)}42%,54%{transform:rotate(3deg)}}
+@keyframes obx-glasses{0%,28%,60%,100%{transform:translate(0,0) rotate(0)}36%,48%{transform:translate(-1px,-4px) rotate(-5deg)}}
+@keyframes obx-cap{0%,15%,80%,100%{transform:rotate(0)}35%,60%{transform:rotate(-2deg) translateY(-1.2px)}}
+@keyframes obx-peek{0%,15%,80%,100%{transform:translate(0,0)}35%,60%{transform:translate(2px,2px)}}
+@keyframes obx-pea-left{0%,100%{transform:translate(0,0)}50%{transform:translate(1.4px,.4px)}}
+@keyframes obx-pea-right{0%,100%{transform:translate(0,0)}50%{transform:translate(-1.4px,.7px)}}
+@keyframes obx-pea-center{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes obx-sway{0%,100%{transform:rotate(-.9deg)}50%{transform:rotate(1.3deg)}}
+@keyframes obx-sneak{0%,18%,85%,100%{transform:translateX(0) rotate(0)}38%,65%{transform:translateX(-1.7px) rotate(-1.5deg)}}
+@keyframes obx-side-eye{0%,16%,85%,100%{transform:translate(0,0)}34%,64%{transform:translate(1.6px,-.25px)}}
+@keyframes obx-float{0%,100%{transform:translateY(1px)}50%{transform:translateY(-2px)}}
+@keyframes obx-jelly{0%,100%{transform:scale(1)}40%{transform:scale(1.022,.973)}65%{transform:scale(.99,1.013)}}
+@keyframes obx-hop{0%,55%,78%,100%{transform:translateY(0) scale(1)}61%{transform:scale(1.016,.982)}68%{transform:translateY(-2.4px) scale(.991,1.012)}74%{transform:scale(1.012,.988)}}
+@keyframes obx-ready{0%,18%,80%,100%{transform:rotate(0)}40%,60%{transform:rotate(-2deg) translateX(1px)}}
+@keyframes obx-curious{0%,22%,82%,100%{transform:translateY(0)}42%,65%{transform:translateY(-1.4px) rotate(-1deg)}}
+@keyframes obx-nod{0%,20%,75%,100%{transform:scale(1)}35%{transform:scale(1.014,.986)}50%{transform:scale(.997,1.003)}}
+@keyframes obx-think{0%,100%{transform:translate(0,-1.6px)}40%,70%{transform:translate(1.1px,-1.3px)}}
+@keyframes obx-think-tilt{0%,100%{transform:rotate(0)}45%,70%{transform:rotate(-2deg)}}
+@keyframes obx-done{0%,100%{transform:translateY(0) scale(1)}23%{transform:scale(1.025,.975)}52%{transform:translateY(-3px) scale(.985,1.015)}78%{transform:scale(1.012,.988)}}
+@keyframes obx-spark{0%{opacity:0;transform:scale(.65)}60%,100%{opacity:1;transform:scale(1)}}
+@keyframes obx-rest{0%,100%{transform:scale(1)}50%{transform:scale(1.005,.99)}}
+@media(prefers-reduced-motion:reduce){.obx-avatar *{animation:none!important;transition:none!important}}
+</style><g class="obx-body"><path class="obx-body-fill" d="M39 18Q41 12 49 12L95 8Q107 8 103 21L78 58L98 58Q111 59 103 71L59 119Q51 126 47 117L60 80H36Q25 80 28 69Z" fill="var(--ob-avatar-body-fill,#1462FF)"/><g class="obx-face"><g class="obx-eye obx-eye-left" transform="translate(53 55) rotate(13)"><g class="obx-lid"><g class="obx-eye-idle"><ellipse cx="0" cy="0" rx="8.8" ry="11.5" fill="var(--ob-avatar-face-fill,#FFF)"/><g class="obx-pupil"><ellipse cx="1" cy="0" rx="4.048000000000001" ry="6.555" fill="var(--ob-avatar-face-ink,#25252B)"/><ellipse cx="2.5" cy="-3.47415" rx="1.2" ry="1.5" fill="var(--ob-avatar-face-fill,#FFF)"/></g></g><g class="obx-eye-awake"><ellipse cx="0" cy="0" rx="8.8" ry="11.5" fill="var(--ob-avatar-face-fill,#FFF)"/><g class="obx-pupil"><ellipse cx="1" cy="0" rx="4.048000000000001" ry="6.555" fill="var(--ob-avatar-face-ink,#25252B)"/><ellipse cx="2.5" cy="-3.47415" rx="1.2" ry="1.5" fill="var(--ob-avatar-face-fill,#FFF)"/></g></g><path class="obx-line obx-eye-rest" d="M-6.16 0Q0 6 6.16 0"/><path class="obx-line obx-eye-wink" d="M5.720000000000001 -3Q0 -6 -5.720000000000001 1Q0 -1 5.720000000000001 4"/></g></g><g class="obx-eye obx-eye-right" transform="translate(76 58) rotate(13)"><g class="obx-lid"><g class="obx-eye-idle"><ellipse cx="0" cy="0" rx="8.8" ry="11.5" fill="var(--ob-avatar-face-fill,#FFF)"/><g class="obx-pupil"><ellipse cx="1" cy="0" rx="4.048000000000001" ry="6.555" fill="var(--ob-avatar-face-ink,#25252B)"/><ellipse cx="2.5" cy="-3.47415" rx="1.2" ry="1.5" fill="var(--ob-avatar-face-fill,#FFF)"/></g></g><g class="obx-eye-awake"><ellipse cx="0" cy="0" rx="8.8" ry="11.5" fill="var(--ob-avatar-face-fill,#FFF)"/><g class="obx-pupil"><ellipse cx="1" cy="0" rx="4.048000000000001" ry="6.555" fill="var(--ob-avatar-face-ink,#25252B)"/><ellipse cx="2.5" cy="-3.47415" rx="1.2" ry="1.5" fill="var(--ob-avatar-face-fill,#FFF)"/></g></g><path class="obx-line obx-eye-rest" d="M-6.16 0Q0 6 6.16 0"/><path class="obx-line obx-eye-wink" d="M5.720000000000001 -3Q0 -6 -5.720000000000001 1Q0 -1 5.720000000000001 4"/></g></g><path class="obx-line obx-brow" d="M48 38L56 43"/><path class="obx-line obx-brow" d="M76 44L82 42"/><g transform="translate(66 74)"><g class="obx-mouth-idle"><path class="obx-line " d="M-5 1Q1 4 6-2M5-2L7-1"/></g><g class="obx-mouth-done"><path d="M-6-2Q0 1 6-3Q7 7 1 8Q-5 7-6-2Z" fill="var(--ob-avatar-face-ink,#25252B)"/><path d="M-3 5Q0 2 4 5Q1 8-1 7Z" fill="var(--ob-avatar-mouth-accent,#FF8798)"/></g><path class="obx-line obx-mouth-rest" d="M-2 1Q0 3 2 1"/><path class="obx-line obx-mouth-flat" d="M-3.5 1H3.5"/><path class="obx-line obx-mouth-worry" d="M-4 2Q0-3 4 2"/><ellipse class="obx-line obx-mouth-await" cy="1" rx="2.2" ry="2.7"/></g></g></g><path class="obx-spark" d="M109 17L112 11M116 24L121 22" fill="none" stroke="#E5A631" stroke-width="3" stroke-linecap="round"/><style>/*
+ * OpenBot companion night palette
+ *
+ * The artwork keeps its original light-mode fallbacks in the SVG generators.
+ * This layer only supplies semantic paint values when the platform is dark:
+ * body, secondary detail, shadow, face fill, face ink and mouth accent.  The
+ * wrapper's --ob-accent remains the stored Bot color and is intentionally not
+ * reassigned here.
+ */
+@media (prefers-color-scheme: dark) {
+  /* Runtime product mark only. Static files use deep moss green; dark UI keeps moss-lime contrast. */
+  .brand .logo {
+    --ob-brand-night-fill: #DDF2A5;
+    --ob-brand-counter-fill: transparent;
+  }
+
+  .brand .logo .ob-brand-mark > path:first-of-type {
+    fill: var(--ob-brand-night-fill, #DDF2A5) !important;
+  }
+
+  .brand .logo .ob-brand-mark[data-ob-brand-eyes="true"] .ob-brand-eye {
+    fill: var(--ob-brand-night-fill, #DDF2A5) !important;
+  }
+
+  /* Shared face defaults: warm paper whites and small, readable ink dots. */
+  svg.obf-avatar,
+  svg.obx-avatar {
+    --ob-avatar-body-fill: #e3aa42;
+    --ob-avatar-detail-fill: #bc8641;
+    --ob-avatar-shadow-fill: #a36d37;
+    --ob-avatar-face-fill: #fff7e7;
+    --ob-avatar-face-ink: #17181b;
+    --ob-avatar-face-line: #17181b;
+    --ob-avatar-mouth-accent: #e8796f;
+    --ob-avatar-cheek-fill: #e79a87;
+    --ob-avatar-spark: #f5bd52;
+  }
+
+  svg.obf-avatar .obf-line,
+  svg.obx-avatar .obx-line {
+    stroke: var(--ob-avatar-face-ink, #17181b) !important;
+  }
+
+  svg.obf-avatar[data-character="peek"] .obf-line {
+    stroke: var(--ob-avatar-face-line, #fff7e7) !important;
+  }
+
+  svg.obf-avatar .obf-gaze > ellipse,
+  svg.obx-avatar .obx-pupil > ellipse:first-child {
+    fill: var(--ob-avatar-face-ink, #17181b) !important;
+  }
+
+  svg.obf-avatar .obf-spark,
+  svg.obx-avatar .obx-spark {
+    stroke: var(--ob-avatar-spark, #f5bd52) !important;
+  }
+
+  /* The first twelve approved geometric companions. */
+  svg[data-character="peek"] {
+    --ob-avatar-body-fill: #f2b742;
+    --ob-avatar-detail-fill: #dc8e31;
+    --ob-avatar-shadow-fill: #c9792a;
+    --ob-avatar-face-fill: #fff8e8;
+    --ob-avatar-face-ink: #17181b;
+    --ob-avatar-face-line: #fff8e8;
+  }
+  svg[data-character="sprout"] {
+    --ob-avatar-body-fill: #a8c16d;
+    --ob-avatar-detail-fill: #82b77d;
+    --ob-avatar-shadow-fill: #799b52;
+  }
+  svg[data-character="tuantuan"] {
+    --ob-avatar-body-fill: #e86c6d;
+    --ob-avatar-detail-fill: #d35a5e;
+    --ob-avatar-shadow-fill: #c54a53;
+  }
+  svg[data-character="bubble"] {
+    --ob-avatar-body-fill: #70c4b6;
+    --ob-avatar-detail-fill: #5aaca2;
+    --ob-avatar-shadow-fill: #4a9b96;
+  }
+  svg[data-character="fold"] {
+    --ob-avatar-body-fill: #ae89d8;
+    --ob-avatar-detail-fill: #c8a9ed;
+    --ob-avatar-shadow-fill: #8b69b9;
+  }
+  svg[data-character="mochi"] {
+    --ob-avatar-body-fill: #e9b84a;
+    --ob-avatar-detail-fill: #df9c3f;
+    --ob-avatar-shadow-fill: #d18d2a;
+  }
+  svg[data-character="ghost"] {
+    --ob-avatar-body-fill: #a178d2;
+    --ob-avatar-detail-fill: #8962b8;
+    --ob-avatar-shadow-fill: #7b57a6;
+  }
+  svg[data-character="moon"] {
+    --ob-avatar-body-fill: #89a8d6;
+    --ob-avatar-detail-fill: #718fc0;
+    --ob-avatar-shadow-fill: #6682b1;
+  }
+  svg[data-character="curl"] {
+    --ob-avatar-body-fill: #ee9250;
+    --ob-avatar-detail-fill: #d57a35;
+    --ob-avatar-shadow-fill: #c66b2b;
+  }
+  svg[data-character="clover"] {
+    --ob-avatar-body-fill: #d96886;
+    --ob-avatar-detail-fill: #bd4f70;
+    --ob-avatar-shadow-fill: #b44663;
+  }
+  svg[data-character="seed"] {
+    --ob-avatar-body-fill: #98b976;
+    --ob-avatar-detail-fill: #74a96c;
+    --ob-avatar-shadow-fill: #6b955b;
+  }
+  svg[data-character="capsule"] {
+    --ob-avatar-body-fill: #e9ac3a;
+    --ob-avatar-detail-fill: #d58a2c;
+    --ob-avatar-shadow-fill: #c97824;
+  }
+
+  /* The twenty produce/spirit companions. */
+  svg[data-character="strawberry"] {
+    --ob-avatar-body-fill: #e97663;
+    --ob-avatar-detail-fill: #79b688;
+    --ob-avatar-shadow-fill: #c95e55;
+  }
+  svg[data-character="peach"] {
+    --ob-avatar-body-fill: #f0937d;
+    --ob-avatar-detail-fill: #6ea56f;
+    --ob-avatar-shadow-fill: #db766a;
+  }
+  svg[data-character="banana"] {
+    --ob-avatar-body-fill: #e8b838;
+    --ob-avatar-detail-fill: #8c6b46;
+    --ob-avatar-shadow-fill: #cc922a;
+  }
+  svg[data-character="lemon"] {
+    --ob-avatar-body-fill: #e4c24a;
+    --ob-avatar-detail-fill: #88ab53;
+    --ob-avatar-shadow-fill: #c8a63a;
+  }
+  svg[data-character="pear"] {
+    --ob-avatar-body-fill: #afc968;
+    --ob-avatar-detail-fill: #78a866;
+    --ob-avatar-shadow-fill: #8ea94f;
+  }
+  svg[data-character="watermelon"] {
+    --ob-avatar-body-fill: #ef736e;
+    --ob-avatar-detail-fill: #73a889;
+    --ob-avatar-shadow-fill: #c95c60;
+  }
+  svg[data-character="pineapple"] {
+    --ob-avatar-body-fill: #e5af3f;
+    --ob-avatar-detail-fill: #6fa787;
+    --ob-avatar-shadow-fill: #c88a2a;
+  }
+  svg[data-character="blueberry"] {
+    --ob-avatar-body-fill: #6f7bc9;
+    --ob-avatar-detail-fill: #8b83c7;
+    --ob-avatar-shadow-fill: #5c64b0;
+  }
+  svg[data-character="eggplant"] {
+    --ob-avatar-body-fill: #9b6bc0;
+    --ob-avatar-detail-fill: #72a477;
+    --ob-avatar-shadow-fill: #78539f;
+  }
+  svg[data-character="chili"] {
+    --ob-avatar-body-fill: #e56a62;
+    --ob-avatar-detail-fill: #79a866;
+    --ob-avatar-shadow-fill: #c54b50;
+  }
+  svg[data-character="carrot"] {
+    --ob-avatar-body-fill: #e9964e;
+    --ob-avatar-detail-fill: #83ab60;
+    --ob-avatar-shadow-fill: #d17835;
+  }
+  svg[data-character="mushroom"] {
+    --ob-avatar-body-fill: #d7676c;
+    --ob-avatar-detail-fill: #efd4bf;
+    --ob-avatar-shadow-fill: #b94f5c;
+  }
+  svg[data-character="peas"] {
+    --ob-avatar-body-fill: #72b67a;
+    --ob-avatar-detail-fill: #a7c982;
+    --ob-avatar-shadow-fill: #498e65;
+  }
+  svg[data-character="broccoli"] {
+    --ob-avatar-body-fill: #5aa878;
+    --ob-avatar-detail-fill: #7caf67;
+    --ob-avatar-shadow-fill: #4a8c65;
+  }
+  svg[data-character="garlic"] {
+    --ob-avatar-body-fill: #e6d8c4;
+    --ob-avatar-detail-fill: #bba4d2;
+    --ob-avatar-shadow-fill: #cdb99f;
+  }
+  svg[data-character="pumpkin"] {
+    --ob-avatar-body-fill: #e29a49;
+    --ob-avatar-detail-fill: #59a98b;
+    --ob-avatar-shadow-fill: #c87832;
+  }
+  svg[data-character="cloud"] {
+    --ob-avatar-body-fill: #8aaecf;
+    --ob-avatar-detail-fill: #6f97c1;
+    --ob-avatar-shadow-fill: #6b8fb8;
+  }
+  svg[data-character="bolt"] {
+    --ob-avatar-body-fill: #6d92db;
+    --ob-avatar-detail-fill: #8498d1;
+    --ob-avatar-shadow-fill: #526faf;
+  }
+  svg[data-character="jelly"] {
+    --ob-avatar-body-fill: #64c7b2;
+    --ob-avatar-detail-fill: #d3859a;
+    --ob-avatar-shadow-fill: #45a890;
+  }
+  svg[data-character="ink"] {
+    --ob-avatar-body-fill: #737b8d;
+    --ob-avatar-detail-fill: #aeb7ca;
+    --ob-avatar-shadow-fill: #596273;
+    --ob-avatar-face-line: #e6ebf2;
+  }
+}
+</style></svg>

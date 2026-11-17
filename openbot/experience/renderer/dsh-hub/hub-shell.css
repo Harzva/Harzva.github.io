@@ -1,0 +1,34 @@
+:root {
+  color-scheme: light dark;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+  --dsw-alias-bg-primary: #fff;
+  --dsw-alias-bg-secondary: #f4f4f5;
+  --dsw-alias-bg-elevated: #fff;
+  --dsw-alias-bg-card: #fff;
+  --dsw-alias-border-l1: #d4d4d8;
+  --dsw-alias-border-l2: #e4e4e7;
+  --dsw-alias-label-primary: #18181b;
+  --dsw-alias-label-secondary: #52525b;
+  --dsw-alias-label-tertiary: #65656e;
+  --dsw-alias-state-business-primary: #1762bc;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dsw-alias-bg-primary: #222224;
+    --dsw-alias-bg-secondary: #303033;
+    --dsw-alias-bg-elevated: #272729;
+    --dsw-alias-bg-card: #272729;
+    --dsw-alias-border-l1: #444449;
+    --dsw-alias-border-l2: #363639;
+    --dsw-alias-label-primary: #f4f4f5;
+    --dsw-alias-label-secondary: #c5c5ca;
+    --dsw-alias-label-tertiary: #a4a4ac;
+    --dsw-alias-state-business-primary: #7bb5ff;
+  }
+  .dshFishMarket .dshFish__button--primary,
+  .dshFishMarket .dshFish__button--primary:hover:not(:disabled) { color: #142b48; }
+}
+html, body, #hub-root { width: 100%; height: 100%; margin: 0; }
+body { background: var(--dsw-alias-bg-primary); color: var(--dsw-alias-label-primary); overflow: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+button, input, select { font-family: inherit; }

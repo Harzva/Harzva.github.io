@@ -1,0 +1,7 @@
+#bot-workbench-panel { min-height:0; overflow:auto; padding:0 12px; }
+#bot-workbench-panel[hidden] { display:none!important; }
+#bot-workbench-panel section { padding:10px 0; border-bottom:1px solid var(--border-soft,var(--border)); }
+#bot-workbench-panel h3 { font-size:12px; font-weight:650; margin:0 0 6px; }
+#bot-workbench-panel ul { margin:0 0 6px; padding-inline-start:17px; overflow-wrap:anywhere; }
+#bot-workbench-panel .btn { margin:0 6px 4px 0; }
+#bot-workbench-panel .bot-workbench-output { margin:6px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; max-height:230px; overflow:auto; }

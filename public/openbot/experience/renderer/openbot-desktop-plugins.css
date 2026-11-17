@@ -1,0 +1,282 @@
+/* Desktop plugin management follows the existing App Connections card. */
+#set-panel-apps .apps-desktop-plugins{
+  grid-column:1/-1;
+  gap:0;
+}
+#set-panel-apps .desktop-plugins-header{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  min-width:0;
+}
+#set-panel-apps .desktop-plugins-icon{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:7px;
+  background:var(--mac-inset);
+  color:var(--text-2);
+}
+#set-panel-apps .desktop-plugins-icon svg{width:18px;height:18px}
+#set-panel-apps .desktop-plugins-heading{min-width:0;flex:1}
+#set-panel-apps .desktop-plugins-title-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:0;
+}
+#set-panel-apps .desktop-plugins-title-row h3{
+  min-width:0;
+  margin:0;
+  margin-right:auto;
+  color:var(--text);
+  font-size:13.5px;
+  font-weight:600;
+  line-height:1.4;
+}
+#set-panel-apps .desktop-plugins-refresh{
+  flex:0 0 auto;
+  min-height:28px;
+  padding:4px 9px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:7px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text-2);
+  font-size:12px;
+}
+#set-panel-apps .desktop-plugins-refresh:hover:not(:disabled){background:var(--settings-selected,var(--bg-hover));color:var(--text)}
+#set-panel-apps .desktop-plugins-refresh:disabled{opacity:.55;cursor:default}
+#set-panel-apps .desktop-plugins-description{
+  margin:3px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.55;
+}
+#set-panel-apps .desktop-plugins-message{
+  margin:10px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugins-message[hidden]{display:none}
+#set-panel-apps .desktop-plugins-message[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps .desktop-plugins-message[data-state="error"]{color:var(--danger)}
+#set-panel-apps .desktop-plugins-message[data-state="ok"]{color:var(--ok)}
+#set-panel-apps .desktop-plugins-list{min-width:0;margin:10px 0 0}
+#set-panel-apps .desktop-plugins-empty{
+  margin:0;
+  padding:12px 0 0;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+  color:var(--settings-muted,var(--text-3));
+  font-size:12px;
+  line-height:1.55;
+}
+#set-panel-apps .desktop-plugin-row{
+  min-width:0;
+  padding:11px 0 0;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+}
+#set-panel-apps .desktop-plugin-row+.desktop-plugin-row{margin-top:10px}
+#set-panel-apps .desktop-plugin-row-top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  min-width:0;
+}
+#set-panel-apps .desktop-plugin-identity{display:flex;align-items:baseline;gap:9px;min-width:0}
+#set-panel-apps .desktop-plugin-identity h4{
+  min-width:0;
+  margin:0;
+  color:var(--text);
+  font-size:13px;
+  font-weight:600;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-status{
+  flex:0 0 auto;
+  color:var(--settings-muted,var(--text-3));
+  font-size:11px;
+  line-height:1.4;
+  white-space:nowrap;
+}
+#set-panel-apps .desktop-plugin-status[data-state="connected"]{color:var(--ok)}
+#set-panel-apps .desktop-plugin-status[data-state="pending"]{color:var(--text-2)}
+#set-panel-apps .desktop-plugin-status[data-state="error"]{color:var(--danger)}
+#set-panel-apps .desktop-plugin-version{
+  flex:0 1 auto;
+  margin:0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:11.5px;
+  line-height:1.45;
+  text-align:right;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-error,
+#set-panel-apps .desktop-plugin-note{
+  margin:5px 0 0;
+  font-size:11.5px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-error{color:var(--danger)}
+#set-panel-apps .desktop-plugin-note{color:var(--settings-muted,var(--text-3))}
+#set-panel-apps .desktop-plugin-legacy-note{
+  margin:6px 0 0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:11.5px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:8px;
+}
+#set-panel-apps .desktop-plugin-actions .btn{
+  min-height:28px;
+  padding:4px 9px;
+  border-radius:7px;
+  font-size:11.5px;
+  line-height:1.35;
+}
+#set-panel-apps .desktop-plugin-actions .btn:disabled{opacity:.5;cursor:default}
+#set-panel-apps .desktop-plugin-actions .desktop-plugin-uninstall{color:var(--danger)}
+#set-panel-apps .desktop-plugin-actions .desktop-plugin-uninstall:hover:not(:disabled){background:color-mix(in srgb,var(--danger) 10%,transparent)}
+#set-panel-apps .desktop-plugin-contribution{
+  margin:9px 0 0;
+  padding-top:8px;
+  border-top:1px solid var(--settings-line,var(--border-soft));
+}
+#set-panel-apps .desktop-plugin-contribution>summary,
+#set-panel-apps .desktop-plugin-schema>summary{
+  min-height:28px;
+  padding:4px 1px;
+  color:var(--text-2);
+  font-size:12px;
+  line-height:1.5;
+  cursor:pointer;
+}
+#set-panel-apps .desktop-plugin-contribution>summary:hover,
+#set-panel-apps .desktop-plugin-schema>summary:hover{color:var(--text)}
+#set-panel-apps .desktop-plugin-contribution>summary:focus-visible,
+#set-panel-apps .desktop-plugin-schema>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .desktop-plugin-contribution-body{display:grid;gap:8px;padding:8px 0 1px}
+#set-panel-apps .desktop-plugin-contribution-status,
+#set-panel-apps .desktop-plugin-contribution-description,
+#set-panel-apps .desktop-plugin-managed-note,
+#set-panel-apps .desktop-plugin-input-note{
+  margin:0;
+  color:var(--settings-muted,var(--text-3));
+  font-size:11.5px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-contribution-error{margin:0;color:var(--danger);font-size:11.5px;line-height:1.5;overflow-wrap:anywhere}
+#set-panel-apps .desktop-plugin-field{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:start;gap:8px;color:var(--text-2);font-size:11.5px;line-height:1.5}
+#set-panel-apps .desktop-plugin-field>span{padding-top:7px}
+#set-panel-apps .desktop-plugin-field select,
+#set-panel-apps .desktop-plugin-field textarea{
+  box-sizing:border-box;
+  min-width:0;
+  width:100%;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:7px;
+  background:var(--settings-control,var(--mac-control));
+  color:var(--text);
+  font:inherit;
+  font-size:12px;
+}
+#set-panel-apps .desktop-plugin-field select{min-height:30px;padding:5px 8px}
+#set-panel-apps .desktop-plugin-field textarea{
+  min-height:74px;
+  max-height:220px;
+  padding:8px;
+  resize:vertical;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  line-height:1.45;
+  tab-size:2;
+}
+#set-panel-apps .desktop-plugin-field :is(select,textarea):focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+#set-panel-apps .desktop-plugin-input-note[data-state="error"]{color:var(--danger)}
+#set-panel-apps .desktop-plugin-schema{margin:0}
+#set-panel-apps .desktop-plugin-schema-json,
+#set-panel-apps .desktop-plugin-result{
+  max-height:220px;
+  margin:4px 0 0;
+  padding:8px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:7px;
+  background:var(--mac-inset);
+  color:var(--text-2);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;
+  line-height:1.45;
+  white-space:pre-wrap;
+  overflow:auto;
+  overflow-wrap:anywhere;
+}
+#set-panel-apps .desktop-plugin-invoke-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+#set-panel-apps .desktop-plugin-invoke-actions .btn,
+#set-panel-apps .desktop-plugin-contribution-body>.btn{min-height:28px;padding:4px 9px;border-radius:7px;font-size:11.5px}
+#set-panel-apps .desktop-plugin-invoke-actions .btn:disabled,
+#set-panel-apps .desktop-plugin-contribution-body>.btn:disabled{opacity:.5;cursor:default}
+#set-panel-apps .desktop-plugin-result{max-height:260px;margin-top:0}
+#set-panel-apps .desktop-plugin-contribution-action:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#set-panel-apps .desktop-plugin-action:focus-visible,
+#set-panel-apps .desktop-plugins-refresh:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+.desktop-plugin-review{
+  width:min(500px,calc(100vw - 32px));
+  max-width:none;
+  max-height:calc(100dvh - 32px);
+  margin:auto;
+  padding:18px;
+  border:1px solid var(--settings-line,var(--border-soft));
+  border-radius:10px;
+  background:var(--settings-surface,var(--bg));
+  color:var(--text);
+  box-shadow:0 2px 8px rgb(0 0 0 / 16%);
+  overflow:auto;
+}
+.desktop-plugin-review::backdrop{background:rgb(0 0 0 / 28%)}
+.desktop-plugin-review[open]{display:block}
+.desktop-plugin-review-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.desktop-plugin-review-header h2{margin:0;font-size:16px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.desktop-plugin-review-close{
+  display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;margin:-4px -4px 0 0;padding:0;
+  border:0;border-radius:6px;background:transparent;color:var(--settings-muted,var(--text-3));font:inherit;font-size:20px;cursor:pointer;
+}
+.desktop-plugin-review-close:hover{background:var(--settings-selected,var(--bg-hover));color:var(--text)}
+.desktop-plugin-review-details{display:grid;grid-template-columns:100px minmax(0,1fr);gap:7px 12px;margin:16px 0 0;font-size:12.5px;line-height:1.5}
+.desktop-plugin-review-details dt{color:var(--settings-muted,var(--text-3))}
+.desktop-plugin-review-details dd{min-width:0;margin:0;color:var(--text);overflow-wrap:anywhere}
+.desktop-plugin-review-previous{margin:7px 0 0;color:var(--settings-muted,var(--text-3));font-size:11.5px;line-height:1.5}
+.desktop-plugin-review-previous[hidden]{display:none}
+.desktop-plugin-review h3{margin:16px 0 6px;font-size:12.5px;font-weight:600;line-height:1.45}
+.desktop-plugin-capabilities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px;margin:0;padding-left:18px;color:var(--text-2);font-size:12px;line-height:1.5}
+.desktop-plugin-review-effect{margin:14px 0 0;padding-top:11px;border-top:1px solid var(--settings-line,var(--border-soft));color:var(--settings-muted,var(--text-3));font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+.desktop-plugin-review-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.desktop-plugin-review-actions .btn{min-height:32px;padding:6px 11px;border-radius:7px;font-size:12px}
+.desktop-plugin-review :is(button):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:680px){
+  #set-panel-apps .desktop-plugin-row-top{align-items:flex-start;flex-direction:column;gap:3px}
+  #set-panel-apps .desktop-plugin-version{text-align:left}
+  .desktop-plugin-capabilities{grid-template-columns:minmax(0,1fr)}
+  .desktop-plugin-review{padding:16px}
+}
+@media(forced-colors:active){
+  #set-panel-apps .desktop-plugin-status{border:1px solid currentColor;padding:1px 4px}
+  .desktop-plugin-review,.desktop-plugin-review-close{border:1px solid CanvasText}
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="support-title support-desc" style="--body:#54BFF3;--body-deep:#1C5573;--face:#F7F8EE;--ink:#183F5A;--headset:#1C5573;--headset-light:#A8E1FC;--mic:#F7F8EE">
+<title id="support-title">客服 Bot · 耳机泡泡</title>
+<desc id="support-desc">一只蓝色圆泡泡角色戴着清楚可见的耳机，尾巴指向对话方向。颜色可通过根节点的 CSS 自定义属性修改。</desc>
+<!-- Transparent 128×128 canvas. Main artwork is kept inside a centered 112px circular-crop safe area. All visible artwork is SVG geometry. -->
+<g aria-hidden="true">
+  <!-- Rounded bubble body and conversation tail form a squat, horizontal silhouette. -->
+  <path d="M39 35 H78 C91 35 99 43 99 56 V74 C99 87 90 94 77 94 H54 C46 94 40 91 34 86 L23 94 L26 79 C23 74 22 69 22 62 V54 C22 42 29 35 39 35Z" fill="var(--body)" stroke="var(--body-deep)" stroke-width="3.2" stroke-linejoin="round"/>
+  <!-- Headset arch and ear cups sit above/on the bubble rather than becoming its outline. -->
+  <path d="M39 58 V51 C39 36 49 27 64 27 C79 27 89 37 89 51 V58" fill="none" stroke="var(--headset)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M39 58 V51 C39 36 49 27 64 27 C79 27 89 37 89 51 V58" fill="none" stroke="var(--headset-light)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="33" y="49" width="13" height="22" rx="6.5" fill="var(--headset)"/>
+  <rect x="35.5" y="52" width="8" height="16" rx="4" fill="var(--headset-light)"/>
+  <rect x="82" y="49" width="13" height="22" rx="6.5" fill="var(--headset)"/>
+  <rect x="84.5" y="52" width="8" height="16" rx="4" fill="var(--headset-light)"/>
+  <!-- Face sits in the open center of the headphones. -->
+  <path d="M47 55 C47 49 53 45 64 45 C75 45 81 49 81 55 V63 C81 70 75 74 64 74 C53 74 47 70 47 63Z" fill="var(--face)"/>
+  <circle cx="58" cy="58" r="3" fill="var(--ink)"/>
+  <circle cx="70" cy="58" r="3" fill="var(--ink)"/>
+  <path d="M60 66 Q64 69 68 66" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Short microphone boom reinforces the support role at avatar scale. -->
+  <path d="M91 68 C89 74 84 77 78 77" fill="none" stroke="var(--headset)" stroke-width="3.4" stroke-linecap="round"/>
+  <circle cx="77" cy="77" r="2.8" fill="var(--mic)" stroke="var(--headset)" stroke-width="1.4"/>
+</g>
+</svg>

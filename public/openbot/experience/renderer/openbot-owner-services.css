@@ -1,0 +1,6 @@
+.owner-services-dialog{width:min(560px,calc(100vw - 48px));max-height:80vh;margin:auto;overflow:auto;padding:20px;color:var(--text);background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;font:inherit}
+.owner-services-dialog::backdrop{background:rgba(0,0,0,.35)}
+.owner-services-dialog>label{display:block;margin:12px 0}
+.owner-services-dialog input{display:block;margin-top:6px}
+.owner-services-dialog p{line-height:1.5;overflow-wrap:anywhere}
+.owner-services-dialog .btn{margin:4px 6px 4px 0}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#4D91A0;--outline:#1B4D58;--rim-light:#ADD5D5;--lens-shell:#1B4D58;--lens:#8EC9D0;--lens-core:#173F4A;--highlight:#FFFDF4;--indicator:#F2BD83">
+<title id="title">O · 镜头 Bot</title>
+<desc id="desc">一枚蓝绿色 O 字母镜头角色，圆环构成机身，中心镜片像一只明亮的眼睛。</desc>
+<!-- Transparent canvas; the complete circular ring fits comfortably inside a round avatar crop. -->
+<g aria-hidden="true">
+  <path d="M64 14 A50 50 0 1 0 64 114 A50 50 0 1 0 64 14 Z M64 35 A29 29 0 1 0 64 93 A29 29 0 1 0 64 35 Z" fill="var(--body)" fill-rule="evenodd" stroke="var(--outline)" stroke-width="3.2"/>
+  <!-- A restrained curved glint gives the outer barrel a soft, enamel-like edge. -->
+  <path d="M38 26 C45 20 52 17 59 16" fill="none" stroke="var(--rim-light)" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="96" cy="40" r="3.2" fill="var(--indicator)" stroke="var(--outline)" stroke-width="1.2"/>
+  <!-- Concentric lens layers make the O feel like a single-eyed camera. -->
+  <circle cx="64" cy="64" r="19" fill="var(--lens-shell)" stroke="var(--outline)" stroke-width="2.2"/>
+  <circle cx="64" cy="64" r="13.5" fill="var(--lens)"/>
+  <circle cx="64" cy="64" r="7" fill="var(--lens-core)"/>
+  <path d="M57.5 61.5 Q60 56.5 65 57.5" fill="none" stroke="var(--highlight)" stroke-width="2.8" stroke-linecap="round"/>
+</g>
+</svg>

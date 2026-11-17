@@ -1,0 +1,97 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-side: #f3f3f5;
+  --bg-panel: #fafafa;
+  --bg-hover: #eeeeF1;
+  --bg-active: #e8e8eb;
+  --border: #d5d5db;
+  --border-soft: #e5e5e9;
+  --text: #222226;
+  --text-2: #51515a;
+  --text-3: #686871;
+  --accent: #0866d5;
+  --accent-soft: #e7effb;
+  --danger: #bd332c;
+  --ok: #237344;
+  --mac-control: #ffffff;
+  --mac-inset: #f0f0f3;
+  --mac-action: #0866d5;
+  --mac-scrim: rgb(25 25 30 / 24%);
+}
+
+:root[data-appearance="dark"] {
+  color-scheme: dark;
+  --bg: #111318;
+  --bg-side: #171a20;
+  --bg-panel: #191d24;
+  --bg-hover: #222832;
+  --bg-active: #292f3a;
+  --border: #303641;
+  --border-soft: #272d36;
+  --text: #e8ebef;
+  --text-2: #aab2bf;
+  --text-3: #818a98;
+  --accent: #6c9aff;
+  --accent-soft: rgb(108 154 255 / 16%);
+  --danger: #f07168;
+  --ok: #5dca86;
+  --mac-control: #1c2027;
+  --mac-inset: #20252d;
+  --mac-action: #3479e5;
+  --mac-scrim: rgb(0 0 0 / 58%);
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; min-width: 0; min-height: 100%; margin: 0; }
+body {
+  overflow: auto;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+button { font: inherit; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.ogrv-shell { width: min(1280px, 100%); min-height: 100vh; margin: 0 auto; padding: 18px 22px 24px; }
+.ogrv-header {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.ogrv-heading { min-width: 0; }
+.ogrv-heading h1 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 650; }
+.ogrv-heading p { margin: 3px 0 0; color: var(--text-3); font-size: 12px; }
+.ogrv-status-group { display: flex; min-width: 0; align-items: center; justify-content: flex-end; gap: 10px; }
+#ogrv-status { margin: 0; color: var(--text-2); font-size: 12px; text-align: right; overflow-wrap: anywhere; }
+.ogrv-stop {
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid var(--danger);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ogrv-stop:hover { background: color-mix(in srgb, var(--danger) 10%, var(--bg)); }
+.ogrv-stop:disabled { opacity: .55; cursor: not-allowed; }
+.ogrv-error { margin: 12px 0 0; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border)); border-radius: 7px; color: var(--danger); font-size: 12px; overflow-wrap: anywhere; }
+.ogrv-board { min-width: 0; padding-top: 10px; }
+.ogrv-board > .obgs-board { margin-top: 10px; }
+.ogrv-board .obgs-messages { margin-top: 16px; }
+.ogrv-board .obgs-empty-state { min-height: 240px; }
+.ogrv-board .obgs-seats,
+.ogrv-board .obgs-dz-table { background: var(--bg-panel); }
+
+@media (max-width: 700px) {
+  .ogrv-shell { padding: 13px 12px 18px; }
+  .ogrv-header { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .ogrv-status-group { width: 100%; justify-content: space-between; }
+  #ogrv-status { text-align: left; }
+}

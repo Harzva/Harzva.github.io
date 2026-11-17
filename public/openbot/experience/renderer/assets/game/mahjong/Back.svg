@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <defs>
+    <linearGradient id="game-mahjong-back-thickness" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#557d5c" />
+      <stop offset="1" stop-color="#315b40" />
+    </linearGradient>
+    <linearGradient id="game-mahjong-back-edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf5" />
+      <stop offset="0.55" stop-color="#eee8d9" />
+      <stop offset="1" stop-color="#c8c0ac" />
+    </linearGradient>
+    <linearGradient id="game-mahjong-back-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#397455" />
+      <stop offset="0.52" stop-color="#2c674b" />
+      <stop offset="1" stop-color="#20553e" />
+    </linearGradient>
+    <pattern id="game-mahjong-back-pattern" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M9 0L18 9L9 18L0 9Z M0 0L18 18M18 0L0 18" fill="none" stroke="#bad0aa" stroke-opacity="0.2" stroke-width="1" />
+      <circle cx="9" cy="9" r="1.25" fill="#d1dfc2" fill-opacity="0.48" />
+    </pattern>
+  </defs>
+  <g id="game-mahjong-back-body">
+    <rect x="5" y="8" width="290" height="389" rx="28" fill="url(#game-mahjong-back-thickness)" stroke="#284b35" stroke-width="1.5" />
+    <rect x="4" y="4" width="287" height="382" rx="26" fill="url(#game-mahjong-back-edge)" stroke="#b9b09c" stroke-width="1.5" />
+    <rect x="8" y="8" width="279" height="374" rx="22" fill="url(#game-mahjong-back-panel)" stroke="#234a36" stroke-width="1.5" />
+    <rect x="14" y="14" width="267" height="362" rx="18" fill="url(#game-mahjong-back-pattern)" stroke="#99b58e" stroke-opacity="0.76" stroke-width="2" />
+    <rect x="19" y="19" width="257" height="352" rx="14" fill="none" stroke="#173f2d" stroke-opacity="0.55" stroke-width="1.5" />
+    <rect x="21" y="21" width="253" height="348" rx="13" fill="none" stroke="#c2d5b1" stroke-opacity="0.28" stroke-width="1" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#9C8BDD;--detail:#C6B8F0;--ink:#173F2F;--face:#FFF4DF;--accent:#72A878;--eye:#173F2F">
+  <title id="title">D · 折页</title>
+  <desc id="desc">紫色折页角色，身体呈圆角大写 D，内侧露出一张小脸。</desc>
+  <path d="M33 18H67C91 18 108 36 108 62V65C108 91 92 109 67 109H33C26 109 22 105 22 98V29C22 22 26 18 33 18ZM46 36C43 36 41 38 41 41V86C41 89 43 91 46 91H66C82 91 90 80 90 64C90 48 82 36 66 36Z" fill="var(--body)" fill-rule="evenodd" stroke="var(--ink)" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M76 21H87C96 21 102 25 105 33V41L77 25Z" fill="var(--detail)"/>
+  <path d="M79 22L81 31Q82 35 87 35H102" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="49" y="46" width="31" height="36" rx="15.5" fill="var(--face)"/>
+  <ellipse cx="59" cy="60" rx="3.4" ry="4.4" fill="var(--eye)"/>
+  <ellipse cx="70" cy="60" rx="3.4" ry="4.4" fill="var(--eye)"/>
+  <path d="M59 69Q64 74 70 68" fill="none" stroke="var(--ink)" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M36 102H48" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,29 @@
+.bot-shortcuts{flex:none;min-width:0;max-height:260px;overflow:auto;margin-top:auto;padding:10px 12px 12px;border-top:1px solid var(--border-soft,var(--border));background:var(--bg-side,var(--bg));color:var(--text)}
+.bot-shortcuts[hidden]{display:none!important}
+.bot-shortcut-heading{display:flex;align-items:center;gap:8px;justify-content:space-between;margin-bottom:6px}
+.bot-shortcut-heading h3{font-size:11px;font-weight:600;margin:0;color:var(--text-2)}
+.bot-shortcut-controls,.bot-shortcut-form-actions{display:flex;gap:6px;align-items:center}
+.bot-shortcuts button{font:inherit;color:inherit;border:1px solid transparent;border-radius:5px;background:transparent;cursor:pointer;padding:4px 6px;font-size:11px}
+.bot-shortcuts button:hover{background:var(--bg-hover,rgba(128,128,128,.1))}
+.bot-shortcuts button:focus-visible,.bot-shortcuts input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bot-shortcuts button:disabled{opacity:.5;cursor:default}
+.bot-shortcut-controls button{border-color:var(--border-soft,var(--border));background:var(--bg-input,var(--bg))}
+.bot-shortcut-list{list-style:none;margin:0;padding:0;display:grid;gap:2px;max-height:144px;overflow:auto}
+.bot-shortcut-row{display:flex;align-items:center;gap:2px;min-width:0}
+.bot-shortcuts .bot-shortcut-open{flex:1;min-width:0;display:flex;align-items:center;gap:7px;text-align:left;padding:6px 3px}
+.bot-shortcut-kind{flex:none;font-size:8px;letter-spacing:.03em;color:var(--text-3,var(--text-2));width:28px}
+.bot-shortcut-label{min-width:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:12px}
+.bot-shortcuts .bot-shortcut-action{flex:none;color:var(--text-2);font-size:10px;padding:4px}
+.bot-shortcut-empty{font-size:11px;line-height:1.6;color:var(--text-3,var(--text-2));padding:4px 0}
+.bot-shortcut-form{display:grid;gap:7px;margin-top:8px;padding:8px;border-radius:6px;background:var(--bg-input,var(--bg));border:1px solid var(--border-soft,var(--border))}
+.bot-shortcut-form label{display:grid;gap:4px;min-width:0;font-size:11px;color:var(--text-2)}
+.bot-shortcut-form input{box-sizing:border-box;min-width:0;width:100%;font:inherit;font-size:12px;border:1px solid var(--border-soft,var(--border));border-radius:4px;padding:6px 7px;color:var(--text);background:var(--bg-side,var(--bg))}
+.bot-shortcut-form-actions{justify-content:flex-end}
+.bot-shortcut-form-actions button[type=submit]{color:var(--accent);font-weight:600}
+.bot-shortcut-status{font-size:11px;line-height:1.5;color:var(--text-2);overflow-wrap:anywhere;margin:5px 0 0}
+.bot-shortcut-status:empty{display:none}
+
+.composer-task-targets{display:inline-flex;align-items:center;gap:6px;max-width:100%;min-width:0;flex-wrap:wrap}
+.composer-task-targets[hidden]{display:none!important}
+.composer-task-targets select{min-width:0;max-width:240px;border:1px solid var(--border);border-radius:5px;background:var(--bg-input,var(--bg));color:var(--text);font:inherit;font-size:11px;padding:4px}
+.composer-task-targets select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}

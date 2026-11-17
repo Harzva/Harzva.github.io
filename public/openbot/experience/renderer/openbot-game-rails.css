@@ -1,0 +1,261 @@
+/* 铁道计划牌桌：地图、市场、座位与观察者手牌/任务票的专用样式。
+   颜色全部走宿主主题变量，深浅主题自动适配。 */
+
+.obgs-rails-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 288px;
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+}
+.obgs-rails-map-cell {
+  min-width: 0;
+}
+.obgs-rails-side-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+@media (max-width: 1100px) {
+  .obgs-rails-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.obgs-rails-map {
+  width: 100%;
+  height: auto;
+  max-height: clamp(220px, 33vh, 360px);
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 14px;
+  background: var(--bg-panel, #faf9f6);
+}
+
+.obgs-rail-band line {
+  stroke-width: 9;
+  stroke: var(--text-3, #b9b6ad);
+}
+.obgs-rail-band.is-open line {
+  opacity: 0.42;
+}
+.obgs-rail-band.is-open .obgs-rail-ties {
+  opacity: 0.12;
+}
+.obgs-rail-band .obgs-rail-ties {
+  stroke: var(--bg-panel, #faf9f6);
+  stroke-width: 2.4;
+  stroke-dasharray: 2.5 7;
+  opacity: 0.65;
+}
+.obgs-rail-band.is-claimed .obgs-rail-ties {
+  stroke: rgba(255, 255, 255, 0.85);
+}
+
+.obgs-rails-city-dot {
+  fill: var(--bg-panel, #faf9f6);
+  stroke: var(--text-2, #51515a);
+  stroke-width: 1.8;
+}
+.obgs-rails-city-core {
+  fill: var(--text-2, #51515a);
+}
+.obgs-rails-city-name {
+  fill: var(--text-1, #252723);
+  font-size: 15px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--bg-panel, #faf9f6);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.obgs-rails-market-slot {
+  display: inline-flex;
+  width: 52px;
+  border-radius: 8px;
+}
+.obgs-rails-market-slot.is-empty {
+  height: 72px;
+  border: 1.5px dashed var(--line-1, #e3e1da);
+  border-radius: 8px;
+}
+
+.obgs-rails-supply-line {
+  margin: 6px 0 0;
+}
+
+.obgs-rails-seats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.obgs-rails-seat {
+  padding: 8px 10px;
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 12px;
+  background: var(--bg-panel, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.obgs-rails-seat.is-current {
+  border-color: var(--accent, #4a89e8);
+  box-shadow: 0 0 0 1px var(--accent, #4a89e8) inset;
+}
+.obgs-rails-supply {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.obgs-rails-supply-art {
+  width: 34px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.obgs-rails-own-tickets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.obgs-rails-ticket {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid var(--line-1, #e3e1da);
+  border-radius: 10px;
+  background: var(--bg-panel, #fff);
+}
+.obgs-rails-ticket .obgs-piece-art {
+  width: 42px;
+  height: 27px;
+}
+.obgs-rails-ticket-label {
+  font-size: 12.5px;
+  color: var(--text-1, #252723);
+}
+
+.obgs-rails-own-hand,
+.obgs-rails-offer {
+  grid-column: 1 / -1;
+}
+/* 玩家手牌与任务票吸底：任何窗口高度、任何滚动位置都保持可见可操作。 */
+.obgs-rails-own-hand,
+.obgs-rails-offer {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  margin-top: 2px;
+  padding: 8px 10px 6px;
+  background: var(--bg-panel, #faf9f6);
+  border-top: 1px solid var(--line-1, #e3e1da);
+  box-shadow: 0 -6px 12px -10px rgba(20, 22, 26, 0.35);
+  border-radius: 10px 10px 0 0;
+}
+.obgs-rails-own-hand .obgs-rails-hand-chip {
+  position: relative;
+  display: inline-flex;
+  margin-right: 10px;
+}
+.obgs-rails-hand-chip .obgs-piece-art {
+  width: 46px;
+  height: 64px;
+}
+.obgs-rails-hand-count {
+  position: absolute;
+  right: -8px;
+  bottom: -6px;
+  min-width: 22px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--text-1, #252723);
+  color: var(--bg-panel, #fff);
+  font-size: 12px;
+  text-align: center;
+}
+
+.obgs-piece-art.is-rails {
+  filter: drop-shadow(0 1px 1.5px rgba(20, 22, 26, 0.22));
+}
+.obgs-rails-market-row .obgs-piece-art {
+  width: 52px;
+  height: 72px;
+}
+
+.obgs-rails-settlement {
+  margin: 8px 2px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.obgs-rails-settlement-line {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-2, #51515a);
+}
+.obgs-rails-settlement-line strong {
+  color: var(--text-1, #252723);
+}
+.obgs-rails-tickets-title {
+  margin-top: 6px;
+}
+
+/* 矮窗口（目标 980×720）压缩右栏：市场、座位、手牌与任务票同屏可用。 */
+@media (max-height: 820px) {
+  .obgs-rails-supply-line {
+    display: none;
+  }
+  .obgs-rails-subsection-title {
+    margin: 0 0 3px;
+    font-size: 12.5px;
+  }
+  .obgs-rails-side-cell {
+    gap: 6px;
+  }
+  .obgs-rails-market-row .obgs-piece-art,
+  .obgs-rails-market-slot {
+    width: 42px;
+  }
+  .obgs-rails-market-row .obgs-piece-art {
+    height: 58px;
+  }
+  .obgs-rails-market-slot.is-empty {
+    height: 58px;
+  }
+  .obgs-rails-seat {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+  .obgs-rails-seat .obgs-seat-avatar .obgs-avatar,
+  .obgs-rails-seat .obgs-seat-avatar svg {
+    width: 22px;
+    height: 22px;
+  }
+  .obgs-rails-hand-chip .obgs-piece-art {
+    width: 38px;
+    height: 53px;
+  }
+  .obgs-rails-hand-count {
+    min-width: 18px;
+    font-size: 11px;
+    right: -6px;
+    bottom: -5px;
+  }
+  .obgs-rails-ticket {
+    padding: 1px 8px 1px 2px;
+  }
+  .obgs-rails-ticket .obgs-piece-art {
+    width: 30px;
+    height: 19px;
+  }
+  .obgs-rails-ticket-label {
+    font-size: 11.5px;
+  }
+  .obgs-rails-tickets-title {
+    margin-top: 2px;
+  }
+}

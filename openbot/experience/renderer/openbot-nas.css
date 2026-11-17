@@ -1,0 +1,229 @@
+/* NAS stays inside the existing Applications card and uses the host palette. */
+#nas-app-section .nas-app {
+  min-width: 0;
+  color: var(--text);
+}
+
+#nas-app-section .nas-app-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  margin: 0 0 7px;
+}
+
+#nas-app-section .nas-app-title-group {
+  min-width: 0;
+  flex: 1;
+}
+
+#nas-app-section .nas-app h3 {
+  min-width: 0;
+  margin: 0;
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+#nas-app-section .nas-app-description,
+#nas-app-section .nas-app-empty,
+#nas-app-section .nas-app-message,
+#nas-app-section .nas-app-node-empty {
+  color: var(--settings-muted, var(--text-3));
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#nas-app-section .nas-app-description {
+  margin: 3px 0 0;
+}
+
+#nas-app-section .nas-app-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+#nas-app-section .nas-app-status {
+  color: var(--settings-muted, var(--text-3));
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+#nas-app-section .nas-app-status[data-state="connected"],
+#nas-app-section .nas-app-node-state[data-state="connected"] {
+  color: var(--ok, #32845d);
+}
+
+#nas-app-section .nas-app-status[data-state="error"] {
+  color: var(--danger, #bf3f36);
+}
+
+#nas-app-section .nas-app-button {
+  min-height: 27px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+#nas-app-section .nas-app-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#nas-app-section .nas-app-button:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+
+#nas-app-section .nas-app-message {
+  margin: 7px 0 0;
+}
+
+#nas-app-section .nas-app-message.is-error {
+  color: var(--danger, #bf3f36);
+}
+
+#nas-app-section .nas-app-message[hidden] {
+  display: none;
+}
+
+#nas-app-section .nas-app-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin: 5px 0 0;
+}
+
+#nas-app-section .nas-app-install {
+  color: var(--text);
+}
+
+#nas-app-section .nas-app-empty {
+  margin: 8px 0 0;
+}
+
+#nas-app-section .nas-app-empty p {
+  margin: 0 0 5px;
+}
+
+#nas-app-section .nas-app-empty .nas-app-button {
+  margin-top: 2px;
+}
+
+#nas-app-section .nas-app-nodes {
+  min-width: 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--settings-line, var(--border-soft));
+}
+
+#nas-app-section .nas-app-node {
+  min-width: 0;
+  padding: 8px 0 2px;
+  border-bottom: 1px solid var(--settings-line, var(--border-soft));
+}
+
+#nas-app-section .nas-app-node:last-child {
+  border-bottom: 0;
+}
+
+#nas-app-section .nas-app-node-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+#nas-app-section .nas-app-node-name {
+  min-width: 0;
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+#nas-app-section .nas-app-node-state {
+  flex: 0 0 auto;
+  color: var(--settings-muted, var(--text-3));
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+#nas-app-section .nas-app-bots {
+  min-width: 0;
+  margin-top: 3px;
+}
+
+#nas-app-section .nas-app-bot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+#nas-app-section .nas-app-bot-name {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+#nas-app-section .nas-app-selected {
+  flex: 0 0 auto;
+  color: var(--settings-muted, var(--text-3));
+  font-size: 10.5px;
+}
+
+#nas-app-section .nas-app-bot-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+#nas-app-section .nas-app-node-empty {
+  margin: 4px 0 5px;
+}
+
+@media (max-width: 430px) {
+  #nas-app-section .nas-app-heading {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #nas-app-section .nas-app-header-actions {
+    justify-content: flex-start;
+  }
+
+  #nas-app-section .nas-app-bot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  #nas-app-section .nas-app-bot-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #nas-app-section .nas-app-button {
+    transition: none;
+  }
+}

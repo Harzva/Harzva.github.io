@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" id="svg2" version="1.1">
+<g id="game-lantern-icon">
+<circle cx="64" cy="44" r="30" fill="#ffd479" opacity="0.28" />
+<path d="M18 104 L30 60 L44 60 L56 104 Z" fill="#8d8577" />
+<path d="M40 104 L52 56 L66 56 L78 104 Z" fill="#a86b52" />
+<path d="M62 104 L74 60 L88 60 L100 104 Z" fill="#7c7f8a" />
+<path d="M26 60 L37 44 L48 60 Z" fill="#4c5a63" />
+<path d="M48 56 L59 40 L70 56 Z" fill="#5c3a30" />
+<path d="M72 60 L81 44 L92 60 Z" fill="#3f4250" />
+<rect x="12" y="104" width="92" height="6" rx="3" fill="#5d6478" />
+<circle cx="59" cy="52" r="7" fill="#ffe9b0" />
+</g>
+</svg>

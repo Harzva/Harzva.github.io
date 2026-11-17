@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "brandId": "dsh",
+      "file": "dsh.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/deepseek-color.svg",
+      "sha256": "deba5f98a5c1796e20fcac3149bcd7eb8a32f0bdd04d048819400b1f28bd1439",
+      "license": "MIT",
+      "kind": "publisher-brand"
+    },
+    {
+      "brandId": "pi",
+      "file": "pi.svg",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi-website/main/src/favicon.svg",
+      "sha256": "a5624bc3b8cac94de75f6f13701eca2ad3ef67bbeba286c4af3f398806f0858a",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "codex",
+      "file": "codex.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/codex-color.svg",
+      "sha256": "4a2f43ce46b5b6e3722c95088f88d26ef91e6a8c2e598e70642a1c54367386e4",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "claude",
+      "file": "claude.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/claude-color.svg",
+      "sha256": "a3101f3047a119aa11825ad9369510f0c472428c8c52d420e31bc62db44a8364",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "gemini",
+      "file": "gemini.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/gemini-color.svg",
+      "sha256": "8ab0a9bafec11f7e69bcb9fc4ffd8f1bc927d1ddcbbb6ff36dee5ae8b5a9d602",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "kimi",
+      "file": "kimi.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/kimi-color.svg",
+      "sha256": "74a7292aeb0220445d14c5d397d75760e2e8c6ed6a9e5fe4f3023471bf62a9ff",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "qwen",
+      "file": "qwen.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/qwen-color.svg",
+      "sha256": "77f5768c66d08ce1d3d14e73373975c1bc0454be88c81523ddd0ffd7e2974029",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "grok",
+      "file": "grok.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/grok.svg",
+      "sha256": "9175fc90c22655160231976c849f25a03b888d7cc0e04c5f1b987b659bb07c95",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "agy",
+      "file": "agy.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/antigravity-color.svg",
+      "sha256": "652128cf55a28bb958563ee372d0bd00208d9e6fd446f523f77aafd811eef8ca",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "opencode",
+      "file": "opencode.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/opencode.svg",
+      "sha256": "7cfa6e9d6726f7c9fa26c7d9aef0dfec52d20a137380454340f30f12ccbfd302",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "cursor-agent",
+      "file": "cursor-agent.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/cursor.svg",
+      "sha256": "0cb51bddf264ae108926fd554c063ef40fc1aac3c5c921ddb39ad184e4e5d0ef",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "goose",
+      "file": "goose.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/goose.svg",
+      "sha256": "8779d9a61c5b0be78a3d36cab6843ba5af86218ba2ff1b18eb918c7a8d25bb99",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "copilot",
+      "file": "copilot.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/copilot-color.svg",
+      "sha256": "04f15d0556fbac10a4e0f82d1560610db8b33cd04780a4f24ad3b91c4abd278d",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "amp",
+      "file": "amp.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/amp-color.svg",
+      "sha256": "6df4cced9e35703d6263d65968985e8afdff68b61358daf9cc09fa16dd9b2aad",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "aider",
+      "file": "aider.png",
+      "source": "https://raw.githubusercontent.com/Aider-AI/aider/main/aider/website/assets/icons/favicon-32x32.png",
+      "sha256": "76df46f16497adaaf724c98db79a6e32058f84dc8de384a35d2a7d38f7437bbb",
+      "license": "Apache-2.0",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "codebuddy",
+      "file": "codebuddy.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/codebuddy-color.svg",
+      "sha256": "033d5da624460e686046f22b4e242b6b86484ad84ec4877e4efa15a9fb642b97",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "cline",
+      "file": "cline.svg",
+      "source": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz#package/icons/cline.svg",
+      "sha256": "9003d2cdce82b016147b732abb4def60af55c348ba2cea2ba0b69a3c7d159b19",
+      "license": "MIT",
+      "kind": "product-brand"
+    },
+    {
+      "brandId": "legacy",
+      "file": "legacy.svg",
+      "source": "../openbot-icon.svg (existing OpenBot asset)",
+      "sha256": "94a7ab6bd845161996fd272440ccdf57fe0d500668f7098dbcf33585c5626671",
+      "license": "MIT",
+      "kind": "own-product"
+    }
+  ],
+  "notes": [
+    "Static local brand assets; no runtime CDN requests.",
+    "dsh uses the DeepSeek publisher mark; Codex uses its product-specific icon.",
+    "Pi Agent and Pi CLI share the Earendil pi logo, not Inflection Pi.",
+    "agy is the Antigravity CLI command; official repository identifies the product.",
+    "Brand marks identify compatible executors, not a provider endorsement."
+  ]
+}

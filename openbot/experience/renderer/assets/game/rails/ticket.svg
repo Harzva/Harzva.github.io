@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 84">
+ <path d="M10 4 h112 a6 6 0 0 1 6 6 v64 a6 6 0 0 1 -6 6 h-112 a6 6 0 0 1 -6 -6 v-64 a6 6 0 0 1 6 -6 Z
+   M10 42 a7 7 0 1 0 0.01 0 Z M122 42 a7 7 0 1 0 0.01 0 Z" fill-rule="evenodd" fill="#f6efdd" stroke="#8a7a55" stroke-width="2.5"/>
+ <rect x="16" y="12" width="100" height="60" rx="4" fill="none" stroke="#8a7a55" stroke-width="1.6" stroke-dasharray="5 4"/>
+ <circle cx="34" cy="30" r="7" fill="#8a7a55" opacity="0.75"/>
+ <rect x="48" y="26" width="52" height="7" rx="3.5" fill="#8a7a55" opacity="0.5"/>
+ <rect x="30" y="48" width="72" height="7" rx="3.5" fill="#8a7a55" opacity="0.5"/>
+</svg>

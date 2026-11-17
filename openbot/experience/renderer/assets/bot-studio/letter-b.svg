@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#234A36;--outline:#153726;--edge:#BFE18E;--face:#F7F0DC;--lens:#91C3C6;--lens-core:#193F42;--highlight:#FFFDF4;--accent:#B6D489">
+<title id="title">B · 双镜 Bot</title>
+<desc id="desc">一枚圆润的苔绿色 B 字母角色，上下两个字腔各有一颗镜头般的眼睛。</desc>
+<!-- Transparent canvas; the bold letter stays within a centered circular avatar crop. -->
+<g aria-hidden="true">
+  <!-- Pale moss edge lifts the dark body cleanly from dark-mode surfaces. -->
+  <path d="M31 18 H64 C84 18 99 28 99 43 C99 52 93 58 82 63 C98 67 108 77 108 90 C108 103 96 110 77 110 H31 C22 110 17 105 17 97 V31 C17 23 23 18 31 18Z" fill="none" stroke="var(--edge)" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M31 18 H64 C84 18 99 28 99 43 C99 52 93 58 82 63 C98 67 108 77 108 90 C108 103 96 110 77 110 H31 C22 110 17 105 17 97 V31 C17 23 23 18 31 18Z" fill="var(--body)" stroke="var(--outline)" stroke-width="3.2" stroke-linejoin="round"/>
+  <!-- Twin inset eye-mirrors echo the two bowls of the B. -->
+  <ellipse cx="55" cy="41" rx="22" ry="14" fill="var(--face)"/>
+  <ellipse cx="55" cy="86" rx="23" ry="14" fill="var(--face)"/>
+  <circle cx="55" cy="41" r="7.4" fill="var(--lens)" stroke="var(--outline)" stroke-width="1.8"/>
+  <circle cx="55" cy="41" r="4.2" fill="var(--lens-core)"/>
+  <circle cx="52.8" cy="38.6" r="1.7" fill="var(--highlight)"/>
+  <circle cx="55" cy="86" r="7.4" fill="var(--lens)" stroke="var(--outline)" stroke-width="1.8"/>
+  <circle cx="55" cy="86" r="4.2" fill="var(--lens-core)"/>
+  <circle cx="52.8" cy="83.6" r="1.7" fill="var(--highlight)"/>
+  <!-- Short glints add a friendly, polished finish without weakening the letter. -->
+  <path d="M93 31 L95 27 M98 36 L103 35" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+</g>
+</svg>

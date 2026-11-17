@@ -1,0 +1,50 @@
+.ob-companion-bar:empty{display:none}
+.ob-companion-bar{flex:none;border-bottom:1px solid var(--border-soft);padding:8px 24px;background:var(--bg)}
+.ob-companion-open{display:flex;align-items:center;gap:12px;text-align:left;padding:0;border:0;background:transparent;color:var(--text-2);font:inherit;cursor:pointer;max-width:100%;border-radius:7px}
+.ob-companion-open .ob-avatar{width:40px;height:40px}
+.ob-companion-open:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.ob-companion-bar-copy{min-width:0;display:flex;flex-direction:column;gap:3px;font-size:12.5px;line-height:1.5}
+.ob-companion-bar-status{font-size:11px;color:var(--text-3)}
+.ob-companion-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ob-companion-heading h4{font-size:16px;font-weight:650;margin:0;color:var(--text)}
+.ob-companion-modes{display:flex;gap:2px;padding:3px;border:1px solid var(--border-soft);border-radius:8px;background:var(--mac-inset)}
+.ob-companion-modes button{border:0;border-radius:5px;background:transparent;color:var(--text-2);padding:5px 10px;font:inherit;font-size:12px;cursor:pointer}
+.ob-companion-modes button[aria-pressed="true"]{background:var(--mac-control);color:var(--text);box-shadow:0 1px 3px rgb(0 0 0 / 10%)}
+.ob-companion button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ob-companion-stage{height:228px;position:relative;display:grid;place-items:center;margin-top:12px;isolation:isolate}
+.ob-companion-pet{position:relative;width:164px;height:164px;padding:0;border:0;border-radius:12px;background:transparent;cursor:pointer;z-index:1;touch-action:manipulation}
+.ob-companion-face{display:block;transform:translate(var(--ob-gaze-x,0px),var(--ob-gaze-y,0px));transition:transform 180ms ease-out}
+.ob-companion-pet .ob-avatar{width:164px;height:164px}
+.ob-companion-ground{position:absolute;bottom:28px;width:104px;height:7px;border-radius:50%;background:var(--border-soft)}
+.ob-companion-speech{font-size:16px;line-height:1.7;color:var(--text);text-align:center;max-width:30ch;margin:0 auto;min-height:55px;text-wrap:balance}
+.ob-companion-truth{text-align:center;font-size:12px;line-height:1.5;color:var(--text-2);margin:12px 0 24px}
+.ob-companion-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.ob-companion-actions button{padding:7px 10px;border:1px solid var(--border);border-radius:7px;color:var(--text-2);background:var(--mac-control);font:inherit;font-size:12px;cursor:pointer}
+.ob-companion-actions button:hover{background:var(--bg-hover);color:var(--text)}
+.ob-companion-next{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:24px}
+.ob-companion-note{margin:24px auto 0;max-width:36ch;text-align:center;font-size:11px;line-height:1.7;color:var(--text-3)}
+.ob-companion-stage[data-pose="pet"] .ob-companion-pet .ob-avatar{animation:ob-companion-nuzzle 650ms ease-in-out 1}
+.ob-companion-stage[data-pose="wave"] .ob-companion-pet .ob-avatar{animation:ob-companion-wave 900ms ease-in-out 1}
+.ob-companion-stage[data-pose="cheer"] .ob-companion-pet .ob-avatar,.ob-companion-stage[data-pose="done"] .ob-companion-pet .ob-avatar{animation:ob-companion-cheer 700ms ease-out 1}
+.ob-companion-stage[data-pose="rest"] .ob-companion-pet .ob-avatar{transform:rotate(-7deg) translateY(7px)}
+.ob-companion-stage[data-pose="thinking"] .ob-companion-pet .ob-avatar{animation:ob-companion-think 4s ease-in-out infinite}
+.ob-companion-stage[data-pose="working"] .ob-companion-pet .ob-avatar{animation:ob-companion-work 1.8s ease-in-out infinite}
+body[data-companion-mode="lively"] .ob-companion-stage[data-pose="idle"] .ob-companion-pet .ob-avatar{animation:ob-companion-think 5.5s ease-in-out infinite}
+body[data-companion-mode="quiet"] .ob-avatar *,body[data-companion-mode="quiet"] .ob-office *,body[data-companion-mode="quiet"] .ob-companion *{animation:none!important;transition:none!important}
+body[data-companion-mode="quiet"] .ob-companion-face{transform:none}
+body[data-page-hidden="true"] .ob-companion *{animation-play-state:paused!important}
+@keyframes ob-companion-nuzzle{0%,100%{transform:rotate(0)}35%{transform:rotate(-9deg) scale(1.04)}70%{transform:rotate(5deg)}}
+@keyframes ob-companion-wave{0%,100%{transform:rotate(0)}25%,65%{transform:rotate(-10deg)}45%,85%{transform:rotate(7deg)}}
+@keyframes ob-companion-cheer{0%,100%{transform:translateY(0)}40%{transform:translateY(-16px) rotate(-5deg)}70%{transform:translateY(2px)}}
+@keyframes ob-companion-think{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg)}}
+@keyframes ob-companion-work{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(prefers-reduced-motion:reduce){.ob-companion *{animation:none!important;transition:none!important}.ob-companion-face{transform:none}}
+@media(max-width:980px){.ob-companion-bar{padding:8px 16px}}
+@media(max-height:740px){.ob-companion-stage{height:180px}.ob-companion-pet,.ob-companion-pet .ob-avatar{width:138px;height:138px}.ob-companion-truth{margin-bottom:16px}.ob-companion-next{margin-top:16px}}
+
+body[data-companion-mode="lively"] .ob-workstation[data-presence="idle"] .ob-office-worker{animation:ob-companion-think 5.5s ease-in-out infinite}
+body[data-companion-mode="lively"] .ob-workstation:nth-child(even) .ob-office-worker{animation-delay:-2s}
+.ob-workstation[data-presence="working"] .ob-office-monitor{background:var(--accent)}
+.ob-avatar--peek .ob-shadow{transform-origin:32px 36px}
+body[data-companion-mode="lively"] .ob-avatar--peek:hover .ob-shadow{transform:rotate(-4deg) translateX(-1px)}
+@media(prefers-reduced-motion:reduce){body[data-companion-mode="lively"] .ob-workstation .ob-office-worker{animation:none!important}}

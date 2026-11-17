@@ -1,0 +1,692 @@
+/* Fleet health center: Bot / Harness / model are independent evidence.
+ * The grid is optimized for scanning problems first, not for a decorative score. */
+#ob-health-dialog[hidden]{display:none!important}
+#ob-health-dialog{
+  position:fixed;inset:0;z-index:82;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.52);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+}
+#ob-health-dialog .ob-health-window{
+  width:min(1180px,calc(100vw - 40px));height:min(830px,calc(100vh - 40px));min-height:560px;
+  display:flex;flex-direction:column;overflow:hidden;background:var(--bg-panel,#fafafa);color:var(--text,#222226);
+  border:1px solid var(--border,#d3d3d9);border-radius:14px;box-shadow:0 18px 56px rgba(0,0,0,.26);
+}
+#ob-health-dialog .ob-health-header{
+  display:flex;align-items:flex-start;gap:12px;flex:0 0 auto;padding:18px 22px 11px;
+}
+#ob-health-dialog .ob-health-heading{min-width:0;flex:1}
+#ob-health-dialog .ob-health-title{margin:0;font-size:17px;line-height:1.35;font-weight:620;letter-spacing:-.01em}
+#ob-health-dialog .ob-health-subtitle{margin:4px 0 0;color:var(--text-3,#686871);font-size:12px;line-height:1.5}
+#ob-health-dialog .ob-health-close{
+  display:grid;place-items:center;min-height:28px;padding:4px 10px;border:1px solid var(--border,#d3d3d9);
+  border-radius:7px;background:var(--mac-control,#fff);color:var(--text-2,#51515a);font:inherit;font-size:11px;cursor:pointer;
+}
+#ob-health-dialog .ob-health-close:hover{background:var(--bg-hover,#e9e9ed)}
+#ob-health-dialog .ob-health-toolbar{
+  display:flex;align-items:center;gap:12px;flex:0 0 auto;padding:0 22px 10px;
+}
+#ob-health-dialog .ob-health-summary{display:flex;flex-wrap:wrap;gap:5px;min-width:0;flex:1}
+#ob-health-dialog .ob-health-chip{
+  display:inline-flex;align-items:center;min-height:22px;padding:2px 8px;border-radius:999px;
+  background:var(--bg-hover,#e9e9ed);color:var(--text-2,#51515a);font-size:10.5px;line-height:1.4;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-chip-ok{background:rgba(31,138,76,.11);color:#1b7a45}
+#ob-health-dialog .ob-health-chip-warn{background:rgba(196,128,18,.13);color:#8a5a08}
+#ob-health-dialog .ob-health-chip-bad{background:rgba(189,51,44,.12);color:#9d2b25}
+#ob-health-dialog .ob-health-chip-muted{color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-chip-stat{
+  background:rgba(8,102,213,.09);color:var(--accent,#0866d5);font-weight:530;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-chip-focus{
+  border:1px solid rgba(8,102,213,.25);background:rgba(8,102,213,.08);color:#0a58b8;
+  font:inherit;font-size:10.5px;line-height:1.4;cursor:pointer;
+}
+#ob-health-dialog .ob-health-chip-focus:hover{background:rgba(8,102,213,.13)}
+#ob-health-dialog .ob-health-actions{display:flex;gap:7px;flex:0 0 auto}
+#ob-health-dialog .ob-health-btn{
+  min-height:28px;padding:4px 10px;border:1px solid var(--border,#d3d3d9);border-radius:7px;
+  background:var(--mac-control,#fff);color:var(--text-2,#51515a);font:inherit;font-size:11px;cursor:pointer;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-btn:hover:not([disabled]){background:var(--bg-hover,#e9e9ed);color:var(--text,#222226)}
+#ob-health-dialog .ob-health-btn[disabled]{opacity:.48;cursor:default}
+#ob-health-dialog .ob-health-primary{border-color:var(--accent,#0866d5);background:var(--accent,#0866d5);color:#fff}
+#ob-health-dialog .ob-health-primary:hover:not([disabled]){background:var(--accent,#0866d5);color:#fff;opacity:.92}
+#ob-health-dialog .ob-health-quiet{background:transparent}
+#ob-health-dialog .ob-health-note{
+  flex:0 0 auto;margin:0;padding:0 22px;color:var(--text-3,#686871);font-size:10.5px;line-height:1.45;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-progress{
+  flex:0 0 auto;min-height:17px;margin:0;padding:4px 22px 2px;color:var(--accent,#0866d5);font-size:10.5px;line-height:1.45;
+}
+#ob-health-dialog .ob-health-progress:empty{display:none}
+#ob-health-dialog .ob-health-controls{
+  display:flex;align-items:center;gap:9px;flex:0 0 auto;padding:7px 22px 10px;
+}
+#ob-health-dialog .ob-health-search{
+  width:214px;min-width:148px;height:28px;padding:4px 9px;border:1px solid var(--border-soft,var(--border,#d3d3d9));
+  border-radius:7px;background:var(--mac-control,#fff);color:var(--text,#222226);font:inherit;font-size:11px;
+}
+#ob-health-dialog .ob-health-search::placeholder{color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-filters{display:flex;flex-wrap:wrap;gap:4px;min-width:0;flex:1}
+#ob-health-dialog .ob-health-filter{
+  min-height:26px;padding:3px 9px;border:1px solid transparent;border-radius:7px;
+  background:transparent;color:var(--text-3,#686871);font:inherit;font-size:10.5px;cursor:pointer;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-filter:hover{background:var(--bg-hover,#e9e9ed);color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-filter.is-active{
+  border-color:var(--border-soft,var(--border,#d3d3d9));background:var(--mac-control,#fff);color:var(--text,#222226);font-weight:560;
+}
+#ob-health-dialog .ob-health-sorts{
+  display:inline-flex;align-items:center;gap:2px;flex:0 0 auto;padding:2px;
+  border-radius:8px;background:color-mix(in srgb,var(--bg-hover,#e9e9ed) 78%,transparent);
+}
+#ob-health-dialog .ob-health-sort{
+  min-height:24px;padding:2px 8px;border:1px solid transparent;border-radius:6px;
+  background:transparent;color:var(--text-3,#686871);font:inherit;font-size:10.5px;cursor:pointer;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-sort:hover{color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-sort.is-active{
+  background:var(--mac-control,#fff);color:var(--text,#222226);font-weight:560;
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+#ob-health-dialog .ob-health-body{
+  flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:0 22px 24px;
+}
+#ob-health-dialog .ob-health-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;align-items:stretch;
+}
+#ob-health-dialog .ob-health-card{
+  display:flex;flex-direction:column;min-width:0;padding:12px 12px 10px;
+  border:1px solid var(--border-soft,#e0e0e5);border-radius:11px;
+  background:color-mix(in srgb,var(--bg-panel,#fafafa) 88%,var(--bg-hover,#e9e9ed));
+}
+#ob-health-dialog .ob-health-card.is-expanded{grid-column:1/-1}
+#ob-health-dialog .ob-health-card.is-spotlight{
+  border-color:var(--accent,#0866d5);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--accent,#0866d5) 26%,transparent);
+}
+#ob-health-dialog .ob-health-card-head{display:flex;align-items:center;gap:10px;min-width:0}
+#ob-health-dialog .ob-health-avatar{
+  display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;
+  position:relative;overflow:visible;
+}
+#ob-health-dialog .ob-health-avatar .ob-avatar{width:34px;height:34px;flex:0 0 34px}
+#ob-health-dialog .ob-health-avatar-fallback{
+  display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
+  color:#fff;font-size:12px;font-weight:600;text-transform:uppercase;
+}
+#ob-health-dialog .ob-health-identity{min-width:0;flex:1}
+#ob-health-dialog .ob-health-name{
+  margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;line-height:1.35;font-weight:580;
+}
+#ob-health-dialog .ob-health-meta{
+  margin:2px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-3,#686871);
+  font-size:10.5px;line-height:1.35;
+}
+#ob-health-dialog .ob-health-status{
+  flex:0 0 auto;max-width:128px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  padding:2px 7px;border-radius:999px;background:var(--bg-hover,#e9e9ed);color:var(--text-2,#51515a);
+  font-size:10px;line-height:1.4;
+}
+#ob-health-dialog .ob-health-status-healthy{background:rgba(31,138,76,.11);color:#1b7a45}
+#ob-health-dialog .ob-health-status-degraded,#ob-health-dialog .ob-health-status-stale{background:rgba(196,128,18,.13);color:#8a5a08}
+#ob-health-dialog .ob-health-status-unhealthy{background:rgba(189,51,44,.12);color:#9d2b25}
+#ob-health-dialog .ob-health-status-checking{background:rgba(8,102,213,.11);color:#0a58b8}
+#ob-health-dialog .ob-health-status-unverified,#ob-health-dialog .ob-health-status-unchecked{color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-layers{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:10px;
+}
+#ob-health-dialog .ob-health-layer{
+  min-width:0;padding:6px 7px;border-radius:8px;background:var(--bg-hover,#e9e9ed);color:var(--text-3,#686871);
+}
+#ob-health-dialog .ob-health-layer-top{display:flex;align-items:center;justify-content:space-between;gap:4px;min-width:0}
+#ob-health-dialog .ob-health-layer-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9.5px;line-height:1.3}
+#ob-health-dialog .ob-health-layer-state{flex:0 0 auto;font-size:8.5px;line-height:1.3;opacity:.8}
+#ob-health-dialog .ob-health-layer-score{
+  display:block;margin-top:2px;font-size:16px;line-height:1.15;font-weight:650;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-layer-healthy{background:rgba(31,138,76,.1);color:#1b7a45}
+#ob-health-dialog .ob-health-layer-degraded{background:rgba(196,128,18,.12);color:#8a5a08}
+#ob-health-dialog .ob-health-layer-unhealthy{background:rgba(189,51,44,.11);color:#9d2b25}
+#ob-health-dialog .ob-health-layer-checking{background:rgba(8,102,213,.1);color:#0a58b8}
+#ob-health-dialog .ob-health-layer-unverified,#ob-health-dialog .ob-health-layer-unchecked{background:var(--bg-hover,#e9e9ed);color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-usage{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin-top:6px;
+}
+#ob-health-dialog .ob-health-usage-item{
+  display:flex;align-items:baseline;gap:5px;min-width:0;padding:5px 7px;border-radius:7px;
+  background:color-mix(in srgb,var(--bg-hover,#e9e9ed) 62%,transparent);color:var(--text-2,#51515a);
+  font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-usage-label{
+  flex:0 0 auto;color:var(--text-3,#686871);font-size:9.5px;line-height:1.3;
+}
+#ob-health-dialog .ob-health-usage-val{
+  flex:0 0 auto;color:var(--text,#222226);font-size:11px;line-height:1.3;font-weight:610;
+}
+#ob-health-dialog .ob-health-usage-item.is-muted .ob-health-usage-val{
+  color:var(--text-3,#686871);font-weight:500;
+}
+#ob-health-dialog .ob-health-usage-sub{
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:var(--text-3,#686871);font-size:9px;line-height:1.3;
+}
+#ob-health-dialog .ob-health-partner{
+  grid-column:1/-1;display:flex;align-items:center;gap:5px;width:100%;min-width:0;padding:4px 7px;
+  border:1px solid transparent;border-radius:7px;background:rgba(8,102,213,.06);color:var(--text-2,#51515a);
+  font:inherit;text-align:left;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-partner-jump{cursor:pointer}
+#ob-health-dialog .ob-health-partner-jump:hover{
+  background:rgba(8,102,213,.11);border-color:rgba(8,102,213,.18);
+}
+#ob-health-dialog .ob-health-partner-avatar{
+  display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;flex:0 0 17px;overflow:visible;
+}
+#ob-health-dialog .ob-health-partner-avatar .ob-avatar{width:17px!important;height:17px!important;flex:0 0 17px}
+#ob-health-dialog .ob-health-partner-avatar-fallback{
+  display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;
+  color:#fff;font-size:9px;font-weight:600;
+}
+#ob-health-dialog .ob-health-partner-name{
+  min-width:0;max-width:128px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:var(--accent,#0866d5);font-size:10.5px;line-height:1.3;font-weight:580;
+}
+#ob-health-dialog .ob-health-partner-arrow{
+  margin-left:auto;flex:0 0 auto;color:var(--text-3,#686871);font-size:10px;line-height:1;opacity:.65;
+}
+#ob-health-dialog .ob-health-partner-jump:hover .ob-health-partner-arrow{color:var(--accent,#0866d5);opacity:1}
+#ob-health-dialog .ob-health-issue{
+  margin:7px 0 0;color:#9d2b25;font-size:10.5px;line-height:1.45;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+#ob-health-dialog .ob-health-card-foot{
+  display:flex;align-items:center;gap:8px;min-width:0;margin-top:auto;padding-top:9px;
+  border-top:1px solid var(--border-soft,#e0e0e5);
+}
+#ob-health-dialog .ob-health-usage + .ob-health-card-foot,
+#ob-health-dialog .ob-health-issue + .ob-health-card-foot{
+  padding-top:8px;
+}
+#ob-health-dialog .ob-health-usage,
+#ob-health-dialog .ob-health-issue{
+  margin-bottom:8px;
+}
+#ob-health-dialog .ob-health-usage:has(+ .ob-health-issue){
+  margin-bottom:0;
+}
+#ob-health-dialog .ob-health-card.is-expanded .ob-health-card-foot{margin-top:2px}
+#ob-health-dialog .ob-health-foot-meta{
+  min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:var(--text-3,#686871);font-size:9.5px;line-height:1.4;
+}
+#ob-health-dialog .ob-health-card-actions{display:flex;gap:5px;flex:0 0 auto}
+#ob-health-dialog .ob-health-card-actions .ob-health-btn{min-height:25px;padding:2px 8px;font-size:10px}
+#ob-health-dialog .ob-health-detail[hidden]{display:none!important}
+#ob-health-dialog .ob-health-detail{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--border-soft,#e0e0e5);
+}
+#ob-health-dialog .ob-health-detail-section{min-width:0}
+#ob-health-dialog .ob-health-detail-usage{
+  grid-column:1/-1;padding-bottom:8px;border-bottom:1px solid var(--border-soft,#e0e0e5);
+}
+#ob-health-dialog .ob-health-detail-usage-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:7px;
+}
+#ob-health-dialog .ob-health-detail-stat{
+  display:flex;flex-direction:column;gap:2px;min-width:0;padding:7px 9px;border-radius:8px;
+  background:color-mix(in srgb,var(--bg-hover,#e9e9ed) 58%,transparent);font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-detail-stat-label{color:var(--text-3,#686871);font-size:9.5px;line-height:1.35}
+#ob-health-dialog .ob-health-detail-stat-val{color:var(--text,#222226);font-size:13px;line-height:1.3;font-weight:620}
+#ob-health-dialog .ob-health-detail-stat-note{
+  color:var(--text-3,#686871);font-size:9.5px;line-height:1.4;overflow-wrap:anywhere;
+}
+#ob-health-dialog .ob-health-detail-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+#ob-health-dialog .ob-health-detail-actions{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+#ob-health-dialog .ob-health-detail-btn{min-height:23px;padding:2px 8px;font-size:10px}
+#ob-health-dialog .ob-health-detail-title{margin:0;font-size:11.5px;line-height:1.35;font-weight:600}
+#ob-health-dialog .ob-health-detail-score{color:var(--text-3,#686871);font-size:10px;font-variant-numeric:tabular-nums}
+#ob-health-dialog .ob-health-check-row{padding:7px 0;border-top:1px solid var(--border-soft,#e0e0e5)}
+#ob-health-dialog .ob-health-detail-section .ob-health-check-row:first-of-type{border-top:1px solid var(--border-soft,#e0e0e5)}
+#ob-health-dialog .ob-health-check-head{display:flex;align-items:baseline;justify-content:space-between;gap:7px}
+#ob-health-dialog .ob-health-check-name{font-size:10.5px;line-height:1.4;font-weight:550}
+#ob-health-dialog .ob-health-check-result{flex:0 0 auto;font-size:9.5px;line-height:1.4;color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-check-pass .ob-health-check-result{color:#1b7a45}
+#ob-health-dialog .ob-health-check-fail .ob-health-check-result{color:#9d2b25}
+#ob-health-dialog .ob-health-check-reason{
+  margin:2px 0 0;color:var(--text-3,#686871);font-size:10px;line-height:1.45;overflow-wrap:anywhere;
+}
+#ob-health-dialog .ob-health-check-fail .ob-health-check-reason{color:#9d2b25}
+#ob-health-dialog .ob-health-sample{
+  margin:3px 0 0;color:var(--text-2,#51515a);font-size:10px;line-height:1.45;overflow-wrap:anywhere;
+}
+#ob-health-dialog .ob-health-empty,#ob-health-dialog .ob-health-error{
+  margin:16px 0;color:var(--text-3,#686871);font-size:12px;line-height:1.5;
+}
+#ob-health-dialog .ob-health-error{color:#9d2b25}
+#ob-health-dialog .ob-health-btn:focus-visible,
+#ob-health-dialog .ob-health-close:focus-visible,
+#ob-health-dialog .ob-health-filter:focus-visible,
+#ob-health-dialog .ob-health-sort:focus-visible,
+#ob-health-dialog .ob-health-partner-jump:focus-visible,
+#ob-health-dialog .ob-health-chip-focus:focus-visible,
+#ob-health-dialog .ob-health-search:focus-visible{outline:2px solid var(--accent,#0866d5);outline-offset:2px}
+
+@media (prefers-color-scheme: dark){
+  #ob-health-dialog .ob-health-window{
+    border-color:var(--border-soft,rgba(255,255,255,.11));
+    box-shadow:0 20px 60px rgba(0,0,0,.48);
+  }
+  #ob-health-dialog .ob-health-close,
+  #ob-health-dialog .ob-health-btn:not(.ob-health-primary):not(.ob-health-quiet),
+  #ob-health-dialog .ob-health-search{
+    border-color:var(--border-soft,rgba(255,255,255,.11));
+  }
+  #ob-health-dialog .ob-health-primary{
+    background:var(--mac-action,#356dcc);border-color:rgba(255,255,255,.14);color:#fff;
+  }
+  #ob-health-dialog .ob-health-chip-ok,
+  #ob-health-dialog .ob-health-status-healthy,
+  #ob-health-dialog .ob-health-layer-healthy{
+    background:rgba(91,211,154,.14);color:var(--ok,#79d3a5);
+  }
+  #ob-health-dialog .ob-health-chip-warn,
+  #ob-health-dialog .ob-health-status-degraded,
+  #ob-health-dialog .ob-health-status-stale,
+  #ob-health-dialog .ob-health-layer-degraded{
+    background:rgba(230,174,68,.15);color:#f0c36d;
+  }
+  #ob-health-dialog .ob-health-chip-bad,
+  #ob-health-dialog .ob-health-status-unhealthy,
+  #ob-health-dialog .ob-health-layer-unhealthy{
+    background:rgba(240,124,116,.15);color:var(--danger,#f07c74);
+  }
+  #ob-health-dialog .ob-health-chip-stat,
+  #ob-health-dialog .ob-health-status-checking,
+  #ob-health-dialog .ob-health-layer-checking{
+    background:rgba(91,140,255,.16);color:#8ab4ff;
+  }
+  #ob-health-dialog .ob-health-chip-focus{
+    border-color:rgba(91,140,255,.36);background:rgba(91,140,255,.15);color:#9ec0ff;
+  }
+  #ob-health-dialog .ob-health-progress,
+  #ob-health-dialog .ob-health-partner-name{
+    color:#8ab4ff;
+  }
+  #ob-health-dialog .ob-health-partner{
+    background:rgba(91,140,255,.1);
+  }
+  #ob-health-dialog .ob-health-partner-jump:hover{
+    background:rgba(91,140,255,.17);border-color:rgba(91,140,255,.3);
+  }
+  #ob-health-dialog .ob-health-card{
+    background:color-mix(in srgb,var(--bg-panel,#2b2b2b) 74%,var(--bg-side,#242424));
+    border-color:var(--border-soft,rgba(255,255,255,.09));
+  }
+  #ob-health-dialog .ob-health-issue,
+  #ob-health-dialog .ob-health-check-fail .ob-health-check-result,
+  #ob-health-dialog .ob-health-check-fail .ob-health-check-reason,
+  #ob-health-dialog .ob-health-error{
+    color:var(--danger,#f07c74);
+  }
+  #ob-health-dialog .ob-health-check-pass .ob-health-check-result{
+    color:var(--ok,#79d3a5);
+  }
+}
+
+@media (max-width:1060px){
+  #ob-health-dialog .ob-health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #ob-health-dialog .ob-health-controls{align-items:flex-start;flex-wrap:wrap}
+  #ob-health-dialog .ob-health-search{width:100%}
+  #ob-health-dialog .ob-health-note{white-space:normal}
+}
+@media (max-width:760px){
+  #ob-health-dialog{padding:10px}
+  #ob-health-dialog .ob-health-window{width:calc(100vw - 20px);height:calc(100vh - 20px);min-height:0;overflow-y:auto}
+  #ob-health-dialog .ob-health-header,#ob-health-dialog .ob-health-toolbar,
+  #ob-health-dialog .ob-health-note,#ob-health-dialog .ob-health-progress,
+  #ob-health-dialog .ob-health-controls,#ob-health-dialog .ob-health-body{padding-left:14px;padding-right:14px}
+  #ob-health-dialog .ob-health-toolbar{align-items:flex-start;flex-wrap:wrap}
+  #ob-health-dialog .ob-health-actions{width:100%;min-width:0;flex-wrap:wrap;justify-content:flex-start}
+  #ob-health-dialog .ob-health-body{flex:0 0 auto;overflow:visible}
+  #ob-health-dialog .ob-health-grid,#ob-health-dialog .ob-health-detail,#ob-health-dialog .ob-health-detail-usage-grid{grid-template-columns:1fr}
+  #ob-health-dialog .ob-health-card.is-expanded{grid-column:auto}
+}
+@media (prefers-reduced-motion:no-preference){
+  #ob-health-dialog .ob-health-filter,#ob-health-dialog .ob-health-sort,#ob-health-dialog .ob-health-btn{transition:background-color .12s ease,color .12s ease,border-color .12s ease}
+}
+
+/* ---- List view: the same fleet facts as flat scannable rows. The office
+ * column reuses the pixel office presence/route projection, never a copy. ---- */
+#ob-health-dialog .ob-health-views{
+  display:inline-flex;align-items:center;gap:2px;flex:0 0 auto;padding:2px;border-radius:9px;
+  background:var(--bg-hover,#e9e9ed);
+}
+#ob-health-dialog .ob-health-view{
+  min-height:24px;padding:3px 11px;border:1px solid transparent;border-radius:7px;
+  background:transparent;color:var(--text-3,#686871);font:inherit;font-size:11px;cursor:pointer;white-space:nowrap;
+}
+#ob-health-dialog .ob-health-view:hover{color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-view.is-active{
+  border-color:var(--border-soft,var(--border,#d3d3d9));background:var(--mac-control,#fff);
+  color:var(--text,#222226);font-weight:560;
+}
+#ob-health-dialog .ob-health-listwrap{min-width:0;overflow-x:auto}
+#ob-health-dialog .ob-health-list{
+  min-width:880px;width:100%;border-collapse:separate;border-spacing:0;
+  border:1px solid var(--border-soft,var(--border,#d3d3d9));border-radius:10px;overflow:hidden;
+  font-size:11.5px;background:var(--mac-control,#fff);
+}
+#ob-health-dialog .ob-health-listhead th{
+  position:sticky;top:0;z-index:1;padding:8px 10px;text-align:left;white-space:nowrap;
+  background:var(--bg-hover,#efeff2);color:var(--text-3,#686871);
+  font-size:10.5px;font-weight:560;letter-spacing:.01em;
+  border-bottom:1px solid var(--border-soft,var(--border,#d3d3d9));
+}
+#ob-health-dialog .ob-health-listcol.is-sortable{cursor:pointer;user-select:none}
+#ob-health-dialog .ob-health-listcol.is-sortable:hover{color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-listcol.is-sortable:focus-visible{outline:2px solid var(--accent,#0866d5);outline-offset:-2px}
+#ob-health-dialog .ob-health-listcol.is-active{color:var(--accent,#0866d5)}
+#ob-health-dialog .ob-health-listcol.is-active::after{content:' ↓';font-size:9.5px}
+#ob-health-dialog .ob-health-listbody td{
+  padding:8px 10px;vertical-align:middle;color:var(--text,#222226);
+  border-bottom:1px solid var(--border-soft,rgba(120,120,130,.16));
+}
+#ob-health-dialog .ob-health-listbody tr:last-child td{border-bottom:none}
+#ob-health-dialog .ob-health-listrow:hover td{background:var(--bg-hover,rgba(120,120,130,.07))}
+#ob-health-dialog .ob-health-listrow.is-focus td,
+#ob-health-dialog .ob-health-listrow.is-spotlight td{background:rgba(8,102,213,.1)}
+#ob-health-dialog .ob-health-cell-bot{display:flex;align-items:center;gap:8px;min-width:170px;cursor:pointer}
+#ob-health-dialog .ob-health-cell-bot .ob-health-avatar{width:28px;height:28px;flex:0 0 auto}
+#ob-health-dialog .ob-health-cell-bottext{display:flex;flex-direction:column;min-width:0}
+#ob-health-dialog .ob-health-cell-name{font-weight:580;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ob-health-dialog .ob-health-cell-meta{color:var(--text-3,#686871);font-size:10px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ob-health-dialog .ob-health-cell-status{white-space:nowrap}
+#ob-health-dialog .ob-health-statusdot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--text-3,#8e8e96);
+}
+#ob-health-dialog .ob-health-cellstatus-healthy .ob-health-statusdot{background:#1f8a4c}
+#ob-health-dialog .ob-health-cellstatus-degraded .ob-health-statusdot{background:#c48012}
+#ob-health-dialog .ob-health-cellstatus-unhealthy .ob-health-statusdot{background:#bd332c}
+#ob-health-dialog .ob-health-cellstatus-unverified .ob-health-statusdot,
+#ob-health-dialog .ob-health-cellstatus-unchecked .ob-health-statusdot{background:var(--text-3,#8e8e96)}
+#ob-health-dialog .ob-health-cellstatus-stale .ob-health-statusdot{background:#c48012;opacity:.6}
+#ob-health-dialog .ob-health-cellstatuslabel{white-space:nowrap}
+#ob-health-dialog .ob-health-cellstatusscore{
+  margin-left:6px;padding:1px 5px;border-radius:999px;background:var(--bg-hover,#e9e9ed);
+  color:var(--text-2,#51515a);font-size:10px;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-cell-num{white-space:nowrap;font-variant-numeric:tabular-nums}
+#ob-health-dialog .ob-health-cellnumval{font-weight:600}
+#ob-health-dialog .ob-health-cell-num.is-muted .ob-health-cellnumval{color:var(--text-3,#686871);font-weight:500}
+#ob-health-dialog .ob-health-cell-sub{display:block;color:var(--text-3,#686871);font-size:10px;line-height:1.35;margin-top:1px}
+#ob-health-dialog .ob-health-cell-partner{min-width:110px}
+#ob-health-dialog .ob-health-cellpartnername{font-weight:540}
+#ob-health-dialog .ob-health-cell-partner.is-jumpable{cursor:pointer}
+#ob-health-dialog .ob-health-cell-partner.is-jumpable:hover .ob-health-cellpartnername{color:var(--accent,#0866d5);text-decoration:underline}
+#ob-health-dialog .ob-health-cell-spaces{min-width:150px;max-width:300px}
+#ob-health-dialog .ob-health-cell-spacebits{display:flex;flex-direction:column;gap:3px}
+#ob-health-dialog .ob-health-spacebit{
+  display:inline-flex;align-items:center;gap:5px;max-width:100%;min-width:0;
+  padding:2px 7px;border-radius:7px;background:var(--bg-hover,#e9e9ed);
+  font-size:10.5px;line-height:1.4;
+}
+#ob-health-dialog .ob-health-spacebit-role{
+  flex:0 0 auto;color:var(--text-3,#686871);font-size:9.5px;
+}
+#ob-health-dialog .ob-health-spacebit-leader .ob-health-spacebit-role{color:var(--accent,#0866d5);font-weight:580}
+#ob-health-dialog .ob-health-spacebit-name{
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-2,#51515a);
+}
+#ob-health-dialog .ob-health-spacebit-count{
+  flex:0 0 auto;color:var(--text-3,#686871);font-size:9.5px;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-cell-office{white-space:nowrap}
+#ob-health-dialog .ob-health-officepresence,
+#ob-health-dialog .ob-health-officelight{display:inline-flex;align-items:center;gap:5px;margin-right:10px}
+#ob-health-dialog .ob-health-presencedot,
+#ob-health-dialog .ob-health-lightdot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--text-3,#8e8e96);
+}
+#ob-health-dialog .ob-health-presence-working .ob-health-presencedot,
+#ob-health-dialog .ob-health-presence-thinking .ob-health-presencedot{background:#0a6bd8}
+#ob-health-dialog .ob-health-presence-waiting .ob-health-presencedot{background:#c48012}
+#ob-health-dialog .ob-health-presence-done .ob-health-presencedot{background:#1f8a4c}
+#ob-health-dialog .ob-health-presence-error .ob-health-presencedot{background:#bd332c}
+#ob-health-dialog .ob-health-presence-queued .ob-health-presencedot{background:#8a5a08}
+#ob-health-dialog .ob-health-light-on .ob-health-lightdot{background:#1f8a4c}
+#ob-health-dialog .ob-health-light-dim .ob-health-lightdot{background:#c48012}
+#ob-health-dialog .ob-health-light-off .ob-health-lightdot{background:#bd332c}
+#ob-health-dialog .ob-health-light-unknown .ob-health-lightdot{background:var(--text-3,#8e8e96);opacity:.6}
+#ob-health-dialog .ob-health-presencetext,
+#ob-health-dialog .ob-health-lighttext{font-size:10.5px;color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-cell-empty{color:var(--text-3,#686871)}
+#ob-health-dialog .ob-health-cell-recent{min-width:76px}
+#ob-health-dialog .ob-health-cellrecent{color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-cell-actions{white-space:nowrap;text-align:right}
+#ob-health-dialog .ob-health-listdetail{min-height:24px;padding:3px 9px;font-size:10.5px}
+#ob-health-dialog .ob-health-listdetail:focus-visible,
+#ob-health-dialog .ob-health-view:focus-visible{outline:2px solid var(--accent,#0866d5);outline-offset:2px}
+#ob-health-dialog .ob-health-listnote{
+  margin:8px 2px 0;color:var(--text-3,#686871);font-size:10px;line-height:1.45;
+}
+@media (max-width:1060px){
+  #ob-health-dialog .ob-health-views{flex:0 0 auto}
+}
+@media (prefers-color-scheme: dark){
+  #ob-health-dialog .ob-health-list{border-color:var(--border-soft,rgba(255,255,255,.11))}
+  #ob-health-dialog .ob-health-listbody td{border-bottom-color:var(--border-soft,rgba(255,255,255,.08))}
+  #ob-health-dialog .ob-health-cellstatus-degraded .ob-health-statusdot,
+  #ob-health-dialog .ob-health-cellstatus-stale .ob-health-statusdot{background:#e6ae44}
+  #ob-health-dialog .ob-health-cellstatus-healthy .ob-health-statusdot{background:#5bd39a}
+  #ob-health-dialog .ob-health-cellstatus-unhealthy .ob-health-statusdot{background:#f26d5f}
+  #ob-health-dialog .ob-health-presence-working .ob-health-presencedot,
+  #ob-health-dialog .ob-health-presence-thinking .ob-health-presencedot{background:#6ba6ff}
+  #ob-health-dialog .ob-health-presence-waiting .ob-health-presencedot{background:#e6ae44}
+  #ob-health-dialog .ob-health-presence-done .ob-health-presencedot,
+  #ob-health-dialog .ob-health-light-on .ob-health-lightdot{background:#5bd39a}
+  #ob-health-dialog .ob-health-presence-error .ob-health-presencedot,
+  #ob-health-dialog .ob-health-light-off .ob-health-lightdot{background:#f26d5f}
+  #ob-health-dialog .ob-health-presence-waiting .ob-health-presencedot,
+  #ob-health-dialog .ob-health-light-dim .ob-health-lightdot{background:#e6ae44}
+}
+
+/* ---- Personality badges (manual annotation, never a measurement) ---- */
+#ob-health-dialog .ob-health-badges{display:flex;align-items:center;gap:4px;margin-top:3px;flex-wrap:wrap}
+#ob-health-dialog .ob-health-mbti{
+  display:inline-block;padding:1px 6px;border-radius:6px;
+  background:rgba(8,102,213,.1);color:var(--accent,#0866d5);
+  font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.5;
+}
+#ob-health-dialog .ob-health-stylechip,
+#ob-health-dialog .ob-health-filterstyle{position:relative}
+#ob-health-dialog .ob-health-stylechip{
+  display:inline-block;padding:1px 7px;border-radius:999px;font-size:10px;line-height:1.5;font-weight:540;
+}
+#ob-health-dialog .ob-health-style-challenger{background:rgba(196,128,18,.13);color:#8a5a08}
+#ob-health-dialog .ob-health-style-builder{background:rgba(31,138,76,.12);color:#1b7a45}
+#ob-health-dialog .ob-health-style-neutral{background:var(--bg-hover,#e9e9ed);color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-style-supporter{background:rgba(8,102,213,.1);color:var(--accent,#0866d5)}
+#ob-health-dialog .ob-health-cell-traits{min-width:110px}
+#ob-health-dialog .ob-health-celltraitbits{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+#ob-health-dialog .ob-health-filterdivider{
+  display:inline-block;width:1px;align-self:stretch;margin:2px 4px;
+  background:var(--border-soft,var(--border,#d3d3d9));
+}
+@media (prefers-color-scheme: dark){
+  #ob-health-dialog .ob-health-style-challenger{background:rgba(230,174,68,.15);color:#f0c36d}
+  #ob-health-dialog .ob-health-style-builder{background:rgba(91,211,154,.14);color:#79d3a5}
+  #ob-health-dialog .ob-health-style-supporter{background:rgba(107,166,255,.16);color:#6ba6ff}
+}
+
+/* ---- Health Center 2.0: tabs, provider/harness projections, trends ---- */
+#ob-health-dialog .ob-health-tabs{
+  display:flex;align-items:center;gap:3px;flex:0 0 auto;margin:12px 22px 0;
+  padding:3px;border-radius:9px;background:color-mix(in srgb,var(--bg-hover,#e9e9ed) 72%,transparent);
+}
+#ob-health-dialog .ob-health-toolbar[hidden],
+#ob-health-dialog .ob-health-note[hidden],
+#ob-health-dialog .ob-health-controls[hidden],
+#ob-health-dialog .ob-health-progress[hidden]{display:none!important}
+#ob-health-dialog .ob-health-tab{
+  display:inline-flex;align-items:center;gap:6px;min-height:27px;padding:3px 11px;border:1px solid transparent;
+  border-radius:7px;background:transparent;color:var(--text-3,#686871);font:inherit;font-size:11px;cursor:pointer;
+}
+#ob-health-dialog .ob-health-tab:hover{color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-tab.is-active{
+  border-color:var(--border-soft,var(--border,#d3d3d9));background:var(--mac-control,#fff);
+  color:var(--text,#222226);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+#ob-health-dialog .ob-health-tabcount{
+  min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:rgba(189,51,44,.13);
+  color:#9d2b25;font-size:9.5px;line-height:16px;text-align:center;font-variant-numeric:tabular-nums;
+}
+#ob-health-dialog .ob-health-tabhead{margin:4px 0 12px}
+#ob-health-dialog .ob-health-tabtitle{margin:0;font-size:13px;line-height:1.35;font-weight:620}
+#ob-health-dialog .ob-health-tabnote{margin:3px 0 0;color:var(--text-3,#686871);font-size:10.5px;line-height:1.5}
+#ob-health-dialog .ob-health-back{display:inline-flex;margin:0 0 8px}
+#ob-health-dialog .ob-health-lamp{display:inline-flex;align-items:center;gap:5px;color:var(--text-2,#51515a);font-size:10px;white-space:nowrap}
+#ob-health-dialog .ob-health-lampdot{width:8px;height:8px;border-radius:50%;background:var(--text-3,#8e8e96);flex:0 0 8px}
+#ob-health-dialog .ob-health-lamp-ok .ob-health-lampdot{background:#1f8a4c}
+#ob-health-dialog .ob-health-lamp-warn .ob-health-lampdot{background:#c48012}
+#ob-health-dialog .ob-health-lamp-bad .ob-health-lampdot{background:#bd332c}
+#ob-health-dialog .ob-health-lamp-unknown .ob-health-lampdot{background:var(--text-3,#8e8e96);opacity:.55}
+#ob-health-dialog .ob-health-providers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#ob-health-dialog .ob-health-provider{
+  display:flex;flex-direction:column;gap:6px;min-width:0;padding:12px;border:1px solid var(--border-soft,#e0e0e5);
+  border-radius:11px;background:color-mix(in srgb,var(--bg-panel,#fafafa) 88%,var(--bg-hover,#e9e9ed));
+  color:var(--text,#222226);font:inherit;text-align:left;cursor:pointer;
+}
+#ob-health-dialog .ob-health-provider:hover{background:var(--bg-hover,#e9e9ed)}
+#ob-health-dialog .ob-health-lampborder-bad{border-color:rgba(189,51,44,.42)}
+#ob-health-dialog .ob-health-lampborder-warn{border-color:rgba(196,128,18,.4)}
+#ob-health-dialog .ob-health-provider-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
+#ob-health-dialog .ob-health-providerkey{color:var(--text-3,#686871);font-size:9.5px;white-space:nowrap}
+#ob-health-dialog .ob-health-providername{font-size:12.5px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ob-health-dialog .ob-health-providermeta{color:var(--text-3,#686871);font-size:10px;line-height:1.4}
+#ob-health-dialog .ob-health-providerchips{display:flex;flex-wrap:wrap;gap:4px}
+#ob-health-dialog .ob-health-modelchip{
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:1px 6px;border-radius:6px;
+  background:var(--bg-hover,#e9e9ed);color:var(--text-2,#51515a);font-size:9.5px;line-height:1.5;
+}
+#ob-health-dialog .ob-health-modellist{display:flex;flex-direction:column;gap:7px}
+#ob-health-dialog .ob-health-modelrow{
+  display:grid;grid-template-columns:106px minmax(0,1fr) auto;gap:9px;align-items:center;padding:9px 10px;
+  border:1px solid var(--border-soft,#e0e0e5);border-radius:9px;background:var(--bg-panel,#fafafa);
+}
+#ob-health-dialog .ob-health-modelmain{display:flex;flex-direction:column;gap:2px;min-width:0}
+#ob-health-dialog .ob-health-modelname{font-size:11.5px;line-height:1.35;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-modelmeta{color:var(--text-3,#686871);font-size:9.5px;line-height:1.4}
+#ob-health-dialog .ob-health-modelhonest{color:var(--text-3,#686871);font-size:9.5px;line-height:1.4}
+#ob-health-dialog .ob-health-modelbots{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px;max-width:260px}
+#ob-health-dialog .ob-health-botchip{
+  max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:2px 7px;border:1px solid var(--border-soft,#e0e0e5);
+  border-radius:999px;background:var(--mac-control,#fff);color:var(--text-2,#51515a);font:inherit;font-size:9.5px;cursor:pointer;
+}
+#ob-health-dialog .ob-health-botchip:hover{background:var(--bg-hover,#e9e9ed);color:var(--text,#222226)}
+#ob-health-dialog .ob-health-harnesses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#ob-health-dialog .ob-health-harness{
+  display:flex;flex-direction:column;gap:6px;min-width:0;padding:12px;border:1px solid var(--border-soft,#e0e0e5);
+  border-radius:11px;background:color-mix(in srgb,var(--bg-panel,#fafafa) 88%,var(--bg-hover,#e9e9ed));
+}
+#ob-health-dialog .ob-health-harness-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
+#ob-health-dialog .ob-health-harnesskind{
+  padding:1px 6px;border-radius:6px;background:rgba(8,102,213,.09);color:var(--accent,#0866d5);
+  font-size:9px;line-height:1.5;text-transform:uppercase;letter-spacing:.04em;
+}
+#ob-health-dialog .ob-health-harnessname{font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-harnessmeta{color:var(--text-3,#686871);font-size:10px;line-height:1.45}
+#ob-health-dialog .ob-health-harnessmembers{display:flex;flex-wrap:wrap;gap:4px}
+#ob-health-dialog .ob-health-botharness-bad{border-color:rgba(189,51,44,.38)}
+#ob-health-dialog .ob-health-botharness-warn{border-color:rgba(196,128,18,.4)}
+#ob-health-dialog .ob-health-harnesscodes{color:var(--text-3,#686871);font-size:9px;line-height:1.4;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-detail-trends,
+#ob-health-dialog .ob-health-detail-suggestions{grid-column:1/-1}
+#ob-health-dialog .ob-health-trendrow{
+  display:grid;grid-template-columns:92px minmax(120px,1fr) minmax(170px,auto);gap:9px;align-items:center;
+  padding:6px 0;border-top:1px solid var(--border-soft,#e0e0e5);
+}
+#ob-health-dialog .ob-health-trendlabel{color:var(--text-2,#51515a);font-size:10px;font-weight:550}
+#ob-health-dialog .ob-health-trendchart{display:block;height:28px;min-width:120px}
+#ob-health-dialog .ob-health-spark{width:100%;height:28px;display:block;overflow:visible}
+#ob-health-dialog .ob-health-sparkline{fill:none;stroke:var(--accent,#0866d5);stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+#ob-health-dialog .ob-health-sparkdot{fill:var(--accent,#0866d5)}
+#ob-health-dialog .ob-health-spark-empty{stroke:var(--border,#d3d3d9);stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+#ob-health-dialog .ob-health-trendsummary{color:var(--text-3,#686871);font-size:9.5px;line-height:1.4;text-align:right;font-variant-numeric:tabular-nums}
+#ob-health-dialog .ob-health-suggestionlist{display:flex;flex-direction:column;gap:7px}
+#ob-health-dialog .ob-health-suggestion{
+  padding:9px 10px;border:1px solid var(--border-soft,#e0e0e5);border-radius:9px;
+  background:color-mix(in srgb,var(--bg-panel,#fafafa) 90%,var(--bg-hover,#e9e9ed));
+}
+#ob-health-dialog .ob-health-suggestion-critical{border-color:rgba(189,51,44,.36)}
+#ob-health-dialog .ob-health-suggestion-warn{border-color:rgba(196,128,18,.34)}
+#ob-health-dialog .ob-health-suggestion-head{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+#ob-health-dialog .ob-health-severity{
+  flex:0 0 auto;padding:1px 6px;border-radius:6px;background:var(--bg-hover,#e9e9ed);
+  color:var(--text-3,#686871);font-size:9px;line-height:1.5;
+}
+#ob-health-dialog .ob-health-suggestion-critical .ob-health-severity{background:rgba(189,51,44,.13);color:#9d2b25}
+#ob-health-dialog .ob-health-suggestion-warn .ob-health-severity{background:rgba(196,128,18,.13);color:#8a5a08}
+#ob-health-dialog .ob-health-suggestion-title{font-size:11.5px;line-height:1.35}
+#ob-health-dialog .ob-health-suggestion-body{margin:4px 0 0;color:var(--text-2,#51515a);font-size:10.5px;line-height:1.5;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-evidence{margin-top:4px;color:var(--text-3,#686871);font-size:9.5px}
+#ob-health-dialog .ob-health-evidence summary{cursor:pointer}
+#ob-health-dialog .ob-health-evidence code{display:block;margin-top:3px;white-space:pre-wrap;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-suggestion-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:7px;margin-top:5px}
+#ob-health-dialog .ob-health-suggestion-state{font-size:10.5px;color:var(--text-2,#51515a);margin-left:auto}
+#ob-health-dialog .ob-health-suggestion-message{flex-basis:100%;color:var(--text-2,#51515a);font-size:10.5px;overflow-wrap:anywhere}
+#ob-health-dialog .ob-health-suggestion-more summary{cursor:pointer;font-size:10.5px;color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-suggestion-more[open]{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+#ob-health-dialog .ob-health-evidence-scope{margin:0 0 5px;font-size:10.5px;color:var(--text-2,#51515a);line-height:1.5}
+#ob-health-dialog .ob-health-history-source{max-width:100%;min-width:0;padding:3px 6px;font:inherit;font-size:10.5px;color:var(--text-2,#51515a);background:var(--mac-control,#fff);border:1px solid var(--border-soft,#e0e0e5);border-radius:6px}
+#ob-health-dialog .ob-health-history-source:focus-visible,
+#ob-health-dialog .ob-health-suggestion-more summary:focus-visible{outline:2px solid var(--accent,#0866d5);outline-offset:2px}
+#ob-health-dialog .ob-health-adopt{min-height:23px;padding:2px 9px;font-size:10px}
+@media (max-width:1060px){
+  #ob-health-dialog .ob-health-providers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #ob-health-dialog .ob-health-harnesses{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  #ob-health-dialog .ob-health-providers{grid-template-columns:1fr}
+  #ob-health-dialog .ob-health-modelrow{grid-template-columns:1fr}
+  #ob-health-dialog .ob-health-modelbots{justify-content:flex-start;max-width:none}
+  #ob-health-dialog .ob-health-trendrow{grid-template-columns:1fr}
+  #ob-health-dialog .ob-health-trendsummary{text-align:left}
+}
+@media (prefers-color-scheme: dark){
+  #ob-health-dialog .ob-health-lamp-ok .ob-health-lampdot{background:#5bd39a}
+  #ob-health-dialog .ob-health-lamp-warn .ob-health-lampdot{background:#e6ae44}
+  #ob-health-dialog .ob-health-lamp-bad .ob-health-lampdot{background:#f26d5f}
+  #ob-health-dialog .ob-health-sparkline{stroke:#6ba6ff}
+  #ob-health-dialog .ob-health-sparkdot{fill:#6ba6ff}
+  #ob-health-dialog .ob-health-tabcount{background:rgba(242,109,95,.16);color:#ff9d91}
+  #ob-health-dialog .ob-health-suggestion-critical .ob-health-severity{background:rgba(242,109,95,.16);color:#ff9d91}
+  #ob-health-dialog .ob-health-suggestion-warn .ob-health-severity{background:rgba(230,174,68,.16);color:#f0c36d}
+}
+
+/* ---- Auto-probe scheduler: off by default, explicit opt-in ---- */
+#ob-health-dialog .ob-health-controls{flex-wrap:wrap}
+#ob-health-dialog .ob-health-scheduler{
+  display:flex;flex-direction:column;gap:2px;flex:1 0 100%;min-width:0;padding:5px 9px 4px;
+  border:1px solid var(--border-soft,#e0e0e5);border-radius:8px;
+  background:color-mix(in srgb,var(--bg-hover,#e9e9ed) 44%,transparent);
+}
+#ob-health-dialog .ob-health-scheduler-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0}
+#ob-health-dialog .ob-health-scheduler-switch{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:11px;color:var(--text-2,#51515a)}
+#ob-health-dialog .ob-health-scheduler-switch input{margin:0;accent-color:var(--accent,#0866d5)}
+#ob-health-dialog .ob-health-scheduler-name{font-weight:560;color:var(--text,#222226)}
+#ob-health-dialog .ob-health-scheduler-interval{
+  height:24px;padding:2px 6px;border:1px solid var(--border-soft,var(--border,#d3d3d9));border-radius:6px;
+  background:var(--mac-control,#fff);color:var(--text-2,#51515a);font:inherit;font-size:10.5px;
+}
+#ob-health-dialog .ob-health-scheduler-status{font-size:10.5px;line-height:1.4;color:var(--text-3,#686871);font-variant-numeric:tabular-nums}
+#ob-health-dialog .ob-health-scheduler-status.is-on{color:#1b7a45}
+#ob-health-dialog .ob-health-scheduler-warn{margin:0;font-size:10px;line-height:1.4;color:#8a5a08}
+#ob-health-dialog .ob-health-scheduler-error{margin:0;font-size:10px;line-height:1.4;color:#9d2b25}
+@media (prefers-color-scheme: dark){
+  #ob-health-dialog .ob-health-scheduler-status.is-on{color:#5bd39a}
+  #ob-health-dialog .ob-health-scheduler-warn{color:#f0c36d}
+  #ob-health-dialog .ob-health-scheduler-error{color:#ff9d91}
+}

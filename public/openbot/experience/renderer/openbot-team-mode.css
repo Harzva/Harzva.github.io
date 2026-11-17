@@ -1,0 +1,184 @@
+/* Team mode is a compact owner-operated dialog. It uses the native macOS
+ * tokens from openbot-macos.css and the neutral charcoal dark theme rather
+ * than introducing a second product palette. */
+#team-mode-dialog[hidden] { display: none !important; }
+#team-mode-dialog {
+  position: fixed;
+  z-index: 1250;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: var(--mac-scrim, rgb(25 25 30 / 24%));
+  color: var(--text, #222226);
+}
+#team-mode-dialog,
+#team-mode-dialog * { box-sizing: border-box; }
+#team-mode-dialog button,
+#team-mode-dialog input,
+#team-mode-dialog textarea,
+#team-mode-dialog select { font: inherit; }
+#team-mode-dialog button { cursor: pointer; }
+#team-mode-dialog button:disabled,
+#team-mode-dialog input:disabled,
+#team-mode-dialog textarea:disabled,
+#team-mode-dialog select:disabled { cursor: not-allowed; opacity: .52; }
+#team-mode-dialog button:focus-visible,
+#team-mode-dialog input:focus-visible,
+#team-mode-dialog textarea:focus-visible,
+#team-mode-dialog select:focus-visible { outline: 2px solid var(--accent, #0866d5); outline-offset: 2px; }
+#team-mode-dialog .team-mode-window {
+  display: flex;
+  flex-direction: column;
+  width: min(980px, calc(100vw - 36px));
+  height: min(720px, calc(100vh - 36px));
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid var(--border, #d3d3d9);
+  border-radius: 10px;
+  background: var(--bg, #fff);
+  color: var(--text, #222226);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 16%);
+}
+#team-mode-dialog .team-mode-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 0 0 auto;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+  background: var(--bg-panel, #fafafa);
+}
+#team-mode-dialog .team-mode-heading { min-width: 0; flex: 1; }
+#team-mode-dialog .team-mode-title { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 650; letter-spacing: -.01em; }
+#team-mode-dialog .team-mode-subtitle { max-width: 680px; margin: 4px 0 0; color: var(--text-3, #686871); font-size: 11.5px; line-height: 1.5; overflow-wrap: anywhere; }
+#team-mode-dialog .team-mode-header-actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+#team-mode-dialog .team-mode-status { min-width: 0; max-width: 270px; color: var(--text-3, #686871); font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+#team-mode-dialog .team-mode-status[data-tone="error"] { color: var(--danger, #bd332c); }
+#team-mode-dialog .team-mode-status[data-tone="ok"] { color: var(--ok, #237344); }
+#team-mode-dialog .team-mode-close { width: 30px; height: 30px; padding: 0; border: 1px solid var(--border, #d3d3d9); border-radius: 7px; background: var(--mac-control, #fff); color: var(--text-2, #51515a); font-size: 20px; line-height: 1; }
+#team-mode-dialog .team-mode-close:hover { background: var(--bg-hover, #e9e9ed); color: var(--text, #222226); }
+#team-mode-dialog .team-mode-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; flex: 0 0 auto; padding: 10px 20px 0; background: var(--bg, #fff); }
+#team-mode-dialog .team-mode-space-field { display: flex; align-items: center; gap: 8px; min-width: 0; }
+#team-mode-dialog .team-mode-space-field > label,
+#team-mode-dialog .team-chat-control > label,
+#team-mode-dialog .team-field > label { color: var(--text-3, #686871); font-size: 11px; }
+#team-mode-dialog .team-mode-space-field > label { flex: 0 0 auto; }
+#team-mode-dialog .team-mode-space-field select { width: min(300px, 34vw); min-width: 170px; }
+#team-mode-dialog .team-mode-tabs { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; min-width: 0; }
+#team-mode-dialog .team-mode-tab { min-height: 30px; padding: 5px 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--text-3, #686871); font-size: 12px; }
+#team-mode-dialog .team-mode-tab:hover { background: var(--bg-hover, #e9e9ed); color: var(--text, #222226); }
+#team-mode-dialog .team-mode-tab[aria-selected="true"] { border-bottom-color: var(--accent, #0866d5); color: var(--text, #222226); font-weight: 600; }
+#team-mode-dialog .team-mode-content { min-width: 0; min-height: 0; flex: 1; overflow: auto; padding: 18px 20px 24px; }
+#team-mode-dialog .team-panel { min-width: 0; }
+#team-mode-dialog .team-section-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+#team-mode-dialog .team-section-copy { min-width: 0; }
+#team-mode-dialog .team-section-head h3 { margin: 0; font-size: 15px; line-height: 1.35; font-weight: 650; }
+#team-mode-dialog .team-section-head p { margin: 4px 0 0; color: var(--text-3, #686871); font-size: 11.5px; line-height: 1.5; overflow-wrap: anywhere; }
+#team-mode-dialog .team-mode-primary,
+#team-mode-dialog .team-mode-secondary,
+#team-mode-dialog .team-mode-danger { min-height: 30px; padding: 6px 10px; border: 1px solid var(--border, #d3d3d9); border-radius: 7px; background: var(--mac-control, #fff); color: var(--text-2, #51515a); font-size: 11.5px; white-space: nowrap; }
+#team-mode-dialog .team-mode-primary { border-color: var(--mac-action, var(--accent, #0866d5)); background: var(--mac-action, var(--accent, #0866d5)); color: #fff; font-weight: 600; }
+#team-mode-dialog .team-mode-secondary:hover { background: var(--bg-hover, #e9e9ed); color: var(--text, #222226); }
+#team-mode-dialog .team-mode-primary:hover { filter: brightness(.95); }
+#team-mode-dialog .team-mode-danger { color: var(--danger, #bd332c); }
+#team-mode-dialog .team-mode-danger:hover { background: var(--bg-hover, #e9e9ed); }
+#team-mode-dialog input,
+#team-mode-dialog textarea,
+#team-mode-dialog select { width: 100%; min-height: 34px; padding: 7px 9px; border: 1px solid var(--border, #d3d3d9); border-radius: 7px; background: var(--mac-control, #fff); color: var(--text, #222226); font-size: 12px; outline: none; }
+#team-mode-dialog textarea { resize: vertical; line-height: 1.45; }
+#team-mode-dialog input::placeholder,
+#team-mode-dialog textarea::placeholder { color: var(--text-3, #686871); opacity: 1; }
+#team-mode-dialog .team-inline-note { margin: 0 0 12px; color: var(--text-3, #686871); font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere; }
+#team-mode-dialog .team-note-warning,
+#team-mode-dialog .team-field-note.team-note-warning { color: var(--danger, #bd332c); }
+#team-mode-dialog .team-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 22px 18px; border: 1px dashed var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-empty h3 { margin: 0; font-size: 13px; }
+#team-mode-dialog .team-empty p { max-width: 560px; margin: 0 0 6px; color: var(--text-3, #686871); font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere; }
+#team-mode-dialog .team-task-list { display: grid; gap: 8px; }
+#team-mode-dialog .team-task-row { min-width: 0; padding: 12px 13px; border: 1px solid var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-task-row-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+#team-mode-dialog .team-task-copy { min-width: 0; }
+#team-mode-dialog .team-task-title { margin: 0; color: var(--text, #222226); font-size: 13px; line-height: 1.4; font-weight: 650; overflow-wrap: anywhere; }
+#team-mode-dialog .team-task-meta { margin: 4px 0 0; color: var(--text-3, #686871); font-size: 11px; line-height: 1.45; overflow-wrap: anywhere; }
+#team-mode-dialog .team-task-description,
+#team-mode-dialog .team-task-result p { margin: 8px 0 0; color: var(--text-2, #51515a); font-size: 12px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+#team-mode-dialog .team-task-error { margin: 8px 0 0; color: var(--danger, #bd332c); font-size: 11.5px; line-height: 1.5; overflow-wrap: anywhere; }
+#team-mode-dialog .team-task-result { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-soft, var(--border)); }
+#team-mode-dialog .team-task-result strong { color: var(--text-2, #51515a); font-size: 11px; }
+#team-mode-dialog .team-shared-note { display: block; margin-top: 5px; color: var(--ok, #237344); font-size: 11px; }
+#team-mode-dialog .team-status { display: inline-flex; flex: 0 0 auto; min-height: 23px; align-items: center; padding: 4px 7px; border: 1px solid transparent; border-radius: 6px; font-size: 10.5px; white-space: nowrap; }
+#team-mode-dialog .team-status-open { background: var(--bg-hover, #e9e9ed); color: var(--text-2, #51515a); }
+#team-mode-dialog .team-status-claimed { background: var(--accent-soft, #e7effb); color: var(--accent, #0866d5); }
+#team-mode-dialog .team-status-running { background: var(--accent-soft, #e7effb); color: var(--accent, #0866d5); }
+#team-mode-dialog .team-status-review { background: var(--mac-inset, #f0f0f3); color: var(--text-2, #51515a); }
+#team-mode-dialog .team-status-done { background: color-mix(in srgb, var(--ok, #237344) 12%, transparent); color: var(--ok, #237344); }
+#team-mode-dialog .team-status-failed { background: color-mix(in srgb, var(--danger, #bd332c) 12%, transparent); color: var(--danger, #bd332c); }
+#team-mode-dialog .team-task-actions { display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+#team-mode-dialog .team-task-create { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(150px, .9fr); gap: 10px; margin-bottom: 12px; padding: 12px; border: 1px solid var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-field { display: flex; min-width: 0; flex-direction: column; gap: 5px; }
+#team-mode-dialog .team-form-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; flex-wrap: wrap; }
+#team-mode-dialog .team-task-create .team-form-actions { grid-column: 1 / -1; }
+#team-mode-dialog .team-complete-form { display: grid; flex: 1 1 100%; gap: 7px; margin-top: 8px; padding-top: 9px; border-top: 1px solid var(--border-soft, var(--border)); }
+#team-mode-dialog .team-check { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2, #51515a); font-size: 11.5px; }
+#team-mode-dialog .team-check input { width: auto; min-height: 0; }
+#team-mode-dialog .team-employee-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+#team-mode-dialog .team-employee-card { min-width: 0; padding: 12px 13px; border: 1px solid var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-employee-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+#team-mode-dialog .team-employee-copy { min-width: 0; }
+#team-mode-dialog .team-employee-copy h4 { margin: 0; font-size: 13px; line-height: 1.4; overflow-wrap: anywhere; }
+#team-mode-dialog .team-employee-copy p { margin: 3px 0 0; color: var(--text-3, #686871); font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+#team-mode-dialog .team-availability { flex: 0 0 auto; font-size: 10.5px; }
+#team-mode-dialog .team-available { color: var(--ok, #237344); }
+#team-mode-dialog .team-unavailable { color: var(--danger, #bd332c); }
+#team-mode-dialog .team-employee-form { display: grid; gap: 9px; margin-top: 12px; }
+#team-mode-dialog .team-field-note { margin: 0; color: var(--text-3, #686871); font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+#team-mode-dialog .team-chat-controls,
+#team-mode-dialog .team-memory-controls { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+#team-mode-dialog .team-chat-control { display: flex; min-width: 170px; flex: 1 1 220px; flex-direction: column; gap: 5px; }
+#team-mode-dialog .team-memory-controls .team-field { flex: 1 1 220px; }
+#team-mode-dialog .team-chat-messages { display: flex; min-height: 250px; max-height: 360px; flex-direction: column; gap: 10px; overflow: auto; padding: 13px; border: 1px solid var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-chat-message { display: flex; max-width: 82%; flex-direction: column; align-items: flex-start; }
+#team-mode-dialog .team-chat-message-user { align-self: flex-end; align-items: flex-end; }
+#team-mode-dialog .team-chat-message-meta { margin: 0 3px 3px; color: var(--text-3, #686871); font-size: 10.5px; line-height: 1.35; }
+#team-mode-dialog .team-chat-message-text { margin: 0; padding: 8px 10px; border: 1px solid var(--border, #d3d3d9); border-radius: 9px; background: var(--mac-control, #fff); color: var(--text, #222226); font-size: 12px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+#team-mode-dialog .team-chat-message-user .team-chat-message-text { border-color: var(--accent, #0866d5); background: var(--accent, #0866d5); color: #fff; }
+#team-mode-dialog .team-chat-empty { margin: auto; color: var(--text-3, #686871); font-size: 12px; line-height: 1.6; text-align: center; }
+#team-mode-dialog .team-chat-running { display: flex; align-items: center; gap: 8px; margin-top: 9px; color: var(--text-3, #686871); font-size: 11.5px; }
+#team-mode-dialog .team-running-mark { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--accent, #0866d5); }
+#team-mode-dialog .team-chat-running .team-mode-danger { margin-left: auto; }
+#team-mode-dialog .team-chat-composer { display: flex; align-items: flex-end; gap: 8px; margin-top: 10px; }
+#team-mode-dialog .team-chat-composer textarea { min-height: 42px; max-height: 120px; flex: 1; }
+#team-mode-dialog .team-chat-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+#team-mode-dialog .team-memory-body { display: grid; gap: 10px; }
+#team-mode-dialog .team-memory-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-width: 0; padding: 10px 12px; border: 1px solid var(--border, #d3d3d9); border-radius: 8px; background: var(--bg-panel, #fafafa); }
+#team-mode-dialog .team-memory-copy { min-width: 0; flex: 1; }
+#team-mode-dialog .team-memory-text { margin: 0; color: var(--text, #222226); font-size: 12px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+#team-mode-dialog .team-memory-kind { display: block; margin-top: 4px; color: var(--text-3, #686871); font-size: 10.5px; }
+#team-mode-dialog .team-memory-actions { display: flex; flex: 0 0 auto; gap: 5px; }
+#team-mode-dialog .team-memory-form { display: grid; gap: 8px; margin-top: 2px; padding-top: 12px; border-top: 1px solid var(--border-soft, var(--border)); }
+
+@media (max-width: 760px) {
+  #team-mode-dialog { padding: 10px; }
+  #team-mode-dialog .team-mode-window { width: 100%; height: 100%; min-height: 0; border-radius: 9px; }
+  #team-mode-dialog .team-mode-header { padding-inline: 14px; }
+  #team-mode-dialog .team-mode-toolbar { align-items: stretch; padding-inline: 14px; }
+  #team-mode-dialog .team-mode-space-field { width: 100%; flex-wrap: wrap; }
+  #team-mode-dialog .team-mode-space-field select { width: auto; min-width: 0; flex: 1 1 180px; }
+  #team-mode-dialog .team-mode-tabs { width: 100%; overflow-x: auto; }
+  #team-mode-dialog .team-mode-tab { flex: 0 0 auto; }
+  #team-mode-dialog .team-mode-content { padding: 16px 14px 20px; }
+  #team-mode-dialog .team-task-create { grid-template-columns: 1fr; }
+  #team-mode-dialog .team-task-create .team-form-actions { grid-column: auto; }
+  #team-mode-dialog .team-employee-list { grid-template-columns: 1fr; }
+  #team-mode-dialog .team-section-head { align-items: flex-start; flex-direction: column; }
+  #team-mode-dialog .team-chat-composer { flex-direction: column; align-items: stretch; }
+  #team-mode-dialog .team-chat-actions { justify-content: flex-end; }
+  #team-mode-dialog .team-chat-messages { max-height: none; min-height: 220px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #team-mode-dialog * { scroll-behavior: auto; }
+}

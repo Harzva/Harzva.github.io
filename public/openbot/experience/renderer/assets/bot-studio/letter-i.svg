@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#55B5C2;--detail:#8BD0D2;--ink:#173F2F;--face:#FFF4DF;--accent:#F4C65D;--eye:#173F2F">
+  <title id="title">I · 信标</title>
+  <desc id="desc">青蓝色信标角色，灯塔的顶冠、塔身和底座组成圆角大写 I。</desc>
+  <path d="M31 18H97Q106 18 106 27V34Q106 43 97 43H79V83H96Q106 83 106 92V100Q106 109 96 109H32Q22 109 22 100V92Q22 83 32 83H49V43H31Q22 43 22 34V27Q22 18 31 18Z" fill="var(--body)" stroke="var(--ink)" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M42 24H86" fill="none" stroke="var(--detail)" stroke-width="4" stroke-linecap="round"/>
+  <rect x="57" y="23" width="14" height="14" rx="6" fill="var(--accent)" stroke="var(--ink)" stroke-width="3"/>
+  <path d="M51 29H47M77 29H81" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+  <rect x="53" y="50" width="22" height="26" rx="10" fill="var(--face)"/>
+  <circle cx="60" cy="60" r="2.5" fill="var(--eye)"/>
+  <circle cx="68" cy="60" r="2.5" fill="var(--eye)"/>
+  <path d="M60 67Q64 71 68 67" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M43 96H85" fill="none" stroke="var(--detail)" stroke-width="3" stroke-linecap="round"/>
+</svg>

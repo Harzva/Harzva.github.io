@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 84" role="img" aria-label="未公开的货票">
+  <rect x="2" y="2" width="56" height="80" rx="8" fill="#2f4f45" stroke="#1d332c" stroke-width="2.4"/>
+  <rect x="7" y="7" width="46" height="70" rx="5" fill="#37604f" stroke="#5c8c78" stroke-width="1.2"/>
+  <path d="M15 15l15 15L15 45l15 15L15 75M45 15L30 30l15 15L30 60l15 15M30 15l15 15L30 45l15 15L30 75" fill="none" stroke="#5c8c78" stroke-width="1.6" opacity=".7"/>
+  <circle cx="30" cy="42" r="7" fill="none" stroke="#8fbba6" stroke-width="1.8"/>
+  <path d="M30 35l4 7-4 7-4-7z" fill="#8fbba6"/>
+</svg>

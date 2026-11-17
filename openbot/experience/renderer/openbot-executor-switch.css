@@ -1,0 +1,801 @@
+.ob-executor-switch-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.ob-executor-switch-trigger:hover {
+  border-color: var(--text-3);
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.ob-executor-switch-trigger:focus-visible,
+.ob-executor-switch-dialog :is(button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ob-executor-switch-trigger-composer {
+  max-width: 150px;
+  min-height: 26px;
+  padding: 2px 7px;
+  border-color: transparent;
+  border-radius: 999px;
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.ob-executor-switch-trigger-composer:hover,
+.ob-executor-switch-trigger-composer[aria-expanded="true"] {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.ob-executor-switch-trigger-composer .ob-executor-switch-trigger-logo {
+  flex-basis: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.ob-executor-switch-trigger-composer .ob-executor-switch-trigger-logo img {
+  width: 15px;
+  height: 15px;
+}
+
+.composer-executor-slot {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* The executor is a primary switch, not a secondary hover action. Keep it
+   visible while the rest of the quiet composer toolbar fades in on hover. */
+@media (hover: hover) and (pointer: fine) {
+  .chat-input-bar .composer-tools button.ob-executor-switch-trigger {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.ob-executor-switch-trigger-logo,
+.ob-executor-switch-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+}
+
+.ob-executor-switch-trigger-logo img,
+.ob-executor-switch-logo img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.ob-executor-switch-trigger-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-trigger-chevron {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  margin: -3px 1px 0 0;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: rotate(45deg);
+  opacity: .72;
+}
+
+.ob-executor-switch-overlay[hidden] {
+  display: none !important;
+}
+
+.ob-executor-switch-overlay {
+  position: fixed;
+  z-index: 12000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(10, 10, 12, .48);
+}
+
+.ob-executor-switch-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(700px, calc(100vh - 32px));
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--bg-panel);
+  color: var(--text);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .24);
+}
+
+.ob-executor-switch-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px 13px;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+}
+
+.ob-executor-switch-heading {
+  min-width: 0;
+}
+
+.ob-executor-switch-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 620;
+  line-height: 1.35;
+}
+
+.ob-executor-switch-heading p {
+  max-width: 48ch;
+  margin: 5px 0 0;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ob-executor-switch-close {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ob-executor-switch-close:hover,
+.ob-executor-switch-cancel:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.ob-executor-switch-status {
+  margin: 12px 20px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--border-soft, var(--border));
+  border-left: 2px solid var(--accent);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ob-executor-switch-status[data-state="unknown"] {
+  border-left-color: var(--danger, #c64c46);
+  color: var(--text);
+}
+
+.ob-executor-switch-search-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 20px 8px;
+}
+
+.ob-executor-switch-search-group label,
+.ob-executor-switch-field label,
+.ob-executor-switch-review > label {
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ob-executor-switch-search,
+.ob-executor-switch-model,
+.ob-executor-switch-select,
+.ob-executor-switch-note {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12.5px;
+}
+
+.ob-executor-switch-search::placeholder,
+.ob-executor-switch-model::placeholder,
+.ob-executor-switch-note::placeholder {
+  color: var(--text-3);
+}
+
+.ob-executor-switch-search:focus,
+.ob-executor-switch-model:focus,
+.ob-executor-switch-select:focus,
+.ob-executor-switch-note:focus {
+  border-color: var(--accent);
+}
+
+.ob-executor-switch-options {
+  min-height: 0;
+  max-height: 268px;
+  margin: 0 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 8px;
+  scrollbar-width: thin;
+}
+
+.ob-executor-switch-options[hidden] {
+  display: none;
+}
+
+.ob-executor-switch-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ob-executor-switch-option:last-child {
+  border-bottom: 0;
+}
+
+.ob-executor-switch-option:hover,
+.ob-executor-switch-option.is-active {
+  background: var(--bg-hover);
+}
+
+.ob-executor-switch-option.is-selected {
+  background: var(--accent-soft, var(--bg-hover));
+}
+
+.ob-executor-switch-option.is-unavailable {
+  color: var(--text-3);
+  cursor: not-allowed;
+}
+
+.ob-executor-switch-option.is-busy {
+  cursor: wait;
+  opacity: .62;
+}
+
+.ob-executor-switch-option.is-unavailable:hover,
+.ob-executor-switch-option.is-unavailable.is-active {
+  background: transparent;
+}
+
+.ob-executor-switch-option-logo {
+  display: inline-flex;
+  flex: 0 0 30px;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 7px;
+  background: var(--bg-hover);
+}
+
+.ob-executor-switch-option-logo img {
+  display: block;
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+
+.ob-executor-switch-option-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.ob-executor-switch-option-name {
+  overflow: hidden;
+  font-size: 12.5px;
+  font-weight: 560;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-description {
+  overflow: hidden;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 1px;
+}
+
+.ob-executor-switch-badge {
+  padding: 1px 5px;
+  border: 1px solid var(--border-soft, var(--border));
+  border-radius: 999px;
+  background: var(--bg-hover);
+  color: var(--text-3);
+  font-size: 9.5px;
+  font-weight: 540;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-source {
+  overflow: hidden;
+  color: var(--text-3);
+  font-size: 10px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-models {
+  overflow: hidden;
+  color: var(--text-2);
+  font-size: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-models[data-state="available"] {
+  color: var(--text-2);
+}
+
+.ob-executor-switch-option-models[data-state="unknown"] {
+  color: var(--text-3);
+}
+
+.ob-executor-switch-option-meta {
+  flex: 0 0 auto;
+  color: var(--text-3);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.ob-executor-switch-option-check {
+  flex: 0 0 13px;
+  width: 13px;
+  color: var(--accent);
+  font-size: 14px;
+  opacity: 0;
+}
+
+.ob-executor-switch-option.is-selected .ob-executor-switch-option-check {
+  opacity: 1;
+}
+
+.ob-executor-switch-empty {
+  padding: 12px 20px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.ob-executor-switch-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 20px 0;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--danger, #c64c46) 35%, var(--border));
+  border-radius: 7px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.ob-executor-switch-error[hidden] {
+  display: none;
+}
+
+.ob-executor-switch-error-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ob-executor-switch-text-button {
+  flex: 0 0 auto;
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ob-executor-switch-settings {
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px 14px;
+}
+
+.ob-executor-switch-settings[hidden] {
+  display: none;
+}
+
+.ob-executor-switch-acp {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0 20px 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+
+.ob-executor-switch-acp[hidden] {
+  display: none;
+}
+
+.ob-executor-switch-acp-heading h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ob-executor-switch-acp-heading p {
+  margin: 3px 0 0;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ob-executor-switch-acp-status,
+.ob-executor-switch-acp-current,
+.ob-executor-switch-acp-details,
+.ob-executor-switch-acp-auth-note {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 11.5px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.ob-executor-switch-acp-status[data-state="error"] {
+  color: var(--danger, #c64c46);
+}
+
+.ob-executor-switch-acp-status[data-state="busy"] {
+  color: var(--text);
+}
+
+.ob-executor-switch-acp-current {
+  color: var(--text-3);
+}
+
+.ob-executor-switch-acp-auth-note {
+  color: var(--text-3);
+}
+
+.ob-executor-switch-acp-model-group {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.ob-executor-switch-acp-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.ob-executor-switch-acp-initialize {
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg-hover);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 560;
+  cursor: pointer;
+}
+
+.ob-executor-switch-acp-initialize:hover:not(:disabled) {
+  border-color: var(--text-3);
+  background: var(--bg-panel);
+}
+
+.ob-executor-switch-acp-initialize:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.ob-executor-switch-acp-refresh,
+.ob-executor-switch-acp-retry {
+  padding-left: 0;
+}
+
+.ob-executor-switch-acp-stop {
+  min-height: 32px;
+  padding: 6px 9px;
+}
+
+.ob-executor-switch-acp-actions [hidden] {
+  display: none !important;
+}
+
+.ob-executor-switch-field {
+  display: flex;
+  flex: 1 1 50%;
+  flex-direction: column;
+  min-width: 0;
+  gap: 6px;
+}
+
+.ob-executor-switch-field[hidden] {
+  display: none;
+}
+
+@media (min-width: 481px) {
+  .ob-executor-switch-api-source {
+    flex: 0 0 min(32%, 155px);
+  }
+  .ob-executor-switch-api-source label {
+    display: flex;
+    align-items: center;
+    min-height: 26px;
+  }
+}
+
+.ob-executor-switch-model-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ob-executor-switch-api-model-state {
+  margin: 0;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.ob-executor-switch-api-model-state[data-state="error"],
+.ob-executor-switch-api-model-state[data-state="stale"] {
+  color: var(--danger, #c64c46);
+}
+
+.ob-executor-switch-api-model-state[data-state="unavailable"] {
+  color: var(--text-2);
+}
+
+.ob-executor-switch-api-model-refresh:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.ob-executor-switch-running,
+.ob-executor-switch-review {
+  margin: 0 20px 14px;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.ob-executor-switch-running[hidden],
+.ob-executor-switch-review[hidden] {
+  display: none;
+}
+
+.ob-executor-switch-running {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.ob-executor-switch-stop,
+.ob-executor-switch-resolve,
+.ob-executor-switch-submit,
+.ob-executor-switch-cancel {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ob-executor-switch-stop {
+  border-color: color-mix(in srgb, var(--danger, #c64c46) 42%, var(--border));
+  color: var(--danger, #c64c46);
+}
+
+.ob-executor-switch-stop:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger, #c64c46) 9%, var(--bg));
+}
+
+.ob-executor-switch-review > p {
+  margin: 0 0 8px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ob-executor-switch-review > .ob-executor-switch-reason {
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+
+.ob-executor-switch-review > label {
+  display: block;
+  margin: 10px 0 6px;
+}
+
+.ob-executor-switch-note {
+  min-height: 70px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.ob-executor-switch-confirm {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 !important;
+  color: var(--text-2) !important;
+  cursor: pointer;
+}
+
+.ob-executor-switch-confirm input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.ob-executor-switch-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 12px 20px 16px;
+  border-top: 1px solid var(--border-soft, var(--border));
+}
+
+.ob-executor-switch-footer-note {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 8px;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ob-executor-switch-submit {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.ob-executor-switch-submit:hover:not(:disabled),
+.ob-executor-switch-resolve:hover:not(:disabled) {
+  filter: brightness(.94);
+}
+
+.ob-executor-switch-submit:disabled,
+.ob-executor-switch-resolve:disabled,
+.ob-executor-switch-stop:disabled,
+.ob-executor-switch-cancel:disabled,
+.ob-executor-switch-select:disabled,
+.ob-executor-switch-note:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.ob-executor-switch-submit:disabled {
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  color: var(--text-2);
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .ob-executor-switch-dialog {
+    width: min(560px, calc(100vw - 20px));
+    max-height: calc(100vh - 20px);
+  }
+
+  .ob-executor-switch-top,
+  .ob-executor-switch-search-group,
+  .ob-executor-switch-settings,
+  .ob-executor-switch-footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .ob-executor-switch-status,
+  .ob-executor-switch-options,
+  .ob-executor-switch-error,
+  .ob-executor-switch-acp,
+  .ob-executor-switch-running,
+  .ob-executor-switch-review {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ob-executor-switch-settings {
+    flex-direction: column;
+  }
+
+  .ob-executor-switch-running {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ob-executor-switch-footer-note {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ob-executor-switch-trigger,
+  .ob-executor-switch-dialog button {
+    transition: none !important;
+  }
+}

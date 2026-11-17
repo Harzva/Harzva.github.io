@@ -1,0 +1,182 @@
+* { box-sizing: border-box; }
+
+:root {
+  color-scheme: dark;
+  --bar-bg: #292929;
+  --bar-border: #414141;
+  --text-main: #f3f3f4;
+  --text-muted: #b2b2b7;
+  --text-quiet: #929298;
+  --focus: #4a8dff;
+  --danger: #e45c63;
+  --danger-hover: #f06a70;
+  --disabled-bg: #3b3b3d;
+  --disabled-text: #9a9a9f;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bar-bg: #f5f6f8;
+  --bar-border: #d8dbe1;
+  --text-main: #24262b;
+  --text-muted: #565b64;
+  --text-quiet: #707580;
+  --focus: #2368db;
+  --danger: #c93641;
+  --danger-hover: #b82c37;
+  --disabled-bg: #e4e6e9;
+  --disabled-text: #757a83;
+}
+
+html,
+body {
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bar-bg);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.recording-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--bar-border);
+  background: var(--bar-bg);
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.recording-mark,
+.recording-action {
+  -webkit-app-region: no-drag;
+}
+
+.recording-mark {
+  position: relative;
+  display: block;
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-quiet);
+}
+
+.recording-bar[data-phase="recording"] .recording-mark,
+.recording-bar[data-phase="error"] .recording-mark {
+  background: var(--danger);
+}
+
+.recording-bar[data-phase="recording"] .recording-mark::after {
+  position: absolute;
+  inset: -4px;
+  border: 1px solid color-mix(in srgb, var(--danger) 52%, transparent);
+  border-radius: 50%;
+  content: "";
+  animation: recording-pulse 1.8s ease-out infinite;
+}
+
+.recording-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 1px;
+  line-height: 1.25;
+}
+
+.recording-title,
+.recording-detail {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recording-title {
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.recording-detail {
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.recording-action {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 86px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--danger);
+  border-radius: 7px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.recording-action:hover:not([aria-disabled="true"]) {
+  border-color: var(--danger-hover);
+  background: var(--danger-hover);
+}
+
+.recording-action:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.recording-bar[data-phase="starting"] .recording-action {
+  border-color: var(--bar-border);
+  background: transparent;
+  color: var(--text-main);
+  font-weight: 550;
+}
+
+.recording-bar[data-phase="starting"] .recording-action:hover:not([aria-disabled="true"]) {
+  background: color-mix(in srgb, var(--text-main) 7%, transparent);
+}
+
+.recording-bar[data-phase="stopping"] .recording-action,
+.recording-action[aria-disabled="true"] {
+  border-color: var(--bar-border);
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+  cursor: wait;
+}
+
+.recording-action[hidden] { display: none; }
+
+@keyframes recording-pulse {
+  0% { transform: scale(.7); opacity: .7; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@media (max-width: 420px) {
+  .recording-bar { gap: 8px; padding: 0 9px; }
+  .recording-action { min-width: 76px; padding: 0 9px; font-size: 11px; }
+  .recording-title { font-size: 11.5px; }
+  .recording-detail { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recording-bar[data-phase="recording"] .recording-mark::after { animation: none; opacity: .35; }
+}

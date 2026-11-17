@@ -1,0 +1,116 @@
+/* One Bot instance per card, shown either in a readable work grid or the movable canvas. */
+body[data-view="board"] #config-panel,
+body[data-view="board"] #companion-bar,
+body[data-view="board"] #toggle-config,
+body[data-view="board"] #header-more,
+body[data-view="board"] #bot-header #llm-badge,
+body[data-view="board"] #tg-badge{display:none}
+body[data-view="board"] #bot-header #btn-avatar{display:none}
+#board-view{--ob-window-surface:var(--bg-panel);flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.ob-board-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:6px 20px;flex:0 0 auto;background:var(--bg-panel);border-bottom:1px solid var(--border-soft)}
+.ob-board-count{font-size:12px;color:var(--text-3)}
+.ob-canvas-caption{display:flex;gap:12px;align-items:center;min-width:0;flex:1}
+.ob-canvas-hint{font-size:11px;color:var(--text-3)}
+.ob-board-toolbar-actions{display:flex;align-items:center;gap:12px;min-width:0;flex:0 0 auto}
+.ob-board-mode-controls{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+.ob-board-mode-controls button,.ob-canvas-controls button,.ob-board-panel button{font:inherit;cursor:pointer;border:0;color:var(--text-2);background:transparent;border-radius:6px}
+.ob-board-mode-controls button{min-height:32px;padding:5px 9px;font-size:12px}
+.ob-board-mode-controls button[aria-pressed="true"]{color:var(--text);background:var(--bg-hover)}
+.ob-canvas-controls{display:flex;gap:2px;flex-shrink:0;align-items:center}
+.ob-canvas-controls button{min-height:32px;padding:5px 9px;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ob-canvas-controls .ob-icon{width:16px;height:16px}
+.ob-canvas-controls [data-canvas="out"],.ob-canvas-controls [data-canvas="in"]{width:32px;padding:6px}
+.ob-canvas-controls [data-canvas="reset"]{min-width:52px;font-variant-numeric:tabular-nums}
+.ob-canvas-controls [data-canvas="fit"]{margin-left:8px}
+.ob-canvas-controls button:hover:not(:disabled),.ob-board-mode-controls button:hover:not(:disabled){background:var(--bg-hover);color:var(--text)}
+.ob-canvas-viewport{position:relative;flex:1;min-width:0;min-height:0;overflow:clip;background:var(--bg-side);cursor:grab}
+.ob-canvas-backdrop{position:absolute;inset:0;touch-action:none}
+.ob-canvas-viewport:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.ob-canvas-world{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.ob-canvas-viewport.is-panning,.ob-canvas-viewport.is-panning *,.ob-canvas-viewport.space-pan{cursor:grabbing!important;user-select:none}
+.ob-canvas-viewport.is-dragging{user-select:none}
+.ob-canvas-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.ob-board-panel{position:absolute;width:var(--ob-window-width,312px);height:var(--ob-window-height,360px);display:flex;flex-direction:column;overflow:hidden;background:var(--ob-window-surface);border:1px solid var(--border-soft);border-radius:8px;cursor:default}
+.ob-board-panel.is-moving{border-color:var(--accent)}
+.ob-board-panel-head{height:52px;flex:0 0 52px;display:flex;align-items:center;gap:8px;padding:8px 14px;cursor:grab;touch-action:none}
+.ob-board-panel-head:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.ob-board-panel.is-moving .ob-board-panel-head{cursor:grabbing}
+.ob-board-avatar{display:flex;flex-shrink:0;padding:2px}.ob-board-avatar .ob-avatar{width:28px;height:28px}
+.ob-board-panel.is-resting .ob-board-avatar{display:none}
+.ob-board-identity{flex:1;min-width:0}
+.ob-board-identity h2{font-size:13px;font-weight:600;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin:0;color:var(--text)}
+.ob-board-meta{display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden}
+.ob-board-presence,.ob-board-model{font-size:11px;line-height:1.35;color:var(--text-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ob-board-model{padding-left:6px;border-left:1px solid var(--border-soft)}
+.ob-board-panel[data-status="failed"] .ob-board-presence{color:var(--danger)}
+.ob-board-focus,.ob-board-open,.ob-board-launch{width:30px;height:30px;display:grid;place-items:center;flex:0 0 30px;padding:5px}
+.ob-board-focus{color:var(--text-2)}
+.ob-board-focus .ob-icon,.ob-board-open .ob-icon,.ob-board-launch .ob-icon{width:16px;height:16px}
+.ob-board-panel button:hover:not(:disabled){background:var(--bg-hover);color:var(--text)}
+.ob-board-stage{position:relative;height:112px;flex:0 1 112px;min-height:56px;margin:0 14px 6px;overflow:hidden}
+.ob-board-stage.has-screen{background:var(--mac-inset);border-radius:8px}
+.ob-board-stage:not(.has-screen){display:none}
+.ob-board-panel.is-resting .ob-board-stage{display:flex;flex:1;height:auto;min-height:112px;margin:0}
+.ob-board-panel.is-resting .ob-board-chat{flex:0 0 auto}
+.ob-board-panel.is-resting .ob-board-transcript{display:none}
+.ob-board-screen{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;padding-bottom:44px}
+.ob-board-screen[hidden],.ob-board-wait[hidden],.ob-board-screen-bar[hidden],.ob-board-panel [hidden]{display:none}
+.ob-board-wait{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px}
+.ob-board-stage.has-screen .ob-board-wait{padding-bottom:48px}
+.ob-board-character{display:grid;place-items:center;padding:12px}
+.ob-board-character .ob-avatar{width:64px;height:64px}
+.ob-board-panel.is-resting .ob-board-character .ob-avatar{width:88px;height:88px}
+.ob-board-panel .ob-board-character:hover:not(:disabled){background:transparent}
+.ob-board-character:focus-visible,.ob-board-avatar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ob-board-wait p{font-size:12px;color:var(--text-3);line-height:1.6;text-align:center;margin:4px 0 0}
+.ob-board-launch{width:32px;height:32px;padding:6px;display:grid;place-items:center;flex-shrink:0}
+.ob-board-screen-bar{position:absolute;bottom:0;left:0;right:0;height:44px;display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--ob-window-surface)}
+.ob-board-screen-bar>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ob-board-screen-title{font-size:11px;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ob-board-screen-meta{font-size:11px;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ob-board-screen-bar button{font-size:12px;padding:6px;min-height:32px;flex-shrink:0}
+.ob-board-chat{padding:0 14px 14px;display:flex;flex-direction:column;flex:1;min-height:calc(var(--ob-draft-height,32px) + 64px)}
+.ob-board-transcript{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:8px 0;scrollbar-gutter:stable;overflow-wrap:anywhere;touch-action:pan-y;cursor:text}
+.ob-board-message,.ob-board-stream{font-size:14px;line-height:1.75;white-space:pre-wrap;margin:0 0 14px;color:var(--text)}
+.ob-board-message.user{margin-left:auto;background:var(--mac-inset);padding:8px 12px;border-radius:8px;max-width:calc(100% - 20px);width:fit-content}
+.ob-board-notice{font-size:12px;line-height:1.65;color:var(--text-2);white-space:pre-wrap;margin:10px 0}
+.ob-board-notice.error{color:var(--danger)}
+.ob-board-progress{font-size:11px;line-height:1.5;color:var(--text-3);padding-bottom:8px;max-height:48px;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;flex:0 0 auto;overflow-wrap:anywhere}
+.ob-board-composer{display:flex;align-items:flex-end;flex:0 0 auto;background:var(--mac-inset);border-radius:8px;padding:8px 10px 8px 12px;gap:8px;margin-top:auto}
+.ob-board-composer:focus-within{box-shadow:inset 0 -2px var(--accent)}
+.ob-board-composer textarea{flex:1;min-width:0;min-height:32px;max-height:120px;resize:none;overflow:auto;border:0;background:transparent;color:var(--text);font:inherit;font-size:14px;line-height:22px;padding:5px 0;outline:none;touch-action:pan-y}
+.ob-board-composer textarea:focus-visible{outline:none}
+.ob-board-panel .ob-board-send{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;background:var(--mac-action);color:white;margin:0}
+.ob-board-panel .ob-board-send:hover:not(:disabled){background:var(--mac-action);color:white;filter:brightness(1.1)}
+.ob-board-panel .ob-board-send:disabled{background:transparent;color:var(--text-3);cursor:default;opacity:1}
+.ob-board-tools .tool-approval{margin:10px 0;padding:12px;background:var(--bg);border-color:var(--border)}
+.ob-board-tools .tool-approval-actions{flex-wrap:wrap}
+.ob-board-tools .tool-approval-actions .btn.primary{background:var(--mac-action);color:#fff}
+.ob-board-tools .tool-event{font-size:11px;overflow-wrap:anywhere}
+/* Keep layout stable; reveal local controls without adding a menu or extra click. */
+/* Work view keeps the same Bot elements and editors in a scrollable grid. */
+#board-view[data-board-mode="work"] .ob-canvas-controls{display:none}
+#board-view[data-board-mode="work"] .ob-canvas-viewport{overflow:auto;cursor:auto;scrollbar-gutter:stable}
+#board-view[data-board-mode="work"] .ob-canvas-backdrop{display:none}
+#board-view[data-board-mode="work"] .ob-canvas-world{position:relative;inset:auto;width:100%;height:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));align-content:start;gap:14px;padding:16px 20px 24px;transform:none!important}
+#board-view[data-board-mode="work"] .ob-board-panel{position:relative;left:auto!important;top:auto!important;width:100%;height:clamp(400px,calc(100vh - 540px),440px);min-height:360px;border-color:var(--border-soft);border-radius:8px;box-shadow:none}
+#board-view[data-board-mode="work"] .ob-board-panel-head{height:60px;flex-basis:60px;cursor:default;touch-action:auto}
+#board-view[data-board-mode="work"] .ob-board-panel.is-resting .ob-board-stage{flex:0 0 112px;min-height:112px;margin:0 14px 6px}
+#board-view[data-board-mode="work"] .ob-board-panel.is-resting .ob-board-character .ob-avatar{width:48px;height:48px}
+#board-view[data-board-mode="work"] .ob-board-panel.is-resting .ob-board-wait{gap:4px;padding:8px}
+#board-view[data-board-mode="work"] .ob-board-panel.is-resting .ob-board-wait p{display:block;margin:0}
+#board-view[data-board-mode="work"] .ob-board-panel.is-resting .ob-board-chat{flex:1;min-height:0}
+/* A wide workspace drawer overlays this view; it must not shrink the canvas to a sliver. */
+@media(min-width:1280px){body[data-view="board"]:has(#org-drawer:not(.hidden)) #app{width:100%!important}}
+body[data-view="board"]:has(#org-drawer:not(.hidden)) .ob-board-toolbar{justify-content:flex-start;flex-wrap:wrap;padding-right:calc(var(--ob-work-width,400px) + 16px)}
+body[data-view="board"]:has(#org-drawer:not(.hidden)) .ob-board-toolbar-actions{flex-wrap:wrap}
+@media(max-width:1280px){.ob-canvas-hint{display:none}}
+@media(max-width:1050px){.ob-board-toolbar{padding:7px 14px;gap:8px}.ob-board-toolbar-actions{gap:7px}.ob-board-mode-controls button,.ob-canvas-controls button{padding:5px 7px}}
+@media(max-height:680px){#board-view[data-board-mode="work"] .ob-board-panel{height:380px}}
+@media(max-width:520px){.ob-board-toolbar{align-items:flex-start;flex-direction:column}.ob-board-toolbar-actions{width:100%;justify-content:space-between}.ob-board-mode-controls button{padding:5px 8px}#board-view[data-board-mode="work"] .ob-canvas-world{grid-template-columns:minmax(0,1fr);padding:10px;gap:10px}}
+@media(prefers-color-scheme:dark){#board-view{--ob-window-surface:#2c2c2e}}
+@media(prefers-reduced-motion:reduce){
+  .ob-board-panel button,.ob-canvas-controls button,
+  .ob-board-panel :is(.ob-board-open,.ob-board-launch,.ob-board-takeover),
+  .ob-canvas-controls button:not([data-canvas="reset"]){transition:none}
+}

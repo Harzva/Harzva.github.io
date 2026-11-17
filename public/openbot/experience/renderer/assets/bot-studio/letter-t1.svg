@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc" style="--body:#E4AC78;--outline:#315540;--face:#FBF3E1;--eye:#1E4133;--tool:#F6EDD8;--tool-edge:#315540;--hardware:#77958A;--highlight:#FFFDF4">
+<title id="title">T · 工具 Bot</title>
+<desc id="desc">一枚杏色 T 字母工具角色，粗横梁与竖柄构成字形，柄上有亲和的小脸和六角螺母徽记。</desc>
+<!-- Transparent canvas; crossbar, face and handle badge stay within the circular avatar safe area. -->
+<g aria-hidden="true">
+  <path d="M31 20 H97 C105 20 110 25 110 32 V36 C110 43 105 48 97 48 H83 V96 C83 105 78 110 69 110 H59 C50 110 45 105 45 96 V48 H31 C23 48 18 43 18 36 V32 C18 25 23 20 31 20Z" fill="var(--body)" stroke="var(--outline)" stroke-width="3.2" stroke-linejoin="round"/>
+  <!-- Small inset face rides on the T's handle. -->
+  <path d="M50 64 C50 58 55 55 64 55 C73 55 78 58 78 64 V70 C78 75 73 78 64 78 C55 78 50 75 50 70Z" fill="var(--face)"/>
+  <circle cx="58.5" cy="64" r="2.7" fill="var(--eye)"/>
+  <circle cx="69.5" cy="64" r="2.7" fill="var(--eye)"/>
+  <path d="M60.5 71 Q64 73.5 67.5 71" fill="none" stroke="var(--eye)" stroke-width="2" stroke-linecap="round"/>
+  <!-- A rounded hex nut marks this T as a hands-on tool character. -->
+  <path d="M56 85 H72 L78 92 L72 99 H56 L50 92Z" fill="var(--tool)" stroke="var(--tool-edge)" stroke-width="2.2" stroke-linejoin="round"/>
+  <circle cx="64" cy="92" r="3.6" fill="var(--hardware)" stroke="var(--tool-edge)" stroke-width="1.5"/>
+  <path d="M28 31 H31 M97 31 H100" fill="none" stroke="var(--highlight)" stroke-width="2" stroke-linecap="round" opacity="0.78"/>
+</g>
+</svg>
