@@ -120,6 +120,18 @@ const projects = [
     url: "https://harzva.github.io/#publications",
     topics: ["cvpr", "few-shot", "vlm"],
     proof: "paper details"
+  },
+  {
+    id: "09",
+    layer: "Desktop Action Layer",
+    name: "App-Use Studio",
+    tagline: "Browser-Use → Computer-Use → App-Use · macOS 窗口级桌面元引擎",
+    description:
+      "macOS 窗口级 App-Use 与 Meta-RPA 引擎：AXUIElement + Vision OCR 双通道感知，支持安全原生软件无焦点后台 AX 直调真并发，以及微信/钉钉/飞书/小红书三级反风控护栏与 69 工具 stdio MCP。",
+    image: "/project-meta-agent.svg",
+    url: "https://github.com/Harzva/app-use",
+    topics: ["app-use", "macos", "mcp", "anti-ban", "meta-rpa"],
+    badge: "https://img.shields.io/github/stars/Harzva/app-use?style=flat-square&label=stars"
   }
 ];
 
@@ -851,6 +863,12 @@ const showcaseSpecs = [
     keywords: ["dsh-plugin", "terminal", "IM", "computer-use"]
   },
   {
+    fullName: "Harzva/app-use",
+    headline: "App-Use Studio",
+    subline: "Window-Scoped Desktop App-Use · 无焦点多窗并发与反风控护栏",
+    keywords: ["App-Use", "AXUIElement", "MCP", "Meta-RPA"]
+  },
+  {
     fullName: "Harzva/mobilecore",
     headline: "mobilecore",
     subline: "端侧本地 LLM runtime 与模型分发",
@@ -935,7 +953,8 @@ const showcaseKeywords = [
   "LDB",
   "Pages Hub",
   "VLM papers",
-  "Make Agents Cheaper"
+  "Make Agents Cheaper",
+  "App-Use Studio"
 ];
 
 function formatDate(value) {

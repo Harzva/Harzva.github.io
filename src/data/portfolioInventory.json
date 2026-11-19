@@ -1,12 +1,40 @@
 {
-  "generatedAt": "2026-10-16T07:26:01Z",
+  "generatedAt": "2026-11-19T06:56:00Z",
   "summary": {
-    "repoCount": 173,
-    "pagesCount": 46,
+    "repoCount": 174,
+    "pagesCount": 47,
     "releaseCount": 9,
-    "matrixCount": 60
+    "matrixCount": 61
   },
   "items": [
+    {
+      "owner": "Harzva",
+      "accountAlias": "harzva",
+      "name": "app-use",
+      "fullName": "Harzva/app-use",
+      "kind": "project",
+      "url": "https://github.com/Harzva/app-use",
+      "description": "App-Use Studio (macOS): Window-scoped desktop App-Use & Meta-RPA engine — headless AX concurrency, anti-ban guardrails, WeChat/WeCom/DingTalk/Feishu/XHS & any unseen app, stdio MCP + Bot Studio.",
+      "language": "Python",
+      "topics": [
+        "app-use",
+        "macos",
+        "rpa",
+        "mcp",
+        "accessibility",
+        "ai-agents",
+        "desktop-automation",
+        "wechat"
+      ],
+      "stars": 0,
+      "pushedAt": "2026-11-19T06:56:00Z",
+      "pagesUrl": "https://harzva.github.io/app-use/",
+      "pagesStatus": "built",
+      "releaseUrl": null,
+      "releaseTag": null,
+      "thumbnail": "/project-meta-agent.svg",
+      "releaseAssets": []
+    },
     {
       "owner": "Harzva",
       "accountAlias": "harzva",
